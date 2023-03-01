@@ -1,37 +1,63 @@
 .latest {
-    width: 90%;
-    margin: 2.5rem auto 3.5rem auto;
+    display: grid;
+    grid-template-columns: 48% 48%;
+    max-width: 95%;
+    grid-column-gap: 4%;
+    margin: 0 auto;
+    height:100%;
+    margin-bottom:2rem;
     h1 {
         font-size: 1.6rem;
         font-family: 'Helvetica Neue', sans-serif;
     }
-    .more__container {
-        margin-top: 2.5rem;
-        display: grid;
-        grid-template-columns: 50% 50%;
-        width: 100%;
-        grid-gap: 2%;
-        row-gap: 3%;
-        .arrival {
-            height: auto;
-            cursor: pointer;
-            .arrival__image {
-                width: 95%;
-                border-radius: 3px;
+    .product {
+        display:grid;
+        grid-template-columns: 1fr;
+        height: auto;
+        cursor: pointer;
+        position:relative;
+        height:fit-content;
+        margin-bottom: 20px;
+        .imageContainer {
+            overflow:hidden;
+
+            z-index:1;
+            margin:0 auto;
+            img {
+                position:static !important;
+                object-fit:cover;
             }
-            .arrival__name {
-                font-size: .95rem;
-                margin-top: 0.3rem;
-                font-family: 'Helvetica', sans-serif;
-                font-weight: 300;
-                text-transform: capitalize;
-            }
-            .arrival__price {
-                margin: .2rem 0;
-                opacity: .8;
-            }
-            .alt__images {
-                display: none;
+        }
+        h1 {
+            font-size: .95rem;
+            margin-top: 0.3rem;
+            font-family: 'Helvetica', sans-serif;
+            font-weight: 300;
+            text-transform: capitalize;
+            display: -webkit-box;
+            max-width: 150px;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        p {
+            margin: .2rem 0;
+            opacity: .8;
+        }
+        button {
+            outline: none;
+            border: none;
+            background-color: #0c0c0c;
+            color: white;
+            font-size: .9rem;
+            margin-top: .2rem;
+            width: 100%;
+            padding: .5rem 1rem;
+            transition: 100ms ease-in;
+            text-transform: capitalize;
+            &:hover {
+                background-color: #383838;
+                cursor: pointer;
             }
         }
     }

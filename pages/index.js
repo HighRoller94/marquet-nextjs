@@ -1,7 +1,46 @@
+import React, { useEffect } from 'react'
 import Head from 'next/head'
-import Layout from '@/components/Layout'
+import SaleBanner from '@/components/SaleBanner'
+import Carousel from '@/components/Carousel'
+import Divider from '@/components/Divider'
+import Options from '@/components/Options'
+import LatestArrivals from '@/components/LatestArrivals'
+import TrendingProducts from '@/components/TrendingProducts'
+import Newsletter from '@/components/Newsletter'
+import CollectionBanner from '@/components/CollectionBanner'
 
 export default function Home() {
+
+  useEffect(() => {
+    const countdown = () => {
+        const currentDate = new Date().getTime();
+        const countDate = new Date('September 15, 2023 00:00:00').getTime();
+        
+        const diff = countDate - currentDate;
+    
+        const second = 1000;
+        const minute = second * 60;
+        const hour = minute * 60;
+        const day = hour * 24;
+    
+        const textDay = Math.floor(diff / day);
+        const textHour = Math.floor((diff % day) / hour);
+        const textMinute = Math.floor((diff % hour) / minute);
+        const textSecond = Math.floor((diff % minute) / second);
+    
+        const outputHours = (textHour).toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false })
+        const outputMinutes = (textMinute).toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false })
+        const outputSeconds = (textSecond).toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false })
+    
+        const timer = document.querySelectorAll('#timer');
+        timer.forEach(time => {
+            time.innerHTML = outputHours + ':' + outputMinutes + ':' + outputSeconds;
+        })
+    }
+    
+    setInterval(countdown, 100);
+}, [])
+
   return (
     <>
       <Head>
@@ -10,7 +49,25 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/MarquetLogo.ico" />
       </Head>
-      
+      <Carousel />
+      <SaleBanner />
+      <Divider 
+        heading="SHOP BY"
+        text="Shop By Category"
+      />
+      <Options />
+      <Divider 
+        heading="OUR TOP SELLERS"
+        text="All the latest additions to marquet"
+      />
+      <TrendingProducts />
+      <Divider 
+        heading="Newest of the new"
+        text="Hand picked just for you"
+      />
+      <LatestArrivals />
+      <CollectionBanner />
+      <Newsletter />
     </>
   )
 }

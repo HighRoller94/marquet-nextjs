@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { MdSignalWifiStatusbarConnectedNoInternet4 } from 'react-icons/md';
 
 const cartSlice = createSlice({
     name: "cart",

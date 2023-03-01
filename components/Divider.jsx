@@ -1,10 +1,12 @@
 import React from 'react'
 
+import DividerStyles from '../styles/components/Divider.module.scss'
+
 const Divider = ({ heading, text}) => {
   return (
-    <div class="divider">
-        <h2></h2>
-        <p></p>
+    <div className={DividerStyles.divider}>
+        <h2>{heading}</h2>
+        <p>{text}</p>
         <span></span>
     </div>
   )

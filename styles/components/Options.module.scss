@@ -1,0 +1,38 @@
+.options {
+
+    .option {
+        width: 95%;
+        background-repeat: no-repeat;
+        height: 12rem;
+        background-size: 100%;
+        background-position: 30%;
+        border-radius: 3px;
+        margin: 0 auto;
+        transition: 200ms ease-in;
+        position: relative;
+        margin-bottom: 1rem;
+        .imageContainer {
+            height:100%;
+            width: 100%;
+            img {
+                object-fit:cover;
+            }
+        }
+        h1 {
+            position: absolute;
+            color: white;
+            bottom: 10%;
+            left: 50%;
+            font-family: 'Helvetica', sans-serif;
+            transform: translate(-50%, -50%);
+            font-weight: 300;
+            font-size: 1rem;
+            padding: 0.4rem 1.1rem;
+            background-color: #000000;
+        }
+        &:hover {
+            opacity: .9;
+            cursor: pointer;
+        }
+    }
+}
