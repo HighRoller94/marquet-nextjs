@@ -1,8 +1,25 @@
 import React from 'react'
+import Product from './Product'
 
-const ProductList = () => {
+import ProductListStyles from '../styles/components/ProductList.module.scss'
+
+const ProductList = ({ products }) => {
   return (
-    <div>ProductList</div>
+    <div className={ProductListStyles.productList}>
+        {products?.map((product, i) => (
+          <Product
+            key={product.name}
+            id={product._id}
+            product={product}
+            index={i}
+            name={product.name}
+            mainImage={product.mainImage}
+            type={product.type}
+            price={product.price}
+            gallery={product.gallery}
+          />
+        ))}
+      </div>
   )
 }
 

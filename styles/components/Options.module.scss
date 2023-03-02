@@ -1,5 +1,11 @@
 .options {
-
+    @media screen and (min-width: 768px) {
+        display: grid;
+        width: 97%;
+        margin: 0 auto;
+        align-items: center;
+        grid-template-columns: 33.3% 33.3% 33.3%;
+    }
     .option {
         width: 95%;
         background-repeat: no-repeat;
@@ -11,6 +17,9 @@
         transition: 200ms ease-in;
         position: relative;
         margin-bottom: 1rem;
+        @media screen and (min-width: 1312px) {
+            height:20rem;
+        }
         .imageContainer {
             height:100%;
             width: 100%;
@@ -23,7 +32,6 @@
             color: white;
             bottom: 10%;
             left: 50%;
-            font-family: 'Helvetica', sans-serif;
             transform: translate(-50%, -50%);
             font-weight: 300;
             font-size: 1rem;

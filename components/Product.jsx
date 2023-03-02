@@ -1,23 +1,28 @@
 import React from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 
-import ProductStyles from '../styles/components/Product'
-
+import ProductStyles from '../styles/components/Product.module.scss'
+import { AiOutlineEye } from 'react-icons/ai'
 import { addProduct } from '@/redux/cartSlice'
 
-const Product = ({ image, name, price }) => {
+const Product = ({ name, price, gallery, type, product }) => {
+  const priceFixed = (Math.round(price * 100) / 100).toFixed(2);
+  
   return (
     <div className={ProductStyles.product}>
-        <div className={ProductStyles.imageContainer}>
-            <Image
-                src="/images/trending/converse1.svg"                
+        <Link href={`/product/${product._id}`}>
+          <div className={ProductStyles.imageContainer}>
+              <Image
+                src={gallery[0]}
                 fill
-                alt="mens"
-            />
-        </div>
+                loading="lazy"
+                alt={name}
+              />
+          </div>
+        </Link>
         <h1 class="item__name">{name}</h1>
-        <p class="item__price">{price}</p>
-        <button class="add__button" onClick={addProduct}>Add to cart</button>
+        <p class="item__price">£{priceFixed}</p>
     </div>
   )
 }

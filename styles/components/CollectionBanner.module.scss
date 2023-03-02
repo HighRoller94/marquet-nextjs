@@ -20,7 +20,6 @@
         position:absolute;
         h1 {
             color: white;
-            font-family: 'Helvetica', sans-serif;
             padding: .4rem 1rem;
             border: 2px solid white;
             margin: 0 auto;
@@ -33,7 +32,6 @@
             color: white;
             margin-top: 1rem;
             font-weight: 300;
-            font-family: 'Helvetica', sans-serif;
             text-align:center;
             &:hover {
                 text-decoration: underline;
@@ -44,7 +42,7 @@
 
 @media screen and (min-width: 768px) {
     .banner {
-        margin-top: 15rem;
+        margin-top: 2rem;
         height: 15rem;
 
         .bannerInfo {
@@ -61,7 +59,8 @@
 
 @media screen and (min-width: 1312px) {
     .banner {
-        width: 65%;
+        height: 300px;
+        width: 95%;
         margin: 7rem auto 3rem auto;
     }
 }

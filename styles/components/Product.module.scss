@@ -1,0 +1,68 @@
+.product {
+    display:grid;
+    grid-template-columns: 1fr;
+    height: auto;
+    cursor: pointer;
+    position:relative;
+    height:fit-content;
+    margin-bottom: 20px;
+    
+    .imageContainer {
+        height:190px;
+        max-height:190px;
+        width: 100%;
+        z-index:1;
+        margin:0 auto;
+        overflow: hidden;
+        border: 1px solid black;
+        img {
+            position:static !important;
+            object-fit:cover;
+        }
+        @media screen and (min-width: 1312px) {
+            height:500px;
+            max-height:500px;
+        }
+    }
+    h1 {
+        font-size: .95rem;
+        margin-top: 0.3rem;
+        font-weight: 400;
+        letter-spacing: 2px;
+        text-transform: capitalize;
+        font-family: 'Bebas Neue', sans-serif;
+        @media screen and (min-width: 1312px) {
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
+        }
+    }
+    p {
+        margin: .2rem 0;
+        opacity: .4;
+        font-weight: 400;
+        @media screen and (min-width: 1312px) {
+            margin-top: 0rem;
+            font-size: .9rem;
+        }
+    }
+    button {
+        outline: none;
+        border: none;
+        background-color: #0c0c0c;
+        color: white;
+        font-size: .9rem;
+        margin-top: .2rem;
+        width: 100%;
+        padding: .5rem 1rem;
+        transition: 100ms ease-in;
+        text-transform: capitalize;
+        &:hover {
+            background-color: #383838;
+            cursor: pointer;
+        }
+        @media screen and (min-width: 1312px) {
+            margin-top: .5rem;
+        }
+    }
+}
+

@@ -1,30 +1,45 @@
 .carousel {
     position: relative;
-    display: grid;
-    place-items: center;
-    grid-template-columns: 1fr;
+    display: flex;
+    width: 100%;
     .inner {
         display:flex;
         justify-content: center;
         align-items: center;
-        position:relative;
+        position:relative; 
+        // background-image: url("/images/hero__bg.svg");
+        // background-attachment: fixed;
+        // background-repeat: no-repeat;
+        // background-position: center;
+        // background-size:cover;
+        
         width: 100%;
-        margin: 1rem auto;
+        margin: 2rem auto;
         height: 30rem;
         background-repeat: no-repeat;
         background-position: center;
         object-fit: cover;
         flex-direction: column;
-        grid-row-start: 1;
-        grid-column-start: 1;
         opacity: 1;
         border-radius: 3px;
         transition: 300ms ease-in-out;
+        @media screen and (min-width: 768px) {
+            height: 70vh;
+        }
+        
         .imageContainer {
             position:absolute;
             height:100%;
             width: 95%;
-            z-index:1;
+            margin:0 auto;
+            img {
+                object-fit:cover;
+            }
+        }
+        .logoContainer {
+            position:relative;
+            height:100%;
+            width: 95%;
             margin:0 auto;
             img {
                 object-fit:cover;
@@ -36,35 +51,38 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-
-            z-index:2;
             h4 {
                 padding: .5rem 1.25rem;
                 border: 1px solid white;
-                font-size: 1.2rem;
+                font-size: 1rem;
+
                 text-transform: capitalize;
-                font-family: 'Helvetica', sans-serif;
                 font-weight: 400;
                 color: white;
                 border-radius: 3px;
+                @media screen and (min-width: 1312px) {
+                    font-size: 1.2rem;
+                }        
             }
 
             h1 {
                 color: white;
                 margin-top: 1rem;
                 font-size: 3.5rem;
-                font-family: 'Helvetica Neue', sans-serif;
                 font-weight: 600;
+                font-family: 'Bebas Neue', sans-serif;
+                letter-spacing: 1px;
                 text-align: center;
                 text-transform: uppercase;
+   
             }
 
             h2 {
                 color: white;
                 text-transform: uppercase;
-                font-family: 'Helvetica', sans-serif;
                 font-weight: 500;
                 margin-top: .2rem;
+    
             }
 
             button {
@@ -77,109 +95,17 @@
                 padding: .4rem 1rem;
                 font-size: 1.3rem;
                 margin-top: 2.5rem;
-
                 &:hover {
                     background-color: white;
                     color: black;
                     cursor: pointer;
                 }
-            }
-        }
-
-        &:nth-child(2) {
-            background-image: url('../../public/images/vans__bg.svg');
-            background-position-y: 50%;
-            background-position-x: 0%;
-            background-size: cover;
-            position: relative;
-
-            .vans__head {
-                display: flex;
-                flex-direction: column;
-                position: absolute;
-                justify-content: center;
-                align-items: center;
-                text-align: center;
-                padding: 3.5rem;
-                width: 100%;
-                margin-top: 3rem;
-
-                img {
-                    width: 100%;
-                    max-width: 400px;
-                }
-
-                h2 {
-                    color: white;
-                    text-transform: uppercase;
-                    font-family: 'Helvetica', sans-serif;
-                    font-weight: 300;
-                    margin: 1.25rem auto 1rem auto;
-                    font-size: 1.5rem;
-                }
-
-                a {
-                    text-decoration: none;
-                    color: white;
-                }
-
-                button {
-                    color: white;
-                    outline: none;
-                    border-radius: 3px;
-                    border: 1px solid white;
-                    background-color: transparent;
-                    padding: .4rem 1rem;
-                    font-size: 1.3rem;
-                    z-index: 99;
-                    margin-top: 1rem;
-
-                    &:hover {
-                        background-color: white;
-
-                        a {
-                            color: black;
-                        }
-
-                        cursor: pointer;
-                    }
-                }
-            }
-
-            .secondary__btn {
-                display: none;
+    
             }
         }
     }
 
     .carousel__selected {
         display: flex;
-    }
-
-    .carousel__nav {
-        width: 100%;
-        position: absolute;
-        margin-left: auto;
-        margin-right: auto;
-        bottom: 2rem;
-        left: 0;
-        right: 0;
-        text-align: center;
-        z-index: 10;
-
-        .carousel__btn {
-            width: 12px;
-            display: inline-block;
-            height: 12px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.6);
-            margin: 0 7px;
-            cursor: pointer;
-        }
-
-        .selected {
-            background-color: black;
-            transition: 300ms ease-in-out;
-        }
     }
 }

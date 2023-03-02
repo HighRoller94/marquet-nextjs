@@ -4,13 +4,17 @@ import SaleBanner from '@/components/SaleBanner'
 import Carousel from '@/components/Carousel'
 import Divider from '@/components/Divider'
 import Options from '@/components/Options'
-import LatestArrivals from '@/components/LatestArrivals'
-import TrendingProducts from '@/components/TrendingProducts'
 import Newsletter from '@/components/Newsletter'
 import CollectionBanner from '@/components/CollectionBanner'
 
-export default function Home() {
+import { TrendingContent } from '@/components/Trending'
+import { LatestContent } from '@/components/Latest'
 
+import ProductList from '@/components/ProductList'
+import axios from 'axios'
+
+export default function Home({ productList }) {
+console.log(productList)
   useEffect(() => {
     const countdown = () => {
         const currentDate = new Date().getTime();
@@ -39,7 +43,7 @@ export default function Home() {
     }
     
     setInterval(countdown, 100);
-}, [])
+  }, [])
 
   return (
     <>
@@ -60,14 +64,23 @@ export default function Home() {
         heading="OUR TOP SELLERS"
         text="All the latest additions to marquet"
       />
-      <TrendingProducts />
+      <ProductList products={productList} />
       <Divider 
         heading="Newest of the new"
         text="Hand picked just for you"
       />
-      <LatestArrivals />
+      <ProductList products={LatestContent} />
       <CollectionBanner />
       <Newsletter />
     </>
   )
+}
+
+export const getServerSideProps = async () => {
+  const res = await axios.get("http://localhost:3000/api/products");
+  return {
+    props : {
+      productList:res.data,
+    }
+  }
 }

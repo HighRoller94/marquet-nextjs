@@ -1,11 +1,18 @@
 import React, { useEffect } from 'react'
 import Link from 'next/link'
 
-import {BsBag} from 'react-icons/bs'
+import { RiShoppingCartLine } from 'react-icons/ri'
+import { RxPerson } from 'react-icons/rx'
+import { HiOutlineSearch } from 'react-icons/hi'
+import { useSelector } from "react-redux";
+
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import Carousel from "react-responsive-carousel/lib/js/components/Carousel/index";
 
 import NavStyles from '../styles/components/Navbar.module.scss'
 
 const Navbar = () => {
+    const quantity = useSelector((state) => state.cart.quantity)
 
     useEffect(() => {
         const nav = document.querySelector('#navbar');
@@ -36,7 +43,7 @@ const Navbar = () => {
                         <span className={NavStyles.bar}></span>
                         <span className={NavStyles.bar}></span>
                     </div>
-                    <a href="/html/index.html" className={NavStyles.navLogo}>MARQUET</a>
+                    <Link href="/" className={NavStyles.navLogo}>MARQUET</Link>
                     <div className={NavStyles.sideMenu}>
                         <ul className={NavStyles.navMenu}>
                             <div className={NavStyles.mobLogoContainer}>
@@ -63,24 +70,39 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <div className={NavStyles.navIcons}>
-                        <div class="search__icon">
-                        
-                        </div>
-                        <a href="/html/basket.html">
-                            <p class="basket__count"></p>
-                            <BsBag />
-                        </a>
-                        <a href="/html/orders.html">
-                            
-                        </a>
+                        <HiOutlineSearch className={NavStyles.navIcon}/>
+                        <Link href="/basket">
+                            <p class="basket__count">{quantity}</p>
+                            <RiShoppingCartLine className={NavStyles.navIcon}/>
+                        </Link>
+                        <Link href="/account">
+                            <RxPerson className={NavStyles.navIcon}/>
+                        </Link>
                     </div>
                 </div>
             </div>
-            <div className={NavStyles.navSlider}>
-                <p>Join the family and get 20% off your next purchase</p>
-                <p>Free delivery when you spend over £50</p>
-                <p>Not happy with your order? Send it back and get in touch</p>
-            </div>
+            <Carousel
+                className={NavStyles.navSlider}
+                animationHandler="fade"
+                autoPlay={true}
+                transitionTime="2000"
+                interval="4000"
+                showArrows={false}
+                infiniteLoop
+                showStatus={false}
+                showIndicators={false}
+                showThumbs={false}
+                >
+                <div className={NavStyles.inner}>
+                    <p className={NavStyles.text}>Join the family and get 20% off your next purchase</p>
+                </div>
+                <div className={NavStyles.inner}>
+                    <p className={NavStyles.text}>Free delivery when you spend over £50</p>
+                </div>
+                <div className={NavStyles.inner}>
+                    <p className={NavStyles.text}>Not happy with your order? Send it back and get in touch</p>
+                </div>
+            </Carousel>
         </nav>
   )
 }
