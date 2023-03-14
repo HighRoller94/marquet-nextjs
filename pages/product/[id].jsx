@@ -1,10 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import axios from "axios";
-
 import { useSelector, useDispatch } from "react-redux";
 import { addProduct } from "@/redux/cartSlice";
-
+import Newsletter from "@/components/Newsletter";
 import ProductPageStyles from '../../styles/pages/ProductPage.module.scss'
 
 const Product = ({ product }) => {
@@ -14,7 +13,7 @@ const Product = ({ product }) => {
     const dispatch = useDispatch();
     const price = product.price
     const [added, setAdded] = useState(false)
-
+    const [mainImage, setMainImage] = useState(product.gallery[0])
     const handleClick = () => {
       dispatch(addProduct({ ...product, price, quantity }))
       setAdded(!added)
@@ -25,30 +24,37 @@ const Product = ({ product }) => {
         
     }
 
+    useEffect(() => {
+
+    }, [])
+
     return (
+      <>
       <div className={ProductPageStyles.container}>
         <div className={ProductPageStyles.left}>
-          <div>
+          <div className={ProductPageStyles.imageGallery}>
+            <div id="imageGallery" className={ProductPageStyles.gallery}>
+              {product.gallery.map((image, i) => (
+                  <div className={ProductPageStyles.itemContainer} key={i} >
+                      <Image 
+                          className="image"
+                          src={image} 
+                          fill 
+                          alt="Item Image"
+                          onClick={() => { setMainImage(image)} }
+                      />
+                  </div>
+              ))}
+            </div>
             <div className={ProductPageStyles.imageContainer}>
                 <Image 
-                    src={product.gallery[0]} 
+                    id="mainImage"
+                    src={mainImage} 
                     fill 
                     alt={product.name} 
                 />
             </div>
-            <div className={ProductPageStyles.gallery}>
-                {product.gallery.map((image, i) => (
-                    <div className={ProductPageStyles.itemContainer} key={i} >
-                        <Image 
-                            src={image} 
-                            fill 
-                            alt="Item Image"
-                        />
-                    </div>
-              ))}
-            </div>
           </div>
-          
         </div>
         <div className={ProductPageStyles.right}>
           <h1 className={ProductPageStyles.title}>{product.name}</h1>
@@ -63,6 +69,8 @@ const Product = ({ product }) => {
           </div>
         </div>
       </div>
+      <Newsletter />
+      </>
     );
 };
 
