@@ -53,13 +53,17 @@ const Product = ({ name, price, gallery, type, product }) => {
               Shop the Look
             </button>
             {saved ? (
-              <HiHeart className={`${ProductStyles.favIcon} fill`} onClick={removeProductFromFavourites} />
+              <div className={ProductStyles.iconHolder}>
+                <HiHeart className={`${ProductStyles.favIcon} fill`} onClick={removeProductFromFavourites} />
+              </div>
             ) : (
-              <HiOutlineHeart className={ProductStyles.favIcon} onClick={saveProductToFavourites} />
+              <div className={ProductStyles.iconHolder}>
+                <HiOutlineHeart className={ProductStyles.favIcon} onClick={saveProductToFavourites} />
+              </div>
             )}
         </div>
-        <h1 class="item__name">{name}</h1>
-        <p class="item__price">£{priceFixed}</p>
+        <h1 className="item__name">{name}</h1>
+        <p className="item__price">£{priceFixed}</p>
     </div>
   )
 }
