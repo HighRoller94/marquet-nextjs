@@ -1,0 +1,14 @@
+.favouritesHeader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px 0;
+    h1 {
+        font-size: 1.9rem;
+        margin-top: 2px;
+    }
+    .icon {
+        font-size: 2rem;
+        margin-right: 12px;
+    }
+}
