@@ -13,9 +13,9 @@ const CarouselHolder = () => {
         <Carousel
             className={CarouselStyles.carousel}
             animationHandler="fade"
-            autoPlay={true}
+            autoPlay={false}
             transitionTime="2000"
-            interval="10000"
+            interval="false"
             showArrows={false}
             infiniteLoop
             showStatus={false}
@@ -23,24 +23,7 @@ const CarouselHolder = () => {
             swipeable={true}
             showThumbs={false}
             >
-            <div className={CarouselStyles.inner}>
-                <div className={CarouselStyles.imageContainer}>
-                        <Image
-                            src="/images/hero__bg.svg"
-                            fill
-                            loading="lazy"
-                            alt="Vans Hero"
-                        />
-                    </div>
-                <div className={CarouselStyles.header}>
-                    <h4>2022 Spring Collection</h4>
-                    <h1>Huge Sale</h1>
-                    <h2>Up to 60% off</h2>
-                    <a href="#trending__divider">
-                        <button class="main__btn">Shop now</button>
-                    </a>
-                </div>
-            </div>
+
             <div className={CarouselStyles.inner}>
                 <div className={CarouselStyles.imageContainer}>
                     <Image
@@ -50,7 +33,7 @@ const CarouselHolder = () => {
                         alt="Vans Hero"
                     />
                 </div>
-                <div>
+                <div className={CarouselStyles.container}>
                     <div className={CarouselStyles.logoContainer}>
                         <Image
                             src="/images/vans__logo.svg"
@@ -61,10 +44,7 @@ const CarouselHolder = () => {
                     </div>
                     <div className={CarouselStyles.header}>
                         <h1>Up to 30% off</h1>
-                        <button class="main__btn">Shop now</button>
-                        <a href="#trending__divider">
-                            <button class="main__btn">Students save more!</button>
-                        </a>
+                        <button className="main__btn">Shop now</button>
                     </div>
                 </div>
 

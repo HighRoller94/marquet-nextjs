@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Head from 'next/head';
 import { signIn, useSession, signOut } from 'next-auth/react'
 import Link from 'next/link';
-import { RiAccountCircleFill } from 'react-icons/ri'
+
 import LoginStyles from '../../styles/components/Login.module.scss'
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai'
 import { BiLogIn } from 'react-icons/bi'

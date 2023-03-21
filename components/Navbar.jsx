@@ -1,17 +1,20 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 
 import { RiShoppingCartLine } from 'react-icons/ri'
-import { RxPerson } from 'react-icons/rx'
-import { HiOutlineSearch } from 'react-icons/hi'
+import { RiAccountCircleFill } from 'react-icons/ri'
+import { HiHeart } from 'react-icons/hi'
 import { useSelector } from "react-redux";
 
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import Search from './Search/Search'
+
+import "react-responsive-carousel/lib/styles/carousel.min.css"; 
 import Carousel from "react-responsive-carousel/lib/js/components/Carousel/index";
 
 import NavStyles from '../styles/components/Navbar.module.scss'
 
 const Navbar = () => {
+    const [results, setResults] = useState([]);
     const quantity = useSelector((state) => state.cart.quantity)
 
     useEffect(() => {
@@ -69,14 +72,22 @@ const Navbar = () => {
                             </div>
                         </ul>
                     </div>
+                    <Search />
                     <div className={NavStyles.navIcons}>
-                        <HiOutlineSearch className={NavStyles.navIcon}/>
-                        <Link href="/basket">
-                            <p class="basket__count">{quantity}</p>
-                            <RiShoppingCartLine className={NavStyles.navIcon}/>
+                        <Link href="/basket" className={NavStyles.basket}>
+                            <p className="basket__count">{quantity}</p>
+                            {quantity > 0 ? (
+                                <RiShoppingCartLine className={NavStyles.navIcon}/>
+                            ) : (
+                                <RiShoppingCartLine className={NavStyles.navIcon}/>
+                            )}
+
                         </Link>
-                        <Link href="/account">
-                            <RxPerson className={NavStyles.navIcon}/>
+                        <Link href="/favourites">
+                            <HiHeart className={NavStyles.navIcon}/>
+                        </Link>
+                        <Link href="/account/login">
+                            <RiAccountCircleFill className={NavStyles.navIcon}/>
                         </Link>
                     </div>
                 </div>

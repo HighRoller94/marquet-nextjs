@@ -8,10 +8,12 @@ const Search = () => {
     const [results, setResults] = useState([]);
 
     return (
-        <div className={SearchStyles.searchContainer}>
-            <Searchbar setResults={setResults} />
-            <SearchResults results={results} />
-        </div>
+        
+            <div className={SearchStyles.searchContainer}>
+                <Searchbar setResults={setResults} />
+                {results && <SearchResults results={results} /> }
+            </div>
+
     )
 }
 

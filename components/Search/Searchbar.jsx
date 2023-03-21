@@ -30,13 +30,18 @@ const Searchbar = ({ setResults }) => {
     
 
     return (
+      <>
         <div className={SearchStyles.searchWrapper}>
             <HiOutlineSearch className={SearchStyles.searchIcon}/>
             <input 
+                type="text"
                 value={input} 
                 onChange={(e) => handleChange(e.target.value)}
             />
+            <div className={SearchStyles.overlay}></div>
         </div>
+        
+        </>
     )
 }
 
