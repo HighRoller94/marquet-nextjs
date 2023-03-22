@@ -33,13 +33,20 @@ const Searchbar = ({ setResults }) => {
   };
 
   const searchMarquet = (e) => {
-    let str = input;
-    e.preventDefault()
-    let cleanStr = str.replace(/\s/g, "+")
-    console.log(cleanStr)
-    router.push(`/search?=${cleanStr}`)
-    setInput("")
-    setResults("")
+    if (input !== '') {
+      let str = input;
+      e.preventDefault()
+      let cleanStr = str.replace(/\s/g, "+")
+      console.log(cleanStr)
+      router.push(`/search?=${cleanStr}`)
+      setInput("")
+      setResults("")
+
+    } else {
+      e.preventDefault()
+      
+      return;
+    }
   }
 
   return (
