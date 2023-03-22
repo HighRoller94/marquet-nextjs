@@ -1,0 +1,25 @@
+.container {
+    width: 100%;
+    display:flex;
+    justify-content: flex-start;
+    max-width: 1440px;
+    margin: 0px auto;
+    margin-top: 40px;
+    .breadcrumbs {
+        display:flex;
+        list-style:none;
+        li {
+            font-size: .8rem;
+            &:hover {
+                opacity: .6;
+            }
+            &:last-child {
+                font-weight: 600;
+            }
+            .icon {
+                margin: 0 10px;
+                font-size: .5rem;
+            }
+        }
+    }
+}
