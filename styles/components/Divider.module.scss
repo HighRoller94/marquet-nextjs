@@ -8,11 +8,28 @@
     padding: 0rem 0;
     border-radius: .3rem;
 
+    @media screen and (min-width: 768px) {
+        margin: 2rem 0;
+    }
+
+    @media screen and (min-width: 1312px) {
+        margin: 2rem 0;
+    }
+
     h2 {
         font-weight: 700;
-        text-transform: uppercase;
-
+        text-transform: capitalize;
         font-size: 1.5rem;
+
+        @media screen and (min-width: 768px) {
+            font-size: 1.45rem;
+        }
+
+        @media screen and (min-width: 1312px) {
+            font-size: 1.7rem;
+            font-weight: 900;
+
+        }
     }
 
     p {
@@ -22,42 +39,5 @@
         font-weight: 400;
     }
 
-    span {
-        height: 1px;
-        width: 10%;
-        margin: 0.5rem auto;
-        background-color: rgba(160, 160, 160, 0.6);
-    }
-}
 
-@media screen and (min-width: 768px) {
-    .divider {
-        margin: 2rem 0;
-
-        h2 {
-            font-size: 1.45rem;
-        }
-
-        span {
-            margin: 0.7rem auto;
-            width: 7.5%;
-        }
-    }
-
-}
-
-@media screen and (min-width: 1312px) {
-    .divider {
-        margin: 1rem 0;
-
-        h2 {
-            font-size: 1.5rem;
-        }
-
-        span {
-            
-            margin: 0.7rem auto;
-            width: 2%;
-        }
-    }
 }

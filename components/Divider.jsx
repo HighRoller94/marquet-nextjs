@@ -7,7 +7,6 @@ const Divider = ({ heading, text}) => {
     <div className={DividerStyles.divider}>
         <h2>{heading}</h2>
         <p>{text}</p>
-        <span></span>
     </div>
   )
 }
