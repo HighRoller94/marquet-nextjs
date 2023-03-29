@@ -5,22 +5,18 @@
     justify-content:Center;
     z-index: 99;
     background: white;
-    transition: .75s;
+    transition: .2s;
     position: sticky;
     top: 0;
-    &.active {
-        top: -1.75rem;
-    }
     .navSale {
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: #000000;
+        background-color: #0c0c0c;
         height: 1.75rem;
         width: 100%;
-        transition: .5s ease;
         @media screen and (min-width: 1312px) {
-            height: 1.5rem;
+            height: 20px;
             
         }
 
@@ -28,11 +24,12 @@
             background: none;
             color: white;
             font-weight: 400;
+            text-transform: uppercase;
             font-size: .6rem;
             margin-left: .2rem;
             letter-spacing: 1px;
             @media screen and (min-width: 768px) {
-                font-size: .6rem;
+                font-size: .55rem;
                 margin-left: -.15rem;
             }
         }
@@ -53,15 +50,19 @@
         width: 100%;
         position: relative;
         margin:0 auto;
-        max-width: 1400px;
+        max-width: 1440px;
         @media screen and (min-width: 768px) {
             font-size: .7rem;
             margin-left: -.15rem;
         }
         @media screen and (min-width: 1312px) {
             height: 64px;
+            padding: 0 40px;
             width: 100%;
             margin:0 auto;
+        }
+        @media screen and (min-width: 1600px) {
+            padding: 0;
         }
         .nav {
             display: flex;
@@ -74,7 +75,7 @@
                 width: 94%;
             }
             @media screen and (min-width: 1312px) { 
-                width: 95%;
+                width: 100%;
                 height: 64px;
                 justify-content: space-between;
             }
@@ -164,7 +165,7 @@
 
                     @media screen and (min-width: 1312px) {
                         margin-top: 0;
-                        margin-left: 1rem;
+                        margin-left: 1.6rem;
                     }
 
                     .mobLogoContainer {
@@ -188,7 +189,7 @@
                         align-items: center;
                         background: none;
                         transition: 100ms;
-                        margin: 1rem 0;
+                        margin: 1.2rem 0;
 
                         @media screen and (min-width: 768px) {
                             display: flex;
@@ -208,11 +209,10 @@
                         a {
                             color: black;
                             text-decoration: none;
-                            font-size: 1.1rem;
+                            font-size: 1rem;
                             font-family: 'Roboto', sans-serif;
-                            font-weight: 500;
-                            letter-spacing: 1px;
-                            padding: .4rem .7rem;
+                            font-weight: 700;
+                            padding: .4rem .754rem;
                             &:hover {
                                 background-color: #0c0c0c;
                                 color: white;
@@ -227,7 +227,7 @@
                             }
 
                             @media screen and (min-width: 1312px) {
-                                font-size: .9rem;
+                                font-size: .8rem;
                             }
                         }
                     }
@@ -335,7 +335,7 @@
                 text-decoration: none;
                 color: #0c0c0c;
                 font-size: 2.2rem;
-                margin-top: 2px;
+                margin-top: 3px;
                 font-family: 'Bebas Neue', sans-serif;
                 transition: 200ms ease-in;
                 letter-spacing: 1px;
@@ -347,24 +347,33 @@
                     font-size: 2.2rem;
                 }
                 @media screen and (min-width: 1312px) {
-                    font-size: 3rem;
+                    font-size: 2.8rem;
                 }
             }
 
             .navIcons {
                 display:flex;
+                list-style:none;
                 .basket {
                    display:flex;
                    align-items:center;
                    gap: .5rem;
+                   .navIcon {
+                    stroke-width:"1";
+                   }
+                   .basketCount {
+                    font-weight: 700;
+                    font-size: .9rem;
+                   }
                 }
-                .navIcon {
-                    font-size: 1.8rem;
-                    margin-right: 15px;
-                    &:nth-child(1) {
-                        color:red;
+                li {
+                    margin-right: 18px;
+                    .navIcon {
+                        font-size: 1.9rem;
                     }
-                    
+                    &:last-child {
+                        margin-right:0;
+                    }
                 }
 
             }
@@ -372,24 +381,24 @@
     }
 
     .navSlider {
-        background-color: #0c0c0c;
-        height: 1.6rem;
+        background-color: #3B3F44;
+        height: 25px;
         width: 100vw;
         display:flex;
-        align-items:center;
         justify-content:center;
-        .slider-wrapper {
-            max-width: 100vw;
-        }
         .inner {
             display:flex;
             align-items:center;
+            text-align:center;
             justify-content:center;
             margin: 0 auto;
+            height: 100%;
+            width: fit-content;
             .text {
                 color:white;
-                font-size: .7rem;
+                font-size: .6rem;
             }
         }
     }
 }
+

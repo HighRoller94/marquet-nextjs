@@ -1,18 +1,19 @@
 import React, { useEffect } from 'react'
 import Head from 'next/head'
+
 import SaleBanner from '@/components/SaleBanner'
 import Carousel from '@/components/Carousel'
 import Divider from '@/components/Divider'
 import Options from '@/components/Options'
 import Newsletter from '@/components/Newsletter'
-import CollectionBanner from '@/components/CollectionBanner'
-import ProductList from '@/components/ProductList'
-import axios from 'axios'
 import Misc from '@/components/Misc'
+import Featured from '@/components/Featured'
+import Slider from '@/components/Slider'
+import HomeHeader from '@/components/HomeHeader'
 
 import LayoutStyles from '../styles/layout/Layout.module.scss'
 
-export default function Home({ productList }) {
+export default function Home() {
 
   useEffect(() => {
     const countdown = () => {
@@ -52,35 +53,24 @@ export default function Home({ productList }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/MarquetLogo.ico" />
       </Head>
+      
+      <HomeHeader 
+        header="Sale on Now"
+        body="Exclusive top brands at the best prices, only at Marquet"
+      />
+
       <Carousel />
       <SaleBanner />
-      <Divider 
-        heading="SHOP BY"
-        text="Shop By Category"
-      />
       <Options />
-      <Divider 
-        heading="OUR TOP SELLERS"
-        text="All the latest additions to marquet"
-      />
-      <ProductList products={productList.slice(0,6)} />
       <Misc />
       <Divider 
-        heading="Newest of the new"
-        text="Hand picked just for you"
+        heading="our top exclusives"
+        text="latest additions to marquet"
       />
-      <ProductList products={productList.reverse().slice(0,6)} />
-      <CollectionBanner />
+      <Featured />
+      <Slider />
       <Newsletter />
     </div>
   )
 }
 
-export const getServerSideProps = async () => {
-  const res = await axios.get("http://localhost:3000/api/products");
-  return {
-    props : {
-      productList:res.data,
-    }
-  }
-}

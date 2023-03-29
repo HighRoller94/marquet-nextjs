@@ -1,10 +1,13 @@
 import React from 'react'
-
+import Link from 'next/link';
 import SearchStyles from '../../styles/components/Search.module.scss';
 
-const SingleResult = ({ name }) => {
+const SingleResult = ({ name, id, setInput}) => {
+
   return (
-    <div className={SearchStyles.singleResult}>{name}</div>
+      <Link href={`/product/${id}`} >
+        <div onClick={() => { setInput("") }} className={SearchStyles.singleResult}>{name}</div>
+      </Link>
   )
 }
 

@@ -1,5 +1,4 @@
 import dbConnect from '../../../util/mongo'
-import User from '../../../models/Product'
 
 export default async function handler(req, res) {
     const { method } = req;

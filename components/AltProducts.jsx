@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import FavouriteProduct from './FavouriteProduct';
+import AltProduct from './AltProduct';
 
-import FavouriteListStyles from '../styles/components/FavouriteList.module.scss'
+import AltProductListStyles from '../styles/components/AltProductList.module.scss'
 
-const FavouriteProducts = () => {
+const AltProducts = () => {
     const [products, setProducts] = useState();
+    const [count, setCount] = useState();
 
     const getUserSavedProducts = () => {
         const savedProducts = JSON.parse(localStorage.getItem('savedProducts'));
@@ -13,13 +14,13 @@ const FavouriteProducts = () => {
 
     useEffect(() => {
         getUserSavedProducts();
-    }, []);
+    }, [count]);
 
     return (
-        <div className={FavouriteListStyles.productList}>
+        <div className={AltProductListStyles.productList}>
             {products ? (
                 products.map((product, i) => (
-                    <FavouriteProduct
+                    <AltProduct
                         key={product.name}
                         id={product._id}
                         product={product}
@@ -29,6 +30,8 @@ const FavouriteProducts = () => {
                         type={product.type}
                         price={product.price}
                         gallery={product.gallery}
+                        setCount={setCount}
+                        count={count}
                     />
                 ))
             ) : (
@@ -41,4 +44,4 @@ const FavouriteProducts = () => {
     )
 }
 
-export default FavouriteProducts
+export default AltProducts

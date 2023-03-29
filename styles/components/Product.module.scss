@@ -6,7 +6,8 @@
     position:relative;
     height:fit-content;
     margin-bottom: 20px;
-    
+    min-width: 150px;
+    padding-bottom: 20px;
     .imageContainer {
         height:190px;
         max-height:190px;
@@ -15,6 +16,7 @@
         margin:0 auto;
         overflow: hidden;
         position: relative;
+        background-color:lightgrey;
         img {
             position:absolute !important;
             object-fit:cover;
@@ -24,8 +26,13 @@
             max-height:300px;
         }
         @media screen and (min-width: 1312px) {
-            height:500px;
-            max-height:500px;
+            height: 350px;
+            max-height:350px;
+        }
+        .hoverImage {
+            opacity: 0;
+            visibility: hidden;
+            transition: 200ms ease-in;
         }
         .lookButton {
             display:flex;
@@ -63,14 +70,21 @@
             .favIcon {
                 font-size: 1.7rem;
                 z-index: 2;
-                stroke: #383838;
+                stroke: #0c0c0c;
                 transition: 200ms ease-in;
                 &:hover {
                     transform: scale(1.05);
+                    fill: #0c0c0c;
                 }
                 &.fill {
-                    fill: #383838;
+                    fill: #0c0c0c;
                 }
+            }
+        }
+        &:hover {
+            .hoverImage {
+                opacity: 1;
+                visibility: visible;
             }
         }
     }
@@ -78,21 +92,20 @@
         font-size: .95rem;
         margin-top: 0.3rem;
         font-weight: 400;
-        letter-spacing: 2px;
         text-transform: capitalize;
         font-family: 'Bebas Neue', sans-serif;
+        letter-spacing: 1px;
         @media screen and (min-width: 1312px) {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             margin-top: 0.5rem;
         }
     }
     p {
-        margin: .2rem 0;
         opacity: .4;
-        font-weight: 400;
+        font-weight: 700;
         @media screen and (min-width: 1312px) {
-            margin-top: 0rem;
-            font-size: .9rem;
+            margin-top:5px;
+            font-size: .8rem;
         }
     }
     button {

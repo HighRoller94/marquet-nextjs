@@ -3,13 +3,15 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import ProductStyles from '../styles/components/Product.module.scss'
-import { AiOutlineEye } from 'react-icons/ai'
 import { HiHeart, HiOutlineHeart } from 'react-icons/hi'
 
-const Product = ({ name, price, gallery, type, product }) => {
+const Product = ({ key, name, price, gallery, type, product, paramQuery }) => {
   const priceFixed = (Math.round(price * 100) / 100).toFixed(2);
   const [saved, setSaved] = useState("");
-  
+  const [productsFound, setProductsFound] = useState([])
+
+  const item = productsFound.find((product) => product.name === name);
+
   const saveProductToFavourites = () =>  {
     const savedProducts = JSON.parse(localStorage.getItem('savedProducts'));
     localStorage.setItem(`savedProducts`, JSON.stringify([...savedProducts, product]));
@@ -35,24 +37,41 @@ const Product = ({ name, price, gallery, type, product }) => {
       let products = []
       localStorage.setItem(`savedProducts`, JSON.stringify(products));
     }
-  }, []);
+    const savedProducts = JSON.parse(localStorage.getItem('savedProducts'));
+    setProductsFound(savedProducts)
+  }, [saved]);
 
   return (
-    <div className={ProductStyles.product}>
+    <div key={key} className={ProductStyles.product}>
         <div className={ProductStyles.imageContainer}>
-            <Link href={`/product/${product._id}`}>
+            <Link 
+              href={{
+                pathname: `/product/${product._id}`,
+                query: {
+                  searchQuery: paramQuery
+                },
+              }}
+
+              >
               <Image
                 src={gallery[0]}
                 fill
                 loading="lazy"
                 alt={name}
               />
+              <Image
+                src={gallery[1]}
+                fill
+                loading="lazy"
+                alt={name}
+                className={ProductStyles.hoverImage}
+              />
             </Link>
-            <button className={ProductStyles.lookButton}>
+            {/* <button className={ProductStyles.lookButton}>
               <AiOutlineEye className={ProductStyles.icon} />
               Shop the Look
-            </button>
-            {saved ? (
+            </button> */}
+            {item ? (
               <div className={ProductStyles.iconHolder}>
                 <HiHeart className={`${ProductStyles.favIcon} fill`} onClick={removeProductFromFavourites} />
               </div>
@@ -69,3 +88,4 @@ const Product = ({ name, price, gallery, type, product }) => {
 }
 
 export default Product
+

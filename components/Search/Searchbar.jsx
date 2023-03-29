@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import { useRouter } from 'next/router'
 
@@ -6,11 +6,9 @@ import { HiOutlineSearch } from 'react-icons/hi'
 
 import SearchStyles from '../../styles/components/Search.module.scss';
 
-const Searchbar = ({ setResults }) => {
+const Searchbar = ({ setResults, setInput, input }) => {
   const router = useRouter()
-  const [input, setInput] = useState("")
-  const [query, setQuery] = useState('');
-  
+
   const fetchData = (value) => {
     fetch("http://localhost:3000/api/products")
       .then((response) => response.json())
@@ -29,7 +27,7 @@ const Searchbar = ({ setResults }) => {
 
   const handleChange = (value) => {
     setInput(value);
-    fetchData(value);
+    fetchData(value); 
   };
 
   const searchMarquet = (e) => {
@@ -37,14 +35,12 @@ const Searchbar = ({ setResults }) => {
       let str = input;
       e.preventDefault()
       let cleanStr = str.replace(/\s/g, "+")
-      console.log(cleanStr)
       router.push(`/search?=${cleanStr}`)
-      setInput("")
+      setInput("") 
       setResults("")
-
+      document.getElementById("submit").blur();
     } else {
       e.preventDefault()
-      
       return;
     }
   }
@@ -52,13 +48,17 @@ const Searchbar = ({ setResults }) => {
   return (
     <>
       <form onSubmit={searchMarquet} className={SearchStyles.searchWrapper}>
-        <HiOutlineSearch className={SearchStyles.searchIcon} />
-        <input
-          type="text"
-          value={input}
-          onChange={(e) => handleChange(e.target.value)}
-        />
-        <div className={SearchStyles.overlay}></div>
+        <div className={SearchStyles.searchBoxContainer}>
+          <HiOutlineSearch className={SearchStyles.searchIcon} />
+          <input
+            className={SearchStyles.searchInput}
+            id="submit"
+            type="text"
+            value={input}
+            onChange={(e) => handleChange(e.target.value)}
+          />
+        </div>
+        {input != '' && <div className={SearchStyles.overlay}></div>}
       </form>
 
     </>

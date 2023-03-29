@@ -1,90 +1,100 @@
-.loginPage {
-    display: flex;
-    justify-content:center;
-    flex-direction: column;
-    margin: 3rem 0 4rem 0;
+.container {
+    margin: 45px auto;
     .loginHeader {
         display: flex;
         justify-content: center;
-        align-items:center;
+        align-items: center;
+
         .icon {
             font-size: 2.4rem;
             margin-right: 10px;
         }
-        h1  {
+    
+        h1 {
             letter-spacing: 1px;
             margin-top: 3px;
-            font-size: 2.4rem;
+            font-size: 2.8rem;
+            font-weight: 900;
             font-family: 'Bebas Neue', sans-serif;
-            font-weight: 500;
         }
     }
+    
     .form {
         display: flex;
         justify-content: center;
         flex-direction: column;
         max-width: 400px;
-        margin: 15px auto;
+        margin: 25px auto;
+    
         .field {
-            display:flex;
+            display: flex;
             justify-content: space-between;
             padding: .2rem .8rem;
             height: 50px;
             border: 1px solid grey;
-            outline:none;
+            outline: none;
             width: 400px;
+    
             input {
-                outline:none;
-                border:none;
+                outline: none;
+                border: none;
                 width: 100%;
                 padding: .3rem .5rem;
             }
+    
             .iconContainer {
                 height: 100%;
+    
                 .icon {
                     margin-top: 5px;
-                    font-size: 1.7rem;   
+                    font-size: 1.7rem;
                 }
+    
                 &:hover {
-                    cursor :pointer;
+                    cursor: pointer;
                     opacity: .7;
                 }
             }
-            
+    
             &:nth-child(2) {
                 margin-top: 10px;
             }
         }
+    
         .signInBtn {
-            width:fit-content;
-            padding: .3rem 1rem;
+            width: fit-content;
+            padding: .5rem 1.4rem;
             background-color: black;
-            color:white;
-            border:none;
+            color: white;
+            border: none;
             margin: 0 auto;
             transition: 100ms ease-in;
             outline: 1px solid black;
             font-size: 1.1rem;
             margin-top: 30px;
+    
             &:hover {
                 cursor: pointer;
-                background-color:white;
-                color:black;
-                
+                background-color: white;
+                color: black;
+    
             }
         }
     }
+    
     .createAcc {
         display: flex;
-        justify-content:center;
+        justify-content: center;
         font-size: .8rem;
         width: fit-content;
         margin: 0 auto;
-        margin-top: 10px;
+        margin-top: 25px;
+    
         &:hover {
             opacity: .7;
             text-decoration: underline;
-            cursor :pointer;
+            cursor: pointer;
         }
     }
 }
+

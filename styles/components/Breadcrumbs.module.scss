@@ -4,16 +4,22 @@
     justify-content: flex-start;
     max-width: 1440px;
     margin: 0px auto;
-    margin-top: 40px;
+    margin-top: 25px;
     .breadcrumbs {
         display:flex;
+        align-items:center;
+        height: 20px;
         list-style:none;
         li {
+            display:flex;
+            align-items:center;
             font-size: .8rem;
+            opacity: .6;
             &:hover {
                 opacity: .6;
             }
             &:last-child {
+                opacity: 1;
                 font-weight: 600;
             }
             .icon {

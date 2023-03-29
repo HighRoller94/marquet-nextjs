@@ -5,8 +5,9 @@ import AltProductStyles from '../styles/components/AltProduct.module.scss'
 
 import { AiOutlineEye } from 'react-icons/ai'
 import { HiHeart } from 'react-icons/hi'
+import { ImBin } from 'react-icons/im'
 
-const FavouriteProduct = ({ name, price, gallery, type, product }) => {
+const AltProduct = ({ name, price, gallery, type, product, setCount, count }) => {
     const priceFixed = (Math.round(price * 100) / 100).toFixed(2);
     const [saved, setSaved] = useState("");
 
@@ -22,6 +23,7 @@ const FavouriteProduct = ({ name, price, gallery, type, product }) => {
                 setSaved(false);
             }
         })
+        setCount(count+1)
     }
 
     return (
@@ -34,9 +36,16 @@ const FavouriteProduct = ({ name, price, gallery, type, product }) => {
                         loading="lazy"
                         alt={name}
                     />
+                    <Image
+                        src={gallery[1]}
+                        fill
+                        loading="lazy"
+                        alt={name}
+                        className={AltProductStyles.hoverImage}
+                    />
                 </Link>
                 <div className={AltProductStyles.iconHolder}>
-                    <HiHeart className={`${AltProductStyles.favIcon} fill`} onClick={removeProductFromFavourites} />
+                    <ImBin className={`${AltProductStyles.favIcon} fill`} onClick={removeProductFromFavourites} />
                 </div>
             </div>
             <h1 className="item__name">{name}</h1>
@@ -45,4 +54,4 @@ const FavouriteProduct = ({ name, price, gallery, type, product }) => {
     )
 }
 
-export default FavouriteProduct
+export default AltProduct

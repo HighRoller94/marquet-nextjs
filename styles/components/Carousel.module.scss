@@ -1,119 +1,29 @@
 .carousel {
-    position: relative;
-    display: flex;
-    width: 100%;
-    .inner {
-        display:flex;
-        align-items: center;
-        position:relative; 
-        justify-content:center;
-        // background-image: url("/images/hero__bg.svg");
-        // background-attachment: fixed;
-        // background-repeat: no-repeat;
-        // background-position: center;
-        // background-size:cover;
-        
+
+    .container {
         width: 100%;
-        margin: 2rem auto;
-        height: 30rem;
-        background-repeat: no-repeat;
-        background-position: center;
-        object-fit: cover;
-        flex-direction: column;
-        opacity: 1;
-        border-radius: 3px;
-        transition: 300ms ease-in-out;
-        @media screen and (min-width: 768px) {
-            height: 70vh;
-        }
-        
+        height: 100%;
+        position:relative;
         .imageContainer {
-            position:absolute;
-            height:100%;
-            width: 95%;
-            margin:0 auto;
+            position:relative;
+            height: 500px;
+            width: 100%;
+            background-color: lightgrey;
             img {
-                object-fit:cover;
+                object-fit: cover;
             }
         }
-        .container {
-            margin-top: -1rem;
-             display:flex;
-             flex-direction: column;
-             position: absolute;
-        }
         .logoContainer {
+            width: 200px;
             position:relative;
-            height: 180px;
-            width: 500px;
-            margin:0 auto;
             img {
-                object-fit:cover;
+
             }
         }
         .header {
-            color: white;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            h4 {
-                padding: .5rem 1.25rem;
-                border: 1px solid white;
-                font-size: 1rem;
-
-                text-transform: capitalize;
-                font-weight: 400;
-                color: white;
-                border-radius: 3px;
-                @media screen and (min-width: 1312px) {
-                    font-size: 1.2rem;
-                }        
-            }
-
-            h1 {
-                color: white;
-                margin-top: 2rem;
-                font-size: 3.5rem;
-                font-weight: 600;
-                font-family: 'Bebas Neue', sans-serif;
-                letter-spacing: 1px;
-                text-align: center;
-                text-transform: uppercase;
-   
-            }
-
-            h2 {
-                color: white;
-                text-transform: uppercase;
-                font-weight: 500;
-                margin-top: 1rem;
-    
-            }
-
-            button {
-                color: white;
-                outline: none;
-                z-index: 5;
-                border-radius: 3px;
-                border: 1px solid white;
-                background-color: transparent;
-                padding: .4rem 1rem;
-                font-size: 1.3rem;
-                margin-top: 1.5rem;
-                
-                &:hover {
-                    background-color: white;
-                    color: black;
-                    cursor: pointer;
-                }
-    
-            }
+            position:absolute;
+            bottom:0;
+            left: 0;
         }
-    }
-
-    .carousel__selected {
-        display: flex;
-    }
+    }   
 }

@@ -7,7 +7,7 @@ const Newsletter = () => {
           <div className={NewsletterStyles.container}>
               <div className={NewsletterStyles.header}>
                   <h2>Sign up to our newsletter</h2>
-                  <p>We'll let you know when our next sale hits</p>
+                  <p>We'll let you know when our next sale hits!</p>
               </div>
               <form className={NewsletterStyles.newsletterForm}>
                   <input type="text" name="email" />

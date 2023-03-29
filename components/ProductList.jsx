@@ -3,11 +3,12 @@ import Product from './Product'
 
 import ProductListStyles from '../styles/components/ProductList.module.scss'
 
-const ProductList = ({ products }) => {
+const ProductList = ({ products, paramQuery }) => {
   return (
     <div className={ProductListStyles.productList}>
         {products?.map((product, i) => (
           <Product
+            paramQuery={paramQuery}
             key={product.name}
             id={product._id}
             product={product}
