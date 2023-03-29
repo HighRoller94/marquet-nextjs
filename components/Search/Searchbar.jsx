@@ -10,7 +10,7 @@ const Searchbar = ({ setResults, setInput, input }) => {
   const router = useRouter()
 
   const fetchData = (value) => {
-    fetch("http://localhost:3000/api/products")
+    fetch("https://marquet-nextjs.vercel.app/api/products")
       .then((response) => response.json())
       .then((json) => {
         const results = json.filter((user) => {
