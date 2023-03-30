@@ -6,6 +6,7 @@
     z-index: 9999;
     background: white;
     transition: .2s;
+
     .navSale {
         display: flex;
         justify-content: center;
@@ -25,12 +26,12 @@
             font-weight: 400;
             text-transform: uppercase;
             font-size: .55rem;
-            margin-left: .2rem;
             letter-spacing: 1px;
+            display: flex;
 
             @media screen and (min-width: 768px) {
                 font-size: .55rem;
-                margin-left: -.15rem;
+
             }
         }
 
@@ -50,7 +51,7 @@
         width: 100%;
         position: relative;
         margin: 0 auto;
-        max-width: 1440px;
+        max-width: 1300px;
 
         @media screen and (min-width: 768px) {
             font-size: .7rem;
@@ -73,7 +74,7 @@
             justify-content: space-between;
             width: 100%;
             padding: 0 10px;
-            
+
 
             @media screen and (min-width: 768px) {
                 height: 64px;
@@ -94,8 +95,9 @@
             }
 
             .left {
-                display:flex;
-                align-items:center;
+                display: flex;
+                align-items: center;
+
                 .navToggle {
                     z-index: 100;
                     display: flex;
@@ -103,39 +105,45 @@
                     transition: 100ms;
                     margin-top: -2px;
                     z-index: 1000;
+
                     &:hover {
                         cursor: pointer;
                     }
+
                     .navIcon {
                         font-size: 2rem;
                         stroke-width: 1;
                     }
+
                     @media screen and (min-width: 768px) {
                         display: none;
                     }
                 }
 
-                
+
                 .navLogo {
                     text-decoration: none;
                     width: 100px;
                     height: 23px;
                     margin-left: 3px;
-                    position:relative;
+                    position: relative;
+
                     img {
-                        object-fit:contain;
+                        object-fit: contain;
                     }
+
                     @media screen and (min-width: 768px) {
                         height: 40px;
                         width: 140px;
-                        margin-left :0;
+                        margin-left: 0;
                         margin-top: 5px;
                     }
 
-                    
+
                     @media screen and (min-width: 992px) {
                         width: 150px;
                     }
+
                     @media screen and (min-width: 1312px) {
                         margin-top: 1px;
                         height: 43px;
@@ -234,17 +242,20 @@
                             @media screen and (min-width: 1312px) {
                                 margin: 0 0.2rem;
                             }
+
                             &:nth-child(1) {
                                 a {
                                     border: 2px solid #0c0c0c;
                                     background-color: #0c0c0c;
-                                    color:white;
+                                    color: white;
+
                                     &:hover {
                                         background-color: white;
-                                        color:black;
+                                        color: black;
                                     }
                                 }
                             }
+
                             a {
                                 color: black;
                                 text-decoration: none;
@@ -252,6 +263,7 @@
                                 font-weight: 500;
                                 padding: .4rem .75rem;
                                 border: 2px solid white;
+
                                 &:hover {
                                     background-color: #0c0c0c;
                                     border: 2px solid #0c0c0c;
@@ -278,8 +290,9 @@
                         }
 
                         .mobBottom {
-                            margin-top:30vh;
+                            margin-top: 30vh;
                             margin-left: 1.8rem;
+
                             @media screen and (min-width: 768px) {
                                 display: none;
                                 width: 0;
@@ -317,10 +330,12 @@
                     z-index: 4;
                     height: 100vh;
                     z-index: 999;
-                    padding-top:30px;
+                    padding-top: 30px;
+
                     .navMenu {
                         padding-top: 8vh;
                         position: relative;
+
                         .navbarItem {
                             display: flex;
                             align-items: flex-start;
@@ -342,8 +357,9 @@
                         }
 
                         .mobile__bottom {
-                            margin-top:30vh;
+                            margin-top: 30vh;
                             margin-left: 1.8rem;
+
                             a {
                                 text-decoration: none;
                                 color: #0c0c0c;
@@ -354,6 +370,7 @@
                                 margin: 1rem 0;
                                 font-size: 1rem;
                                 font-weight: 600;
+
                                 &:hover {
                                     text-decoration: underline;
                                     cursor: pointer;
@@ -366,65 +383,76 @@
             }
 
             .right {
-                display:flex;
-                align-items:center;
+                display: flex;
+                align-items: center;
 
                 @media screen and (min-width: 992px) {
-                    width:40%;
+                    width: 40%;
                     min-width: 485px;
                 }
+
                 @media screen and (min-width: 1200px) {
-                    width:40%;
+                    width: 40%;
                     min-width: 600px;
                 }
+
                 justify-content:space-between;
+
                 .navIcons {
                     display: flex;
                     list-style: none;
+
                     .basket {
                         display: flex;
                         align-items: center;
                         gap: .3rem;
-    
+
                         .navIcon {
                             stroke-width: "1";
                         }
-    
+
                         .basketCount {
                             font-weight: 700;
                             font-size: .9rem;
                         }
                     }
-    
+
                     li {
                         display: flex;
-                        align-items:center;
+                        align-items: center;
                         margin-right: 13px;
-                        cursor :pointer;
+                        cursor: pointer;
+
                         @media screen and (min-width: 568px) {
                             margin-right: 18px;
                         }
+
                         @media screen and (min-width: 768px) {
                             margin-right: 20px;
                         }
+
                         .navIcon {
                             font-size: 1.6rem;
+
                             @media screen and (min-width: 768px) {
                                 font-size: 1.8rem;
                             }
+
                             @media screen and (min-width: 1200px) {
-                                font-size:2rem;
+                                font-size: 2rem;
                             }
                         }
+
                         &:nth-child(1) {
                             margin-top: -3px;
                         }
+
                         &:last-child {
                             margin-right: 0;
-                            
+
                         }
                     }
-    
+
                 }
             }
         }
@@ -455,7 +483,7 @@
 }
 
 .overlay {
-    display:none;
+    display: none;
     visibility: hidden;
     opacity: 0;
     transition: 200s ease-in-out;
@@ -464,7 +492,7 @@
     z-index: 999;
     position: fixed;
     left: 0;
-    bottom:0;
+    bottom: 0;
     right: 0;
     top: auto;
     transition: 200s ease-in-out;
@@ -472,7 +500,7 @@
 }
 
 .show {
-    display:block;
+    display: block;
     visibility: visible;
     opacity: 1;
     transition: 200s ease-in-out;
