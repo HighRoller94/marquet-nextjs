@@ -77,16 +77,17 @@
             justify-content: center;
 
             .favIcon {
-                font-size: 1.3rem;
+                font-size: 1.2rem;
                 z-index: 2;
-                stroke: #383838;
+                margin-top: -1px;
+                margin-left: 2px;
+                stroke: #0c0c0c;
                 transition: 200ms ease-in;
 
                 &.fill {
-                    fill: #383838;
+                    fill: #0c0c0c;
                 }
             }
-
             &:hover {
                 background-color: rgb(255, 255, 255, 0.7);
             }

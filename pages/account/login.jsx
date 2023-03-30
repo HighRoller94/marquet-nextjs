@@ -70,7 +70,7 @@ const Login = () => {
                         <form className={LoginStyles.form} onSubmit={onSubmit}>
                             <div className={LoginStyles.field}>
                                 <input
-                                    autocomplete="off"
+                                    autoComplete="off"
                                     type="text"
                                     id="email"
                                     name="email"
@@ -83,7 +83,7 @@ const Login = () => {
                             </div>
                             <div className={LoginStyles.field}>
                                 <input
-                                    autocomplete="off"
+                                    autoComplete="off"
                                     type={passState}
                                     id="password"
                                     name="password"

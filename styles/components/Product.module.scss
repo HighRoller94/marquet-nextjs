@@ -72,11 +72,13 @@
                 z-index: 2;
                 stroke: #0c0c0c;
                 transition: 200ms ease-in;
-                &:hover {
-                    transform: scale(1.05);
+                &.fill {
                     fill: #0c0c0c;
                 }
-                &.fill {
+            }
+            &:hover {
+                .favIcon {
+                    transform: scale(1.05);
                     fill: #0c0c0c;
                 }
             }

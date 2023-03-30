@@ -30,7 +30,7 @@ const CarouselHolder = () => {
                 <div className={CarouselStyles.container}>
                     <div className={CarouselStyles.imageContainer}>
                         <Image
-                            src="/images/vans__bg.svg"
+                            src="/images/sustainable-bg.svg"
                             fill
                             loading="lazy"
                             alt="Vans Hero"
@@ -41,16 +41,6 @@ const CarouselHolder = () => {
                     <div className={CarouselStyles.imageContainer}>
                         <Image
                             src="/images/hero-bg.svg"
-                            fill
-                            loading="lazy"
-                            alt="Vans Hero"
-                        />
-                    </div>
-                </div>
-                <div className={CarouselStyles.container}>
-                    <div className={CarouselStyles.imageContainer}>
-                        <Image
-                            src="/images/sustainable-bg.svg"
                             fill
                             loading="lazy"
                             alt="Vans Hero"

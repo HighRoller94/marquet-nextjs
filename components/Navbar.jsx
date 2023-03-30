@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Head from 'next/head'
-import { RiShoppingCartLine } from 'react-icons/ri'
-import { RiAccountCircleFill } from 'react-icons/ri'
-import { HiHeart } from 'react-icons/hi'
+import Image from 'next/image'
+import Slider from "react-slick";
 import { useSelector } from "react-redux";
 
-import Slider from "react-slick";
-
 import Search from './Search/Search'
+
+import { RiShoppingCartLine, RiAccountCircleLine } from 'react-icons/ri'
+import { AiOutlineShopping, AiFillShopping } from 'react-icons/ai'
+import { HiOutlineHeart } from 'react-icons/hi'
+import { BiMenu } from 'react-icons/bi'
 
 import NavStyles from '../styles/components/Navbar.module.scss'
 
@@ -24,9 +26,12 @@ const settings = {
 };
 
 const Navbar = () => {
-    const [results, setResults] = useState([]);
     const quantity = useSelector((state) => state.cart.quantity)
     const [active, setActive] = useState()
+    const [open, setOpen] = useState(false)
+    const [searchOpen, setSearchOpen] = useState(false)
+    const [isFocused, setIsFocused] = useState(false);
+    const [overlay, setOverlay] = useState(false)
 
     useEffect(() => {
         if (window.scrollY >= 10) {
@@ -35,6 +40,31 @@ const Navbar = () => {
             setActive(false)
         }
     })
+
+    const handleOpen = () => {
+        setOpen(!open)
+    }
+
+    const handleMobSearchOpen = () => {
+        setSearchOpen(true)
+        setOverlay(true)
+    }
+
+    const handleMobSearchClose = () => {
+        setSearchOpen(false)
+        setOverlay(false)
+        setIsFocused(false);
+    }
+
+    const handleFocus = () => {
+        setIsFocused(true);
+        setOverlay(true)
+    }
+
+    const handleBlur = () => {
+        setIsFocused(false);
+        setOverlay(false)
+    }
 
     return (
         <>
@@ -50,60 +80,80 @@ const Navbar = () => {
                 </div>
                 <div className={NavStyles.container}>
                     <div className={NavStyles.nav}>
-                        <div className={NavStyles.navToggle} id="mobile-menu">
-                            <span className={NavStyles.bar}></span>
-                            <span className={NavStyles.bar}></span>
-                            <span className={NavStyles.bar}></span>
+                        <div className={NavStyles.left}>
+                            <div className={NavStyles.navToggle} id="mobile-menu">
+                                <BiMenu onClick={handleOpen} className={NavStyles.navIcon} />
+                            </div>
+                            <Link href="/" className={NavStyles.navLogo}>
+                                <Image
+                                    src="/images/Marquet-Logo.svg"
+                                    alt="Marquet Logo"
+                                    fill
+                                />
+                            </Link>
+                            <div className={!open ? (NavStyles.sideMenu) : (`${NavStyles.sideMenu} ${NavStyles.open}`)}>
+                                <ul className={NavStyles.navMenu}>
+                                    <li className={NavStyles.navbarItem}>
+                                        <a href="#">Spring Sales</a>
+                                    </li>
+                                    <li className={NavStyles.navbarItem}>
+                                        <a href="#">Brands</a>
+                                    </li>
+                                    <li className={NavStyles.navbarItem}>
+                                        <a href="#">Sportswear</a>
+                                    </li>
+                                    <li className={NavStyles.navbarItem}>
+                                        <a href="#">Footwear</a>
+                                    </li>
+                                    <div className={NavStyles.mobBottom}>
+                                        <a href="/html/orders.html">
+                                            <p>My orders</p>
+                                        </a>
+                                        <p>Contact us</p>
+                                    </div>
+                                </ul>
+                            </div>
                         </div>
-                        <Link href="/" className={NavStyles.navLogo}>MARQUET</Link>
-                        <div className={NavStyles.sideMenu}>
-                            <ul className={NavStyles.navMenu}>
-                                <div className={NavStyles.mobLogoContainer}>
-                                    <svg className={NavStyles.mobLogo} id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 340"><rect width="350" height="340" fill="#000000" /><path d="M225.59,240.57h39.46l49.72,138.11q4.74,13.43,9.28,27t9.27,27h1.58q4.73-13.41,8.88-27t8.88-27l48.93-138.11h39.85V499.43H410.66V357q0-17.36,1.58-38.28T415,280.43h-1.58L392.9,339.22,344,473.38h-21.7L273.34,339.22l-20.52-58.79h-1.58q1.19,17.35,2.57,38.27T255.19,357V499.43h-29.6Z" transform="translate(-155 -200)" fill="#fff" /></svg>
-                                </div>
-                                <li className={NavStyles.navbarItem}>
-                                    <a href="#">Mens</a>
+                        <div className={NavStyles.right}>
+                            <div>
+                                <Search
+                                    handleMobSearchOpen={handleMobSearchOpen}
+                                    handleMobSearchClose={handleMobSearchClose}
+                                    handleFocus={handleFocus}
+                                    handleBlur={handleBlur}
+                                    overlay={overlay}
+                                    searchOpen={searchOpen}
+                                    setSearchOpen={setSearchOpen}
+                                    isFocused={isFocused}
+                                    setIsFocused={setIsFocused}
+                                />
+                            </div>
+                            <ul className={NavStyles.navIcons}>
+                                <li>
+                                    <Link href="/basket" className={NavStyles.basket}>
+                                        {quantity > 0 ? (
+                                        <p className={NavStyles.basketCount}>{quantity}</p>
+                                        ) : ( "")}
+                                        {!quantity > 0 ? (
+                                            <AiOutlineShopping className={NavStyles.navIcon} />
+                                        ) : (
+                                            <AiFillShopping className={NavStyles.navIcon} />
+                                        )}
+                                    </Link>
                                 </li>
-                                <li className={NavStyles.navbarItem}>
-                                    <a href="#">Womens</a>
+                                <li>
+                                    <Link href="/favourites">
+                                        <HiOutlineHeart className={NavStyles.navIcon} />
+                                    </Link>
                                 </li>
-                                <li className={NavStyles.navbarItem}>
-                                    <a href="#">Footwear</a>
+                                <li>
+                                    <Link href="/account/login">
+                                        <RiAccountCircleLine className={NavStyles.navIcon} />
+                                    </Link>
                                 </li>
-                                <li className={NavStyles.navbarItem}>
-                                    <a href="#">Accessories</a>
-                                </li>
-                                <div className={NavStyles.mobBottom}>
-                                    <a href="/html/orders.html">
-                                        <p>My orders</p>
-                                    </a>
-                                    <p>Contact us</p>
-                                </div>
                             </ul>
+
                         </div>
-                        <Search />
-                        <ul className={NavStyles.navIcons}>
-                            <li>
-                                <Link href="/basket" className={NavStyles.basket}>
-                                    <p className={NavStyles.basketCount}>{quantity}</p>
-                                    {quantity > 0 ? (
-                                        <RiShoppingCartLine className={NavStyles.navIcon} />
-                                    ) : (
-                                        <RiShoppingCartLine className={NavStyles.navIcon} />
-                                    )}
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/favourites">
-                                    <HiHeart className={NavStyles.navIcon} />
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/account/login">
-                                    <RiAccountCircleFill className={NavStyles.navIcon} />
-                                </Link>
-                            </li>
-                        </ul>
                     </div>
                 </div>
                 <Slider className={NavStyles.navSlider} {...settings}>
@@ -118,6 +168,7 @@ const Navbar = () => {
                     </div>
                 </Slider>
             </nav>
+            <div className={!overlay ? (NavStyles.overlay) : (`${NavStyles.overlay} ${NavStyles.show}`)}></div>
         </>
 
     )

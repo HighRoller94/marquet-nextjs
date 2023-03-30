@@ -1,11 +1,17 @@
 .productList {
     display: grid;
-    grid-template-columns: 48% 48%;
+    grid-template-columns: 1fr;
     width: 100%;
     grid-column-gap: 4%;
     margin: 0 auto;
-    @media screen and (min-width: 1312px) {
-        margin: 70px auto;
+    @media screen and (min-width: 568px) {
+        grid-template-columns: 48% 48%;
+        width: 100%;
+        grid-column-gap: 4%;
+        margin: 0 auto;
+    }
+    @media screen and (min-width: 992px) {
+        margin: 40px auto;
         grid-template-columns: repeat(4, 1fr);
         grid-column-gap: 3%;
         max-width: 1440px;
