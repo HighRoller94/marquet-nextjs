@@ -2,22 +2,21 @@
     width: 100vw;
     display: flex;
     flex-direction: column;
-    justify-content:Center;
-    z-index: 99;
+    justify-content: Center;
+    z-index: 9999;
     background: white;
     transition: .2s;
-    position: sticky;
-    top: 0;
     .navSale {
         display: flex;
         justify-content: center;
         align-items: center;
         background-color: #0c0c0c;
-        height: 1.75rem;
+        height: 20px;
         width: 100%;
+
         @media screen and (min-width: 1312px) {
             height: 20px;
-            
+
         }
 
         h4 {
@@ -25,9 +24,10 @@
             color: white;
             font-weight: 400;
             text-transform: uppercase;
-            font-size: .6rem;
+            font-size: .55rem;
             margin-left: .2rem;
             letter-spacing: 1px;
+
             @media screen and (min-width: 768px) {
                 font-size: .55rem;
                 margin-left: -.15rem;
@@ -49,333 +49,383 @@
         margin: 0 auto;
         width: 100%;
         position: relative;
-        margin:0 auto;
+        margin: 0 auto;
         max-width: 1440px;
+
         @media screen and (min-width: 768px) {
             font-size: .7rem;
-            margin-left: -.15rem;
         }
+
         @media screen and (min-width: 1312px) {
             height: 64px;
             padding: 0 40px;
             width: 100%;
-            margin:0 auto;
+            margin: 0 auto;
         }
+
         @media screen and (min-width: 1600px) {
             padding: 0;
         }
+
         .nav {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            width: 87%;
-            position: relative;
+            width: 100%;
+            padding: 0 10px;
+            
+
             @media screen and (min-width: 768px) {
                 height: 64px;
                 width: 94%;
+                padding: 0 10px;
             }
-            @media screen and (min-width: 1312px) { 
+
+            @media screen and (min-width: 992px) {
+                width: 100%;
+                padding: 0 20px;
+            }
+
+            @media screen and (min-width: 1312px) {
                 width: 100%;
                 height: 64px;
+                padding: 0;
                 justify-content: space-between;
             }
-            .navToggle {
-                z-index: 100;
-                display: flex;
-                flex-direction: column;
-                transition: 100ms;
-                margin-top: -2px;
 
-                &:hover {
-                    cursor: pointer;
-                }
-
-                @media screen and (min-width: 768px) {
-                    display: none;
-                }
-
-                .bar {
-                    display: block;
-                    width: 22px;
-                    height: 1px;
-                    z-index: 999;
-                    border-radius: 20px;
-                    margin: 3px auto;
-                    background-color: #0c0c0c;
-                    transition: all 0.3s ease-in-out;
-                }
-            }
-
-            .navToggle.active {
-                .bar:nth-child(2) {
-                    opacity: 0;
-                }
-
-                .bar:nth-child(1) {
-                    transform: translateY(7px) rotate(45deg);
-                }
-
-                .bar:nth-child(3) {
-                    transform: translateY(-7px) rotate(-45deg);
-                }
-            }
-
-            .sideMenu {
-                background-color: #fcfcfc;
-                display: flex;
-                flex-direction: column;
-                position: absolute;
-                top: 3rem;
-                width: 55%;
-                left: -1000px;
-                opacity: 0;
-                transition: all 500ms ease-in-out;
-                z-index: 4;
-                height: 100vh;
-
-                @media screen and (min-width: 768px) {
-                    border: none;
-                    position: static;
-                    width: 100%;
-                    opacity: 1;
-                    box-shadow: none;
-                    background: none;
-                    height: 100%;
+            .left {
+                display:flex;
+                align-items:center;
+                .navToggle {
+                    z-index: 100;
                     display: flex;
-                    justify-content: center;
-                    align-items: flex-start;
+                    flex-direction: column;
+                    transition: 100ms;
+                    margin-top: -2px;
+                    z-index: 1000;
+                    &:hover {
+                        cursor: pointer;
+                    }
+                    .navIcon {
+                        font-size: 2rem;
+                        stroke-width: 1;
+                    }
+                    @media screen and (min-width: 768px) {
+                        display: none;
+                    }
                 }
 
-                .navMenu {
-                    padding-top: 1.25rem;
-                    margin-left: -.25rem;
+                
+                .navLogo {
+                    text-decoration: none;
+                    width: 100px;
+                    height: 23px;
+                    margin-left: 3px;
+                    position:relative;
+                    img {
+                        object-fit:contain;
+                    }
+                    @media screen and (min-width: 768px) {
+                        height: 40px;
+                        width: 140px;
+                        margin-left :0;
+                        margin-top: 5px;
+                    }
+
+                    
+                    @media screen and (min-width: 992px) {
+                        width: 150px;
+                    }
+                    @media screen and (min-width: 1312px) {
+                        margin-top: 1px;
+                        height: 40px;
+                        width: 160px;
+                    }
+                }
+
+                .sideMenu {
+                    background-color: #fcfcfc;
+                    display: flex;
+                    flex-direction: column;
+                    position: absolute;
+                    top: 3rem;
+                    width: 55%;
+                    left: -1000px;
+                    opacity: 0;
+                    transition: all 500ms ease-in-out;
+                    z-index: 4;
+                    height: 100vh;
 
                     @media screen and (min-width: 768px) {
-                        padding-top: 0;
-                        margin: 0;
-                        margin-left: 1rem;
-                        margin-top: .25rem;
+                        border: none;
+                        position: static;
                         width: 100%;
+                        opacity: 1;
+                        box-shadow: none;
                         background: none;
+                        height: 100%;
                         display: flex;
-                        justify-content: flex-start;
-                        list-style: none;
-                        height: 2rem;
+                        justify-content: center;
+                        align-items: flex-start;
                     }
 
-                    @media screen and (min-width: 1312px) {
-                        margin-top: 0;
-                        margin-left: 1.6rem;
-                    }
-
-                    .mobLogoContainer {
-                        display: flex;
-                        margin: 1rem 2.8rem;
-                        align-items: center;
-                        padding-bottom: 1.5rem;
+                    .navMenu {
+                        padding-top: 8vh;
+                        margin-left: -.25rem;
 
                         @media screen and (min-width: 768px) {
-                            display: none;
-                            width: 0;
-                        }
-
-                        .mobLogo {
-                            width: 50%;
-                        }
-                    }
-
-                    .navbarItem {
-                        display: flex;
-                        align-items: center;
-                        background: none;
-                        transition: 100ms;
-                        margin: 1.2rem 0;
-
-                        @media screen and (min-width: 768px) {
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
+                            padding-top: 0;
+                            margin: 0;
+                            margin-left: 1rem;
+                            margin-top: .25rem;
+                            width: 100%;
                             background: none;
-                            height: 100%;
-                            transition: 100ms;
-                            margin: 0 .05rem;
-                            cursor: pointer;
+                            display: flex;
+                            justify-content: flex-start;
+                            list-style: none;
+                            height: 2rem;
                         }
 
                         @media screen and (min-width: 1312px) {
-                            margin: 0;
+                            margin-top: 0;
+                            margin-left: 1.6rem;
                         }
 
-                        a {
-                            color: black;
-                            text-decoration: none;
-                            font-size: 1rem;
-                            font-family: 'Roboto', sans-serif;
-                            font-weight: 700;
-                            padding: .4rem .754rem;
-                            &:hover {
-                                background-color: #0c0c0c;
-                                color: white;
+                        .mobLogoContainer {
+                            display: flex;
+                            margin: 1rem 2.8rem;
+                            align-items: center;
+                            padding-bottom: 1.5rem;
+
+                            @media screen and (min-width: 768px) {
+                                display: none;
+                                width: 0;
+                            }
+
+                            .mobLogo {
+                                width: 50%;
+                            }
+                        }
+
+                        .navbarItem {
+                            display: flex;
+                            align-items: center;
+                            background: none;
+                            transition: 100ms;
+                            padding: 0 1rem;
+                            margin: 1.2rem 0;
+
+                            @media screen and (min-width: 768px) {
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                background: none;
+                                height: 100%;
+                                transition: 100ms;
+                                padding: 0;
+                                margin: 0 .05rem;
                                 cursor: pointer;
                             }
 
-                            @media screen and (min-width: 768px) {
-                                background: none;
-                                color: #0c0c0c;
-
-                                font-size: .8rem;
+                            @media screen and (min-width: 992px) {
+                                margin: 0 0.1rem;
                             }
 
                             @media screen and (min-width: 1312px) {
-                                font-size: .8rem;
+                                margin: 0 0.2rem;
+                            }
+                            &:nth-child(1) {
+                                a {
+                                    border: 2px solid #0c0c0c;
+                                    background-color: #0c0c0c;
+                                    color:white;
+                                    &:hover {
+                                        background-color: white;
+                                        color:black;
+                                    }
+                                }
+                            }
+                            a {
+                                color: black;
+                                text-decoration: none;
+                                font-size: 1rem;
+                                font-weight: 500;
+                                padding: .4rem .75rem;
+                                border: 2px solid white;
+                                &:hover {
+                                    background-color: #0c0c0c;
+                                    border: 2px solid #0c0c0c;
+                                    color: white;
+                                    cursor: pointer;
+                                }
+
+                                @media screen and (min-width: 768px) {
+                                    background: none;
+                                    color: #0c0c0c;
+
+                                    font-size: .8rem;
+                                }
+
+                                @media screen and (min-width: 992px) {
+                                    font-size: .75rem;
+                                    padding: .4rem .6rem;
+                                }
+
+                                @media screen and (min-width: 1312px) {
+                                    font-size: .8rem;
+                                }
                             }
                         }
-                    }
 
-                    .mobBottom {
-                        position: absolute;
-                        bottom: -10rem;
-                        left: 2.75rem;
+                        .mobBottom {
+                            margin-top:30vh;
+                            margin-left: 1.8rem;
+                            @media screen and (min-width: 768px) {
+                                display: none;
+                                width: 0;
+                            }
 
-                        @media screen and (min-width: 768px) {
-                            display: none;
-                            width: 0;
-                        }
+                            a {
+                                text-decoration: none;
+                                color: #0c0c0c;
+                            }
 
-                        a {
-                            text-decoration: none;
-                            color: #0c0c0c;
-                        }
+                            p {
+                                margin: 1rem 0;
+                                font-size: 1rem;
+                                text-transform: capitalize;
 
-                        p {
-                            margin: 1rem 0;
-                            font-size: 1rem;
-                            text-transform: capitalize;
-
-                            &:hover {
-                                text-decoration: underline;
-                                cursor: pointer;
+                                &:hover {
+                                    text-decoration: underline;
+                                    cursor: pointer;
+                                }
                             }
                         }
                     }
                 }
-            }
 
-            .side__menu.active {
-                background-color: #fcfcfc;
-                display: flex;
-                flex-direction: column;
-                position: absolute;
-                top: 2.4rem;
-                width: 55%;
-                left: -2rem;
-                opacity: 1;
-                transition: all 500ms ease-in-out;
-                z-index: 4;
-                height: 100vh;
+                .open {
+                    background-color: #fcfcfc;
+                    display: flex;
+                    flex-direction: column;
+                    position: absolute;
+                    top: 0;
+                    width: 55%;
+                    left: 0rem;
+                    opacity: 1;
+                    transition: all 500ms ease-in-out;
+                    z-index: 4;
+                    height: 100vh;
+                    z-index: 999;
+                    padding-top:30px;
+                    .navMenu {
+                        padding-top: 8vh;
+                        position: relative;
+                        .navbarItem {
+                            display: flex;
+                            align-items: flex-start;
+                            background: none;
+                            transition: 100ms;
+                            padding: 0 1rem;
+                            margin: 1.2rem 0;
 
-                .nav__menu {
-                    padding-top: 1.5rem;
-                    margin-left: -.5rem;
-                    position: relative;
+                            a {
+                                color: black;
+                                text-decoration: none;
+                                font-size: 1rem;
 
-                    .mobile__logoContainer {
-                        display: flex;
-                        align-items: center;
-                        padding-bottom: 1.5rem;
+                                &:hover {
+                                    color: white;
+                                    cursor: pointer;
+                                }
+                            }
+                        }
 
-                        .mobile__logo {
-                            width: 50%;
+                        .mobile__bottom {
+                            margin-top:30vh;
+                            margin-left: 1.8rem;
+                            a {
+                                text-decoration: none;
+                                color: #0c0c0c;
+                                font-weight: 600;
+                            }
+
+                            p {
+                                margin: 1rem 0;
+                                font-size: 1rem;
+                                font-weight: 600;
+                                &:hover {
+                                    text-decoration: underline;
+                                    cursor: pointer;
+                                }
+                            }
                         }
                     }
+                }
 
+            }
+
+            .right {
+                display:flex;
+                align-items:center;
+
+                @media screen and (min-width: 992px) {
+                    width:40%;
+                    min-width: 485px;
+                }
+                @media screen and (min-width: 1200px) {
+                    width:40%;
+                    min-width: 600px;
+                }
+                justify-content:space-between;
+                .navIcons {
+                    display: flex;
+                    list-style: none;
+                    .basket {
+                        display: flex;
+                        align-items: center;
+                        gap: .3rem;
+    
+                        .navIcon {
+                            stroke-width: "1";
+                        }
+    
+                        .basketCount {
+                            font-weight: 700;
+                            font-size: .9rem;
+                        }
+                    }
+    
                     li {
                         display: flex;
-                        align-items: center;
-                        background: none;
-                        transition: 100ms;
-                        padding: 0 2.75rem;
-                        margin: 1rem 0;
-                        
-                        a {
-                            color: black;
-                            text-decoration: none;
-                            font-size: 1.1rem;
-                            font-weight: 400;
-                            font-family: 'Poppins', sans-serif;
-                            &:hover {
-                                color: white;
-                                cursor: pointer;
+                        align-items:center;
+                        margin-right: 13px;
+                        cursor :pointer;
+                        @media screen and (min-width: 568px) {
+                            margin-right: 18px;
+                        }
+                        @media screen and (min-width: 768px) {
+                            margin-right: 20px;
+                        }
+                        .navIcon {
+                            font-size: 1.6rem;
+                            @media screen and (min-width: 768px) {
+                                font-size: 1.8rem;
+                            }
+                            @media screen and (min-width: 1200px) {
+                                font-size:2rem;
                             }
                         }
-                    }
-
-                    .mobile__bottom {
-                        position: absolute;
-
-                        a {
-                            text-decoration: none;
-                            color: #0c0c0c;
+                        &:nth-child(1) {
+                            margin-top: -3px;
                         }
-
-                        p {
-                            margin: 1rem 0;
-                            font-size: 1rem;
-
-                            &:hover {
-                                text-decoration: underline;
-                                cursor: pointer;
-                            }
+                        &:last-child {
+                            margin-right: 0;
+                            
                         }
                     }
+    
                 }
-            }
-
-            .navLogo {
-                text-decoration: none;
-                color: #0c0c0c;
-                font-size: 2.2rem;
-                margin-top: 3px;
-                font-family: 'Bebas Neue', sans-serif;
-                transition: 200ms ease-in;
-                letter-spacing: 1px;
-                &:hover {
-                    opacity: .8;
-                }
-
-                @media screen and (min-width: 768px) {
-                    font-size: 2.2rem;
-                }
-                @media screen and (min-width: 1312px) {
-                    font-size: 2.8rem;
-                }
-            }
-
-            .navIcons {
-                display:flex;
-                list-style:none;
-                .basket {
-                   display:flex;
-                   align-items:center;
-                   gap: .5rem;
-                   .navIcon {
-                    stroke-width:"1";
-                   }
-                   .basketCount {
-                    font-weight: 700;
-                    font-size: .9rem;
-                   }
-                }
-                li {
-                    margin-right: 18px;
-                    .navIcon {
-                        font-size: 1.9rem;
-                    }
-                    &:last-child {
-                        margin-right:0;
-                    }
-                }
-
             }
         }
     }
@@ -384,21 +434,46 @@
         background-color: #3B3F44;
         height: 25px;
         width: 100vw;
-        display:flex;
-        justify-content:center;
+        display: flex;
+        justify-content: center;
+
         .inner {
-            display:flex;
-            align-items:center;
-            text-align:center;
-            justify-content:center;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
             margin: 0 auto;
             height: 100%;
             width: fit-content;
+
             .text {
-                color:white;
+                color: white;
                 font-size: .6rem;
             }
         }
     }
 }
 
+.overlay {
+    display:none;
+    visibility: hidden;
+    opacity: 0;
+    transition: 200s ease-in-out;
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    z-index: 999;
+    position: fixed;
+    left: 0;
+    bottom:0;
+    right: 0;
+    top: auto;
+    transition: 200s ease-in-out;
+    height: 100%;
+}
+
+.show {
+    display:block;
+    visibility: visible;
+    opacity: 1;
+    transition: 200s ease-in-out;
+}

@@ -46,11 +46,10 @@ export default function Search({ productList }) {
 export const getServerSideProps = async (context) => {
   const id = context.query;
   const value = Object.values(id)[0];
-  const res = await axios.get(`https://marquet-nextjs.vercel.app/api/search/${value}`);
+  const res = await axios.get(`http://localhost:3000/api/search/${value}`);
   return {
     props: {
       productList: res.data,
     }
   }
 }
-

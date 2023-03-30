@@ -2,11 +2,11 @@ import React from 'react'
 import Link from 'next/link';
 import SearchStyles from '../../styles/components/Search.module.scss';
 
-const SingleResult = ({ name, id, setInput}) => {
+const SingleResult = ({ name, id, setInput, handleMobSearchClose}) => {
 
   return (
       <Link href={`/product/${id}`} >
-        <div onClick={() => { setInput("") }} className={SearchStyles.singleResult}>{name}</div>
+        <div onClick={() => { setInput(""); handleMobSearchClose() }} className={SearchStyles.singleResult}>{name}</div>
       </Link>
   )
 }
