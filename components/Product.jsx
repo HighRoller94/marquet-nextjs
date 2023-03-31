@@ -9,6 +9,7 @@ const Product = ({ key, name, price, gallery, type, product, paramQuery }) => {
   const priceFixed = (Math.round(price * 100) / 100).toFixed(2);
   const [saved, setSaved] = useState("");
   const [productsFound, setProductsFound] = useState([])
+  const [clicked, setClicked] = useState(false)
 
   const item = productsFound.find((product) => product.name === name);
 
@@ -16,6 +17,7 @@ const Product = ({ key, name, price, gallery, type, product, paramQuery }) => {
     const savedProducts = JSON.parse(localStorage.getItem('savedProducts'));
     localStorage.setItem(`savedProducts`, JSON.stringify([...savedProducts, product]));
     setSaved(true);
+    setClicked(true);
   }
 
   const removeProductFromFavourites = () => {
@@ -40,6 +42,7 @@ const Product = ({ key, name, price, gallery, type, product, paramQuery }) => {
     const savedProducts = JSON.parse(localStorage.getItem('savedProducts'));
     setProductsFound(savedProducts)
   }, [saved]);
+
 
   return (
     <div key={key} className={ProductStyles.product}>
@@ -73,7 +76,7 @@ const Product = ({ key, name, price, gallery, type, product, paramQuery }) => {
             </button> */}
             {item ? (
               <div className={ProductStyles.iconHolder}>
-                <HiHeart className={`${ProductStyles.favIcon} fill`} onClick={removeProductFromFavourites} />
+                <HiHeart className={clicked ? ( `${ProductStyles.favIcon} ${ProductStyles.fill} ${ProductStyles.clicked}` ) : ( `${ProductStyles.favIcon} ${ProductStyles.fill} `)} onClick={removeProductFromFavourites} />
               </div>
             ) : (
               <div className={ProductStyles.iconHolder}>
