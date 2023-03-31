@@ -7,10 +7,11 @@ import { useSelector } from "react-redux";
 
 import Search from './Search/Search'
 
-import { RiShoppingCartLine, RiAccountCircleLine } from 'react-icons/ri'
+import { RiAccountCircleLine } from 'react-icons/ri'
 import { AiOutlineShopping, AiFillShopping } from 'react-icons/ai'
 import { HiOutlineHeart } from 'react-icons/hi'
 import { BiMenu } from 'react-icons/bi'
+import CountdownTimer from './CountdownTimer';
 
 import NavStyles from '../styles/components/Navbar.module.scss'
 
@@ -27,19 +28,23 @@ const settings = {
 
 const Navbar = () => {
     const quantity = useSelector((state) => state.cart.quantity)
-    const [active, setActive] = useState()
+    const [active, setActive] = useState("")
     const [open, setOpen] = useState(false)
     const [searchOpen, setSearchOpen] = useState(false)
     const [isFocused, setIsFocused] = useState(false);
     const [overlay, setOverlay] = useState(false)
 
     useEffect(() => {
-        if (window.scrollY >= 10) {
-            setActive(true)
-        } else {
-            setActive(false)
-        }
-    })
+        let lastScrollY = window.scrollY;
+        window.addEventListener("scroll", () => {
+            if (lastScrollY < window.scrollY) {
+                setActive(true)
+            } else {
+                setActive(false)
+            }
+            lastScrollY = window.scrollY;
+        })
+    }, []);
 
     const handleOpen = () => {
         setOpen(!open)
@@ -75,7 +80,7 @@ const Navbar = () => {
             <nav className={!active ? (NavStyles.navbar) : (`${NavStyles.navbar} ${NavStyles.active}`)} id="navbar">
                 <div className={NavStyles.navSale}>
                     <h4>Sale Ends in
-                        <span id="timer"></span>
+                        <CountdownTimer seconds={31600} />
                     </h4>
                 </div>
                 <div className={NavStyles.container}>
@@ -132,8 +137,8 @@ const Navbar = () => {
                                 <li>
                                     <Link href="/basket" className={NavStyles.basket}>
                                         {quantity > 0 ? (
-                                        <p className={NavStyles.basketCount}>{quantity}</p>
-                                        ) : ( "")}
+                                            <p className={NavStyles.basketCount}>{quantity}</p>
+                                        ) : ("")}
                                         {!quantity > 0 ? (
                                             <AiOutlineShopping className={NavStyles.navIcon} />
                                         ) : (
