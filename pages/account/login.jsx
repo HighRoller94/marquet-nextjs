@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Head from 'next/head';
 import { signIn, useSession, signOut } from 'next-auth/react'
 import Link from 'next/link';
+import { motion } from "framer-motion";
 
 import LoginStyles from '../../styles/components/Login.module.scss'
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai'
@@ -61,7 +62,12 @@ const Login = () => {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/MarquetLogo.ico" />
             </Head>
-            <div className={LayoutStyles.page}>
+            <motion.div 
+                className={LayoutStyles.page}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                >
                 {!data?.user ? (
                     <div className={LoginStyles.container}>
                         <div className={LoginStyles.loginHeader}>
@@ -120,10 +126,7 @@ const Login = () => {
                         </button>
                     </div>
                 )}
-
-            </div>
-
-
+            </motion.div>
         </>
     )
 }
