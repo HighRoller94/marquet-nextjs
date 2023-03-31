@@ -8,7 +8,7 @@
         max-width: 1440px;
         margin: 0 auto;
         grid-gap: 2rem;
-        margin-top: 50px;
+        margin-top: 30px;
         height: 1000px;
         .left {
             width: 100vh;
@@ -158,13 +158,19 @@
                         z-index: 2;
                         stroke: #0c0c0c;
                         transition: 200ms ease-in;
-                        &:hover {
-                            transform: scale(1.05);
-                            fill: #0c0c0c;
-                        }
                         &.fill {
                             fill: #0c0c0c;
                         }
+        
+                    }
+                    &:hover {
+                        .favIcon {
+                            fill: #0c0c0c;
+                        }
+                    }
+                    .clicked {
+                        animation-name: button-click;
+                        animation-duration: .7s;
                     }
                 }
             }
@@ -188,3 +194,15 @@
     }
     
 }
+
+@keyframes button-click {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.3);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }

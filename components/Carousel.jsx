@@ -13,7 +13,7 @@ const CarouselHolder = () => {
         fade: true,
         infinite: true,
         speed: 1500,
-        autoplay: true,
+        autoplay: false,
         autoplaySpeed: 10000,
         slidesToShow: 1,
         slidesToScroll: 1
@@ -35,6 +35,11 @@ const CarouselHolder = () => {
                             loading="lazy"
                             alt="Vans Hero"
                         />
+                    </div>
+                    <div className={CarouselStyles.content}>
+                        <h1>Feel good, look good</h1>
+                        <span>Shop our sustainable clothing line, only at Marquet</span>
+                        <button>Lets Go</button>
                     </div>
                 </div>
                 <div className={CarouselStyles.container}>

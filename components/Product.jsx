@@ -75,12 +75,12 @@ const Product = ({ key, name, price, gallery, type, product, paramQuery }) => {
               Shop the Look
             </button> */}
             {item ? (
-              <div className={ProductStyles.iconHolder}>
-                <HiHeart className={clicked ? ( `${ProductStyles.favIcon} ${ProductStyles.fill} ${ProductStyles.clicked}` ) : ( `${ProductStyles.favIcon} ${ProductStyles.fill} `)} onClick={removeProductFromFavourites} />
+              <div className={ProductStyles.iconHolder} onClick={removeProductFromFavourites}>
+                <HiHeart className={clicked ? ( `${ProductStyles.favIcon} ${ProductStyles.fill} ${ProductStyles.clicked}` ) : ( `${ProductStyles.favIcon} ${ProductStyles.fill} `)}  />
               </div>
             ) : (
-              <div className={ProductStyles.iconHolder}>
-                <HiOutlineHeart className={ProductStyles.favIcon} onClick={saveProductToFavourites} />
+              <div className={ProductStyles.iconHolder} onClick={saveProductToFavourites}>
+                <HiOutlineHeart className={ProductStyles.favIcon}  />
               </div>
             )}
         </div>

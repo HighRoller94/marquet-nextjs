@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import AltProductStyles from '../styles/components/AltProduct.module.scss'
-
+import { motion } from 'framer-motion'
 import { AiOutlineEye } from 'react-icons/ai'
 import { HiHeart } from 'react-icons/hi'
 import { ImBin } from 'react-icons/im'
@@ -22,12 +22,13 @@ const AltProduct = ({ name, price, gallery, type, product, setCount, count }) =>
                 }
                 setSaved(false);
             }
+            setCount(count+1)
         })
-        setCount(count+1)
+
     }
 
     return (
-        <div className={AltProductStyles.product}>
+        <motion.div className={AltProductStyles.product} layout>
             <div className={AltProductStyles.imageContainer}>
                 <Link href={`/product/${product._id}`}>
                     <Image
@@ -44,13 +45,13 @@ const AltProduct = ({ name, price, gallery, type, product, setCount, count }) =>
                         className={AltProductStyles.hoverImage}
                     />
                 </Link>
-                <div className={AltProductStyles.iconHolder}>
-                    <ImBin className={`${AltProductStyles.favIcon} fill`} onClick={removeProductFromFavourites} />
+                <div className={AltProductStyles.iconHolder} onClick={removeProductFromFavourites}>
+                    <ImBin className={`${AltProductStyles.favIcon} fill`} />
                 </div>
             </div>
             <h1 className="item__name">{name}</h1>
             <p className="item__price">£{priceFixed}</p>
-        </div>
+        </motion.div>
     )
 }
 

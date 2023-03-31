@@ -16,13 +16,13 @@ html, body {
   min-height: calc(100vh - 120px);
   display:flex;
   flex-direction: column;
-  overflow-x:hidden;
 }
 
 .layout {
   display:flex;
   flex-direction: column;
   min-height: calc(100vh - 0px);
+  padding-top: 110px;
 }
 
 .imageContainer {

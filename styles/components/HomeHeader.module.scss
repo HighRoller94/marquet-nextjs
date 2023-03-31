@@ -3,10 +3,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 20px auto 16px auto;
+    margin: 20px auto 18px auto;
     .header {
         font-weight: 900;
-        font-size: 24px;
+        font-size: 1.8rem;
+        transform: skewX(-8deg);
     }
     .body {
         margin-top: 7px;

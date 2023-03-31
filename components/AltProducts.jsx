@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import AltProduct from './AltProduct';
-
 import AltProductListStyles from '../styles/components/AltProductList.module.scss'
 
 const AltProducts = () => {
     const [products, setProducts] = useState();
-    const [count, setCount] = useState();
+    const [count, setCount] = useState(0);
 
     const getUserSavedProducts = () => {
         const savedProducts = JSON.parse(localStorage.getItem('savedProducts'));
@@ -17,8 +16,8 @@ const AltProducts = () => {
     }, [count]);
 
     return (
-        <div className={AltProductListStyles.productList}>
-            {products ? (
+        <div className={AltProductListStyles.productList} >
+            {products > 0 ? (
                 products.map((product, i) => (
                     <AltProduct
                         key={product.name}
@@ -35,7 +34,7 @@ const AltProducts = () => {
                     />
                 ))
             ) : (
-                <div>
+                <div className={AltProductListStyles.noSaved}>
                     <p>You have no items saved.</p>
                 </div>
             )}
