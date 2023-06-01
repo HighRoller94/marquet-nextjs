@@ -1,8 +1,10 @@
+@import '../variables.scss';
+
 .footer {
     padding-top: 2rem;
     padding-bottom: 3rem;
     width: 100%;
-    background-color: #0c0c0c;
+    background-color: $offBlack;
     color:white;
     margin-top: 2rem;
     @media screen and (min-width: 768px) {
@@ -212,7 +214,7 @@
             .copyright {
                 display: flex;
                 margin-top: 4rem;
-                background-color: #0c0c0c;
+                background-color: $offBlack;
                 text-align: center;
                 justify-content: center;
                 width: 25%;
@@ -290,7 +292,7 @@
                 width: 15%;
 
                 p {
-                    color: #0c0c0c;
+                    color: $offBlack;
                     font-size: .8rem;
                     text-align: center;
                 }

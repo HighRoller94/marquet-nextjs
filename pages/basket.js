@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 import { useSelector } from 'react-redux'
 import Breadcrumbs from '@/components/Breadcrumbs'
-import ProductList from '@/components/ProductList'
+import AltProducts from '@/components/AltProducts'
 import { BsBag } from 'react-icons/bs'
 
 import LayoutStyles from '../styles/layout/Layout.module.scss'
@@ -38,7 +38,7 @@ const Basket = () => {
           </div>
         ) : (
           <>
-            <ProductList products={cart.products} />
+            <AltProducts products={cart.products} />
           </>
         )}
 

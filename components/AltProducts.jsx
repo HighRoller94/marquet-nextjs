@@ -17,7 +17,7 @@ const AltProducts = () => {
 
     return (
         <div className={AltProductListStyles.productList} >
-            {products > 0 ? (
+            {products?.length > 0 ? (
                 products.map((product, i) => (
                     <AltProduct
                         key={product.name}

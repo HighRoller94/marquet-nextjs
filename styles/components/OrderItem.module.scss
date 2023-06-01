@@ -39,13 +39,13 @@
             width: 97.5%;
             bottom: .5rem;
             right: .2rem;
-            background-color: #0c0c0c;
+            background-color: $offBlack;
             color: white;
             font-size: .85rem;
             width: 100%;
             padding: .3rem .6rem;
             transition: 200ms ease-in;
-            border: .5px solid #0c0c0c;
+            border: .5px solid $offBlack;
             &:hover {
                 background-color: #424242;
                 cursor: pointer;

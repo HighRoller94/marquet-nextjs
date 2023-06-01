@@ -1,7 +1,9 @@
+@import '../variables.scss';
+
 .newsletter {
     width: 100%;
     max-width: 1440px;
-    background-color: #0c0c0c;
+    background-color: $offBlack;
     padding: 2rem 0 3rem 0;
     @media screen and (min-width: 768px) {
 
@@ -105,7 +107,7 @@
                 border: none;
                 padding: .8rem 1rem;
                 background-color:white;
-                border: 1px solid #0c0c0c;
+                border: 1px solid $offBlack;
                 @media screen and (min-width: 768px) {
                     height: 102%;
                 }
@@ -114,7 +116,7 @@
                     height: 3rem;
                 }
                 &:hover {
-                    background-color: #0c0c0c;
+                    background-color: $offBlack;
                     color:white;
                     border: 1px solid white;
                     cursor :pointer;

@@ -3,13 +3,15 @@ import Link from 'next/link'
 import Image from 'next/image'
 import AltProductStyles from '../styles/components/AltProduct.module.scss'
 import { motion } from 'framer-motion'
-import { AiOutlineEye } from 'react-icons/ai'
-import { HiHeart } from 'react-icons/hi'
 import { ImBin } from 'react-icons/im'
+import { useDispatch } from "react-redux";
+import { addProduct } from "@/redux/cartSlice";
 
 const AltProduct = ({ name, price, gallery, type, product, setCount, count }) => {
     const priceFixed = (Math.round(price * 100) / 100).toFixed(2);
     const [saved, setSaved] = useState("");
+    const dispatch = useDispatch();
+    const [quantity, setQuantity] = useState(1);
 
     const removeProductFromFavourites = () => {
         const savedProducts = JSON.parse(localStorage.getItem('savedProducts'));
@@ -25,6 +27,11 @@ const AltProduct = ({ name, price, gallery, type, product, setCount, count }) =>
             setCount(count+1)
         })
 
+    }
+
+    const handleClick = () => {
+        dispatch(addProduct({ ...product, price, quantity }))
+        removeProductFromFavourites()
     }
 
     return (
@@ -51,6 +58,7 @@ const AltProduct = ({ name, price, gallery, type, product, setCount, count }) =>
             </div>
             <h1 className="item__name">{name}</h1>
             <p className="item__price">£{priceFixed}</p>
+            <button onClick={handleClick}>Move to Cart</button>
         </motion.div>
     )
 }

@@ -1,5 +1,7 @@
 import React from 'react'
 
+import SupportBannerStyles from '../styles/components/SupportBanner.module.scss'
+
 const SupportBanner = () => {
   return (
     <div className="options__row">

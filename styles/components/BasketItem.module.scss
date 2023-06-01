@@ -1,3 +1,5 @@
+@import '../variables.scss';
+
 .basket__item {
     width: 100%;
     display: grid;
@@ -75,13 +77,13 @@
             .view__button {
                 outline: none;
                 border: none;
-                background-color: #0c0c0c;
+                background-color: $offBlack;
                 color: white;
                 font-size: .85rem;
                 width: 100%;
                 padding: .3rem .6rem;
                 transition: 100ms ease-in;
-                border: .5px solid #0c0c0c;
+                border: .5px solid $offBlack;
                 &:hover {
                     background-color: #424242;
                     cursor: pointer;

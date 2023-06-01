@@ -1,3 +1,5 @@
+@import '../variables.scss';
+
 .product {
     display:grid;
     grid-template-columns: 1fr;
@@ -70,17 +72,17 @@
             .favIcon {
                 font-size: 1.7rem;
                 z-index: 2;
-                stroke: #0c0c0c;
+                stroke: $offBlack;
                 transition: 200ms ease-in;
                 &.fill {
-                    fill: #0c0c0c;
+                    fill: $offBlack;
                 }
 
             }
 
             &:hover {
                 .favIcon {
-                    fill: #0c0c0c;
+                    fill: $offBlack;
                 }
             }
             .clicked {
@@ -118,7 +120,7 @@
     button {
         outline: none;
         border: none;
-        background-color: #0c0c0c;
+        background-color: $offBlack;
         color: white;
         font-size: .9rem;
         margin-top: .2rem;

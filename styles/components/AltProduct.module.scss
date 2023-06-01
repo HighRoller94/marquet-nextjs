@@ -1,3 +1,5 @@
+@import '../variables.scss';
+
 .product {
     display: grid;
     grid-template-columns: 1fr;
@@ -81,11 +83,11 @@
                 z-index: 2;
                 margin-top: -1px;
                 margin-left: 2px;
-                stroke: #0c0c0c;
+                stroke: $offBlack;
                 transition: 200ms ease-in;
 
                 &.fill {
-                    fill: #0c0c0c;
+                    fill: $offBlack;
                 }
             }
 
@@ -121,24 +123,6 @@
     }
 
     button {
-        outline: none;
-        border: none;
-        background-color: #0c0c0c;
-        color: white;
-        font-size: .9rem;
-        margin-top: .2rem;
-        width: 100%;
-        padding: .5rem 1rem;
-        transition: 100ms ease-in;
-        text-transform: capitalize;
-
-        &:hover {
-            background-color: #383838;
-            cursor: pointer;
-        }
-
-        @media screen and (min-width: 1312px) {
-            margin-top: .5rem;
-        }
+        @include mainBtn();
     }
 }

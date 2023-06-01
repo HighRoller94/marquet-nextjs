@@ -1,3 +1,5 @@
+@import '../variables.scss';
+
 .navbar {
     width: 100vw;
     display: flex;
@@ -12,7 +14,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: #0c0c0c;
+        background-color: $offBlack;
         height: 20px;
         width: 100%;
 
@@ -246,8 +248,8 @@
 
                             &:nth-child(1) {
                                 a {
-                                    border: 2px solid #0c0c0c;
-                                    background-color: #0c0c0c;
+                                    border: 2px solid $offBlack;
+                                    background-color: $offBlack;
                                     color: white;
 
                                     &:hover {
@@ -266,15 +268,15 @@
                                 border: 2px solid white;
 
                                 &:hover {
-                                    background-color: #0c0c0c;
-                                    border: 2px solid #0c0c0c;
+                                    background-color: $offBlack;
+                                    border: 2px solid $offBlack;
                                     color: white;
                                     cursor: pointer;
                                 }
 
                                 @media screen and (min-width: 768px) {
                                     background: none;
-                                    color: #0c0c0c;
+                                    color: $offBlack;
 
                                     font-size: .8rem;
                                 }
@@ -301,7 +303,7 @@
 
                             a {
                                 text-decoration: none;
-                                color: #0c0c0c;
+                                color: $offBlack;
                             }
 
                             p {
@@ -363,7 +365,7 @@
 
                             a {
                                 text-decoration: none;
-                                color: #0c0c0c;
+                                color: $offBlack;
                                 font-weight: 600;
                             }
 
@@ -460,7 +462,7 @@
     }
 
     .navSlider {
-        background-color: #3B3F44;
+        background-color: $offBlack;
         height: 25px;
         width: 100vw;
         display: flex;

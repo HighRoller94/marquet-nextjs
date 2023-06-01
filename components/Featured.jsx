@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 
-import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai'
+import { AiFillEye } from 'react-icons/ai'
 import FeaturedStyles from '../styles/components/Featured.module.scss'
 
 const Featured = () => {

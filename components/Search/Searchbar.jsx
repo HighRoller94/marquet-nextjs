@@ -54,11 +54,9 @@ const Searchbar = ({ handleMobSearchOpen, handleMobSearchClose , setResults, set
     <>
       <form onSubmit={searchMarquet} className={SearchStyles.searchWrapper}>
         <div className={SearchStyles.searchBoxContainer}>
-          {isFocused ? (
-            <AiOutlineClose onClick={handleBlur} className={SearchStyles.searchIconClose} />
-          ) : (
+
             <RiSearchLine onClick={handleFocus} className={SearchStyles.searchIconMain} />
-          )}
+
           {searchOpen ? (
             <AiOutlineClose onClick={handleMobSearchClose} className={SearchStyles.searchIcon} />
           ) : (
@@ -71,6 +69,7 @@ const Searchbar = ({ handleMobSearchOpen, handleMobSearchClose , setResults, set
             type="text"
             value={input}
             onFocus={handleFocus}
+            onBlur={handleBlur}
             onChange={(e) => handleChange(e.target.value)}
           />
         </div>

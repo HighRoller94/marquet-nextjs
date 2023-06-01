@@ -1,3 +1,5 @@
+@import '../variables.scss';
+
 .container {
     border-bottom: 1px solid lightgrey;
     padding-bottom:60px;
@@ -15,7 +17,6 @@
             position:sticky;
             height:620px;
             top:50px;
-            overflow:auto;
             align-self: flex-start;
             .imageGallery {
                 display: flex;
@@ -61,7 +62,8 @@
                 }
                 .imageContainer {
                     position:relative;
-                    width: 520px;
+                    width: 450px;
+                    min-width: 400px;
                     height: 620px;
                     background-color: lightgrey;
                     img {
@@ -87,7 +89,7 @@
             }
             .price {
                 font-size: 1.3rem;
-                color:lightgrey;
+                color:rgb(177, 177, 177);
                 text-transform: uppercase;
                 font-weight: 700;
                 margin-top: 5px;
@@ -109,11 +111,13 @@
                     border:none;
                     padding: .4rem 1rem;
                     background-color:white;
-                    text-transform: uppercase;
-                    border: 1px solid grey;
-                    color: grey;
+                    border: 1px solid lightgrey;
                     min-width: 200px;
-                    font-size: .8rem;
+                    font-size: .7rem;
+                    color:grey;
+                    text-transform: uppercase;
+                    font-weight: 600;
+                    letter-spacing: 2px;
                     option {
                         text-transform: uppercase;
                     }
@@ -124,22 +128,56 @@
                 align-items:center;
                 justify-content:space-between;
                 margin-top: 30px;
-                .button {
+                .cartButton {
                     border:none;
                     outline:none;
-                    background-color: #0c0c0c;
+                    background-color: $offBlack;
                     color:white;
                     font-weight: 600;
                     width: 100%;
                     font-size: .8rem;
-                    padding: 0.8rem 1rem;
-                    border: 1px solid #0c0c0c;
+                    padding: 1.3rem 1rem;
+                    border: 1px solid $offBlack;
                     text-transform: uppercase;
                     letter-spacing: 2px;
+                    position:relative;
+                    overflow:hidden;
+                    span {
+                        position: absolute;
+                        left: 50%;
+                        top: 50%;
+                        transform: translate(-50%, -50%);
+                        font-size: .8rem;
+                        color:white;
+                        z-index: 3;
+                        &:nth-child(1) {
+                            opacity: 1;     
+                        }
+                        &:nth-child(2) {
+                            opacity: 0;     
+                        }
+                    }
+                    .cartIcon {
+                        fill: white;
+                        z-index: 2;
+                        position: absolute;
+                        left: -10%;
+                        top: 50%;
+                        transform: translate(-50%, -50%);
+                        font-size: 1.5rem;
+                    }
+                    .cartItem {
+                        fill: white;
+                        z-index: 3;
+                        position: absolute;
+                        left: -52%;
+                        top: -20%;
+                        transform: translate(-50%, -50%);
+                        font-size: .7rem;
+                    }
                     &:hover {
                         opacity: .9;
                         cursor: pointer;
-                        
                     }
                 }
                 .iconHolder {
@@ -156,16 +194,16 @@
                     .favIcon {
                         font-size: 1.7rem;
                         z-index: 2;
-                        stroke: #0c0c0c;
+                        stroke: $offBlack;
                         transition: 200ms ease-in;
                         &.fill {
-                            fill: #0c0c0c;
+                            fill: $offBlack;
                         }
         
                     }
                     &:hover {
                         .favIcon {
-                            fill: #0c0c0c;
+                            fill: $offBlack;
                         }
                     }
                     .clicked {
@@ -193,6 +231,83 @@
         }
     }
     
+}
+
+.itemAdded {
+    pointer-events:none;
+    cursor: pointer;
+    .cartIcon {
+        animation: cart 1.5s ease-in-out forwards;
+    }
+    .cartItem {
+        animation: box 1.5s ease-in-out forwards;
+    }
+    span {
+        &:nth-child(1) {
+            animation: add 1.5s ease-in-out forwards;  
+        }
+        &:nth-child(2) {
+            animation: added 1.5s ease-in-out forwards;  
+        }
+    }
+    &:hover {
+        opacity: 1;
+        cursor: pointer;
+    }
+}
+
+@keyframes cart {
+    0% {
+        left: -10%;
+        opacity: 0;
+    }
+    20% {
+        opacity: 0;
+    }
+    40%, 60% {
+        left: 50%;
+        opacity: 1;
+    }
+    80% {
+        opacity: 0;
+    }
+    100% {
+        left: 110%;
+        opacity: 0;
+    }
+}
+
+@keyframes box {
+    0%, 40% {
+        left: 51%;
+        top: -20%;
+    }
+    60% {
+        top: 40%;
+        left: 51%;
+    }
+    100% {
+        top: 40%;
+        left: 112%;
+    }
+} 
+
+@keyframes add {
+    0% {
+        opacity: 1;
+    }
+    20%, 100% {
+        opacity: 0;
+    }
+}
+
+@keyframes added {
+    0%, 80% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1
+    }
 }
 
 @keyframes button-click {

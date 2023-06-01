@@ -1,3 +1,5 @@
+@import '../variables.scss';
+
 .banner {
     height: 10rem;
     width: 100%;
@@ -8,7 +10,7 @@
     align-items: center;
     cursor: pointer;
     height: 150px;
-    background-color: #0c0c0c;
+    background-color: $offBlack;
     @media screen and (min-width: 768px) {
         width: 100%;
         margin: 0 auto;

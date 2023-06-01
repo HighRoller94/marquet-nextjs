@@ -1,5 +1,7 @@
+@import '../variables.scss';
+
 .sale {
-    background-color: #0c0c0c;
+    background-color: $offBlack;
     width: 100%;
     display: flex;
     flex-direction: column;

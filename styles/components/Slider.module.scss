@@ -1,3 +1,4 @@
+@import '../variables.scss';
 
 .slider {   
     margin-top: 135px;
@@ -29,7 +30,7 @@
     top: -4.3rem;
     left: 4rem;
     
-    background-color: #0c0c0c;
+    background-color: $offBlack;
     &:hover {
         cursor: pointer;
         opacity: .9;
@@ -51,7 +52,7 @@
     top: -4.3rem;
     left: 0;
     
-    background-color: #0c0c0c;
+    background-color: $offBlack;
     &:hover {
         cursor: pointer;
         opacity: .9;

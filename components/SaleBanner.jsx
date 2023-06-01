@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 import SaleBannerStyles from '../styles/components/SaleBanner.module.scss'
 

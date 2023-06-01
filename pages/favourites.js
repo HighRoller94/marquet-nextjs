@@ -31,7 +31,6 @@ const Favourites = () => {
         <div>
           <AltProducts />
         </div>
-        <Newsletter />
       </motion.div>
   )
 }

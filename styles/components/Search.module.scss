@@ -1,3 +1,5 @@
+@import '../variables.scss';
+
 .searchIcon {
     .navIcon {
         font-size: 1.4rem !important;
@@ -162,9 +164,10 @@
         box-shadow: none;
         z-index: 101;
         @media screen and (min-width: 992px) {
-            top: 3.75rem;
+            top: 3.5rem;
             width:fit-content;
-            min-width: 350px;
+            min-width: 407px;
+            margin-left: .75rem;
         }
         .singleResult {
             padding: 0 1rem;
@@ -173,7 +176,7 @@
             font-size: .9rem;
 
             &:hover {
-                background-color: #0c0c0c;
+                background-color: $offBlack;
                 color: white;
                 cursor: pointer;
             }

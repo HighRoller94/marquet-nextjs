@@ -5,14 +5,17 @@ import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { addProduct } from "@/redux/cartSlice";
 import Newsletter from "@/components/Newsletter";
-import ProductPageStyles from '../../styles/pages/ProductPage.module.scss'
 import Breadcrumbs from "@/components/Breadcrumbs";
-import { AiFillEye, AiFillInfoCircle } from 'react-icons/ai'
-import { MdInfo } from 'react-icons/md'
 import Options from "@/components/Options";
-import LayoutStyles from '../../styles/layout/Layout.module.scss'
-import { HiHeart, HiOutlineHeart } from 'react-icons/hi'
 import { motion } from "framer-motion";
+
+import { HiHeart, HiOutlineHeart } from 'react-icons/hi'
+import { FaBox, FaShoppingCart } from 'react-icons/fa'
+import { MdInfo } from 'react-icons/md'
+import { AiFillEye } from 'react-icons/ai'
+
+import ProductPageStyles from '../../styles/pages/ProductPage.module.scss'
+import LayoutStyles from '../../styles/layout/Layout.module.scss'
 
 const Product = ({ product }) => {
   const cart = useSelector((state) => state.cart)
@@ -36,7 +39,7 @@ const Product = ({ product }) => {
 
   const handleClick = () => {
     dispatch(addProduct({ ...product, price, quantity }))
-    setAdded(!added)
+    setAdded(true)
   }
 
   const removeProductFromFavourites = () => {
@@ -118,9 +121,12 @@ const Product = ({ product }) => {
                 </select>
               </div>
               <div className={ProductPageStyles.add}>
-                <button onClick={handleClick} className={ProductPageStyles.button}>
-                  Add to Cart
-                </button>
+                  <button onClick={handleClick} className={added ? (`${ProductPageStyles.cartButton} ${ProductPageStyles.itemAdded}`) : ( `${ProductPageStyles.cartButton}` )}>
+                    <span className={ProductPageStyles.addToCart}>Add to Cart</span>
+                    <span className={ProductPageStyles.added}>Added to Cart</span>
+                    <FaShoppingCart className={ProductPageStyles.cartIcon}/>
+                    <FaBox className={ProductPageStyles.cartItem}/>
+                  </button>
                 {item ? (
                   <div className={ProductPageStyles.iconHolder}>
                     <HiHeart className={clicked ? (`${ProductPageStyles.favIcon} ${ProductPageStyles.fill} ${ProductPageStyles.clicked}`) : (`${ProductPageStyles.favIcon} ${ProductPageStyles.fill} `)} onClick={removeProductFromFavourites} />
