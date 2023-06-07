@@ -2,8 +2,7 @@ import React from 'react'
 
 import SaleBannerStyles from '../styles/components/SaleBanner.module.scss'
 
-const SaleBanner = () => {
-
+export default function SaleBanner() {
     return (
         <div className={SaleBannerStyles.sale}>
             <div className={SaleBannerStyles.saleText}>
@@ -13,5 +12,3 @@ const SaleBanner = () => {
         </div>
     )
 }
-
-export default SaleBanner

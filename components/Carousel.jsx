@@ -26,7 +26,22 @@ const CarouselHolder = () => {
                 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" />
             </Head>
             <div className={CarouselStyles.carousel}>
-            <Slider {...settings}>
+            <div className={CarouselStyles.container}>
+                    <div className={CarouselStyles.imageContainer}>
+                        <Image
+                            src="/images/sustainable-bg.svg"
+                            fill
+                            loading="lazy"
+                            alt="Vans Hero"
+                        />
+                    </div>
+                    <div className={CarouselStyles.content}>
+                        <h1>Feel good, look good</h1>
+                        <span>Shop our sustainable clothing line, only at Marquet</span>
+                        <button>Lets Go</button>
+                    </div>
+                </div>
+            {/* <Slider {...settings}>
                 <div className={CarouselStyles.container}>
                     <div className={CarouselStyles.imageContainer}>
                         <Image
@@ -52,7 +67,7 @@ const CarouselHolder = () => {
                         />
                     </div>
                 </div>
-            </Slider>
+            </Slider> */}
         </div>
         </>
     )

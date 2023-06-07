@@ -5,7 +5,7 @@ import SearchStyles from '../../styles/components/Search.module.scss';
 const SingleResult = ({ name, id, setInput, handleMobSearchClose}) => {
 
   return (
-      <Link href={`/product/${id}`} >
+      <Link href={`/products/${id}`} >
         <div onClick={() => { setInput(""); handleMobSearchClose() }} className={SearchStyles.singleResult}>{name}</div>
       </Link>
   )

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
-import { useRouter } from 'next/router'
+
+import { useRouter } from 'next/navigation';
 
 import { RiSearchLine } from 'react-icons/ri'
 import { AiOutlineClose } from 'react-icons/ai'
@@ -10,24 +11,23 @@ const Searchbar = ({ handleMobSearchOpen, handleMobSearchClose , setResults, set
   const router = useRouter()
 
   const fetchData = (value) => {
-    fetch("http://localhost:3000/api/products")
+    fetch("/api/products")
       .then((response) => response.json())
       .then((json) => {
         if (json) {
-          const results = json.filter((user) => {
+          const results = json.products.filter((product) => {
             return (
               value &&
-              user &&
-              user.name &&
-              user.name.toLowerCase().includes(value)
+              product &&
+              product.name &&
+              product.name.toLowerCase().includes(value)
             );
           });
           setResults(results);
         }
-
       });
   };
-
+  
   const handleChange = (value) => {
     setInput(value);
     fetchData(value); 
@@ -38,7 +38,7 @@ const Searchbar = ({ handleMobSearchOpen, handleMobSearchClose , setResults, set
       let str = input;
       e.preventDefault()
       let cleanStr = str.replace(/\s/g, "+")
-      router.push(`/search?=${cleanStr}`)
+      router.push(`/search?q=${cleanStr}`)
       setInput("") 
       setResults("")
       setSearchOpen(false)

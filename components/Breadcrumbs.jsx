@@ -1,7 +1,9 @@
+"use client"
+
 import Link from 'next/link';
 import { BsChevronRight } from 'react-icons/bs'
 import BreadCrumbsStyles from '../styles/components/Breadcrumbs.module.scss'
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 const Breadcrumbs = ({ name, searchQuery }) => {
   const router = useRouter();
