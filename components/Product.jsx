@@ -51,7 +51,7 @@ const Product = ({ key, name, price, gallery, type, product, paramQuery }) => {
         <div className={ProductStyles.imageContainer}>
             <Link 
               href={{
-                pathname: `/product/${product._id}`,
+                pathname: `/products/${product.id}`,
 
               }}
 
