@@ -1,27 +1,29 @@
-import dbConnect from '../../../util/mongo'
-import Product from '../../../models/Product'
+import { getProducts, createProduct } from '@/lib/prisma/products'
 
-export default async function handler(req, res) {
-    const { method } = req;
-
-    dbConnect()
-
-    if (method ==="GET"){
-        try {
-            const products = await Product.find();
-            res.status(200).json(products)
-        } catch (err) {
-            res.status(500).json(err)
-        }
-    }
-
-    if (method ==="POST"){
-        try {
-            const product = await Product.create(req.body)
-            res.status(200).json(product)
-        } catch (err) {
-            res.status(500).json(err)
-        }
+const handler = async (req, res) => {
+  if (req.method === 'GET') {
+    try {
+      const { products, error } = await getProducts()
+      if (error) throw new Error(error)
+      return res.status(200).json({ products })
+    } catch (error) {
+      return res.status(500).json({ error: error.message })
     }
   }
-  
+
+  if (req.method === 'POST') {
+    try {
+      const data = req.body
+      const { product, error } = await createProduct(data)
+      if (error) throw new Error(error)
+      return res.status(200).json({ product })
+    } catch (error) {
+      return res.status(500).json({ error: error.message })
+    }
+  }
+
+  res.setHeader('Allow', ['GET', 'POST'])
+  res.status(425).end(`Method ${req.method} is not allowed.`)
+}
+
+export default handler
