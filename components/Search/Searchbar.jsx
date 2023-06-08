@@ -1,14 +1,24 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from "react";
 
+import { useRouter } from "next/navigation";
 
-import { useRouter } from 'next/navigation';
+import { RiSearchLine } from "react-icons/ri";
+import { AiOutlineClose } from "react-icons/ai";
+import SearchStyles from "../../styles/components/Search.module.scss";
 
-import { RiSearchLine } from 'react-icons/ri'
-import { AiOutlineClose } from 'react-icons/ai'
-import SearchStyles from '../../styles/components/Search.module.scss';
-
-const Searchbar = ({ handleMobSearchOpen, handleMobSearchClose , setResults, setInput, input, setSearchOpen, searchOpen, handleBlur, handleFocus, isFocused }) => {
-  const router = useRouter()
+const Searchbar = ({
+  handleMobSearchOpen,
+  handleMobSearchClose,
+  setResults,
+  setInput,
+  input,
+  setSearchOpen,
+  searchOpen,
+  handleBlur,
+  handleFocus,
+  isFocused,
+}) => {
+  const router = useRouter();
 
   const fetchData = (value) => {
     fetch("/api/products")
@@ -27,42 +37,47 @@ const Searchbar = ({ handleMobSearchOpen, handleMobSearchClose , setResults, set
         }
       });
   };
-  
+
   const handleChange = (value) => {
     setInput(value);
-    fetchData(value); 
+    fetchData(value);
   };
 
   const searchMarquet = (e) => {
-    if (input !== '') {
+    if (input !== "") {
       let str = input;
-      e.preventDefault()
-      let cleanStr = str.replace(/\s/g, "+")
-      router.push(`/search?q=${cleanStr}`)
-      setInput("") 
-      setResults("")
-      setSearchOpen(false)
-      handleBlur()
+      e.preventDefault();
+      let cleanStr = str.replace(/\s/g, "+");
+      setInput("");
+      setResults("");
+      setSearchOpen(false);
+      handleBlur();
       document.getElementById("submit").blur();
+      router.push(`/search?q=${cleanStr}`);
     } else {
-      e.preventDefault()
+      e.preventDefault();
       return;
     }
-  }
+  };
 
   return (
     <>
       <form onSubmit={searchMarquet} className={SearchStyles.searchWrapper}>
         <div className={SearchStyles.searchBoxContainer}>
-
-            <RiSearchLine onClick={handleFocus} className={SearchStyles.searchIconMain} />
+          <RiSearchLine
+            onClick={handleFocus}
+            className={SearchStyles.searchIconMain}
+          />
 
           {searchOpen ? (
-            <AiOutlineClose onClick={handleMobSearchClose} className={SearchStyles.searchIcon} />
+            <AiOutlineClose
+              onClick={handleMobSearchClose}
+              className={SearchStyles.searchIcon}
+            />
           ) : (
             <RiSearchLine className={SearchStyles.searchIcon} />
           )}
-          
+
           <input
             className={SearchStyles.searchInput}
             id="submit"
@@ -74,9 +89,8 @@ const Searchbar = ({ handleMobSearchOpen, handleMobSearchClose , setResults, set
           />
         </div>
       </form>
-
     </>
-  )
-}
+  );
+};
 
-export default Searchbar
+export default Searchbar;

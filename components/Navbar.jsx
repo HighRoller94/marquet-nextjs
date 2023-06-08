@@ -8,6 +8,7 @@ import Slider from "react-slick";
 import { useSelector } from "react-redux";
 
 import Search from './Search/Search'
+import SignInButton from './SignInButton'
 
 import { RiAccountCircleLine } from 'react-icons/ri'
 import { AiOutlineShopping, AiFillShopping } from 'react-icons/ai'
@@ -154,7 +155,7 @@ const Navbar = () => {
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link href="/account/login">
+                                    <Link href="/dashboard">
                                         <RiAccountCircleLine className={NavStyles.navIcon} />
                                     </Link>
                                 </li>
