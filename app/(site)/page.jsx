@@ -16,9 +16,8 @@ export default function Home() {
     <>
       <HomeHeader
         header="Sale on Now"
-        body="Exclusive top brands at the best prices, only at Marquet"
+        body="Exclusive top brands at the best prices"
       />
-
       <Carousel />
       <SaleBanner />
       <Options />
@@ -28,7 +27,7 @@ export default function Home() {
         text="latest additions to marquet"
       />
       <Featured />
-      <Slider />
+      {/* <Slider /> */}
       <Newsletter />
     </>
   );

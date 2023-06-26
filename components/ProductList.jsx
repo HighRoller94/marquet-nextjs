@@ -1,11 +1,9 @@
 import React from 'react'
 import Product from './Product'
 
-import ProductListStyles from '../styles/components/ProductList.module.scss'
-
 const ProductList = ({ products, paramQuery }) => {
   return (
-    <div className={ProductListStyles.productList}>
+    <div className="flex flex-col sm:grid grid-cols-2 lg:grid-cols-4 sm:gap-8 sm:my-10" >
         {products?.map((product, i) => (
           <Product
             paramQuery={paramQuery}

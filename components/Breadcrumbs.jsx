@@ -1,77 +1,70 @@
-"use client"
+"use client";
 
-import Link from 'next/link';
-import { BsChevronRight } from 'react-icons/bs'
-import BreadCrumbsStyles from '../styles/components/Breadcrumbs.module.scss'
-import { useRouter } from 'next/navigation';
+import Link from "next/link";
+import { BsChevronRight } from "react-icons/bs";
+import BreadCrumbsStyles from "../styles/components/Breadcrumbs.module.scss";
+import { useRouter } from "next/navigation";
+import React from "react";
 
-const Breadcrumbs = ({ name, searchQuery }) => {
-  const router = useRouter();
-  const pathArray = router.asPath.split('/').filter((x) => x !== '');
-  const currentPath = router.asPath.toLowerCase();
-  const query = Object.values(router.query)[0];
+export default function Breadcrumbs({ name, searchQuery }) {
+  const currentPath = window.location.pathname.toLowerCase();
+  const url = new URL(window.location.href);
+  const searchParams = new URLSearchParams(url.search);
+  const searchParamValue = searchParams.get("q");
 
-  const breadcrumbs = pathArray.map((path, index) => ({
-    path: `/${pathArray.slice(0, index + 1).join('/')}`,
-    name: path.charAt(0).toUpperCase() + path.slice(1),
-  }));
+  function getCurrentURLParams() {
+    const path = window.location.pathname;
+    const params = path.split("/").filter((param) => param !== "");
 
-  console.log(searchQuery)
+    const breadcrumbs = params.map((path, index) => ({
+      path: `/${params.slice(0, index + 1).join("/")}`,
+      name: path.charAt(0).toUpperCase() + path.slice(1),
+    }));
+
+    return breadcrumbs;
+  }
+
+
+  const urlParams = getCurrentURLParams();
+
   return (
     <nav aria-label="Breadcrumb" className={BreadCrumbsStyles.container}>
       <ol className={BreadCrumbsStyles.breadcrumbs}>
         <li className="breadcrumb-item">
-          <Link href="/">
-            Home
-          </Link>
+          <Link href="/">Home</Link>
+          <BsChevronRight className={BreadCrumbsStyles.icon} />
         </li>
-        {name ? (
-            <>
-              <Link href={breadcrumbs[1].path}>
-                <li className={BreadCrumbsStyles.wrapper}>
-                  <BsChevronRight className={BreadCrumbsStyles.icon} />
-                  <span>
-                    Search results for "{query}"
-                  </span>
-                </li>
-              </Link>
+        <li className="breadcrumb-item">
+          <Link href="/">Vans Shoes</Link>
+        </li>
+        {/* {name ? (
+          <>
+            <Link href={`${urlParams[1].path}`}>
               <li className={BreadCrumbsStyles.wrapper}>
                 <BsChevronRight className={BreadCrumbsStyles.icon} />
-                <span>{name}</span>
+                <span>Search results for "{searchParamValue}"</span>
               </li>
-            </>
+            </Link>
+            <li className={BreadCrumbsStyles.wrapper}>
+              <BsChevronRight className={BreadCrumbsStyles.icon} />
+              <span>{name}</span>
+            </li>
+          </>
         ) : (
           <>
-          {breadcrumbs.map((breadcrumb, index) => (
-            <li key={index} className={BreadCrumbsStyles.wrapper}>
-              <BsChevronRight className={BreadCrumbsStyles.icon} />
-              {currentPath.includes('search') ? (
-                <span>
-                  Search results for "{query}"
-                </span>
-              ) : (
-                  <Link href={breadcrumb.path}>
-                    {breadcrumb.name}
-                  </Link>
-              )}
-            </li>
-          ))}
+            {urlParams.map((breadcrumb, index) => (
+              <li key={index} className={BreadCrumbsStyles.wrapper}>
+                <BsChevronRight className={BreadCrumbsStyles.icon} />
+                {currentPath.includes("search") ? (
+                  <span>Search results for "{searchParamValue}"</span>
+                ) : (
+                  <Link href={urlParams.path}>{urlParams.name}</Link>
+                )}
+              </li>
+            ))}
           </>
-        )}
-        
+        )} */}
       </ol>
     </nav>
   );
-};
-
-export default Breadcrumbs;
-
-export async function getServerSideProps({ query }) {
-  const { searchQuery } = query
-
-  return {
-    props: {
-      searchQuery,
-    }, // This will be passed to the page component as props
-  };
 }

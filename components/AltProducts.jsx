@@ -1,4 +1,7 @@
+"use client"
+
 import React, { useEffect, useState } from 'react'
+
 import AltProduct from './AltProduct';
 import AltProductListStyles from '../styles/components/AltProductList.module.scss'
 
@@ -16,7 +19,7 @@ const AltProducts = () => {
     }, [count]);
 
     return (
-        <div className={AltProductListStyles.productList} >
+        <div className="flex flex-col sm:grid grid-cols-2 lg:grid-cols-4 sm:gap-8 sm:my-10" >
             {products?.length > 0 ? (
                 products.map((product, i) => (
                     <AltProduct

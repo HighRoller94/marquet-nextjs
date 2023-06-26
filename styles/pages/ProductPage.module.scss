@@ -1,7 +1,6 @@
 @import '../variables.scss';
 
 .container {
-    border-bottom: 1px solid lightgrey;
     padding-bottom:60px;
     margin-bottom: 20px;
     .wrapper {
@@ -16,7 +15,7 @@
             width: 100vh;
             position:sticky;
             height:620px;
-            top:50px;
+            top:170px;
             align-self: flex-start;
             .imageGallery {
                 display: flex;
@@ -209,6 +208,46 @@
                     .clicked {
                         animation-name: button-click;
                         animation-duration: .7s;
+                    }
+                }
+            }
+            .productOrderInfo {
+                display: flex;
+                flex-direction: column;
+                .klarnaInfo {
+                    display: flex;
+                    align-items:center;
+                    margin-top: 24px;
+                    .imageContainer {
+                        position: relative;
+                        width: 60px;
+                        height: 35px;
+                        img {
+                            object-fit: contain;
+                            border-radius: 7px;
+                        }
+                    }
+                    p {
+                        margin-left: 12px;
+                        font-size: 14px;
+                    }
+                }
+                .deliveryInfo {
+                    display: flex;
+                    align-items:center;
+                    margin-top: 16px;
+                    .imageContainer {
+                        position: relative;
+                        width: 50px;
+                        height: 35px;
+                        img {
+                            object-fit: contain;
+                            border-radius: 7px;
+                        }
+                    }
+                    p {
+                        margin-left: 12px;
+                        font-size: 12px;
                     }
                 }
             }

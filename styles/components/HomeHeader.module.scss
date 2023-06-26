@@ -1,20 +1,19 @@
 .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 20px auto 18px auto;
-    .header {
-        font-weight: 900;
-        font-size: 1.8rem;
-        transform: skewX(-8deg);
-    }
-    .body {
-        margin-top: 7px;
-        font-size: .9rem;
-        text-align:center;
-    }
-    .icon {
-        font-size: 2.2rem;
-    }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto 18px auto;
+  .header {
+    font-weight: 900;
+    font-size: 1.8rem;
+    transform: skewX(-8deg);
+  }
+  .body {
+    font-size: 0.9rem;
+    text-align: center;
+  }
+  .icon {
+    font-size: 2.2rem;
+  }
 }

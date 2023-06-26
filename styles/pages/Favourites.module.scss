@@ -1,14 +1,21 @@
-.favouritesHeader {
+.favouritesTopHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 24px 0;
+  .favouritesHeader {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 20px 0;
+    margin: 12px 0;
     h1 {
-        font-size: 1.9rem;
-        margin-top: 2px;
+      font-size: 1.9rem;
+      margin-top: 2px;
     }
     .icon {
-        font-size: 2rem;
-        margin-right: 12px;
+      font-size: 2rem;
+      margin-right: 12px;
     }
+  }
 }

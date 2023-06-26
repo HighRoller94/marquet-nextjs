@@ -9,7 +9,7 @@ const cartSlice = createSlice({
     },
     reducers: {
         addProduct: (state, action) => {
-            const item = state.products.find((product) => product.title === action.payload.title);
+            const item = state.products.find((product) => product.name === action.payload.name);
 
             if (item) {
                 item.quantity += action.payload.quantity;
@@ -21,12 +21,12 @@ const cartSlice = createSlice({
             state.total += action.payload.price * action.payload.quantity;
         },
         removeProduct: (state, action) => {
-            state.products = state.products.filter(item => item.title !== action.payload.title)
+            state.products = state.products.filter(item => item.name !== action.payload.name)
             state.quantity -= action.payload.quantity;
             state.total -= action.payload.price * action.payload.quantity;
         },
         addCheckoutProduct: (state, action) => {
-            const item = state.products.find((product) => product.title === action.payload.title);
+            const item = state.products.find((product) => product.name === action.payload.name);
             if (item) {
                 item.quantity = action.payload.quantity+1
             } else {
@@ -36,7 +36,7 @@ const cartSlice = createSlice({
             state.total = state.total + (action.payload.price * 1);
         },
         removeCheckoutProduct: (state, action) => {
-            const item = state.products.find((product) => product.title === action.payload.title);
+            const item = state.products.find((product) => product.name === action.payload.name);
             if (item.quantity >= 2) {
                 item.quantity = action.payload.quantity-1
                 state.quantity = state.quantity-1

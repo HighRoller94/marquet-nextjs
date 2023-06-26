@@ -82,6 +82,7 @@ const Searchbar = ({
             className={SearchStyles.searchInput}
             id="submit"
             type="text"
+            autocomplete="off"
             value={input}
             onFocus={handleFocus}
             onBlur={handleBlur}

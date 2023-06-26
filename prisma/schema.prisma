@@ -8,49 +8,50 @@ datasource db {
 }
 
 model Account {
-  id                String  @id @default(auto()) @map("_id") @db.ObjectId
-  userId            String
-  type              String
-  provider          String
-  providerAccountId String
-  refresh_token     String? @db.String
-  access_token      String? @db.String
-  expires_at        Int?
-  token_type        String?
-  scope             String?
-  id_token          String? @db.String
-  session_state     String?
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id                String @id @default(auto()) @map("_id") @db.ObjectId
+  /// Field referred in an index, but found no data to define the type.
+  provider          Json?
+  /// Field referred in an index, but found no data to define the type.
+  providerAccountId Json?
 
   @@unique([provider, providerAccountId])
 }
 
+model Product {
+  id      String   @id @default(auto()) @map("_id") @db.ObjectId
+  brand   String?
+  desc    String
+  gallery String[]
+  name    String
+  price   String
+  sizes   String[]
+  /// Multiple data types found: String: 11.1%, Array(String): 88.9% out of 9 sampled entries
+  tags    Json?
+  type    String
+}
+
 model Session {
-  id           String   @id @default(auto()) @map("_id") @db.ObjectId
-  sessionToken String   @unique
-  userId       String
-  expires      DateTime
-  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id           String @id @default(auto()) @map("_id") @db.ObjectId
+  /// Field referred in an index, but found no data to define the type.
+  sessionToken Json?  @unique
+}
+
+model Tweet {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
 }
 
 model User {
-  id            String    @id @default(auto()) @map("_id") @db.ObjectId
-  name          String?
-  email         String?   @unique
-  emailVerified DateTime?
-  image         String?
-  accounts      Account[]
-  sessions      Session[]
+  id    String @id @default(auto()) @map("_id") @db.ObjectId
+  email String @unique
+  name  String
 }
 
-model Product {
-  id      String   @id @default(auto()) @map("_id") @db.ObjectId
-  name    String
-  desc    String
-  price   String
-  type    String
-  sizes   String[]
-  gallery String[]
-  tags    String[]
+model VerificationToken {
+  id         String @id @default(auto()) @map("_id") @db.ObjectId
+  /// Field referred in an index, but found no data to define the type.
+  identifier Json?
+  /// Field referred in an index, but found no data to define the type.
+  token      Json?  @unique
+
+  @@unique([identifier, token])
 }
