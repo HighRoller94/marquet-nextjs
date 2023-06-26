@@ -7,6 +7,7 @@ import Image from "next/image";
 
 import Slider from "react-slick";
 import { useSelector } from "react-redux";
+import { motion } from "framer-motion";
 
 import Carousel from "react-responsive-carousel/lib/js/components/Carousel/index";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -187,36 +188,42 @@ const Navbar = () => {
           </div>
         </div>
 
-        <Carousel
-          className={NavStyles.navSlider}
-          axis="horizontal"
-          autoPlay={true}
-          swipeable={true}
-          showArrows={false}
-          showStatus={false}
-          showIndicators={false}
-          animationHandler="fade"
-          showThumbs={false}
-          transitionTime={1000}
-          interval={5000}
-          infiniteLoop={true}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
         >
-          <div className={NavStyles.inner}>
-            <p className={NavStyles.text}>
-              Join the family and get 20% off your next purchase
-            </p>
-          </div>
-          <div className={NavStyles.inner}>
-            <p className={NavStyles.text}>
-              Free delivery when you spend over £50
-            </p>
-          </div>
-          <div className={NavStyles.inner}>
-            <p className={NavStyles.text}>
-              Not happy with your order? Send it back and get in touch
-            </p>
-          </div>
-        </Carousel>
+          <Carousel
+            className={NavStyles.navSlider}
+            axis="horizontal"
+            autoPlay={true}
+            swipeable={true}
+            showArrows={false}
+            showStatus={false}
+            showIndicators={false}
+            animationHandler="fade"
+            showThumbs={false}
+            transitionTime={1000}
+            interval={5000}
+            infiniteLoop={true}
+          >
+            <div className={NavStyles.inner}>
+              <p className={NavStyles.text}>
+                Join the family and get 20% off your next purchase
+              </p>
+            </div>
+            <div className={NavStyles.inner}>
+              <p className={NavStyles.text}>
+                Free delivery when you spend over £50
+              </p>
+            </div>
+            <div className={NavStyles.inner}>
+              <p className={NavStyles.text}>
+                Not happy with your order? Send it back and get in touch
+              </p>
+            </div>
+          </Carousel>
+        </motion.div>
       </nav>
       <div
         className={

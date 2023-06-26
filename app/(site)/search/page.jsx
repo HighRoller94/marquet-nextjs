@@ -10,7 +10,6 @@ export default async function Search({ searchParams }) {
 
   return (
     <div>
-      <Breadcrumbs />
       <div className="flex items-center justify-center flex-col my-[20px]">
         <p className="text-base">Your search results for:</p>
         <h1 className="text-4xl my-[10px] font-bold">"{searchParam}"</h1>
