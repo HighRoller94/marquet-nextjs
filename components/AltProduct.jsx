@@ -37,7 +37,7 @@ const AltProduct = ({ name, price, gallery, type, product, setCount, count }) =>
     return (
         <motion.div className={AltProductStyles.product} layout>
             <div className={AltProductStyles.imageContainer}>
-                <Link href={`/product/${product._id}`}>
+                <Link href={`/products/${product.id}`}>
                     <Image
                         src={gallery[0]}
                         fill
