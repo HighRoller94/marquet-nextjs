@@ -4,15 +4,15 @@ import Image from "next/image";
 const Collection = () => {
   return (
     <section>
-      <div class="max-w-[1250px] px-4 py-8 mx-auto sm:px-6 sm:py-12 lg:px-0 lg:pt-0 lg:pb-4">
+      <div class="max-w-[1250px] md:px-0  py-0 lg:py-8 mx-auto  lg:px-0 lg:pt-0 lg:pb-4">
 
-        <ul class="grid grid-cols-1 gap-4 mt-6 lg:grid-cols-3">
+        <ul class="grid grid-cols-1 gap-4 mt-6 md:grid-cols-3">
           <li>
             <a href="#" class="relative block group">
               <img
                 src="https://images.unsplash.com/photo-1618898909019-010e4e234c55?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
                 alt=""
-                class="object-cover w-full transition duration-500 aspect-square group-hover:opacity-90"
+                class="object-cover w-full transition duration-500 aspect-square group-hover:opacity-90 rounded-lg"
               />
               {/* <Image 
               src="https://images.unsplash.com/photo-1618898909019-010e4e234c55?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
@@ -35,7 +35,7 @@ const Collection = () => {
               <img
                 src="https://images.unsplash.com/photo-1624623278313-a930126a11c3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
                 alt=""
-                class="object-cover w-full transition duration-500 aspect-square group-hover:opacity-90"
+                class="object-cover w-full transition duration-500 aspect-square group-hover:opacity-90 rounded-lg"
               />
 
               <div class="absolute inset-0 flex flex-col items-start justify-end p-6">
@@ -53,7 +53,7 @@ const Collection = () => {
               <img
                 src="https://images.unsplash.com/photo-1593795899768-947c4929449d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2672&q=80"
                 alt=""
-                class="object-cover w-full transition duration-500 aspect-square group-hover:opacity-90"
+                class="object-cover w-full transition duration-500 aspect-square group-hover:opacity-90 rounded-lg"
               />
 
               <div class="absolute inset-0 flex flex-col items-start justify-end p-6">

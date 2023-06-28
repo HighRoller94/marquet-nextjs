@@ -2,8 +2,24 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { AiFillEye } from "react-icons/ai";
-import FeaturedStyles from "../styles/components/Featured.module.scss";
 import { useInView } from "react-intersection-observer";
+
+const featuredContent = [
+  {
+    brand: "Vans",
+    imageSrc: "/images/vans-bg.svg"
+  },
+  {
+    brand: "Nike",
+    imageSrc: "/images/nike-bg.svg"
+  },
+  {
+    brand: "Converse",
+    imageSrc: "/images/converse-bg.svg"
+  },
+
+];
+
 
 const Featured = () => {
     const { ref, inView } = useInView({
@@ -12,56 +28,26 @@ const Featured = () => {
     });
 
   return (
-    <div className={FeaturedStyles.container}>
-      <motion.div
+    <div className="flex flex-col gap-8 md:grid md:grid-cols-3">
+      {featuredContent?.map((box, i) => (
+        <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className={FeaturedStyles.wrapper}
+        className="flex flex-col relative cursor-pointer"
         ref={ref}
       >
-        <div className={FeaturedStyles.imageContainer}>
-          <Image src="/images/vans-bg.svg" alt="Vans" fill />
+        <div className="relative h-52 md:h-72 w-full hover:opacity-90 transition">
+          <Image className=" rounded-lg object-cover" src={box.imageSrc} alt="Vans" fill />
         </div>
-        <div className={FeaturedStyles.iconContainer}>
-          <AiFillEye className={FeaturedStyles.icon} />
-        </div>
-        <div>
-          <h1 className="text-xl font-medium">Vans</h1>
-        </div>
-      </motion.div>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        className={FeaturedStyles.wrapper}
-      >
-        <div className={FeaturedStyles.imageContainer}>
-          <Image src="/images/nike-bg.svg" alt="Vans" fill />
-        </div>
-        <div className={FeaturedStyles.iconContainer}>
-          <AiFillEye className={FeaturedStyles.icon} />
+        <div className="absolute flex top-4 right-4 bg-neutral-50 items-center justify-center p-1 z-10 rounded-full w-9 h-9">
+          <AiFillEye size={32} />
         </div>
         <div>
-          <h1 className="text-xl font-medium">Nike</h1>
+          <h1 className="text-lg mt-3 font-bold">{box.brand}</h1>
         </div>
       </motion.div>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        className={FeaturedStyles.wrapper}
-      >
-        <div className={FeaturedStyles.imageContainer}>
-          <Image src="/images/converse-bg.svg" alt="Vans" fill />
-        </div>
-        <div className={FeaturedStyles.iconContainer}>
-          <AiFillEye className={FeaturedStyles.icon} />
-        </div>
-        <div>
-          <h1 className="text-xl font-medium">Converse</h1>
-        </div>
-      </motion.div>
+      ))}
     </div>
   );
 };
