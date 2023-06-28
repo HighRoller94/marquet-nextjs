@@ -6,7 +6,7 @@ export default async function Search({ searchParams }) {
   const searchParam = Object.values(searchParams)[0];
   const data = await getSearchedProducts(searchParam);
   const products = data.products;
-
+console.log(searchParam)
   return (
     <div className="mx-auto w-full flex flex-col max-w-[1250px] px-10 xl:px-0 mt-8">
       <div className="flex items-center justify-center flex-col my-[20px]">

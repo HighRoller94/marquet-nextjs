@@ -12,7 +12,7 @@ import { toast } from "react-hot-toast";
 
 import ItemAddedToFavouritesToast from "../Toasts/ItemAddedToFavouritesToast";
 import ItemAddedToCartToast from "../Toasts/ItemAddedToCartToast";
-import ProductPageStyles from "../../styles/pages/ProductPage.module.scss";
+import AddProductAnimationStyles from "../../styles/animations/addProductAnimation.module.scss";
 
 export default function Product({ product }) {
   const cart = useSelector((state) => state.cart);
@@ -143,37 +143,37 @@ export default function Product({ product }) {
           </div>
           <div className="mt-5 flex items-center">
             <h4 className="mr-4 text-xs text-neutral-400 uppercase font-semibold tracking-widest">Qty:</h4>
-            <input className="text-neutral-400  outline-none py-2 px-4 bg-white border-neutral-200 border-1 w-[80px] text-xs uppercase font-semibold tracking-widest" type="number" min="1" className="item__size" />
+            <input className="text-neutral-400  outline-none py-2 px-4 bg-white border-neutral-200 border-1 w-[80px] text-xs uppercase font-semibold tracking-widest" type="number" min="1" />
           </div>
-          <div className={ProductPageStyles.addProductBtn}>
+          <div className={AddProductAnimationStyles.addProductBtn}>
             <button
               onClick={handleClick}
               className={
                 added
-                  ? `${ProductPageStyles.cartButton} ${ProductPageStyles.itemAdded}`
-                  : `${ProductPageStyles.cartButton}`
+                  ? `${AddProductAnimationStyles.cartButton} ${AddProductAnimationStyles.itemAdded}`
+                  : `${AddProductAnimationStyles.cartButton}`
               }
             >
-              <span className={ProductPageStyles.addToCart}>Add to Cart</span>
-              <span className={ProductPageStyles.added}>Added to Cart</span>
-              <FaShoppingCart className={ProductPageStyles.cartIcon} />
-              <FaBox className={ProductPageStyles.cartItem} />
+              <span className={AddProductAnimationStyles.addToCart}>Add to Cart</span>
+              <span className={AddProductAnimationStyles.added}>Added to Cart</span>
+              <FaShoppingCart className={AddProductAnimationStyles.cartIcon} />
+              <FaBox className={AddProductAnimationStyles.cartItem} />
             </button>
             {item ? (
-              <div className={ProductPageStyles.iconHolder}>
+              <div className={AddProductAnimationStyles.iconHolder}>
                 <HiHeart
                   className={
                     clicked
-                      ? `${ProductPageStyles.favIcon} ${ProductPageStyles.fill} ${ProductPageStyles.clicked}`
-                      : `${ProductPageStyles.favIcon} ${ProductPageStyles.fill} `
+                      ? `${AddProductAnimationStyles.favIcon} ${AddProductAnimationStyles.fill} ${AddProductAnimationStyles.clicked}`
+                      : `${AddProductAnimationStyles.favIcon} ${AddProductAnimationStyles.fill} `
                   }
                   onClick={removeProductFromFavourites}
                 />
               </div>
             ) : (
-              <div className={ProductPageStyles.iconHolder}>
+              <div className={AddProductAnimationStyles.iconHolder}>
                 <HiOutlineHeart
-                  className={ProductPageStyles.favIcon}
+                  className={AddProductAnimationStyles.favIcon}
                   onClick={saveProductToFavourites}
                 />
               </div>

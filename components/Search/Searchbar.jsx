@@ -79,7 +79,7 @@ const Searchbar = ({
           )}
 
           <input
-            className={SearchStyles.searchInput}
+            className={`${SearchStyles.searchInput} outline-none focus:outline-none `}
             id="submit"
             type="text"
             autocomplete="off"
