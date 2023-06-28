@@ -94,17 +94,17 @@ export default function Product({ product }) {
           <div className="flex flex-col-reverse w-full lg:flex-row md:gap-8">
             <div
               id="imageGallery"
-              className="grid grid-cols-4 sm:grid-cols-5 w-full lg:grid-cols-1 h-full lg:h-40 md:w-auto"
+              className="grid mt-2 md:mt-0 grid-cols-4 sm:grid-cols-5 w-full lg:grid-cols-1 h-full lg:h-40 md:w-auto gap-2 md:gap-4"
             >
               {product.gallery.map((image, i) => (
                 <div
-                  className="relative group w-full min-h-[100px] cursor-pointer md:min-h-0 md:h-[70px] md:w-[70px] md:h-fit-content"
+                  className="relative group w-full min-h-[70px] sm:min-h-[120px] cursor-pointer md:min-h-[70px] md:min-w-[70px] md:h-fit-content"
                   key={i}
                   onClick={() => {
                     setMainImage(image);
                   }}
                 >
-                  <Image className="image" src={image} fill alt="Item Image" />
+                  <Image className="object-cover" src={image} fill alt="Item Image" />
                   <div className="items-center min-h-[30px] justify-center hidden group-hover:flex bg-neutral-50 rounded-full w-8 h-8 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                     <AiFillEye size={40} className="p-1" />
                   </div>
