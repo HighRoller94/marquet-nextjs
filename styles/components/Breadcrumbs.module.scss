@@ -6,7 +6,7 @@
     justify-content: flex-start;
     max-width: 1440px;
     margin: 0px auto;
-    margin-top: 25px;
+    margin-top: 32px;
     .breadcrumbs {
         display:flex;
         align-items:center;
@@ -15,7 +15,7 @@
         li {
             display:flex;
             align-items:center;
-            font-size: .8rem;
+            font-size: 14px;
             opacity: .6;
             &:hover {
                 opacity: .6;
@@ -26,7 +26,7 @@
             }
             .icon {
                 margin: 0 10px;
-                font-size: .5rem;
+                font-size: 12px;
             }
         }
     }

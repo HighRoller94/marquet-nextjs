@@ -35,7 +35,7 @@ const CarouselHolder = () => {
               />
             </div>
             <div className={CarouselStyles.content}>
-              <h1>Feel good, look good</h1>
+              <h1>Look good, feel good</h1>
               <span>Shop our sustainable clothing line, only at Marquet</span>
               <button>Lets Shop</button>
             </div>
@@ -50,7 +50,7 @@ const CarouselHolder = () => {
               />
             </div>
             <div className={CarouselStyles.content}>
-              <h1>Feel good, look good</h1>
+              <h1>Look good, feel good</h1>
               <span>Shop our sustainable clothing line, only at Marquet</span>
               <button>Lets Shop</button>
             </div>

@@ -2,14 +2,10 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import Head from "next/head";
 import Image from "next/image";
-
+import { Carousel } from "flowbite-react";
 import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
-
-import Carousel from "react-responsive-carousel/lib/js/components/Carousel/index";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 import Search from "./Search/Search";
 import { FaUserAlt } from "react-icons/fa";
@@ -22,6 +18,7 @@ import CountdownTimer from "./CountdownTimer";
 import NavStyles from "../styles/components/Navbar.module.scss";
 
 const Navbar = () => {
+  const total = useSelector((state) => state.cart.total);
   const quantity = useSelector((state) => state.cart.quantity);
   const [active, setActive] = useState("");
   const [open, setOpen] = useState(false);
@@ -109,10 +106,10 @@ const Navbar = () => {
                     <a href="#">Brands</a>
                   </li>
                   <li className={NavStyles.navbarItem}>
-                    <a href="#">Sportswear</a>
+                    <a href="#">Men</a>
                   </li>
                   <li className={NavStyles.navbarItem}>
-                    <a href="#">Footwear</a>
+                    <a href="#">Women</a>
                   </li>
                   <div className={NavStyles.mobBottom}>
                     <a href="/html/orders.html">
@@ -138,9 +135,12 @@ const Navbar = () => {
                 />
               </div>
               <ul className={NavStyles.navIcons}>
-                <li onClick={toggleMenu} className="relative items-center flex">
+                <li
+                  onClick={toggleMenu}
+                  className="relative items-center flex gap-2"
+                >
                   {quantity > 0 ? (
-                    <p className={NavStyles.basketCount}>{quantity}</p>
+                    <p className=" font-bold text-sm">{quantity}</p>
                   ) : (
                     ""
                   )}
@@ -164,11 +164,11 @@ const Navbar = () => {
                         </>
                       ) : (
                         <>
-                          <p className="flex justify-between w-full">
+                          <p className="font-bold text-xs text-neutral-600 uppercase tracking-widest flex justify-between w-full">
                             Quantity:<span>{quantity} items</span>
                           </p>
-                          <p className=" flex justify-between w-full">
-                            Total:<span>{quantity}</span>
+                          <p className="font-bold text-xs text-neutral-600 uppercase tracking-widest flex justify-between w-full">
+                            Subtotal:<span>£{total.toFixed(2)}</span>
                           </p>
                         </>
                       )}
@@ -203,38 +203,25 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="backdrop-blur-lg bg-neutral-300"
+          className=" bg-neutral-300 h-6"
         >
-          <Carousel
-            className={NavStyles.navSlider}
-            axis="horizontal"
-            autoPlay={true}
-            swipeable={true}
-            showArrows={false}
-            showStatus={false}
-            showIndicators={false}
-            showThumbs={false}
-            transitionTime={1000}
-            interval={5000}
-            infiniteLoop={true}
-          >
-            <div className={NavStyles.inner}>
-              <p className="text-xs font-medium text-white mt-[2px] hover:text-gray-500 cursor-pointer transition">
+          <Carousel leftControl={<></>} rightControl={<></>} indicators={false}>
+            <div>
+              <p className="text-xs text-center font-medium text-white mt-[2px] hover:text-gray-500 cursor-pointer transition">
                 Join the family and get 20% off your next purchase
               </p>
             </div>
-            <div className={NavStyles.inner}>
-              <p className="text-xs font-medium text-white mt-[2px] hover:text-gray-500 cursor-pointer transition">
+            <div>
+              <p className="text-xs text-center font-medium text-white mt-[2px] hover:text-gray-500 cursor-pointer transition">
                 Free delivery when you spend over £50
               </p>
             </div>
-            <div className={NavStyles.inner}>
-              <p className="text-xs font-medium text-white mt-[2px] hover:text-gray-500 cursor-pointer transition">
+            <div>
+              <p className="text-xs text-center font-medium text-white mt-[2px] hover:text-gray-500 cursor-pointer transition">
                 Not happy with your order? Send it back and get in touch
               </p>
             </div>

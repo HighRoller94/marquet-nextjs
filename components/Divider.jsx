@@ -1,14 +1,13 @@
-import React from 'react'
+import React from "react";
 
-import DividerStyles from '../styles/components/Divider.module.scss'
-
-const Divider = ({ heading, text}) => {
+const Divider = ({ heading, text }) => {
   return (
-    <div className={DividerStyles.divider}>
-        <h2>{heading}</h2>
-        <p>{text}</p>
-    </div>
-  )
-}
+    <header className="text-center my-8">
+      <h2 className="text-xl font-bold text-gray-900 sm:text-3xl capitalize">{heading}</h2>
 
-export default Divider
+      <p className="max-w-md mx-auto mt-3 text-gray-500 capitalize">{text}</p>
+    </header>
+  );
+};
+
+export default Divider;

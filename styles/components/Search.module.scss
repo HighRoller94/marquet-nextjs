@@ -1,247 +1,253 @@
-@import '../variables.scss';
+@import "../variables.scss";
 
 .searchIcon {
-    .navIcon {
-        font-size: 1.4rem !important;
-        margin-right: 13px;
-    }
-    @media screen and (min-width: 768px) {
-        margin-right:10px;
-    }
-    @media screen and (min-width: 992px) {
-        display: none;
-    }
+  .navIcon {
+    font-size: 1.4rem !important;
+    margin-right: 13px;
+  }
+  @media screen and (min-width: 768px) {
+    margin-right: 10px;
+  }
+  @media screen and (min-width: 992px) {
+    display: none;
+  }
 }
 
 .searchIconMain {
-    font-size: 1.4rem;
-    margin-left: 5px;
-    stroke-width: 0;
-    display:none;
+  font-size: 1.4rem;
+  margin-left: 5px;
+  stroke-width: 0;
+  display: none;
 
-    @media screen and (min-width: 992px) {
-        display: block;
-        font-size: 1.2rem;
-    }
+  @media screen and (min-width: 992px) {
+    display: block;
+    font-size: 1.2rem;
+  }
 }
 .searchIconClose {
-    font-size: 1.2rem;
-    margin-left: 5px;
-    stroke-width: 0;
-    display:none;
-    @media screen and (min-width: 992px) {
-        display: block;
-    }
+  font-size: 1.2rem;
+  margin-left: 5px;
+  stroke-width: 0;
+  display: none;
+  @media screen and (min-width: 992px) {
+    display: block;
+  }
 }
 .searchContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+  margin-right: 2rem;
+  background-color: white;
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  height: 0;
+  top: 3rem;
+  left: 0;
+  z-index: 999;
+  transition: 200ms ease-in-out;
+  border: none;
+  outline: none;
+  width: 100%;
+  border-bottom: 1px solid grey;
+  @media screen and (min-width: 768px) {
+    top: 4rem;
+    width: 101vw;
+    padding: 0.2rem 0rem 1rem 1.2rem;
+
+    height: 45px;
+  }
+  @media screen and (min-width: 992px) {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    position: relative;
-    margin-right: 2rem;
-    background-color: white;
-    opacity: 0;
-    visibility: hidden;
-    position: absolute;
-    height: 0;
-    top: 3rem;
-    left: 0;
-    z-index: 99;
-    transition: 200ms ease-in-out;
-    border: none;
-    outline: none;
+    opacity: 1;
     width: 100%;
-    border-bottom: 1px solid grey;
-    @media screen and (min-width: 768px) { 
-        top: 4rem;
-        width: 101vw;
-        padding: 0.2rem 0rem 1rem 1.2rem;
-        
-        height: 45px;
+    visibility: visible;
+    border: none;
+    position: static;
+    padding: 0;
+  }
+
+  .searchWrapper {
+    border: none;
+    width: 100%;
+    z-index:99;
+    @media screen and (min-width: 768px) {
+      width: 94%;
+      position: absolute;
+      margin-left: auto;
+      margin-right: auto;
+      left: 0;
+      right: 0;
+      text-align: center;
     }
     @media screen and (min-width: 992px) {
-        display: flex;
-        opacity: 1;
-        width: 100%;
-        visibility: visible;
-        border: none;
-        position: static;
-        padding: 0;
+      position: static;
+      border: 1px solid lightgrey;
+      border-radius: 30px;
     }
 
-    .searchWrapper {
-        border: none;
-        width: 100%;
-        @media screen and (min-width: 768px) { 
-            width: 94%;
-            position: absolute;
-            margin-left: auto;
-            margin-right: auto;
-            left: 0;
-            right: 0;
-            text-align: center;
-        }
-        @media screen and (min-width: 992px) { 
-            position:static;
-            border: 1px solid black;
-
-        }
-
-        @media screen and (min-width: 1200px) {
-            min-width: 400px;
-        }
-
-        .searchBoxContainer {
-            display: flex;
-            min-width: 200px;
-             min-width: 200px;
-            position: relative;
-            z-index: 101;
-            padding: .3rem;
-
-            @media screen and (min-width: 992px) {
-                min-width: 350px;
-                padding: .4rem;
-            }
-
-            .searchIcon {
-                font-size: 1.4rem;
-                margin-left: 0.3rem;
-                @media screen and (min-width: 768px) { 
-                    margin-left:0;
-                }
-            }
-
-            .searchInput {
-                border: none;
-                margin-left: 1rem;
-                font-size: .9rem;
-                outline: none;
-                width: 100%;
-                z-index: 101;
-                @media screen and (min-width: 768px) { 
-                    margin-left:0.5rem;
-                }
-                @media screen and (min-width: 992px) { 
-                    width: fit-content;
-                }
-            }
-
-            .searchInput:focus+.overlay {
-                visibility: visible;
-                opacity: 1;
-            }
-        }
-
-        .overlay {
-            background-color: rgba(0, 0, 0, 0.5);
-            width: 100vw;
-            height: 100vh;
-            visibility: hidden;
-            opacity: 1;
-            z-index: 99;
-            right: 0;
-            bottom: 0;
-            top: 0;
-            left: 0;
-            position: fixed;
-            pointer-events:none;
-            transition: opacity 200s ease-in-out;
-        }
+    @media screen and (min-width: 1200px) {
+      min-width: 400px;
     }
 
-    .resultsList {
-        position: absolute;
-        top: 2.3rem;
-        overflow: none;
-        display: flex;
-        flex-direction: column;
+    .searchBoxContainer {
+      display: flex;
+      min-width: 200px;
+      min-width: 200px;
+      position: relative;
+      z-index: 101;
+      padding: 0.3rem;
+
+      @media screen and (min-width: 992px) {
+        min-width: 350px;
+        padding: 0.4rem;
+      }
+
+      svg {
+        color: rgb(165, 165, 165);
+      }
+      .searchIcon {
+        font-size: 1.4rem;
+        margin-left: 0.3rem;
+        fill: lightgrey;
+        stroke: lightgrey;
+        color: lightgrey;
+        @media screen and (min-width: 768px) {
+          margin-left: 0;
+        }
+      }
+
+      .searchInput {
+        border: none;
+        margin-left: 1rem;
+        font-size: 0.9rem;
+        outline: none;
         width: 100%;
-        background-color: white;
-        display: flex;
-        flex-direction: column;
-        box-shadow: none;
         z-index: 101;
+        @media screen and (min-width: 768px) {
+          margin-left: 0.5rem;
+        }
         @media screen and (min-width: 992px) {
-            top: 3.1rem;
-            width:fit-content;
-            min-width: 407px;
-            margin-left: .75rem;
+          width: fit-content;
         }
-        .singleResult {
-            padding: 0 1rem;
-            padding-top: .7rem;
-            padding-bottom: .7rem;
-            font-size: .9rem;
+      }
 
-            &:hover {
-                background-color: $offBlack;
-                color: white;
-                cursor: pointer;
-            }
-        }
+      .searchInput:focus + .overlay {
+        visibility: visible;
+        opacity: 1;
+      }
     }
+
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.5);
+      width: 100vw;
+      height: 100vh;
+      visibility: hidden;
+      opacity: 1;
+      z-index: 99;
+      right: 0;
+      bottom: 0;
+      top: 0;
+      left: 0;
+      position: fixed;
+      pointer-events: none;
+      transition: opacity 200s ease-in-out;
+    }
+  }
+
+  .resultsList {
+    position: absolute;
+    top: 2.3rem;
+    overflow: none;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    box-shadow: none;
+    z-index: 101;
+    @media screen and (min-width: 992px) {
+      top: 3.1rem;
+      width: fit-content;
+      min-width: 407px;
+      margin-left: 0.75rem;
+    }
+    .singleResult {
+      padding: 0 1rem;
+      padding-top: 0.7rem;
+      padding-bottom: 0.7rem;
+      font-size: 0.9rem;
+
+      &:hover {
+        background-color: rgb(184, 184, 184);
+        color: white;
+        cursor: pointer;
+      }
+    }
+  }
 }
 
 .searchOpen {
-    display: flex;
-    height: 100%;
-    position: absolute;
-    top: 3rem;
+  display: flex;
+  height: 100%;
+  position: absolute;
+  top: 3rem;
+  border: none;
+  outline: none;
+  width: 100%;
+  padding: 0.2rem 0 0.5rem 0;
+  left: 0;
+  background-color: white;
+  z-index: 9999;
+  opacity: 1;
+  visibility: visible;
+  height: 38px;
+  padding-bottom: 15px;
+  @media screen and (min-width: 768px) {
+    top: 4rem;
+    width: 101%;
+    height: 45px;
+  }
+  @media screen and (min-width: 992px) {
+    position: static;
+    padding: 0;
+  }
+  .searchWrapper {
     border: none;
-    outline: none;
     width: 100%;
-    padding: .2rem 0 0.5rem 0;
-    left: 0;
-    background-color: white;
-    z-index:9999;
-    opacity: 1;
-    visibility: visible;
-    height: 38px;
-    padding-bottom: 15px;
-    @media screen and (min-width: 768px) { 
-        top: 4rem;
-        width: 101%;
-        height: 45px;
+    @media screen and (min-width: 768px) {
+      width: 94%;
+      position: absolute;
+      margin-left: auto;
+      margin-right: auto;
+      left: 0;
+      right: 0;
+      text-align: center;
     }
-    @media screen and (min-width: 992px) { 
-        position: static;
-        padding: 0;
+    @media screen and (min-width: 992px) {
+      position: static;
+      width: 100%;
+      border: 1px solid black;
+      width: 300px;
     }
-    .searchWrapper {
-        border: none;
+    .searchBoxContainer {
+      width: 100%;
+      padding-right: 1rem;
+      z-index: 100;
+      @media screen and (min-width: 768px) {
+        padding-right: 0;
+      }
+      @media screen and (min-width: 992px) {
+        width: 300px;
+      }
+      input {
         width: 100%;
-        @media screen and (min-width: 768px) { 
-            width: 94%;
-            position: absolute;
-            margin-left: auto;
-            margin-right: auto;
-            left: 0;
-            right: 0;
-            text-align: center;
-        }
-        @media screen and (min-width: 992px) { 
-            position: static;
-            width: 100%;
-            border: 1px solid black;
-            width: 300px;
-        }
-        .searchBoxContainer {
-            width: 100%;
-            padding-right: 1rem;
-            z-index:100;
-            @media screen and (min-width: 768px) { 
-                padding-right: 0;
-            }
-            @media screen and (min-width: 992px) { 
-                width: 300px;
-            }
-            input {
-                width: 100%;
-                width: 200px;
-            }
-        }
+        width: 200px;
+      }
     }
+  }
 }
-

@@ -27,7 +27,7 @@ const Featured = () => {
           <AiFillEye className={FeaturedStyles.icon} />
         </div>
         <div>
-          <h1>Vans</h1>
+          <h1 className="text-xl font-medium">Vans</h1>
         </div>
       </motion.div>
       <motion.div
@@ -43,7 +43,7 @@ const Featured = () => {
           <AiFillEye className={FeaturedStyles.icon} />
         </div>
         <div>
-          <h1>Nike</h1>
+          <h1 className="text-xl font-medium">Nike</h1>
         </div>
       </motion.div>
       <motion.div
@@ -59,7 +59,7 @@ const Featured = () => {
           <AiFillEye className={FeaturedStyles.icon} />
         </div>
         <div>
-          <h1>Converse</h1>
+          <h1 className="text-xl font-medium">Converse</h1>
         </div>
       </motion.div>
     </div>

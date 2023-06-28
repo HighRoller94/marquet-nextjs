@@ -1,7 +1,6 @@
 import Breadcrumbs from "@/components/Breadcrumbs";
 
 export default async function loading({ searchParams }) {
-  console.log(searchParams)
   return (
     <>
       <div className="flex items-center justify-center flex-col my-[20px]">

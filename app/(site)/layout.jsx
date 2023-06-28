@@ -1,8 +1,12 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Provider from "../../components/Provider";
+import ToasterProvider from "@/providers/ToasterProvider";
+
 import "@/styles/globals.scss";
-import LayoutStyles from "../../styles/layout/Layout.module.scss";
+import { Figtree } from "next/font/google";
+
+const font = Figtree({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Marquet",
@@ -12,10 +16,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <Provider>
-      <html lang="en">
-        <body>
+      <html lang="en" className="">
+        <body
+          className={`${font.className} overflow-x-hidden flex flex-col justify-between min-h-screen`}
+        >
+          <ToasterProvider />
           <Navbar />
-          <div className={LayoutStyles.page}>{children}</div>
+          {children}
           <Footer />
         </body>
       </html>

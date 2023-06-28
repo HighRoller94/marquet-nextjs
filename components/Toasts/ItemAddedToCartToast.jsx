@@ -1,23 +1,33 @@
-import React from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { ImBin } from "react-icons/im";
 import { removeProduct } from "@/redux/cartSlice";
 import { useDispatch } from "react-redux";
 
 function ItemAddedToCartToast({ product, onClick }) {
+  const [removed, setRemoved] = useState(false);
   const dispatch = useDispatch();
   const price = product.price;
-  const quantity = 1
+  const quantity = 1;
 
   const removeProductItem = () => {
     dispatch(removeProduct({ ...product, price, quantity }));
+    setRemoved(true);
   };
 
   return (
-    <div className="bg-neutral-50 b-2 w-[265px] h-[100px]">
+    <div
+      className={`bg-neutral-50 b-2 transition-all duration-500 ${
+        !removed ? "w-[265px] h-[100px]" : "w-[190px] h-[60px]"
+      } `}
+    >
       <div className="flex w-full justify-between mb-1">
         <h1 className="text-xs font-bold text-neutral-600 mb-1 uppercase tracking-wide">
-          Added to Cart
+          {!removed ? (
+            <span>Added to Cart</span>
+          ) : (
+            <span>Removed from Cart</span>
+          )}
         </h1>
         <p
           onClick={onClick}
@@ -27,7 +37,11 @@ function ItemAddedToCartToast({ product, onClick }) {
         </p>
       </div>
       <div className="flex gap-4">
-        <div className="relative w-[125px] h-[70px]">
+        <div
+          className={`${
+            !removed ? "w-[125px] h-[70px]" : "w-[100px] h-[40px]"
+          } relative`}
+        >
           <Image
             src={product.gallery[0]}
             fill
@@ -45,7 +59,11 @@ function ItemAddedToCartToast({ product, onClick }) {
               {product.name}
             </p>
           </div>
-          <div className="flex justify-between w-full">
+          <div
+            className={`flex justify-between w-full ${
+              !removed ? "" : "invisible opacity-0"
+            }`}
+          >
             <div className="flex justify-between w-full">
               <p className="flex w-full font-bold text-xs text-neutral-600 uppercase tracking-widest">
                 Size:<span className="ml-1">S</span>
@@ -56,10 +74,19 @@ function ItemAddedToCartToast({ product, onClick }) {
             </div>
             <ImBin
               onClick={removeProductItem}
-              className="hover:opacity-70 transition"
+              className="hover:opacity-70 transition cursor-pointer"
             />
           </div>
         </div>
+      </div>
+      <div
+        className={`${
+          removed ? "" : "invisible opacity-0 "
+        } opacity-100 w-full h-12 bg-neutral-50 z-10 absolute top-9 left-0 justify-center flex`}
+      >
+        <p className="mt-2 font-bold text-sm text-neutral-600 uppercase tracking-widest">
+          Item Deleted
+        </p>
       </div>
     </div>
   );

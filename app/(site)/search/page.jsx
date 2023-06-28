@@ -1,6 +1,5 @@
 import ProductList from "@/components/ProductList";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import Newsletter from "@/components/Newsletter";
 import { getSearchedProducts } from "@/lib/prisma/products";
 
 export default async function Search({ searchParams }) {
@@ -9,10 +8,11 @@ export default async function Search({ searchParams }) {
   const products = data.products;
 
   return (
-    <div>
+    <div className="mx-auto w-full flex flex-col max-w-[1250px] px-10 xl:px-0 mt-8">
       <div className="flex items-center justify-center flex-col my-[20px]">
         <p className="text-base">Your search results for:</p>
         <h1 className="text-4xl my-[10px] font-bold">"{searchParam}"</h1>
+        <span className="text-xs text-neutral-600 font-sembold uppercase tracking-widest">{products.length} results found</span>
       </div>
       <div>
         {products ? (
@@ -23,7 +23,6 @@ export default async function Search({ searchParams }) {
           </div>
         )}
       </div>
-      <Newsletter />
     </div>
   );
 }

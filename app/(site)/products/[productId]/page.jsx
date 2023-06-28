@@ -1,8 +1,4 @@
-// import { useSelector, useDispatch } from "react-redux";
-// import { addProduct } from "@/redux/cartSlice";
-import Newsletter from "@/components/Newsletter";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import Options from "@/components/Options";
 import { getProductById } from "@/lib/prisma/products";
 import Product from "@/components/ProductPage/Product";
 import MoreProducts from "@/components/MoreProducts/MoreProducts";
@@ -16,13 +12,12 @@ async function getProduct(productId) {
 
 export default async function Page({ params }) {
   const product = await getProduct(params.productId);
-  const brand = product.brand
+
   return (
-    <>
+    <div className="px-0 mx-auto w-11/12 sm:w-full flex flex-col max-w-[1250px] lg:px-10 xl:px-0">
       <Breadcrumbs name={product?.name} />
       <Product product={product} />
-      <MoreProducts brand={brand} />
-      <Newsletter />
-    </>
+      <MoreProducts product={product} />
+    </div>
   );
 }

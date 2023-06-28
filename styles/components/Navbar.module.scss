@@ -258,8 +258,8 @@
                                 font-weight: 500;
                                 padding: .5rem .75rem;
                                 border: 2px solid white;
-
-                                
+                                font-weight: 700;
+                                text-transform: uppercase;
                                 @media screen and (min-width: 768px) {
                                     background: none;
                                     color: $offBlack;
@@ -273,7 +273,10 @@
                                 }
 
                                 @media screen and (min-width: 1312px) {
-                                    font-size: 1rem;
+                                    font-size: .9rem;
+                                }
+                                &:hover {
+                                    opacity: .5;
                                 }
                             }
                             &:nth-child(1) {
@@ -440,24 +443,6 @@
             }
         }
     }
-
-    .navSlider {
-        height: 27px;
-        width: 100vw;
-        display: flex;
-        justify-content: center;
-        margin-top: -2px;
-        .inner {
-            display: flex;
-            align-items: center;
-            text-align: center;
-            justify-content: center;
-            margin: 0 auto;
-            height: 100%;
-            width: fit-content;
-
-        }
-    }
 }
 
 .overlay {
@@ -467,7 +452,7 @@
     transition: 200s ease-in-out;
     background-color: rgba(0, 0, 0, 0.6);
     width: 100%;
-    z-index: 999;
+    z-index: 2;
     position: fixed;
     left: 0;
     bottom: 0;

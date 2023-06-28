@@ -12,8 +12,6 @@ const BasketSummary = ({ step, setStep }) => {
   const cartProducts = useSelector((state) => state.cart.products);
 
   const cart = useSelector((state) => state.cart);
-  
-  console.log(cart);
 
   const scrollToTop = () => {
     window.scrollTo({
