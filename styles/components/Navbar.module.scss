@@ -10,41 +10,6 @@
     transition: .2s;
     position:sticky;
     top:0;
-    .navSale {
-        display: none;
-        justify-content: center;
-        align-items: center;
-        // background-color: rgb(255, 151, 54);
-        background-color: $offBlack;
-        height: 20px;
-        width: 100%;
-
-        @media screen and (min-width: 1312px) {
-            height: 20px;
-        display: flex;
-        }
-
-        h4 {
-            background: none;
-            color: white;
-            font-weight: 400;
-            text-transform: uppercase;
-            font-size: .7rem;
-            letter-spacing: 1px;
-            display: flex;
-
-            @media screen and (min-width: 768px) {
-                font-size: .6rem;
-
-            }
-        }
-
-        span {
-            color: white;
-            margin-left: 5px;
-        }
-    }
-
     .container {
         display: flex;
         flex-direction: column;
@@ -394,10 +359,10 @@
                 }
 
                 @media screen and (min-width: 1200px) {
-                    width: 40%;
-                    min-width: 600px;
+                    width: 30%;
+                    min-width: 450px;
                 }
-
+                
                 justify-content:space-between;
 
                 .navIcons {

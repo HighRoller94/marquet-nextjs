@@ -26,6 +26,24 @@ const Navbar = () => {
   const [isFocused, setIsFocused] = useState(false);
   const [overlay, setOverlay] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
+  const [mensDropdown, setMensDropdown] = useState(false);
+  const [womensDropdown, setWomensDropdown] = useState(false);
+
+  const handleMenDropdownEnter = () => {
+    setMensDropdown(true);
+  };
+
+  const handleMenDropdownLeave = () => {
+    setMensDropdown(false);
+  };
+
+  const handleWomensDropdownEnter = () => {
+    setWomensDropdown(true);
+  };
+
+  const handleWomensDropdownLeave = () => {
+    setWomensDropdown(false);
+  };
 
   const toggleMenu = () => {
     setShowMenu(!showMenu);
@@ -76,10 +94,10 @@ const Navbar = () => {
         }
         id="navbar"
       >
-        <div className={NavStyles.navSale}>
-          <h4>
+        <div className="hidden justify-center items-center bg-neutral-900 h-6 w-full lg:flex">
+          <h4 className="text-white font-medium text-xs tracking-wide flex uppercase">
             Sale Ends in
-            <CountdownTimer seconds={31600} />
+            <CountdownTimer className="ml-2" seconds={31600} />
           </h4>
         </div>
         <div className={NavStyles.container}>
@@ -106,10 +124,188 @@ const Navbar = () => {
                     <a href="#">Brands</a>
                   </li>
                   <li className={NavStyles.navbarItem}>
-                    <a href="#">Men</a>
+                    <div
+                      class="relative inline-block text-left"
+                    >
+                      <div
+                        onMouseEnter={handleMenDropdownEnter}
+                        onMouseLeave={handleMenDropdownLeave}
+                      >
+                        <button
+                          type="button"
+                          class="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900"
+                          id="menu-button"
+                          aria-expanded="true"
+                          aria-haspopup="true"
+                        >
+                          MEN
+                          <svg
+                            class="-mr-1 h-5 w-5 text-neutral-800"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                            aria-hidden="true"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                              clip-rule="evenodd"
+                            />
+                          </svg>
+                        </button>
+                        <div
+                          onMouseEnter={handleMenDropdownEnter}
+                          onMouseLeave={handleMenDropdownLeave}
+                          class={`absolute left-0 z-10 pt-3 w-96 p-2 origin-top-right transition-height duration-500 ease-in-out overflow-hidden bg-white ${
+                            mensDropdown
+                              ? "max-h-72"
+                              : "max-h-0 invisible opacity-0 "
+                          }`}
+                          role="menu"
+                          aria-orientation="vertical"
+                          aria-labelledby="menu-button"
+                          tabindex="-1"
+                        >
+                          <ul class="py-1 flex gap-8" role="none">
+                            <div className="flex flex-col">
+                              <li className="text-neutral-900 tracking-widest block px-4 py-2 font-semibold text-sm hover:opacity-50 cursor-pointer">
+                                SALE
+                              </li>
+                              <li className="text-neutral-900 flex-wrap whitespace-nowrap tracking-widest block px-4 py-2 font-semibold text-sm hover:opacity-50 cursor-pointer">
+                                Clothing
+                              </li>
+                              <li className="text-neutral-900 flex-wrap whitespace-nowrap tracking-widest block px-4 py-2 font-semibold text-sm hover:opacity-50 cursor-pointer">
+                                Shoes
+                              </li>
+                              <li className="text-neutral-900 flex-wrap whitespace-nowrap tracking-widest block px-4 py-2 font-semibold text-sm hover:opacity-50 cursor-pointer">
+                                Accessories
+                              </li>
+                              <li className="text-neutral-900 flex-wrap whitespace-nowrap tracking-widest block px-4 py-2 font-semibold text-sm hover:opacity-50 cursor-pointer">
+                                Sportswear
+                              </li>
+                              <li className="text-neutral-900 flex-wrap whitespace-nowrap tracking-widest block px-4 py-2 font-semibold text-sm hover:opacity-50 cursor-pointer">
+                                Summer
+                              </li>
+                              <li className="text-neutral-900 flex-wrap whitespace-nowrap tracking-widest block px-4 py-2 font-semibold text-sm hover:opacity-50 cursor-pointer">
+                                Brands
+                              </li>
+                            </div>
+                            <div>
+                              <li className="text-neutral-900 tracking-widest block px-4 py-2 font-semibold text-sm hover:opacity-50 cursor-pointer">
+                                Bestsellers
+                              </li>
+                              <li className="w-fit flex-wrap whitespace-nowrap text-neutral-900 tracking-widest block px-4 py-2 font-semibold text-sm hover:opacity-50 cursor-pointer">
+                                Popular by Marquet
+                              </li>
+                              <li className="text-neutral-900 flex-wrap whitespace-nowrap tracking-widest block px-4 py-2 font-semibold text-sm hover:opacity-50 cursor-pointer">
+                                New In: Clothing
+                              </li>
+                              <li className="text-neutral-900 flex-wrap whitespace-nowrap  tracking-widest block px-4 py-2 font-semibold text-sm hover:opacity-50 cursor-pointer">
+                                New In: Brands
+                              </li>
+                              <li className="text-neutral-900 flex-wrap whitespace-nowrap  tracking-widest block px-4 py-2 font-semibold text-sm hover:opacity-50 cursor-pointer">
+                                A-Z of brands
+                              </li>
+                              <li className="text-neutral-900 flex-wrap whitespace-nowrap  tracking-widest block px-4 py-2 font-semibold text-sm hover:opacity-50 cursor-pointer">
+                                The Sports Edit
+                              </li>
+                              <li className="text-neutral-900 flex-wrap whitespace-nowrap  tracking-widest block px-4 py-2 font-semibold text-sm hover:opacity-50 cursor-pointer">
+                                Shop by Product
+                              </li>
+                            </div>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
                   </li>
                   <li className={NavStyles.navbarItem}>
-                    <a href="#">Women</a>
+                    <div class="relative inline-block text-left">
+                      <div
+                        onMouseEnter={handleWomensDropdownEnter}
+                        onMouseLeave={handleWomensDropdownLeave}
+                      >
+                        <button
+                          type="button"
+                          class="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900"
+                          id="menu-button"
+                          aria-expanded="true"
+                          aria-haspopup="true"
+                        >
+                          WOMEN
+                          <svg
+                            class="-mr-1 h-5 w-5 text-neutral-800"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                            aria-hidden="true"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                              clip-rule="evenodd"
+                            />
+                          </svg>
+                        </button>
+                        <div
+                          class={`absolute left-0 z-10 pt-3 w-96 p-2 origin-top-right transition-height duration-500 ease-in-out overflow-hidden bg-white ${
+                            womensDropdown
+                              ? "max-h-72"
+                              : "max-h-0 invisible opacity-0 "
+                          }`}
+                          role="menu"
+                          aria-orientation="vertical"
+                          aria-labelledby="menu-button"
+                          tabindex="-1"
+                        >
+                          <ul class="py-1 flex gap-8" role="none">
+                            <div className="flex flex-col">
+                              <li className="text-neutral-900 tracking-widest block px-4 py-2 font-semibold text-sm hover:opacity-50 cursor-pointer">
+                                SALE
+                              </li>
+                              <li className="text-neutral-900 flex-wrap whitespace-nowrap tracking-widest block px-4 py-2 font-semibold text-sm hover:opacity-50 cursor-pointer">
+                                Clothing
+                              </li>
+                              <li className="text-neutral-900 flex-wrap whitespace-nowrap tracking-widest block px-4 py-2 font-semibold text-sm hover:opacity-50 cursor-pointer">
+                                Shoes
+                              </li>
+                              <li className="text-neutral-900 flex-wrap whitespace-nowrap tracking-widest block px-4 py-2 font-semibold text-sm hover:opacity-50 cursor-pointer">
+                                Accessories
+                              </li>
+                              <li className="text-neutral-900 flex-wrap whitespace-nowrap tracking-widest block px-4 py-2 font-semibold text-sm hover:opacity-50 cursor-pointer">
+                                Sportswear
+                              </li>
+                              <li className="text-neutral-900 flex-wrap whitespace-nowrap tracking-widest block px-4 py-2 font-semibold text-sm hover:opacity-50 cursor-pointer">
+                                Summer
+                              </li>
+                              <li className="text-neutral-900 flex-wrap whitespace-nowrap tracking-widest block px-4 py-2 font-semibold text-sm hover:opacity-50 cursor-pointer">
+                                Brands
+                              </li>
+                            </div>
+                            <div>
+                              <li className="text-neutral-900 tracking-widest block px-4 py-2 font-semibold text-sm hover:opacity-50 cursor-pointer">
+                                Bestsellers
+                              </li>
+                              <li className="w-fit flex-wrap whitespace-nowrap text-neutral-900 tracking-widest block px-4 py-2 font-semibold text-sm hover:opacity-50 cursor-pointer">
+                                Popular by Marquet
+                              </li>
+                              <li className="text-neutral-900 flex-wrap whitespace-nowrap tracking-widest block px-4 py-2 font-semibold text-sm hover:opacity-50 cursor-pointer">
+                                New In: Clothing
+                              </li>
+                              <li className="text-neutral-900 flex-wrap whitespace-nowrap  tracking-widest block px-4 py-2 font-semibold text-sm hover:opacity-50 cursor-pointer">
+                                New In: Brands
+                              </li>
+                              <li className="text-neutral-900 flex-wrap whitespace-nowrap  tracking-widest block px-4 py-2 font-semibold text-sm hover:opacity-50 cursor-pointer">
+                                A-Z of brands
+                              </li>
+                              <li className="text-neutral-900 flex-wrap whitespace-nowrap  tracking-widest block px-4 py-2 font-semibold text-sm hover:opacity-50 cursor-pointer">
+                                The Sports Edit
+                              </li>
+                              <li className="text-neutral-900 flex-wrap whitespace-nowrap  tracking-widest block px-4 py-2 font-semibold text-sm hover:opacity-50 cursor-pointer">
+                                Shop by Product
+                              </li>
+                            </div>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
                   </li>
                   <div className={NavStyles.mobBottom}>
                     <a href="/html/orders.html">
@@ -121,7 +317,7 @@ const Navbar = () => {
               </div>
             </div>
             <div className={NavStyles.right}>
-              <div>
+              <div className="flex">
                 <Search
                   handleMobSearchOpen={handleMobSearchOpen}
                   handleMobSearchClose={handleMobSearchClose}
