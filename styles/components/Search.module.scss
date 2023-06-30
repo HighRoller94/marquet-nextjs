@@ -21,12 +21,13 @@
 
   @media screen and (min-width: 992px) {
     display: block;
-    font-size: 1.2rem;
+    font-size: 2.4rem;
   }
 }
 .searchIconClose {
   font-size: 1.2rem;
   margin-left: 5px;
+  color: black;
   stroke-width: 0;
   display: none;
   @media screen and (min-width: 992px) {
@@ -58,7 +59,6 @@
     top: 4rem;
     width: 101vw;
     padding: 0.2rem 0rem 1rem 1.2rem;
-
     height: 45px;
   }
   @media screen and (min-width: 992px) {
@@ -74,7 +74,7 @@
   .searchWrapper {
     border: none;
     width: 100%;
-    z-index:99;
+    z-index: 99;
     @media screen and (min-width: 768px) {
       width: 94%;
       position: absolute;
@@ -86,7 +86,7 @@
     }
     @media screen and (min-width: 992px) {
       position: static;
-      
+
       border: 1px solid #d3d3d3;
       border-radius: 30px;
     }
@@ -97,35 +97,36 @@
 
     .searchBoxContainer {
       display: flex;
+      flex-direction: row-reverse;
       min-width: 200px;
       min-width: 200px;
       position: relative;
       z-index: 101;
       padding: 0.3rem;
-      align-items:center;
+      align-items: center;
       outline: none !important;
       @media screen and (min-width: 992px) {
+        flex-direction: row;
         min-width: 200px;
-        padding: 0.4rem;
+        padding: 0.5rem;
       }
 
       svg {
         color: rgb(165, 165, 165);
+        height: 20px;
       }
       .searchIcon {
-        font-size: 1.4rem;
+        font-size: 2rem;
         margin-left: 0.3rem;
-        fill: lightgrey;
-        stroke: lightgrey;
-        color: lightgrey;
         @media screen and (min-width: 768px) {
           margin-left: 0;
         }
       }
 
       .searchInput {
+        padding: 0.3rem;
         border: none;
-        margin-left: 1rem;
+        margin-left: 0.5rem;
         font-size: 0.9rem;
         outline: none !important;
         width: 100%;
@@ -177,7 +178,7 @@
     box-shadow: none;
     z-index: 101;
     @media screen and (min-width: 992px) {
-      top: 3.1rem;
+      top: 4rem;
       width: fit-content;
       min-width: 407px;
       margin-left: 0.75rem;
@@ -201,7 +202,7 @@
   display: flex;
   height: 100%;
   position: absolute;
-  top: 3rem;
+  top: 4rem;
   border: none;
   outline: none;
   width: 100%;
@@ -242,8 +243,8 @@
     }
     .searchBoxContainer {
       width: 100%;
-      padding-right: 1rem;
       z-index: 100;
+      padding-right: 1rem;
       @media screen and (min-width: 768px) {
         padding-right: 0;
       }
@@ -253,8 +254,8 @@
       input {
         width: 100%;
         width: 200px;
-        outline:none;
-        border:none;
+        outline: none;
+        border: none;
       }
     }
   }

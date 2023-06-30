@@ -79,7 +79,7 @@ const Searchbar = ({
           )}
 
           <input
-            className={`${SearchStyles.searchInput} outline-none focus:outline-none `}
+            className={`${SearchStyles.searchInput} ring-1 ring-inset  ring-white focus:ring-2 focus:ring-inset focus:ring-white `}
             id="submit"
             type="text"
             autocomplete="off"

@@ -20,7 +20,7 @@ const CountdownTimer = ({ seconds }) => {
   const second = timeLeft % 60;
 
   return (
-    <span>
+    <span className="ml-1">
       {formatTime(hours)}:{formatTime(minutes)}:{formatTime(second)}
     </span>
   );

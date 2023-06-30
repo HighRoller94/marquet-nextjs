@@ -6,7 +6,7 @@ import Collection from "@/components/Collection";
 import Featured from "../../components/Featured";
 import HomeHeader from "../../components/HomeHeader";
 import SponsorsComponent from "@/components/Sponsors";
-
+import Newsletter from "@/components/Newsletter";
 export default function Home() {
   return (
     <>
@@ -27,6 +27,7 @@ export default function Home() {
           text="Check out our latest seasonal collections at Marquet, handpicked by our inhouse designers."
         />
         <Collection />
+        <Newsletter />
       </div>
       <SponsorsComponent />
     </>

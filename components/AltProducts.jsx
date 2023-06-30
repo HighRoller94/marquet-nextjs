@@ -19,7 +19,7 @@ const AltProducts = () => {
   }, [count]);
 
   return (
-    <div className="flex flex-col sm:grid grid-cols-2 lg:grid-cols-4 sm:gap-8 sm:my-10">
+    <div className="grid grid-cols-2 sm:grid lg:grid-cols-4 sm:gap-8 sm:my-10">
       {products?.length > 0 ? (
         products.map((product, i) => (
           <AltProduct

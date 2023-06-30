@@ -2,44 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-.layout {
-  display: flex;
-  flex-direction: column;
-  min-height: calc(100vh - 0px);
-  padding-top: 110px;
-}
-
 .imageContainer {
   background-color: lightgrey;
 }
 
-.carousel-root {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-.carousel {
-  display: none;
-}
-.carousel-slider {
-  display: flex;
-}
-
-.carousel {
-  li {
-    z-index: 1 !important;
-  }
-}
-
 .toast {
   .go2072408551 {
-    margin-top: 5px;
+    margin-top: 8px;
     box-shadow: none;
     border-radius: 0px;
     border: 1px solid rgb(230, 230, 230);
   }
-}
-input {
-  outline: 0;
 }
