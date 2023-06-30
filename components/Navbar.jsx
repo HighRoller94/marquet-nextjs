@@ -1,69 +1,49 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState, Fragment, useRef } from "react";
+import { Dialog, Popover, Tab, Transition } from "@headlessui/react";
 import Link from "next/link";
 import Image from "next/image";
 import { Carousel } from "flowbite-react";
 import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
-
+import { MdClose } from "react-icons/md";
 import Search from "./Search/Search";
 import { FaUserAlt } from "react-icons/fa";
 import { AiOutlineShopping, AiFillShopping } from "react-icons/ai";
 import { HiHeart } from "react-icons/hi";
-import { BiMenu } from "react-icons/bi";
+import { HiOutlineMenuAlt2 } from "react-icons/hi";
 
 import CountdownTimer from "./CountdownTimer";
 
 import NavStyles from "../styles/components/Navbar.module.scss";
 
 const Navbar = () => {
+  // CART STUFF
   const total = useSelector((state) => state.cart.total);
   const quantity = useSelector((state) => state.cart.quantity);
+
+  // DISAPPEARING NAV
   const [active, setActive] = useState("");
+
+  // useEffect(() => {
+  //   let lastScrollY = window.scrollY;
+  //   window.addEventListener("scroll", () => {
+  //     if (lastScrollY < window.scrollY) {
+  //       setActive(true);
+  //     } else {
+  //       setActive(false);
+  //     }
+  //     lastScrollY = window.scrollY;
+  //   });
+  // }, []);
+
+  // MOBILE MENU
   const [open, setOpen] = useState(false);
+
+  // SEARCH STUFF
   const [searchOpen, setSearchOpen] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
-  const [overlay, setOverlay] = useState(false);
-  const [showMenu, setShowMenu] = useState(false);
-  const [mensDropdown, setMensDropdown] = useState(false);
-  const [womensDropdown, setWomensDropdown] = useState(false);
-
-  const handleMenDropdownEnter = () => {
-    setMensDropdown(true);
-  };
-
-  const handleMenDropdownLeave = () => {
-    setMensDropdown(false);
-  };
-
-  const handleWomensDropdownEnter = () => {
-    setWomensDropdown(true);
-  };
-
-  const handleWomensDropdownLeave = () => {
-    setWomensDropdown(false);
-  };
-
-  const toggleMenu = () => {
-    setShowMenu(!showMenu);
-  };
-
-  useEffect(() => {
-    // let lastScrollY = window.scrollY;
-    // window.addEventListener("scroll", () => {
-    //   if (lastScrollY < window.scrollY) {
-    //     setActive(true);
-    //   } else {
-    //     setActive(false);
-    //   }
-    //   lastScrollY = window.scrollY;
-    // });
-  }, []);
-
-  const handleOpen = () => {
-    setOpen(!open);
-  };
 
   const handleMobSearchOpen = () => {
     setSearchOpen(true);
@@ -86,11 +66,193 @@ const Navbar = () => {
     setOverlay(false);
   };
 
+  // OVERLAY FOR SEARCH
+  const [overlay, setOverlay] = useState(false);
+
+  // BASKETMENU DROPDOWN
+  const [showMenu, setShowMenu] = useState(false);
+
+  const toggleMenu = () => {
+    setShowMenu(!showMenu);
+  };
+
+  // MENU HOVER STATE DROPDOWNS
+  const buttonRefs = useRef([]);
+  const [openDropdownIndex, setOpenDropdownIndex] = useState(null);
+
+  const timeoutDuration = 200;
+  let timeouts = [];
+
+  const closePopover = (i) => {
+    return buttonRefs.current[i]?.dispatchEvent(
+      new KeyboardEvent("keydown", {
+        key: "Escape",
+        bubbles: true,
+        cancelable: true,
+      })
+    );
+  };
+
+  const onMouseEnter = (i) => {
+    clearTimeout(timeouts[i]);
+    setOpenDropdownIndex(i);
+    return buttonRefs.current[i]?.click();
+  };
+
+  const onMouseLeave = (i) => {
+    timeouts[i] = setTimeout(() => closePopover(i), timeoutDuration);
+  };
+
+  const handlePanelMouseEnter = (i) => {
+    clearTimeout(timeouts[i]);
+  };
+
+  const handlePanelMouseLeave = (i) => {
+    timeouts[i] = setTimeout(() => closePopover(i), timeoutDuration);
+  };
+
+  // MENU NAVIGATION
+
+  const navigation = {
+    categories: [
+      {
+        id: "women",
+        name: "Women",
+        featured: [
+          {
+            name: "New Arrivals",
+            href: "#",
+            imageSrc:
+              "https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg",
+            imageAlt:
+              "Models sitting back to back, wearing Basic Tee in black and bone.",
+          },
+          {
+            name: "Basic Tees",
+            href: "#",
+            imageSrc:
+              "https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg",
+            imageAlt:
+              "Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.",
+          },
+        ],
+        sections: [
+          {
+            id: "clothing",
+            name: "Clothing",
+            items: [
+              { name: "Tops", href: "#" },
+              { name: "Dresses", href: "#" },
+              { name: "Pants", href: "#" },
+              { name: "Denim", href: "#" },
+              { name: "Sweaters", href: "#" },
+              { name: "T-Shirts", href: "#" },
+              { name: "Jackets", href: "#" },
+              { name: "Activewear", href: "#" },
+              { name: "Browse All", href: "#" },
+            ],
+          },
+          {
+            id: "accessories",
+            name: "Accessories",
+            items: [
+              { name: "Watches", href: "#" },
+              { name: "Wallets", href: "#" },
+              { name: "Bags", href: "#" },
+              { name: "Sunglasses", href: "#" },
+              { name: "Hats", href: "#" },
+              { name: "Belts", href: "#" },
+            ],
+          },
+          {
+            id: "brands",
+            name: "Brands",
+            items: [
+              { name: "VANS", href: "#" },
+              { name: "Levis", href: "#" },
+              { name: "New Look", href: "#" },
+              { name: "Converse", href: "#" },
+              { name: "Nike", href: "#" },
+              { name: "Dr Martens", href: "#" },
+            ],
+          },
+        ],
+      },
+      {
+        id: "men",
+        name: "Men",
+        featured: [
+          {
+            name: "New Arrivals",
+            href: "#",
+            imageSrc:
+              "https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg",
+            imageAlt:
+              "Drawstring top with elastic loop closure and textured interior padding.",
+          },
+          {
+            name: "Artwork Tees",
+            href: "#",
+            imageSrc:
+              "https://tailwindui.com/img/ecommerce-images/category-page-02-image-card-06.jpg",
+            imageAlt:
+              "Three shirts in gray, white, and blue arranged on table with same line drawing of hands and shapes overlapping on front of shirt.",
+          },
+        ],
+        sections: [
+          {
+            id: "clothing",
+            name: "Clothing",
+            items: [
+              { name: "Tops", href: "#" },
+              { name: "Pants", href: "#" },
+              { name: "Sweaters", href: "#" },
+              { name: "T-Shirts", href: "#" },
+              { name: "Jackets", href: "#" },
+              { name: "Activewear", href: "#" },
+              { name: "Browse All", href: "#" },
+            ],
+          },
+          {
+            id: "accessories",
+            name: "Accessories",
+            items: [
+              { name: "Watches", href: "#" },
+              { name: "Wallets", href: "#" },
+              { name: "Bags", href: "#" },
+              { name: "Sunglasses", href: "#" },
+              { name: "Hats", href: "#" },
+              { name: "Belts", href: "#" },
+            ],
+          },
+          {
+            id: "brands",
+            name: "Brands",
+            items: [
+              { name: "Levis", href: "#" },
+              { name: "Barbour", href: "#" },
+              { name: "Converse", href: "#" },
+              { name: "Nike", href: "#" },
+              { name: "Dr Martens", href: "#" },
+              { name: "VANS", href: "#" },
+            ],
+          },
+        ],
+      },
+    ],
+  };
+
+  function classNames(...classes) {
+    return classes.filter(Boolean).join(" ");
+  }
+
   return (
     <>
       <nav
-        className={
-          !active ? NavStyles.navbar : `${NavStyles.navbar} ${NavStyles.active}`
+    className={`${
+          !active
+            ? NavStyles.navbar
+            : `${NavStyles.navbar} ${NavStyles.active}`} z-50 flex flex-col justify-center bg-white sticky top-0 transition w-full`
         }
         id="navbar"
       >
@@ -100,223 +262,319 @@ const Navbar = () => {
             <CountdownTimer className="ml-2" seconds={31600} />
           </h4>
         </div>
-        <div className={NavStyles.container}>
-          <div className={NavStyles.nav}>
-            <div className={NavStyles.left}>
-              <div className={NavStyles.navToggle} id="mobile-menu">
-                <BiMenu onClick={handleOpen} className={NavStyles.navIcon} />
-              </div>
-              <Link href="/" className={NavStyles.navLogo}>
-                <Image src="/images/Marquet-Logo.svg" alt="Marquet Logo" fill />
-              </Link>
-              <div
-                className={
-                  !open
-                    ? NavStyles.sideMenu
-                    : `${NavStyles.sideMenu} ${NavStyles.open}`
-                }
-              >
-                <ul className={NavStyles.navMenu}>
-                  <li className={NavStyles.navbarItem}>
-                    <a href="#">Summer Sales</a>
-                  </li>
-                  <li className={NavStyles.navbarItem}>
-                    <a href="#">Brands</a>
-                  </li>
-                  <li className={NavStyles.navbarItem}>
-                    <div
-                      class="relative inline-block text-left"
+        <div className="flex justify-between h-14 md:h-16 mx-auto max-w-[1250px] relative w-full items-center px-3 lg:px-10 xl:px-0">
+            <div className="flex items-center">
+              {/* TAILWIND NAVBAR */}
+              <div className="bg-white">
+                {/* Mobile menu */}
+                <Transition.Root show={open} as={Fragment}>
+                  <Dialog
+                    as="div"
+                    className="relative z-50 lg:hidden"
+                    onClose={setOpen}
+                  >
+                    <Transition.Child
+                      as={Fragment}
+                      enter="transition-opacity ease-linear duration-300"
+                      enterFrom="opacity-0"
+                      enterTo="opacity-100"
+                      leave="transition-opacity ease-linear duration-300"
+                      leaveFrom="opacity-100"
+                      leaveTo="opacity-0"
                     >
-                      <div
-                        onMouseEnter={handleMenDropdownEnter}
-                        onMouseLeave={handleMenDropdownLeave}
+                      <div className="fixed inset-0 bg-black bg-opacity-25" />
+                    </Transition.Child>
+
+                    <div className="fixed inset-0 z-50 flex">
+                      <Transition.Child
+                        as={Fragment}
+                        enter="transition ease-in-out duration-300 transform"
+                        enterFrom="-translate-x-full"
+                        enterTo="translate-x-0"
+                        leave="transition ease-in-out duration-300 transform"
+                        leaveFrom="translate-x-0"
+                        leaveTo="-translate-x-full"
                       >
+                        <Dialog.Panel className="z-50 relative flex w-full max-w-xs flex-col overflow-y-auto bg-white pb-12 shadow-xl">
+                          <div className="flex px-4 pb-2 pt-5">
+                            <button
+                              type="button"
+                              className="-m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400"
+                              onClick={() => setOpen(false)}
+                            >
+                              <span className="sr-only">Close menu</span>
+                              <MdClose className="h-6 w-6" aria-hidden="true" />
+                            </button>
+                          </div>
+
+                          {/* Links */}
+                          <Tab.Group as="div">
+                            <div className="border-b border-gray-200">
+                              <Tab.List className="-mb-px flex space-x-8 px-4">
+                                {navigation.categories.map((category) => (
+                                  <Tab
+                                    key={category.name}
+                                    className={({ selected }) =>
+                                      classNames(
+                                        selected
+                                          ? "border-neutral-500 text-neutral-500"
+                                          : "border-transparent text-gray-900",
+                                        "flex-1 whitespace-nowrap border-b-2 px-1 py-4 text-base font-medium"
+                                      )
+                                    }
+                                  >
+                                    {category.name}
+                                  </Tab>
+                                ))}
+                              </Tab.List>
+                            </div>
+                            <Tab.Panels as={Fragment}>
+                              {navigation.categories.map((category) => (
+                                <Tab.Panel
+                                  key={category.name}
+                                  className="space-y-10 px-4 pb-8 pt-10"
+                                >
+                                  <div className="grid grid-cols-2 gap-x-4">
+                                    {category.featured.map((item) => (
+                                      <div
+                                        key={item.name}
+                                        className="group relative text-sm"
+                                      >
+                                        <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
+                                          <img
+                                            src={item.imageSrc}
+                                            alt={item.imageAlt}
+                                            className="object-cover object-center"
+                                          />
+                                        </div>
+                                        <a
+                                          href={item.href}
+                                          className="mt-6 block font-medium text-gray-900"
+                                        >
+                                          <span
+                                            className="absolute inset-0 z-10"
+                                            aria-hidden="true"
+                                          />
+                                          {item.name}
+                                        </a>
+                                        <p aria-hidden="true" className="mt-1">
+                                          Shop now
+                                        </p>
+                                      </div>
+                                    ))}
+                                  </div>
+                                  {category.sections.map((section) => (
+                                    <div key={section.name}>
+                                      <p
+                                        id={`${category.id}-${section.id}-heading-mobile`}
+                                        className="font-medium text-gray-900"
+                                      >
+                                        {section.name}
+                                      </p>
+                                      <ul
+                                        role="list"
+                                        aria-labelledby={`${category.id}-${section.id}-heading-mobile`}
+                                        className="mt-6 flex flex-col space-y-6"
+                                      >
+                                        {section.items.map((item) => (
+                                          <li
+                                            key={item.name}
+                                            className="flow-root"
+                                          >
+                                            <a
+                                              href={item.href}
+                                              className="-m-2 block p-2 text-gray-500"
+                                            >
+                                              {item.name}
+                                            </a>
+                                          </li>
+                                        ))}
+                                      </ul>
+                                    </div>
+                                  ))}
+                                </Tab.Panel>
+                              ))}
+                            </Tab.Panels>
+                          </Tab.Group>
+                        </Dialog.Panel>
+                      </Transition.Child>
+                    </div>
+                  </Dialog>
+                </Transition.Root>
+
+                <header className="relative">
+                  <nav aria-label="Top" className="">
+                    <div>
+                      <div className="flex h-14 lg:h-16 items-center">
                         <button
                           type="button"
-                          class="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900"
-                          id="menu-button"
-                          aria-expanded="true"
-                          aria-haspopup="true"
+                          className="rounded-md bg-white text-gray-400 lg:hidden"
+                          onClick={() => setOpen(true)}
                         >
-                          MEN
-                          <svg
-                            class="-mr-1 h-5 w-5 text-neutral-800"
-                            viewBox="0 0 20 20"
-                            fill="currentColor"
-                            aria-hidden="true"
-                          >
-                            <path
-                              fill-rule="evenodd"
-                              d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-                              clip-rule="evenodd"
-                            />
-                          </svg>
+                          <span className="sr-only">Open menu</span>
+                          <HiOutlineMenuAlt2 className="h-8 w-8" aria-hidden="true" />
                         </button>
-                        <div
-                          onMouseEnter={handleMenDropdownEnter}
-                          onMouseLeave={handleMenDropdownLeave}
-                          class={`absolute left-0 z-10 pt-3 w-96 p-2 origin-top-right transition-height duration-500 ease-in-out overflow-hidden bg-white ${
-                            mensDropdown
-                              ? "max-h-72"
-                              : "max-h-0 invisible opacity-0 "
-                          }`}
-                          role="menu"
-                          aria-orientation="vertical"
-                          aria-labelledby="menu-button"
-                          tabindex="-1"
+
+                        {/* Logo */}
+
+                        <Link href="/" className="ml-3 md:ml-4 lg:ml-0 relative w-24 md:w-32 h-10">
+                          <Image
+                            src="/images/Marquet-Logo.svg"
+                            alt="Marquet Logo"
+                            fill
+                          />
+                        </Link>
+
+                        <Link
+                          href="/"
+                          className="hidden lg:flex bg-neutral-900 text-white ml-8 text-base uppercase font-semibold hover:opacity-90 py-2 px-4
+                        "
                         >
-                          <ul class="py-1 flex gap-8" role="none">
-                            <div className="flex flex-col">
-                              <li className="text-neutral-900 tracking-widest block px-4 py-2 font-semibold text-sm hover:opacity-50 cursor-pointer">
-                                SALE
-                              </li>
-                              <li className="text-neutral-900 flex-wrap whitespace-nowrap tracking-widest block px-4 py-2 font-semibold text-sm hover:opacity-50 cursor-pointer">
-                                Clothing
-                              </li>
-                              <li className="text-neutral-900 flex-wrap whitespace-nowrap tracking-widest block px-4 py-2 font-semibold text-sm hover:opacity-50 cursor-pointer">
-                                Shoes
-                              </li>
-                              <li className="text-neutral-900 flex-wrap whitespace-nowrap tracking-widest block px-4 py-2 font-semibold text-sm hover:opacity-50 cursor-pointer">
-                                Accessories
-                              </li>
-                              <li className="text-neutral-900 flex-wrap whitespace-nowrap tracking-widest block px-4 py-2 font-semibold text-sm hover:opacity-50 cursor-pointer">
-                                Sportswear
-                              </li>
-                              <li className="text-neutral-900 flex-wrap whitespace-nowrap tracking-widest block px-4 py-2 font-semibold text-sm hover:opacity-50 cursor-pointer">
-                                Summer
-                              </li>
-                              <li className="text-neutral-900 flex-wrap whitespace-nowrap tracking-widest block px-4 py-2 font-semibold text-sm hover:opacity-50 cursor-pointer">
-                                Brands
-                              </li>
-                            </div>
-                            <div>
-                              <li className="text-neutral-900 tracking-widest block px-4 py-2 font-semibold text-sm hover:opacity-50 cursor-pointer">
-                                Bestsellers
-                              </li>
-                              <li className="w-fit flex-wrap whitespace-nowrap text-neutral-900 tracking-widest block px-4 py-2 font-semibold text-sm hover:opacity-50 cursor-pointer">
-                                Popular by Marquet
-                              </li>
-                              <li className="text-neutral-900 flex-wrap whitespace-nowrap tracking-widest block px-4 py-2 font-semibold text-sm hover:opacity-50 cursor-pointer">
-                                New In: Clothing
-                              </li>
-                              <li className="text-neutral-900 flex-wrap whitespace-nowrap  tracking-widest block px-4 py-2 font-semibold text-sm hover:opacity-50 cursor-pointer">
-                                New In: Brands
-                              </li>
-                              <li className="text-neutral-900 flex-wrap whitespace-nowrap  tracking-widest block px-4 py-2 font-semibold text-sm hover:opacity-50 cursor-pointer">
-                                A-Z of brands
-                              </li>
-                              <li className="text-neutral-900 flex-wrap whitespace-nowrap  tracking-widest block px-4 py-2 font-semibold text-sm hover:opacity-50 cursor-pointer">
-                                The Sports Edit
-                              </li>
-                              <li className="text-neutral-900 flex-wrap whitespace-nowrap  tracking-widest block px-4 py-2 font-semibold text-sm hover:opacity-50 cursor-pointer">
-                                Shop by Product
-                              </li>
-                            </div>
-                          </ul>
-                        </div>
+                          <h1>Summer Sales</h1>
+                        </Link>
+
+                        {/* Flyout menus */}
+                        <Popover.Group className="hidden lg:ml-8 lg:block lg:self-stretch">
+                          <div className="flex h-full space-x-8">
+                            {navigation.categories.map((category, i) => (
+                              <Popover key={category.name} className="flex">
+                                {({ open }) => (
+                                  <>
+                                    <div
+                                      className="relative flex"
+                                      onMouseLeave={() => onMouseLeave(i)}
+                                    >
+                                      <Popover.Button
+                                        ref={(el) =>
+                                          (buttonRefs.current[i] = el)
+                                        }
+                                        onMouseEnter={() => onMouseEnter(i)}
+                                        className={classNames(
+                                          open
+                                            ? "border-neutral-600 text-neutral-600"
+                                            : "border-transparent text-neutral-900 hover:text-gray-800",
+                                          "relative z-10 -mb-px flex px-0.5 items-center border-b-2 pt-px text-sm uppercase font-semibold transition-colors duration-200 ease-out outline-none"
+                                        )}
+                                      >
+                                        {category.name}
+                                      </Popover.Button>
+                                    </div>
+
+                                    <Transition
+                                      as={Fragment}
+                                      enter="transition ease-out duration-200"
+                                      enterFrom="opacity-0"
+                                      enterTo="opacity-100"
+                                      leave="transition ease-in duration-150"
+                                      leaveFrom="opacity-100"
+                                      leaveTo="opacity-0"
+                                    >
+                                      <Popover.Panel
+                                        className="absolute inset-x-0 top-full text-sm text-gray-500"
+                                        onMouseEnter={() =>
+                                          handlePanelMouseEnter(i)
+                                        }
+                                        onMouseLeave={() =>
+                                          handlePanelMouseLeave(i)
+                                        }
+                                      >
+                                        {/* Presentational element used to render the bottom shadow, if we put the shadow on the actual panel it pokes out the top, so we use this shorter element to hide the top of the shadow */}
+                                        <div
+                                          className="absolute inset-0 top-1/2 bg-white shadow"
+                                          aria-hidden="true"
+                                        />
+
+                                        <div className="min-w-[950px] xl:w-[1250px] relative bg-white">
+                                          <div className="mx-auto px-8">
+                                            <div className="grid grid-cols-2 gap-x-8 gap-y-10 py-12">
+                                              <div className="col-start-2 grid grid-cols-2 gap-x-8">
+                                                {category.featured.map(
+                                                  (item) => (
+                                                    <div
+                                                      key={item.name}
+                                                      className="group relative text-base sm:text-sm"
+                                                    >
+                                                      <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
+                                                        <img
+                                                          src={item.imageSrc}
+                                                          alt={item.imageAlt}
+                                                          className="object-cover object-center lg:min-h-[255px] xl:min-h-[350px]"
+                                                        />
+                                                      </div>
+                                                      <a
+                                                        href={item.href}
+                                                        className="mt-6 block font-medium text-gray-900"
+                                                      >
+                                                        <span
+                                                          className="absolute inset-0 z-10"
+                                                          aria-hidden="true"
+                                                        />
+                                                        {item.name}
+                                                      </a>
+                                                      <p
+                                                        aria-hidden="true"
+                                                        className="mt-1"
+                                                      >
+                                                        Shop now
+                                                      </p>
+                                                    </div>
+                                                  )
+                                                )}
+                                              </div>
+                                              <div className="row-start-1 grid grid-cols-3 gap-x-8 gap-y-10 text-sm">
+                                                {category.sections.map(
+                                                  (section) => (
+                                                    <div key={section.name}>
+                                                      <p
+                                                        id={`${section.name}-heading`}
+                                                        className="font-medium text-gray-900"
+                                                      >
+                                                        {section.name}
+                                                      </p>
+                                                      <ul
+                                                        role="list"
+                                                        aria-labelledby={`${section.name}-heading`}
+                                                        className="mt-6 space-y-6 sm:mt-4 sm:space-y-4"
+                                                      >
+                                                        {section.items.map(
+                                                          (item) => (
+                                                            <li
+                                                              key={item.name}
+                                                              className="flex"
+                                                            >
+                                                              <a
+                                                                href={item.href}
+                                                                className="hover:text-gray-800"
+                                                              >
+                                                                {item.name}
+                                                              </a>
+                                                            </li>
+                                                          )
+                                                        )}
+                                                      </ul>
+                                                    </div>
+                                                  )
+                                                )}
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </Popover.Panel>
+                                    </Transition>
+                                  </>
+                                )}
+                              </Popover>
+                            ))}
+                          </div>
+                        </Popover.Group>
                       </div>
                     </div>
-                  </li>
-                  <li className={NavStyles.navbarItem}>
-                    <div class="relative inline-block text-left">
-                      <div
-                        onMouseEnter={handleWomensDropdownEnter}
-                        onMouseLeave={handleWomensDropdownLeave}
-                      >
-                        <button
-                          type="button"
-                          class="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900"
-                          id="menu-button"
-                          aria-expanded="true"
-                          aria-haspopup="true"
-                        >
-                          WOMEN
-                          <svg
-                            class="-mr-1 h-5 w-5 text-neutral-800"
-                            viewBox="0 0 20 20"
-                            fill="currentColor"
-                            aria-hidden="true"
-                          >
-                            <path
-                              fill-rule="evenodd"
-                              d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-                              clip-rule="evenodd"
-                            />
-                          </svg>
-                        </button>
-                        <div
-                          class={`absolute left-0 z-10 pt-3 w-96 p-2 origin-top-right transition-height duration-500 ease-in-out overflow-hidden bg-white ${
-                            womensDropdown
-                              ? "max-h-72"
-                              : "max-h-0 invisible opacity-0 "
-                          }`}
-                          role="menu"
-                          aria-orientation="vertical"
-                          aria-labelledby="menu-button"
-                          tabindex="-1"
-                        >
-                          <ul class="py-1 flex gap-8" role="none">
-                            <div className="flex flex-col">
-                              <li className="text-neutral-900 tracking-widest block px-4 py-2 font-semibold text-sm hover:opacity-50 cursor-pointer">
-                                SALE
-                              </li>
-                              <li className="text-neutral-900 flex-wrap whitespace-nowrap tracking-widest block px-4 py-2 font-semibold text-sm hover:opacity-50 cursor-pointer">
-                                Clothing
-                              </li>
-                              <li className="text-neutral-900 flex-wrap whitespace-nowrap tracking-widest block px-4 py-2 font-semibold text-sm hover:opacity-50 cursor-pointer">
-                                Shoes
-                              </li>
-                              <li className="text-neutral-900 flex-wrap whitespace-nowrap tracking-widest block px-4 py-2 font-semibold text-sm hover:opacity-50 cursor-pointer">
-                                Accessories
-                              </li>
-                              <li className="text-neutral-900 flex-wrap whitespace-nowrap tracking-widest block px-4 py-2 font-semibold text-sm hover:opacity-50 cursor-pointer">
-                                Sportswear
-                              </li>
-                              <li className="text-neutral-900 flex-wrap whitespace-nowrap tracking-widest block px-4 py-2 font-semibold text-sm hover:opacity-50 cursor-pointer">
-                                Summer
-                              </li>
-                              <li className="text-neutral-900 flex-wrap whitespace-nowrap tracking-widest block px-4 py-2 font-semibold text-sm hover:opacity-50 cursor-pointer">
-                                Brands
-                              </li>
-                            </div>
-                            <div>
-                              <li className="text-neutral-900 tracking-widest block px-4 py-2 font-semibold text-sm hover:opacity-50 cursor-pointer">
-                                Bestsellers
-                              </li>
-                              <li className="w-fit flex-wrap whitespace-nowrap text-neutral-900 tracking-widest block px-4 py-2 font-semibold text-sm hover:opacity-50 cursor-pointer">
-                                Popular by Marquet
-                              </li>
-                              <li className="text-neutral-900 flex-wrap whitespace-nowrap tracking-widest block px-4 py-2 font-semibold text-sm hover:opacity-50 cursor-pointer">
-                                New In: Clothing
-                              </li>
-                              <li className="text-neutral-900 flex-wrap whitespace-nowrap  tracking-widest block px-4 py-2 font-semibold text-sm hover:opacity-50 cursor-pointer">
-                                New In: Brands
-                              </li>
-                              <li className="text-neutral-900 flex-wrap whitespace-nowrap  tracking-widest block px-4 py-2 font-semibold text-sm hover:opacity-50 cursor-pointer">
-                                A-Z of brands
-                              </li>
-                              <li className="text-neutral-900 flex-wrap whitespace-nowrap  tracking-widest block px-4 py-2 font-semibold text-sm hover:opacity-50 cursor-pointer">
-                                The Sports Edit
-                              </li>
-                              <li className="text-neutral-900 flex-wrap whitespace-nowrap  tracking-widest block px-4 py-2 font-semibold text-sm hover:opacity-50 cursor-pointer">
-                                Shop by Product
-                              </li>
-                            </div>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <div className={NavStyles.mobBottom}>
-                    <a href="/html/orders.html">
-                      <p>My orders</p>
-                    </a>
-                    <p>Contact us</p>
-                  </div>
-                </ul>
+                  </nav>
+                </header>
               </div>
+              {/* END TAILWIND NAVBAR */}
             </div>
-            <div className={NavStyles.right}>
+            <div className="flex items-center space-between">
               <div className="flex">
                 <Search
                   handleMobSearchOpen={handleMobSearchOpen}
@@ -330,7 +588,7 @@ const Navbar = () => {
                   setIsFocused={setIsFocused}
                 />
               </div>
-              <ul className={NavStyles.navIcons}>
+              <ul className="flex list-none gap-x-3 xl:gap-x-5">
                 <li
                   onClick={toggleMenu}
                   className="relative items-center flex gap-2"
@@ -341,9 +599,9 @@ const Navbar = () => {
                     ""
                   )}
                   {!quantity > 0 ? (
-                    <AiOutlineShopping size={32} />
+                    <AiOutlineShopping className="w-7 h-7" />
                   ) : (
-                    <AiFillShopping size={32} />
+                    <AiFillShopping className="w-7 h-7" />
                   )}
 
                   <div
@@ -387,18 +645,19 @@ const Navbar = () => {
                 </li>
                 <li>
                   <Link href="/favourites">
-                    <HiHeart size={32} />
+                    <HiHeart className="w-8 h-8" />
                   </Link>
                 </li>
                 <li className="hover:opacity-60">
                   <Link href="/dashboard">
-                    <FaUserAlt size={26} />
+                    <FaUserAlt className="w-6 h-6 mt-1" />
                   </Link>
                 </li>
               </ul>
             </div>
           </div>
-        </div>
+
+
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -407,18 +666,18 @@ const Navbar = () => {
         >
           <Carousel leftControl={<></>} rightControl={<></>} indicators={false}>
             <div>
-              <p className="text-xs text-center font-medium text-white mt-[2px] hover:text-gray-500 cursor-pointer transition">
+              <p className="text-xs text-center font-medium tracking-widest text-white hover:text-gray-500 cursor-pointer transition">
                 Join the family and get 20% off your next purchase
               </p>
             </div>
             <div>
-              <p className="text-xs text-center font-medium text-white mt-[2px] hover:text-gray-500 cursor-pointer transition">
+              <p className="text-xs text-center font-medium tracking-widest text-white hover:text-gray-500 cursor-pointer transition">
                 Free delivery when you spend over £50
               </p>
             </div>
             <div>
-              <p className="text-xs text-center font-medium text-white mt-[2px] hover:text-gray-500 cursor-pointer transition">
-                Not happy with your order? Send it back and get in touch
+              <p className="text-xs text-center font-medium tracking-widest text-white hover:text-gray-500 cursor-pointer transition">
+                Not happy with your order? Send it back
               </p>
             </div>
           </Carousel>
