@@ -498,7 +498,7 @@ const Navbar = () => {
                                                         <img
                                                           src={item.imageSrc}
                                                           alt={item.imageAlt}
-                                                          className="object-cover object-center lg:min-h-[255px] xl:min-h-[350px]"
+                                                          className="object-cover object-center lg:min-h-[255px] xl:h-[280px]"
                                                         />
                                                       </div>
                                                       <a

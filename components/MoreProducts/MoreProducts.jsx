@@ -20,7 +20,7 @@ const MoreProducts = async ({ product }) => {
           More from <span>{param}</span>
         </h1>
       </div>
-      <div className="grid grid-cols-2 lg:grid-cols-4 sm:gap-8 sm:my-10 gap-1 mt-4" >
+      <div className="grid grid-cols-2 md:grid-cols-4 sm:gap-8 sm:my-10 md:my-2 gap-1 mt-4" >
         {filteredProducts.slice(0, 4).map((product, i) => (
           <Product
             key={product.name}

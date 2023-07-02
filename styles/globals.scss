@@ -7,8 +7,18 @@
 }
 
 .toast {
+  margin-top: 55px;
+  inset: 0 !important;
+  @media screen and (min-width: 768px) {
+    margin-top: 64px;
+  }
+  @media screen and (min-width: 1024px) {
+    margin-top: 88px;
+  }
+  @media screen and (min-width: 1200px) {
+    margin-top: 88px;
+  }
   .go2072408551 {
-    margin-top: 8px;
     box-shadow: none;
     border-radius: 0px;
     border: 1px solid rgb(230, 230, 230);

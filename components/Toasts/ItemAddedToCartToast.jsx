@@ -4,11 +4,10 @@ import { ImBin } from "react-icons/im";
 import { removeProduct } from "@/redux/cartSlice";
 import { useDispatch } from "react-redux";
 
-function ItemAddedToCartToast({ product, onClick }) {
+function ItemAddedToCartToast({ product, onClick, quantity }) {
   const [removed, setRemoved] = useState(false);
   const dispatch = useDispatch();
   const price = product.price;
-  const quantity = 1;
 
   const removeProductItem = () => {
     dispatch(removeProduct({ ...product, price, quantity }));
@@ -17,8 +16,8 @@ function ItemAddedToCartToast({ product, onClick }) {
 
   return (
     <div
-      className={`bg-neutral-50 b-2 transition-all duration-500 ${
-        !removed ? "w-[265px] h-[100px]" : "w-[190px] h-[60px]"
+      className={`bg-neutral-50 b-2 transition-all duration-500  ${
+        !removed ? "md:w-[265px] md:h-[100px]" : "md:w-[190px] md:h-[60px]"
       } `}
     >
       <div className="flex w-full justify-between mb-1">
@@ -69,7 +68,7 @@ function ItemAddedToCartToast({ product, onClick }) {
                 Size:<span className="ml-1">S</span>
               </p>
               <p className="flex w-full font-bold text-xs text-neutral-600 uppercase tracking-widest">
-                Qty:<span className="ml-1">1</span>
+                Qty:<span className="ml-1">{quantity}</span>
               </p>
             </div>
             <ImBin
