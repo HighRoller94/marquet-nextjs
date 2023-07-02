@@ -2,6 +2,7 @@ import React from 'react'
 import Product from './Product'
 
 const ProductList = ({ products, paramQuery }) => {
+
   return (
     <div className="grid grid-cols-2 lg:grid-cols-4 sm:gap-8 sm:my-10 gap-1" >
         {products?.map((product, i) => (

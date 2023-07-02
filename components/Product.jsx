@@ -15,7 +15,6 @@ const Product = ({ key, name, price, gallery, type, product, paramQuery }) => {
   const [productsFound, setProductsFound] = useState([]);
   const [clicked, setClicked] = useState(false);
 
-  console.log(paramQuery)
   const item = productsFound.find((product) => product.name === name);
 
   const saveProductToFavourites = () => {
