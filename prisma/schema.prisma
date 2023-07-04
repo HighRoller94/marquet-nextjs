@@ -17,17 +17,30 @@ model Account {
   @@unique([provider, providerAccountId])
 }
 
+model Order {
+  id           String    @id @default(auto()) @map("_id") @db.ObjectId
+  address      String
+  deliveryDate String
+  email        String
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  products     Product[]
+  name         String
+  orderDate    String
+  total        String
+}
+
 model Product {
   id      String   @id @default(auto()) @map("_id") @db.ObjectId
-  brand   String?
+  brand   String
   desc    String
   gallery String[]
   name    String
   price   String
   sizes   String[]
-  /// Multiple data types found: String: 11.1%, Array(String): 88.9% out of 9 sampled entries
-  tags    Json?
+  tags    String[]
   type    String
+  Order   Order?   @relation(fields: [orderId], references: [id])
+  orderId String?  @db.ObjectId
 }
 
 model Session {
