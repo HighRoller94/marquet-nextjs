@@ -1,23 +1,28 @@
 "use client";
 
-import { signIn, useSession } from "next-auth/react";
-import { RiAccountCircleLine } from "react-icons/ri";
+import { useSession, signIn, signOut } from "next-auth/react";
+import AiOutlineLogin from "react-icons/ai";
 
 const SignInButton = () => {
+  const { data: session } = useSession();
 
   return (
     <>
-      <button
-        className="w-full"
-        onClick={(e) => {
-            e.preventDefault()
-            signIn('google', {
-              callbackUrl: `${window.location.origin}`,
-            })
-          }}
-      >
-        <RiAccountCircleLine />
-      </button>
+      {session ? (
+        <button
+          className="rounded-md border w-fit border-stone-300 px-3 py-1 text-sm dark:border-stone-600"
+          onClick={() => signOut()}
+        >
+          <span>Sign Out</span>
+        </button>
+      ) : (
+        <button
+          className="rounded-md border w-fit border-stone-300 px-3 py-1 text-sm dark:border-stone-600"
+          onClick={() => signIn()}
+        >
+          Sign In
+        </button>
+      )}
     </>
   );
 };

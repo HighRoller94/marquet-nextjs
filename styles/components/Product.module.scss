@@ -25,28 +25,7 @@
     .hoverImage {
       opacity: 0;
       visibility: hidden;
-      transition: 200ms ease-in;
-    }
-    .lookButton {
-      display: flex;
-      align-items: center;
-      position: absolute;
-      left: 1.2rem;
-      width: fit-content;
-      border-radius: 1.5rem;
-      padding: 0.5rem 1.2rem;
-      font-weight: 600;
-      bottom: 1.2rem;
-      background-color: white;
-      color: black;
-      transition: 0;
-      .icon {
-        font-size: 1.5rem;
-        margin-right: 0.8rem;
-      }
-      &:hover {
-        opacity: 0.8;
-      }
+      transition: 20ms ease-in-out;
     }
     .iconHolder {
       position: absolute;
@@ -65,15 +44,7 @@
         z-index: 2;
         stroke: $offBlack;
         transition: 200ms ease-in;
-        &.fill {
-          fill: $offBlack;
-        }
-      }
 
-      &:hover {
-        .favIcon {
-          fill: $offBlack;
-        }
       }
       .clicked {
         animation-name: button-click;
@@ -85,26 +56,6 @@
         opacity: 1;
         visibility: visible;
       }
-    }
-  }
-  h1 {
-    font-size: 0.95rem;
-    margin-top: 0.3rem;
-    font-weight: 400;
-    text-transform: capitalize;
-    font-family: "Bebas Neue", sans-serif;
-    letter-spacing: 1px;
-    @media screen and (min-width: 1312px) {
-      font-size: 1.2rem;
-      margin-top: 0.5rem;
-    }
-  }
-  p {
-    opacity: 0.4;
-    font-weight: 700;
-    @media screen and (min-width: 1312px) {
-      margin-top: 5px;
-      font-size: 0.8rem;
     }
   }
   button {

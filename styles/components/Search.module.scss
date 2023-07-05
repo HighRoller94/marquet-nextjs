@@ -167,7 +167,7 @@
 
   .resultsList {
     position: absolute;
-    top: 2.3rem;
+    top: 3.3rem;
     overflow: none;
     display: flex;
     flex-direction: column;
@@ -178,7 +178,7 @@
     box-shadow: none;
     z-index: 101;
     @media screen and (min-width: 992px) {
-      top: 4rem;
+      top: 2.7rem;
       width: fit-content;
       min-width: 407px;
       margin-left: 0.75rem;
@@ -188,7 +188,6 @@
       padding-top: 0.7rem;
       padding-bottom: 0.7rem;
       font-size: 0.9rem;
-
       &:hover {
         background-color: rgb(184, 184, 184);
         color: white;
@@ -198,11 +197,17 @@
   }
 }
 
+
+
+
+
 .searchOpen {
   display: flex;
   height: 100%;
   position: absolute;
-  top: 4rem;
+  top: 3.5rem;
+  background-color: lightgrey;
+  align-items: center;
   border: none;
   outline: none;
   width: 100%;
@@ -212,8 +217,6 @@
   z-index: 9999;
   opacity: 1;
   visibility: visible;
-  height: 38px;
-  padding-bottom: 15px;
   @media screen and (min-width: 768px) {
     top: 4rem;
     width: 101%;
@@ -256,6 +259,10 @@
         width: 200px;
         outline: none;
         border: none;
+        padding: .3rem;
+        border-radius: 30px;
+        padding-left: 1rem;
+        color: grey;
       }
     }
   }

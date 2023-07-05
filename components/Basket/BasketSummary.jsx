@@ -1,17 +1,12 @@
 "use client";
 
 import { useSelector } from "react-redux";
-import { GoArrowRight } from "react-icons/go";
-import ProductList from "../ProductList";
-import BasketStyles from "../../styles/components/BasketStyles.module.scss";
+import BasketProductList from "./BasketProductList";
 import { AiOutlineShopping, AiFillShopping } from "react-icons/ai";
 
 const BasketSummary = ({ step, setStep }) => {
   const quantity = useSelector((state) => state.cart.quantity);
-  const total = useSelector((state) => state.cart.total);
   const cartProducts = useSelector((state) => state.cart.products);
-
-  const cart = useSelector((state) => state.cart);
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -21,29 +16,27 @@ const BasketSummary = ({ step, setStep }) => {
   };
 
   return (
-    <div className={BasketStyles.page}>
-      <div className={BasketStyles.cart}>
-        <div className={BasketStyles.basketTopHeader}>
-          <div className={BasketStyles.basketHeader}>
+    <div className="w-full">
+      <div>
+        <div>
+          <div className="flex items-center my-5">
             {quantity > 0 ? (
-              <AiFillShopping className={BasketStyles.icon} />
+              <AiFillShopping size={30} className="mr-3 lg:mr-4" />
             ) : (
-              <AiOutlineShopping className={BasketStyles.icon} />
+              <AiOutlineShopping size={30} className="mr-3 lg:mr-4" />
             )}
-            <h1>Basket Summary</h1>
+            <h1 className="font-bold text-2xl md:text-3xl">Basket Summary</h1>
           </div>
-          <p>
+          <p className=" text-gray-500 text-base w-11/12 lg:w-12/12">
             You have <span>{quantity}</span> items in your cart.
           </p>
         </div>
         {quantity > 0 ? (
           <>
-            <ProductList products={cartProducts} />
+            <BasketProductList products={cartProducts} />
           </>
         ) : (
-          <h1 className={BasketStyles.noItems}>
-            There are no items in your cart. Get shopping!
-          </h1>
+          <h1 className="text-lg mt-8">There are no items in your cart. <span className="font-semibold">Get shopping!</span></h1>
         )}
       </div>
     </div>

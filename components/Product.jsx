@@ -6,7 +6,7 @@ import Link from "next/link";
 
 import ItemAddedToFavouriteToast from "./Toasts/ItemAddedToFavouritesToast";
 import ProductStyles from "../styles/components/Product.module.scss";
-import { HiHeart, HiOutlineHeart } from "react-icons/hi";
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { toast } from "react-hot-toast";
 
 const Product = ({ key, name, price, gallery, type, product, paramQuery }) => {
@@ -15,10 +15,10 @@ const Product = ({ key, name, price, gallery, type, product, paramQuery }) => {
   const [productsFound, setProductsFound] = useState([]);
   const [clicked, setClicked] = useState(false);
 
-  const item = productsFound.find((product) => product.name === name);
+  const itemExists = productsFound.find((product) => product.name === name);
 
   const saveProductToFavourites = () => {
-    const savedProducts = JSON .parse(localStorage.getItem("savedProducts"));
+    const savedProducts = JSON.parse(localStorage.getItem("savedProducts"));
     localStorage.setItem(
       `savedProducts`,
       JSON.stringify([...savedProducts, product])
@@ -26,7 +26,10 @@ const Product = ({ key, name, price, gallery, type, product, paramQuery }) => {
     setSaved(true);
     setClicked(true);
     toast((t) => (
-      <ItemAddedToFavouriteToast product={product} onClick={() => toast.dismiss(t.id)} />
+      <ItemAddedToFavouriteToast
+        product={product}
+        onClick={() => toast.dismiss(t.id)}
+      />
     ));
   };
 
@@ -74,16 +77,16 @@ const Product = ({ key, name, price, gallery, type, product, paramQuery }) => {
               <AiOutlineEye className={ProductStyles.icon} />
               Shop the Look
             </button> */}
-        {item ? (
+        {itemExists ? (
           <div
             className={ProductStyles.iconHolder}
             onClick={removeProductFromFavourites}
           >
-            <HiHeart
+            <AiFillHeart
               className={
                 clicked
-                  ? `${ProductStyles.favIcon} ${ProductStyles.fill} ${ProductStyles.clicked}`
-                  : `${ProductStyles.favIcon} ${ProductStyles.fill} `
+                  ? `${ProductStyles.favIcon} ${ProductStyles.clicked}`
+                  : `${ProductStyles.favIcon} `
               }
             />
           </div>
@@ -92,12 +95,14 @@ const Product = ({ key, name, price, gallery, type, product, paramQuery }) => {
             className={ProductStyles.iconHolder}
             onClick={saveProductToFavourites}
           >
-            <HiOutlineHeart className={ProductStyles.favIcon} />
+            <AiOutlineHeart className="transition" size={30} />
           </div>
         )}
       </div>
-      <h1 className="item__name">{name}</h1>
-      <p className="item__price">£{priceFixed}</p>
+      <div className="flex flex-col mt-4">
+        <p className="text-gray-500 text-base font-bold tracking-wide">£{priceFixed}</p>
+        <h1 className="text-neutral-900 capitalize text-lg mt-1 font-medium">{name}</h1>
+      </div>
     </div>
   );
 };

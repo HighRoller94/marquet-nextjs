@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
     <Provider>
       <html lang="en" className="">
         <body
-          className={`${font.className} overflow-x-hidden flex flex-col justify-between min-h-screen`}
+          className={`${font.className} overflow-x-hidden flex flex-col min-h-screen`}
         >
           <ToasterProvider />
           <Navbar />

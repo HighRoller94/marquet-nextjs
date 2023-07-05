@@ -7,26 +7,16 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Account {
-  id                String @id @default(auto()) @map("_id") @db.ObjectId
-  /// Field referred in an index, but found no data to define the type.
-  provider          Json?
-  /// Field referred in an index, but found no data to define the type.
-  providerAccountId Json?
-
-  @@unique([provider, providerAccountId])
-}
-
 model Order {
-  id           String    @id @default(auto()) @map("_id") @db.ObjectId
-  address      String
-  deliveryDate String
-  email        String
-  /// Could not determine type: the field only had null or empty values in the sample set.
-  products     Product[]
-  name         String
-  orderDate    String
-  total        String
+  id             String    @id @default(auto()) @map("_id") @db.ObjectId
+  address        String
+  deliveryDate   String
+  email          String
+  name           String
+  orderDate      String
+  orderReference String
+  products       Json?
+  total          String
 }
 
 model Product {
@@ -39,32 +29,10 @@ model Product {
   sizes   String[]
   tags    String[]
   type    String
-  Order   Order?   @relation(fields: [orderId], references: [id])
-  orderId String?  @db.ObjectId
-}
-
-model Session {
-  id           String @id @default(auto()) @map("_id") @db.ObjectId
-  /// Field referred in an index, but found no data to define the type.
-  sessionToken Json?  @unique
-}
-
-model Tweet {
-  id String @id @default(auto()) @map("_id") @db.ObjectId
 }
 
 model User {
   id    String @id @default(auto()) @map("_id") @db.ObjectId
   email String @unique
   name  String
-}
-
-model VerificationToken {
-  id         String @id @default(auto()) @map("_id") @db.ObjectId
-  /// Field referred in an index, but found no data to define the type.
-  identifier Json?
-  /// Field referred in an index, but found no data to define the type.
-  token      Json?  @unique
-
-  @@unique([identifier, token])
 }
