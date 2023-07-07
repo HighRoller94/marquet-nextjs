@@ -113,6 +113,7 @@ const Form = () => {
           formData={formData}
           step={step}
           setStep={setStep}
+          order={order}
         />
       </div>
     </>

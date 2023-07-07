@@ -4,16 +4,14 @@
     display: none;
     visibility: hidden;
     opacity: 0;
-    transition: 200s ease-in-out;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.8);
     width: 100%;
-    z-index: 2;
+    z-index: 40;
     position: fixed;
     left: 0;
     bottom: 0;
     right: 0;
     top: auto;
-    transition: 200s ease-in-out;
     height: 100%;
 }
 
@@ -21,7 +19,6 @@
     display: block;
     visibility: visible;
     opacity: 1;
-    transition: 200s ease-in-out;
 }
 
 .active {

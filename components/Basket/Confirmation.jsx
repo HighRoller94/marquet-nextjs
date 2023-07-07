@@ -1,8 +1,20 @@
 "use client";
+
+import { useEffect } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
 export default function Confirmation({ order }) {
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behaviour: "smooth",
+    });
+  };
+
+  useEffect(() => {
+    scrollToTop();
+  }, []);
 
   return (
     <motion.div
@@ -10,7 +22,7 @@ export default function Confirmation({ order }) {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 10 }}
       transition={{ duration: 0.2 }}
-      className="my-5 bg-white"
+      className="my-5"
     >
       <div>
         <h1 className="font-bold text-2xl md:text-3xl">

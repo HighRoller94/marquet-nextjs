@@ -8,7 +8,7 @@ export default async function Search({ searchParams }) {
   const products = data.products;
 
   return (
-    <div className="mx-auto w-full flex flex-col max-w-[1250px] px-4 lg:px-10 xl:px-0 mt-8">
+    <div className="mx-auto w-full flex flex-col max-w-[1250px] px-4 lg:px-6 xl:px-0 mt-8">
       <div className="flex items-center justify-center flex-col my-[20px]">
         <p className="text-base">Your search results for:</p>
         <h1 className="text-4xl my-[10px] font-bold">"{searchParam}"</h1>

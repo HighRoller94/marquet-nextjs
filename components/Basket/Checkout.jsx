@@ -19,12 +19,7 @@ const Checkout = ({ step, setStep, onChange, submitOrder }) => {
     setStep((step) => step - 1);
   };
 
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behaviour: "smooth",
-    });
-  };
+
 
   return (
     <motion.div
@@ -42,15 +37,15 @@ const Checkout = ({ step, setStep, onChange, submitOrder }) => {
         onSubmit={handleSubmit(submitOrder)}
       >
         <div className={CheckoutFormStyles.contactRow}>
-          <div class="sm:col-span-3">
+          <div className="sm:col-span-3">
             <label
               htmlFor="name"
-              class="block text-sm font-medium leading-6 text-gray-900"
+              className="block text-sm font-medium leading-6 text-gray-900"
             >
               Name
             </label>
             <input
-              class="block flex-1 border-2 border-neutral-50 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+              className="block flex-1 border-2 border-neutral-50 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
               type="text"
               {...register("name")}
               name="name"
@@ -61,15 +56,15 @@ const Checkout = ({ step, setStep, onChange, submitOrder }) => {
             />
           </div>
 
-          <div class="sm:col-span-3">
+          <div className="sm:col-span-3">
             <label
               htmlFor="name"
-              class="block text-sm font-medium leading-6 text-gray-900"
+              className="block text-sm font-medium leading-6 text-gray-900"
             >
               Email
             </label>
             <input
-              class="block flex-1 border-2 border-neutral-50 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+              className="block flex-1 border-2 border-neutral-50 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
               type="text"
               value={session?.user.email}
               name="email"

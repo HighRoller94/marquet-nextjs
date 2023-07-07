@@ -20,7 +20,7 @@ const Newsletter = () => {
                 id="email-address"
                 name="email"
                 type="email"
-                autocomplete="email"
+                autoComplete="email"
                 required
                 className="min-w-0 flex-auto rounded-md border-0 bg-white/5 px-3.5 py-2 text-neutral-800 ring-1 ring-inset  ring-neutral-200 focus:ring-2 focus:ring-inset focus:ring-neutral-200 sm:text-sm sm:leading-6"
                 placeholder="Enter your email"

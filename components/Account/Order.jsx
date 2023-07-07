@@ -20,7 +20,7 @@ function Order({ order, index }) {
     console.log(progressPercentage);
     if (progressPercentage < 33) {
       return "30";
-    } else if (progressPercentage >= 33 && progressPercentage < 66) {
+    } else if (progressPercentage >= 34 && progressPercentage < 66) {
       return "60";
     } else {
       console.log(Math.round(progressPercentage).toString());

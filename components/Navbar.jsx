@@ -262,7 +262,7 @@ const Navbar = () => {
             <CountdownTimer className="ml-2" seconds={31600} />
           </h4>
         </div>
-        <div className="flex justify-between h-14 md:h-16 mx-auto max-w-[1250px] relative w-full items-center px-3 lg:px-10 xl:px-0">
+        <div className="flex justify-between h-14 md:h-16 mx-auto max-w-[1250px] relative w-full items-center px-3 lg:px-6 xl:px-0">
           <div className="flex items-center">
             {/* TAILWIND NAVBAR */}
             <div className="bg-white">
@@ -413,7 +413,7 @@ const Navbar = () => {
                       >
                         <span className="sr-only">Open menu</span>
                         <HiOutlineMenuAlt2
-                          className="h-8 w-8"
+                          className="h-9 w-9 text-neutral-900"
                           aria-hidden="true"
                         />
                       </button>
@@ -422,18 +422,19 @@ const Navbar = () => {
 
                       <Link
                         href="/"
-                        className="ml-3 md:ml-4 lg:ml-0 relative w-24 md:w-32 h-10"
+                        className="ml-3 md:ml-4 mt-0.5 lg:ml-0 relative w-28 md:w-32 h-12 transition"
                       >
                         <Image
                           src="/images/Marquet-Logo.svg"
                           alt="Marquet Logo"
                           fill
+                          className="transition"
                         />
                       </Link>
 
                       <Link
                         href="/"
-                        className="hidden tracking-widest lg:flex bg-neutral-900 text-white ml-8 text-sm uppercase font-semibold hover:opacity-90 py-2 px-4
+                        className="hidden tracking-widest lg:flex rounded bg-neutral-900 text-white ml-8 text-sm uppercase font-semibold hover:opacity-90 py-2 px-4
                         "
                       >
                         <h1>Summer Sales</h1>
@@ -576,7 +577,7 @@ const Navbar = () => {
             </div>
             {/* END TAILWIND NAVBAR */}
           </div>
-          <div className="flex items-center space-between lg:w-[450px]">
+          <div className="flex items-center space-between">
             <div className="flex">
               <Search
                 handleMobSearchOpen={handleMobSearchOpen}
@@ -593,18 +594,20 @@ const Navbar = () => {
             <ul className="flex list-none gap-x-3 xl:gap-x-5">
               <li className="relative items-center flex gap-2">
                 {quantity > 0 ? (
-                  <p className="absolute right-9 font-bold text-sm">{quantity}</p>
+                  <p className="absolute right-9 font-bold text-sm">
+                    {quantity}
+                  </p>
                 ) : (
                   ""
                 )}
                 {!quantity > 0 ? (
                   <AiOutlineShopping
-                    className="w-7 h-7 cursor-pointer hover:opacity-90"
+                    className="w-8 h-8 cursor-pointer hover:opacity-90"
                     onClick={toggleMenu}
                   />
                 ) : (
                   <AiFillShopping
-                    className="w-7 h-7 cursor-pointer hover:opacity-90"
+                    className="w-8 h-8 cursor-pointer hover:opacity-90"
                     onClick={toggleMenu}
                   />
                 )}
@@ -612,7 +615,7 @@ const Navbar = () => {
                 <div
                   className={`${
                     showMenu ? "max-h-32" : "max-h-0 invisible opacity-0 "
-                  } w-[200px] absolute top-12 right-0 text-sm text-left transition-all duration-500 ease-in-out overflow-hidden bg-neutral-50 b-2 h-32 z-50 opacity-100`}
+                  } w-[200px] absolute top-12 right-0 text-sm text-left transition-all duration-500 ease-in-out overflow-hidden bg-white border b-2 border-neutral-150 h-32 z-50 opacity-100`}
                 >
                   <div className="m-4 flex flex-col justify-between h-24">
                     {!quantity > 0 ? (
@@ -650,13 +653,13 @@ const Navbar = () => {
               </li>
               <li>
                 <Link href="/favourites">
-                  <HiHeart className="w-8 h-8" />
+                  <HiHeart className="w-9 h-9" />
                 </Link>
               </li>
               <li className="items-center">
                 {session?.user?.image ? (
                   <Link href="/dashboard">
-                    <div className="relative h-7 w-7 mt-0.5">
+                    <div className="relative h-8 w-8 mt-0.5">
                       <Image
                         src={session.user.image}
                         alt={session.user.name}
@@ -700,13 +703,23 @@ const Navbar = () => {
           </Carousel>
         </motion.div>
       </nav>
-      <div
-        className={
-          !overlay
-            ? NavStyles.overlay
-            : `${NavStyles.overlay} ${NavStyles.show}`
-        }
-      ></div>
+      <Transition
+        show={overlay}
+        enter="transition-opacity duration-150"
+        enterFrom="opacity-0"
+        enterTo="opacity-100"
+        leave="transition-opacity duration-150"
+        leaveFrom="opacity-100"
+        leaveTo="opacity-0"
+      >
+        <div
+          className={`${ 
+            !overlay
+              ? NavStyles.overlay
+              : `${NavStyles.overlay} ${NavStyles.show}`
+          }`}
+        ></div>
+      </Transition>
     </>
   );
 };

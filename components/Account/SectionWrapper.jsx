@@ -3,41 +3,48 @@
 import { useState } from "react";
 import AccountInfo from "@/components/Account/AccountInfo";
 import PastOrders from "@/components/Account/PastOrders";
-
-function SectionWrapper({ session }) {
+import { FaUserAlt } from "react-icons/fa";
+import { BsFillBookmarkFill } from "react-icons/bs";
+function SectionWrapper({ session, pastOrders }) {
   const [tab, setTab] = useState("Account");
 
   const SectionDisplay = () => {
     if (tab === "Orders") {
-      return <PastOrders />;
+      return <PastOrders pastOrders={pastOrders} />;
     } else {
       return <AccountInfo session={session} />;
     }
   };
 
   return (
-    <div className="flex flex-1 flex-col sm:flex-row gap-x-24 my-4 sm:my-12 sm:mb-16">
+    <div className="flex flex-1 flex-col sm:flex-row gap-x-4 my-4 sm:my-10 sm:mb-16">
       <div className="flex sm:flex-col gap-x-2 items-start flex-none gap-y-2">
-        <button
-          className={`${
-            tab === "Account"
-              ? "bg-white text-neutral-900"
-              : "bg-neutral-900 text-white"
-          } w-[140px] py-2 px-4 border-2 border-neutral-900 rounded-lg hover:bg-white hover:text-neutral-900 transition`}
+        <div
+          className={`h-[60px] flex items-center justify-center w-52 hover:underline cursor-pointer  text-white ${
+            tab === "Account" ? "bg-neutral-700" : " bg-neutral-400"
+          }`}
           onClick={() => setTab("Account")}
         >
-          Account
-        </button>
-        <button
-          className={`${
-            tab === "Orders"
-              ? "bg-white text-neutral-900"
-              : "bg-neutral-900 text-white"
-          } w-[140px] py-2 px-4 border-2 border-neutral-900 rounded-lg hover:bg-white hover:text-neutral-900 transition`}
+          <div className="flex w-8/12 gap-3">
+            <FaUserAlt />
+            <p className="uppercase tracking-widest text-sm font-bold">
+              Account
+            </p>
+          </div>
+        </div>
+        <div
+          className={`h-[60px] flex items-center justify-center w-52 hover:underline cursor-pointer  text-white ${
+            tab === "Orders" ? "bg-neutral-700" : " bg-neutral-400"
+          }`}
           onClick={() => setTab("Orders")}
         >
-          Past Orders
-        </button>
+          <div className="flex w-8/12 gap-3">
+            <BsFillBookmarkFill className="mt-0.5" />
+            <p className="uppercase tracking-widest text-sm font-bold">
+              Past Orders
+            </p>
+          </div>
+        </div>
       </div>
       <div className="flex flex-1">
         <SectionDisplay />

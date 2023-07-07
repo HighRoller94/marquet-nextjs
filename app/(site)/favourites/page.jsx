@@ -5,7 +5,7 @@ import { HiHeart } from "react-icons/hi";
 
 const Favourites = () => {
   return (
-    <div className="mx-auto w-full flex flex-col max-w-[1250px] px-4 lg:px-10 xl:px-0 mt-6">
+    <div className="mx-auto w-full flex flex-col max-w-[1250px] px-4 lg:px-6 xl:px-0 mt-6">
       {/* <Breadcrumbs /> */}
       <div className="flex flex-col items-center justify-center mb-8 md:my-6">
         <div className="flex items-center justify-center my-3">

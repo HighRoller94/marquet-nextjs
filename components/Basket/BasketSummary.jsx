@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import BasketProductList from "./BasketProductList";
 import { AiOutlineShopping, AiFillShopping } from "react-icons/ai";
@@ -14,6 +15,10 @@ const BasketSummary = ({ step, setStep }) => {
       behaviour: "smooth",
     });
   };
+
+  useEffect(() => {
+    scrollToTop()
+  }, []);
 
   return (
     <div className="w-full">
