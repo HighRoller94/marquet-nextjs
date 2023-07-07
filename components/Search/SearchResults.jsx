@@ -16,7 +16,7 @@ const SearchResults = ({
 
   return (
     <>
-      <div className={SearchStyles.resultsList} onClick={handleClick}>
+      <div className="absolute top-14 overflow-hidden flex flex-col w-full z-auto bg-white md:top-16 lg:w-[305px] lg:ml-2 lg:top-14" onClick={handleClick}>
         {results?.map((result, i) => {
           return (
             <SingleResult

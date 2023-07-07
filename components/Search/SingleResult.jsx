@@ -1,4 +1,4 @@
-import React from "react";
+  import React from "react";
 import Link from "next/link";
 import SearchStyles from "../../styles/components/Search.module.scss";
 
@@ -10,7 +10,7 @@ const SingleResult = ({ name, id, setInput, handleMobSearchClose }) => {
           setInput("");
           handleMobSearchClose();
         }}
-        className={SearchStyles.singleResult}
+        className="text-sm p-3 px-3 cursor-pointer hover:bg-neutral-100 w-full"
       >
         {name}
       </div>
