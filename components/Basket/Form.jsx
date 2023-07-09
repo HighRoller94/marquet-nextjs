@@ -97,6 +97,8 @@ const Form = () => {
           onChange={onChange}
           basketData={basketData}
           submitOrder={submitOrder}
+          setStep={setStep}
+          step={step}
         />
       );
     } else {

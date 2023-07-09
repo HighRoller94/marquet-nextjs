@@ -19,8 +19,6 @@ const Checkout = ({ step, setStep, onChange, submitOrder }) => {
     setStep((step) => step - 1);
   };
 
-
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 10 }}
@@ -90,6 +88,7 @@ const Checkout = ({ step, setStep, onChange, submitOrder }) => {
           </div>
         </div>
       </form>
+      <button onClick={goBack}>Go Back</button>
     </motion.div>
   );
 };

@@ -612,7 +612,7 @@ const Navbar = () => {
                 <div
                   className={`${
                     showMenu ? "max-h-32" : "max-h-0 invisible opacity-0 "
-                  } w-[200px] absolute top-12 right-0 text-sm text-left transition-all duration-500 ease-in-out overflow-hidden bg-white border b-2 border-neutral-150 h-32 z-50 opacity-100`}
+                  } w-[200px] absolute top-11 right-0 text-sm text-left transition-all duration-500 ease-in-out overflow-hidden bg-white h-32 z-50 opacity-100`}
                 >
                   <div className="m-4 flex flex-col justify-between h-24">
                     {!quantity > 0 ? (
@@ -634,13 +634,13 @@ const Navbar = () => {
                     {!quantity > 0 ? (
                       <button
                         disabled
-                        className="font-semibold text-sm bg-neutral-400 text-white w-full p-2 transition rounded "
+                        className="bg-neutral-900 outline-none border-none py-3 px-4 w-full text-xs text-neutral-50 font-semibold uppercase tracking-widest hover:opacity-90 cursor-pointer"
                       >
                         See Basket
                       </button>
                     ) : (
                       <Link href="/basket" onClick={toggleMenu}>
-                        <button className="font-semibold text-sm bg-neutral-800 text-white w-full p-2 hover:opacity-70 transition rounded ">
+                        <button className="bg-neutral-900 outline-none border-none py-3 px-4 w-full text-xs text-neutral-50 font-semibold uppercase tracking-widest hover:opacity-90 cursor-pointer">
                           See Basket
                         </button>
                       </Link>

@@ -11,39 +11,39 @@ function Order({ order, index }) {
 
   function calculateProgress(startDate, endDate) {
     const totalDuration = endDate.diff(startDate);
-
+  
     const currentDate = dayjs();
     const currentDuration = currentDate.diff(startDate);
     let progressPercentage = Math.round(
       (currentDuration / totalDuration) * 100
     );
-    console.log(progressPercentage);
+  
+    console.log(progressPercentage)
     if (progressPercentage < 33) {
-      return "30";
-    } else if (progressPercentage >= 34 && progressPercentage < 66) {
-      return "60";
+      return `w-[30%]`;
+    } else if (progressPercentage >= 33 && progressPercentage < 66) {
+      return `w-[60%]`;
     } else {
-      console.log(Math.round(progressPercentage).toString());
-      return `${Math.round(progressPercentage).toString()}`;
+      return `w-[${progressPercentage}%]`;
     }
   }
+  
 
   const startDate = dayjs(orderDate);
   const endDate = dayjs(deliveryDate);
-
+  
   const progress = calculateProgress(startDate, endDate);
-
   return (
     <div key={index} className="w-full bg-white p-8 mb-6">
       <div className="w-12/12 h-4 bg-neutral-200 rounded mb-2">
         <div
-          className={`h-full rounded-md transtion-all duration-500 ease-in-out bg-neutral-800 w-[${progress}%]`}
+          className={`h-full rounded-md transtion-all duration-500 ease-in-out bg-neutral-800 ${progress}`}
         ></div>
       </div>
       <div className="flex justify-between b-2 border-b py-4">
         <div className="w-full flex gap-x-2  text-neutral-700 uppercase tracking-wide font-medium">
           <h1 className="text-neutral-400 font-bold">Order Status:</h1>
-          {progress < 33 ? <p>We've received your order</p> : <p>Out for delivery</p>}
+          {progress === 100 ? <p>Delivered</p> : (progress < 33 ? <p>We've received your order</p> : <p>Out for delivery</p>)}
         </div>
         <div className="flex w-fit gap-x-2  text-neutral-700 uppercase tracking-wide font-medium">
           <h1 className="flex flex-nowrap whitespace-nowrap text-neutral-400 font-bold">
@@ -79,7 +79,7 @@ function Order({ order, index }) {
             <p>{order.orderDate}</p>
           </div>
         </div>
-        <button className=" px-6 py-4 bg-neutral-400 uppercase tracking-widest font-semibold text-white hover:bg-neutral-600 transition">
+        <button className=" px-6 py-4 bg-neutral-400 uppercase tracking-widest font-semibold text-white hover:bg-neutral-600 transition rounded">
           View Order
         </button>
       </div>

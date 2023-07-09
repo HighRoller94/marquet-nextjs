@@ -17,7 +17,7 @@ const BasketSummary = ({ step, setStep }) => {
   };
 
   useEffect(() => {
-    scrollToTop()
+    scrollToTop();
   }, []);
 
   return (
@@ -33,7 +33,8 @@ const BasketSummary = ({ step, setStep }) => {
             <h1 className="font-bold text-2xl md:text-3xl">Basket Summary</h1>
           </div>
           <p className=" text-gray-500 text-base w-11/12 lg:w-12/12">
-            You have <span>{quantity}</span> items in your cart.
+            You have <span className="mr-1.5">{quantity}</span>
+            {quantity > 1 ? "items" : "item"} in your cart.
           </p>
         </div>
         {quantity > 0 ? (
@@ -41,7 +42,10 @@ const BasketSummary = ({ step, setStep }) => {
             <BasketProductList products={cartProducts} />
           </>
         ) : (
-          <h1 className="text-lg mt-8">There are no items in your cart. <span className="font-semibold">Get shopping!</span></h1>
+          <h1 className="text-lg mt-8">
+            There are no items in your cart.{" "}
+            <span className="font-semibold">Get shopping!</span>
+          </h1>
         )}
       </div>
     </div>

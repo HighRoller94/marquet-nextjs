@@ -8,7 +8,9 @@ const BasketProductList = ({ products, paramQuery }) => {
         {products?.map((product, i) => (
           <BasketProduct
             paramQuery={paramQuery}
+            selectedSize={product.sizeSelected}
             key={product.name}
+            quantity={product.quantity}
             id={product._id}
             product={product}
             index={i}

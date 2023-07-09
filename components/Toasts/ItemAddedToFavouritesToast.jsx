@@ -4,10 +4,10 @@ import { useDispatch } from "react-redux";
 import { addProduct } from "@/redux/cartSlice";
 import ItemAddedToCartToast from "./ItemAddedToCartToast";
 import { toast } from "react-hot-toast";
+import Link from "next/link";
 
-function ItemAddedToFavouritesToast({ product, onClick }) {
+function ItemAddedToFavouritesToast({ product, onClick, quantity, size }) {
   const dispatch = useDispatch();
-  const [quantity, setQuantity] = useState(1);
   const price = product.price;
 
   const handleClick = () => {
@@ -18,6 +18,8 @@ function ItemAddedToFavouritesToast({ product, onClick }) {
       <ItemAddedToCartToast
         product={product}
         onClick={() => toast.dismiss(t.id)}
+        size={size}
+        quantity={quantity}
       />
     ));
   };
@@ -67,12 +69,14 @@ function ItemAddedToFavouritesToast({ product, onClick }) {
               {product.name}
             </p>
           </div>
-          <button
-            onClick={handleClick}
-            className="font-semibold text-xs w-full bg-neutral-800 text-white p-2 hover:opacity-70 transition rounded"
-          >
-            Move to Cart
-          </button>
+          <Link href="/favourites">
+            <button
+              // onClick={handleClick}
+              className="font-semibold text-xs w-full bg-neutral-800 text-white p-2 hover:opacity-70 transition rounded"
+            >
+              View Saved
+            </button>
+          </Link>
         </div>
       </div>
     </div>

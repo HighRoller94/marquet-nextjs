@@ -20,7 +20,7 @@ function SectionWrapper({ session, pastOrders }) {
     <div className="flex flex-1 flex-col sm:flex-row gap-x-4 my-4 sm:my-10 sm:mb-16">
       <div className="flex sm:flex-col gap-x-2 items-start flex-none gap-y-2">
         <div
-          className={`h-[60px] flex items-center justify-center w-52 hover:underline cursor-pointer  text-white ${
+          className={`h-[60px] flex items-center justify-center w-52 hover:underline cursor-pointer rounded text-white ${
             tab === "Account" ? "bg-neutral-700" : " bg-neutral-400"
           }`}
           onClick={() => setTab("Account")}
@@ -33,7 +33,7 @@ function SectionWrapper({ session, pastOrders }) {
           </div>
         </div>
         <div
-          className={`h-[60px] flex items-center justify-center w-52 hover:underline cursor-pointer  text-white ${
+          className={`h-[60px] flex items-center justify-center w-52 hover:underline cursor-pointer rounded text-white ${
             tab === "Orders" ? "bg-neutral-700" : " bg-neutral-400"
           }`}
           onClick={() => setTab("Orders")}

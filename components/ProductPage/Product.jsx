@@ -16,7 +16,7 @@ import AddProductAnimationStyles from "../../styles/animations/addProductAnimati
 
 export default function Product({ product }) {
   const cart = useSelector((state) => state.cart);
-  const [size, setSize] = useState(0);
+  const [sizeSelected, setSizeSelected] = useState("");
   const [quantity, setQuantity] = useState(1);
   const dispatch = useDispatch();
   const [saved, setSaved] = useState("");
@@ -42,6 +42,8 @@ export default function Product({ product }) {
       <ItemAddedToFavouritesToast
         product={product}
         onClick={() => toast.dismiss(t.id)}
+        quantity={quantity}
+        size={sizeSelected}
       />
     ));
   };
@@ -52,19 +54,20 @@ export default function Product({ product }) {
         product={product}
         onClick={() => toast.dismiss(t.id)}
         quantity={quantity}
+        size={sizeSelected}
       />
     ));
   };
 
-  const handleClick = () => {
-    dispatch(addProduct({ ...product, price, quantity }));
-    setAdded(true);
-    setTimeout(popToast, 2000);
+  const handleOptionSelect = (event) => {
+    const selectedSize = event.target.value;
+    setSizeSelected(selectedSize);
   };
 
-  const removeProductItem = () => {
-    dispatch(removeProduct({ ...product, price, quantity }));
-    setAdded(!added);
+  const handleClick = () => {
+    dispatch(addProduct({ ...product, price, quantity, sizeSelected }));
+    setAdded(true);
+    setTimeout(popToast, 2000);
   };
 
   const addItem = () => {
@@ -97,6 +100,7 @@ export default function Product({ product }) {
     const savedProducts = JSON.parse(localStorage.getItem("savedProducts"));
     setProductsFound(savedProducts);
   }, [product, saved, cart]);
+
 
   return (
     <div className="pb-16 mb-5 flex flex-col items-center justify-center w-full">
@@ -150,12 +154,15 @@ export default function Product({ product }) {
             <h4 className="w-12 mr-4 text-xs text-neutral-400 uppercase font-semibold tracking-widest">
               Size:
             </h4>
-            <select className="text-neutral-400 w-[200px] outline-none py-2 px-4 bg-white border-neutral-200 border-1 text-xs uppercase font-semibold tracking-widest">
-              <option className="uppercase text-neutral-400 ">
+            <select
+              className="text-neutral-400 w-[200px] outline-none py-2 px-4 bg-white border-neutral-200 border-1 text-xs uppercase font-semibold tracking-widest"
+              onChange={handleOptionSelect}
+            >
+              <option value="" className="uppercase text-neutral-400 ">
                 Please select
               </option>
               {product.sizes.map((size, i) => (
-                <option key={i}>{size}</option>
+                <option key={i} value={size} >{size}</option>
               ))}
             </select>
           </div>
@@ -164,13 +171,24 @@ export default function Product({ product }) {
               Qty:
             </h4>
             <div className="flex gap-x-4 items-center w-[120px]">
-              <button className="bg-neutral-900 text-white text-lg rounded-sm w-8 h-8 flex items-center justify-center" onClick={removeItem}>-</button>
-                <span>{quantity}</span>
-              <button className="bg-neutral-900 text-white text-lg rounded-sm w-8 h-8 flex items-center justify-center" onClick={addItem}>+</button>
+              <button
+                className="bg-neutral-900 text-white text-lg rounded-sm w-8 h-8 flex items-center justify-center"
+                onClick={removeItem}
+              >
+                -
+              </button>
+              <span>{quantity}</span>
+              <button
+                className="bg-neutral-900 text-white text-lg rounded-sm w-8 h-8 flex items-center justify-center"
+                onClick={addItem}
+              >
+                +
+              </button>
             </div>
           </div>
           <div className={AddProductAnimationStyles.addProductBtn}>
-            <button
+            {sizeSelected ? (
+              <button
               onClick={handleClick}
               className={
                 added
@@ -187,6 +205,11 @@ export default function Product({ product }) {
               <FaShoppingCart className={AddProductAnimationStyles.cartIcon} />
               <FaBox className={AddProductAnimationStyles.cartItem} />
             </button>
+            ) : (
+              <button disabled className="border-none outline-none opacity-60 text-white font-semibold w-full text-sm uppercase tracking-widest bg-neutral-900
+              py-3">Add to Cart</button>
+            )}
+            
             {item ? (
               <div className={AddProductAnimationStyles.iconHolder}>
                 <HiHeart
