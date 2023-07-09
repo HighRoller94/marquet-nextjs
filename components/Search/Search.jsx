@@ -3,7 +3,6 @@ import SearchResults from "./SearchResults";
 import Searchbar from "./Searchbar";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import SearchStyles from "../../styles/components/Search.module.scss";
 import { RiSearchLine } from "react-icons/ri";
 
 const Search = ({
@@ -23,24 +22,19 @@ const Search = ({
 
   const pushUrl = (url) => {
     console.log(url);
-    const path = `/search?q=${url}`
+    const path = `/search?q=${url}`;
     router.push(path);
   };
 
   return (
     <>
-      <span
-        className={SearchStyles.searchIcon}
-        onClick={!searchOpen ? handleMobSearchOpen : handleMobSearchClose}
-      >
-        <RiSearchLine className={SearchStyles.navIcon} />
+      <span onClick={!searchOpen ? handleMobSearchOpen : handleMobSearchClose}>
+        <RiSearchLine size={24} className="mr-3 md:mr-2 lg:hidden" />
       </span>
       <div
-        className={
-          !searchOpen
-            ? SearchStyles.searchContainer
-            : `${SearchStyles.searchContainer} ${SearchStyles.searchOpen}`
-        }
+        className={`bg-neutral-300 w-full flex flex-col justify-center items start absolute mr-8 outline-none top-14 left-0 py-2 z-50 transition border-none border border-b-2 border-neutral-500 md:top-16 md:w-[101%] lg:flex lg:bg-white lg:static lg:w-full ${
+-          !searchOpen && `hidden`
+        }`}
       >
         <Searchbar
           overlay={overlay}
