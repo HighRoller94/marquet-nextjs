@@ -36,7 +36,7 @@ function ItemAddedToFavouritesToast({ product, onClick }) {
   };
 
   return (
-    <div className="bg-neutral-50 b-2 w-[265px] h-[115px]">
+    <div className="bg-white b-2 w-[265px] h-[115px]">
       <div className="flex w-full justify-between mb-2">
         <h1 className="text-xs font-bold text-neutral-600 uppercase tracking-wide">
           Added to Favourites

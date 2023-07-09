@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from "react";
 
 import AltProduct from "./AltProduct";
-import AltProductListStyles from "../styles/components/AltProductList.module.scss";
 
 const AltProducts = () => {
   const [products, setProducts] = useState();

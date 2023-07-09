@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 import ItemAddedToFavouritesToast from "../Toasts/ItemAddedToFavouritesToast";
-import ProductStyles from "../../styles/components/Product.module.scss";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { toast } from "react-hot-toast";
 
@@ -54,50 +53,49 @@ const BasketProduct = ({ key, name, price, gallery, type, product, paramQuery })
   }, [saved]);
 
   return (
-    <div key={key} className={ProductStyles.product}>
-      <div className={ProductStyles.imageContainer}>
+    <div key={key} className="flex flex-col cursor-pointer h-fit mb-5 min-w-[150px] pb-5">
+      <div className="w-full mx-auto overflow-hidden relative group bg-neutral-50 pt-[125%]">
         <Link
           href={{
             pathname: `/products/${product.id}`,
           }}
         >
-          <Image src={gallery[0]} fill loading="lazy" alt={name} />
+          <Image className="h-auto max-w-full object-cover" src={gallery[0]} fill loading="lazy" alt={name} />
           <Image
             src={gallery[1]}
             fill
             loading="lazy"
             alt={name}
-            className={ProductStyles.hoverImage}
+            className="hidden transition group-hover:flex object-cover h-auto max-w-full"
           />
         </Link>
-        {/* <button className={ProductStyles.lookButton}>
-              <AiOutlineEye className={ProductStyles.icon} />
-              Shop the Look
-            </button> */}
-        {item ? (
+        {itemExists ? (
           <div
-            className={ProductStyles.iconHolder}
+            className="absolute bottom-5 right-5 bg-white rounded-full p-2 w-10 h-10 flex items-center justify-center"
             onClick={removeProductFromFavourites}
           >
             <AiFillHeart
-              className={
-                clicked
-                  ? `${ProductStyles.favIcon} ${ProductStyles.fill} ${ProductStyles.clicked}`
-                  : `${ProductStyles.favIcon} ${ProductStyles.fill} `
-              }
+              size={30}
+              className={`${clicked && `${productLikedAnimationStyles.clicked} `}`}
             />
           </div>
         ) : (
           <div
-            className={ProductStyles.iconHolder}
+            className="absolute bottom-5 right-5 bg-white rounded-full p-2 w-10 h-10 flex items-center justify-center"
             onClick={saveProductToFavourites}
           >
-            <AiOutlineHeart className={ProductStyles.favIcon} />
+            <AiOutlineHeart className="transition" size={30} />
           </div>
         )}
       </div>
-      <h1 className="item__name">{name}</h1>
-      <p className="item__price">£{priceFixed}</p>
+      <div className="flex flex-col mt-4">
+        <h1 className="text-neutral-700 font-bold tracking-widest text-sm  uppercase">
+          {name}
+        </h1>
+        <p className="text-gray-500 text-sm font-bold tracking-wide mt-1">
+          £{priceFixed}
+        </p>
+      </div>
     </div>
   );
 };

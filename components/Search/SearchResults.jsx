@@ -1,7 +1,4 @@
-import React from "react";
-
 import SingleResult from "./SingleResult";
-import SearchStyles from "../../styles/components/Search.module.scss";
 
 const SearchResults = ({
   handleMobSearchClose,
@@ -9,14 +6,15 @@ const SearchResults = ({
   setResults,
   setInput,
 }) => {
+  
   const handleClick = (e) => {
     document.getElementById("submit").value = "";
-    setResults("");
+    setResults([]);
   };
 
   return (
     <>
-      <div className="absolute top-14 overflow-hidden flex flex-col w-full z-auto bg-white md:top-16 lg:w-[305px] lg:ml-2 lg:top-14" onClick={handleClick}>
+      <div className="absolute top-14 overflow-hidden flex flex-col w-full z-auto bg-white md:top-16 lg:w-[310px] lg:ml-2 lg:top-14" onClick={handleClick}>
         {results?.map((result, i) => {
           return (
             <SingleResult

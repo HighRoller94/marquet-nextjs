@@ -1,10 +1,7 @@
-import React, { useState, useEffect } from "react";
-
 import { useRouter } from "next/navigation";
 
 import { RiSearchLine } from "react-icons/ri";
 import { AiOutlineClose } from "react-icons/ai";
-import SearchStyles from "../../styles/components/Search.module.scss";
 
 const Searchbar = ({
   handleMobSearchOpen,
@@ -49,7 +46,7 @@ const Searchbar = ({
       e.preventDefault();
       let cleanStr = str.replace(/\s/g, "+");
       setInput("");
-      setResults("");
+      setResults([]);
       setSearchOpen(false);
       handleBlur();
       document.getElementById("submit").blur();

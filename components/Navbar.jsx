@@ -10,14 +10,10 @@ import { motion } from "framer-motion";
 import { MdClose } from "react-icons/md";
 import Search from "./Search/Search";
 import { FaUserAlt } from "react-icons/fa";
-import { AiOutlineShopping, AiFillShopping } from "react-icons/ai";
-import { HiHeart } from "react-icons/hi";
-import { HiOutlineMenuAlt2 } from "react-icons/hi";
+import { AiOutlineShopping, AiFillShopping, AiFillHeart } from "react-icons/ai";
+import { HiOutlineMenu } from "react-icons/hi";
 import { useSession } from "next-auth/react";
-
 import CountdownTimer from "./CountdownTimer";
-
-import NavStyles from "../styles/components/Navbar.module.scss";
 
 const Navbar = () => {
   const { data: session } = useSession();
@@ -251,9 +247,7 @@ const Navbar = () => {
   return (
     <>
       <nav
-        className={`${
-          !active ? NavStyles.navbar : `${NavStyles.navbar} ${NavStyles.active}`
-        } z-50 flex flex-col justify-center bg-white sticky top-0 transition w-full`}
+        className="z-50 flex flex-col justify-center bg-white sticky top-0 transition w-full"
         id="navbar"
       >
         <div className="hidden justify-center items-center bg-neutral-900 h-6 w-full lg:flex">
@@ -408,12 +402,13 @@ const Navbar = () => {
                     <div className="flex h-14 lg:h-16 items-center">
                       <button
                         type="button"
-                        className="rounded-md bg-white text-gray-400 lg:hidden"
+                        className="rounded-md bg-whitelg:hidden"
                         onClick={() => setOpen(true)}
                       >
                         <span className="sr-only">Open menu</span>
-                        <HiOutlineMenuAlt2
-                          className="h-9 w-9 text-neutral-900"
+                        <HiOutlineMenu
+                          className="text-black lg:hidden"
+                          size={26}
                           aria-hidden="true"
                         />
                       </button>
@@ -422,7 +417,7 @@ const Navbar = () => {
 
                       <Link
                         href="/"
-                        className="ml-3 md:ml-4 mt-0.5 lg:ml-0 relative w-28 md:w-32 h-12 transition"
+                        className="ml-3 md:ml-4 mt-0.5 lg:ml-0 relative w-28 md:w-36 h-14 transition"
                       >
                         <Image
                           src="/images/Marquet-Logo.svg"
@@ -602,12 +597,14 @@ const Navbar = () => {
                 )}
                 {!quantity > 0 ? (
                   <AiOutlineShopping
-                    className="w-8 h-8 cursor-pointer hover:opacity-90"
+                    className="cursor-pointer hover:opacity-90"
+                    size={28}
                     onClick={toggleMenu}
                   />
                 ) : (
                   <AiFillShopping
-                    className="w-8 h-8 cursor-pointer hover:opacity-90"
+                    className="cursor-pointer hover:opacity-90"
+                    size={28}
                     onClick={toggleMenu}
                   />
                 )}
@@ -653,13 +650,13 @@ const Navbar = () => {
               </li>
               <li>
                 <Link href="/favourites">
-                  <HiHeart className="w-9 h-9" />
+                  <AiFillHeart className="mt-0.5" size={28} />
                 </Link>
               </li>
               <li className="items-center">
                 {session?.user?.image ? (
                   <Link href="/dashboard">
-                    <div className="relative h-8 w-8 mt-0.5">
+                    <div className="relative h-7 w-7 mt-0.5">
                       <Image
                         src={session.user.image}
                         alt={session.user.name}
@@ -670,7 +667,7 @@ const Navbar = () => {
                   </Link>
                 ) : (
                   <Link href="/dashboard">
-                    <FaUserAlt className=" hover:opacity-60 w-6 h-6 mt-1" />
+                    <FaUserAlt className=" hover:opacity-60 mt-1" size={24} />
                   </Link>
                 )}
               </li>
@@ -712,13 +709,7 @@ const Navbar = () => {
         leaveFrom="opacity-100"
         leaveTo="opacity-0"
       >
-        <div
-          className={`${ 
-            !overlay
-              ? NavStyles.overlay
-              : `${NavStyles.overlay} ${NavStyles.show}`
-          }`}
-        ></div>
+        <div className="fixed w-screen h-screen left-0 bottom-0 right-0 top-0 z-40 bg-neutral-800 opacity-60"></div>
       </Transition>
     </>
   );

@@ -1,28 +1,31 @@
-import ProductList from "@/components/ProductList";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import SearchPageContent from "@/components/SearchPageContent";
+
 import { getSearchedProducts } from "@/lib/prisma/products";
 
+export const generateMetadata = ({ searchParams }) => {
+  const searchParam = searchParams.q;
+  return {
+    title: `Search for '${searchParam}'`,
+  };
+};
+
 export default async function Search({ searchParams }) {
-  const searchParam = searchParams.q
+  const searchParam = searchParams.q;
   const data = await getSearchedProducts(searchParam);
   const products = data.products;
 
   return (
-    <div className="mx-auto w-full flex flex-col max-w-[1250px] px-4 lg:px-6 xl:px-0 mt-8">
+    <div className="mx-auto w-full flex flex-col max-w-[1250px] px-4 lg:px-6 xl:px-0 mt-0">
+      <Breadcrumbs />
       <div className="flex items-center justify-center flex-col my-[20px]">
         <p className="text-base">Your search results for:</p>
         <h1 className="text-4xl my-[10px] font-bold">"{searchParam}"</h1>
-        <span className="text-xs text-neutral-600 font-sembold uppercase tracking-widest">{products.length} results found</span>
+        <span className="text-xs text-neutral-600 font-sembold uppercase tracking-widest">
+          {products.length} results found
+        </span>
       </div>
-      <div>
-        {products ? (
-          <ProductList paramQuery={searchParam} products={products} />
-        ) : (
-          <div>
-            <p>You have no items saved.</p>
-          </div>
-        )}
-      </div>
+      <SearchPageContent products={products} searchParam={searchParam} />
     </div>
   );
 }

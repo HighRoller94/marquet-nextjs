@@ -2,15 +2,11 @@
 
 import Link from "next/link";
 import { BsChevronRight } from "react-icons/bs";
-import BreadCrumbsStyles from "../styles/components/Breadcrumbs.module.scss";
-import { useRouter } from "next/navigation";
-import React from "react";
+import { useSearchParams } from 'next/navigation'
 
 export default function Breadcrumbs({ name, searchQuery }) {
-  const currentPath = window.location.pathname.toLowerCase();
-  const url = new URL(window.location.href);
-  const searchParams = new URLSearchParams(url.search);
-  const searchParamValue = searchParams.get("q");
+  const searchParams = useSearchParams()
+  const searchParam = searchParams.get('q')
 
   function getCurrentURLParams() {
     const path = window.location.pathname;
@@ -24,17 +20,16 @@ export default function Breadcrumbs({ name, searchQuery }) {
     return breadcrumbs;
   }
 
-
   const urlParams = getCurrentURLParams();
 
   return (
-    <nav aria-label="Breadcrumb" className={BreadCrumbsStyles.container}>
-      <ol className={BreadCrumbsStyles.breadcrumbs}>
-        <li className="breadcrumb-item">
+    <nav aria-label="Breadcrumb" className="flex flex-start max-w-[1440px] mx-auto mt-8 w-full">
+      <ol className="flex items-center h-5 list-none">
+        <li className="flex items-center text-sm opacity-60 hover:opacity-80 font-bold tracking-wide neutral-600">
           <Link href="/">Home</Link>
-          <BsChevronRight className={BreadCrumbsStyles.icon} />
+          <BsChevronRight className="mx-2 text-xs" />
         </li>
-        <li className="breadcrumb-item">
+        <li className="flex items-center text-sm opacity-100 font-bold tracking-wide neutral-600">
           <Link href="/">Vans Shoes</Link>
         </li>
         {/* {name ? (

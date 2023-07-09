@@ -16,7 +16,7 @@ function ItemAddedToCartToast({ product, onClick, quantity }) {
 
   return (
     <div
-      className={`bg-neutral-50 b-2 transition-all duration-500  ${
+      className={`bg-white b-2 transition-all duration-500  ${
         !removed ? "md:w-[265px] md:h-[100px]" : "md:w-[190px] md:h-[60px]"
       } `}
     >
