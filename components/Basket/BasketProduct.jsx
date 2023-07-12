@@ -175,9 +175,9 @@ const BasketProduct = ({
       </div>
       <button
         onClick={removeProductItem}
-        className="bg-neutral-900 outline-none border-none py-3 px-4 w-full text-xs text-neutral-50 font-semibold uppercase tracking-widest my-5 hover:opacity-90 cursor-pointer"
+        className="bg-neutral-900 outline-none border-none py-3 px-4 w-full text-base text-neutral-50 font-semibold uppercase tracking-widest my-5 hover:opacity-90 cursor-pointer"
       >
-        Remove from Cart
+        Remove
       </button>
     </motion.div>
   );

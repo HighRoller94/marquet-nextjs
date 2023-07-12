@@ -24,19 +24,24 @@ function Subtotal({ formData, step, setStep, isLoading, order }) {
       <div
         className={`${
           step === 2 ? "flex" : "sticky"
-        } flex-col top-44 ml-8 bg-white p-8 w-full mt-2 min-w-[375px] md:max-w-[375px]`}
+        } flex-col top-44 ml-8 bg-white p-8 pt-6 w-full min-w-[375px] md:max-w-[375px]`}
       >
-        <div className="flex justify-beween w-full mb-2 items-center">
-          <div>
+        <div className="pb-2 b-2 border-b-2">
+          <h1 className="uppercase tracking-widest text-xl font-extrabold">Total</h1>
+        </div>
+        <div className="flex justify-beween w-full my-2 mt-4 items-center text-base justify-between">
+          <div className="text-gray-500 font-bold tracking-widest">
             Subtotal ({!order ? orderQuantity : order?.products.length} items):
           </div>
-          <div className=" font-bold text-lg ml-2">
+          <div className=" font-bold ml-2 text-neutral-700">
             £{!order ? total.toFixed(2) : order?.total}
           </div>
         </div>
-        <div className="flex items-center gap-x-4 mb-6">
-          <input type="checkbox" />
-          <p>This order contains a gift</p>
+        <div className="flex items-center gap-x-4 mb-6 text-base justify-between">
+          <div className="text-gray-500 font-bold tracking-widest">
+            Delivery:
+          </div>
+          <div className=" font-bold ml-2 text-neutral-700">£0.00</div>
         </div>
         {step === 0 && (
           <>
@@ -104,7 +109,7 @@ function Subtotal({ formData, step, setStep, isLoading, order }) {
           </>
         )}
 
-        {step === 0 || step === 1 ? (
+        {step === 0 ? (
           <div className="flex flex-col">
             <div className="flex items-center mt-6">
               <div className="relative w-12 h-12">
@@ -124,6 +129,50 @@ function Subtotal({ formData, step, setStep, isLoading, order }) {
               </p>
             </div>
           </div>
+        ) : (
+          ""
+        )}
+        {step === 1 ? (
+          <>
+            <div className="flex flex-col">
+              <div className="flex items-center mt-6">
+                <h2 className=" font-extrabold text-sm uppercase text-neutral-700">
+                  We Accept:
+                </h2>
+              </div>
+              <div className="flex mt-2 gap-4">
+                <div className="relative w-10 h-8 cursor-pointer">
+                  <Image fill src="/images/visaOption.svg" alt="Klarna Logo" />
+                </div>
+                <div className="relative w-10 h-8 cursor-pointer">
+                  <Image
+                    fill
+                    src="/images/paypalOption.svg"
+                    alt="Klarna Logo"
+                  />
+                </div>
+                <div className="relative w-10 h-8 cursor-pointer">
+                  <Image
+                    fill
+                    src="/images/mastercardOption.svg"
+                    alt="Klarna Logo"
+                  />
+                </div>
+                <div className="relative w-10 h-8 cursor-pointer">
+                  <Image fill src="/images/klarna.svg" alt="Klarna Logo" />
+                </div>
+              </div>
+            </div>
+            <div className="mt-6">
+              <p className="text-sm font-medium text-neutral-600 leading-normal">
+                By placing your order you agree to our{" "}
+                <span className="underline cursor-pointer mr-1">Terms & Conditions, privacy</span>and 
+                <span className="ml-1 underline cursor-pointer">returns policies.</span> You also consent to some of your
+                data being stored by Marquet, which may be used to make future
+                shopping experiences better for you.
+              </p>
+            </div>
+          </>
         ) : (
           ""
         )}
