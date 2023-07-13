@@ -32,7 +32,7 @@ export default function Confirmation({ order }) {
           Please check your inbox as a confirmation email is on the way
         </p>
       </div>
-      <div className="mt-10">
+      <div className="mt-10 ">
         <div className="flex gap-x-6 my-3 justify-between w-9/12 items-start text-left">
           <h2 className="text-neutral-700 uppercase tracking-widest font-bold">
             Order ID:

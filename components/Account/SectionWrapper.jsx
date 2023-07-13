@@ -17,7 +17,7 @@ function SectionWrapper({ session, pastOrders }) {
   };
 
   return (
-    <div className="flex flex-1 flex-col sm:flex-row gap-x-4 my-4 sm:my-10 sm:mb-16">
+    <div className="flex flex-1 flex-col sm:flex-row gap-x-8 my-4 sm:my-10 sm:mb-16">
       <div className="flex sm:flex-col gap-x-2 items-start flex-none gap-y-2">
         <div
           className={`h-[60px] flex items-center justify-center w-52 hover:underline cursor-pointer rounded text-white ${
@@ -27,7 +27,7 @@ function SectionWrapper({ session, pastOrders }) {
         >
           <div className="flex w-8/12 gap-3">
             <FaUserAlt />
-            <p className="uppercase tracking-widest text-sm font-bold">
+            <p className="uppercase tracking-widest text-sm font-extrabold">
               Account
             </p>
           </div>
@@ -40,7 +40,7 @@ function SectionWrapper({ session, pastOrders }) {
         >
           <div className="flex w-8/12 gap-3">
             <BsFillBookmarkFill className="mt-0.5" />
-            <p className="uppercase tracking-widest text-sm font-bold">
+            <p className="uppercase tracking-widest text-sm font-extrabold">
               Past Orders
             </p>
           </div>

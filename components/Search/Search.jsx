@@ -32,7 +32,7 @@ const Search = ({
         <RiSearchLine size={24} className="mr-3 md:mr-2 lg:hidden" />
       </span>
       <div
-        className={`bg-neutral-300 w-full flex flex-col justify-center items start absolute mr-8 outline-none top-14 left-0 py-2 z-50 transition border-none border border-b-2 border-neutral-500 md:top-16 md:w-[101%] lg:flex lg:bg-white lg:static lg:w-full ${
+        className={`bg-neutral-300 w-full h-[64px]  flex flex-col justify-center items start absolute mr-8 outline-none top-14 left-0 py-3 z-50 transition border-none border border-b-2 border-neutral-500 md:top-16 md:w-[101%] lg:flex lg:bg-white lg:static lg:w-full ${
 -          !searchOpen && `hidden`
         }`}
       >
@@ -52,7 +52,7 @@ const Search = ({
         />
 
         {results.length <= 0 && isFocused && (
-          <div className="absolute flex justify-start flex-col w-full pb-2 bg-white top-14 md:top-16 lg:w-[305px] lg:ml-2 lg:top-14">
+          <div className="absolute flex justify-start flex-col w-full pb-2 bg-white top-16 md:top-16 lg:w-[305px] lg:ml-2 lg:top-14">
             <p className=" text-neutral-900 uppercase tracking-widest text-xs font-bold px-3 pt-3">
               Suggested Search
             </p>

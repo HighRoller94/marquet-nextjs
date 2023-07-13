@@ -15,17 +15,17 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <Provider>
-      <html lang="en" className="">
-        <body
-          className={`${font.className} overflow-x-hidden flex flex-col min-h-screen bg-neutral-50`}
-        >
+    <html lang="en" className="">
+      <body
+        className={`${font.className} overflow-x-hidden flex flex-col min-h-screen bg-neutral-50`}
+      >
+        <Provider>
           <ToasterProvider />
           <Navbar />
           {children}
           <Footer />
-        </body>
-      </html>
-    </Provider>
+        </Provider>
+      </body>
+    </html>
   );
 }

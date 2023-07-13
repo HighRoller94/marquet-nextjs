@@ -11,10 +11,10 @@ function AccountInfo({ session }) {
       className="w-full bg-white p-8"
     >
       <div className="mt-10 sm:mt-0">
-        <h3 className="leading-7 text-gray-900 text-2xl sm:text-3xl font-bold">
+        <h3 className="leading-7 text-2xl sm:text-3xl  uppercase tracking-wide text-neutral-600 font-extrabold">
           Account Information
-        </h3>
-        <p className="mt-1 max-w-2xl text-sm leading-6 text-gray-500">
+        </h3>  
+        <p className="mt-2 max-w-2xl text-sm leading-6 text-gray-500">
           Personal details and delivery information
         </p>
       </div>
