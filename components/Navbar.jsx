@@ -14,6 +14,7 @@ import { AiOutlineShopping, AiFillShopping, AiFillHeart } from "react-icons/ai";
 import { HiOutlineMenu } from "react-icons/hi";
 import { useSession } from "next-auth/react";
 import CountdownTimer from "./CountdownTimer";
+import { BsBag, BsBagFill } from 'react-icons/bs'
 
 const Navbar = () => {
   const { data: session } = useSession();
@@ -256,7 +257,7 @@ const Navbar = () => {
             <CountdownTimer className="ml-2" seconds={31600} />
           </h4>
         </div>
-        <div className="flex justify-between h-14 md:h-16 mx-auto max-w-[1250px] relative w-full items-center px-3 lg:px-6 xl:px-0">
+        <div className="flex justify-between h-12 md:h-16 mx-auto max-w-[1250px] relative w-full items-center px-3 lg:px-6 xl:px-0">
           <div className="flex items-center">
             {/* TAILWIND NAVBAR */}
             <div className="bg-white">
@@ -399,16 +400,16 @@ const Navbar = () => {
               <header className="relative">
                 <nav aria-label="Top" className="">
                   <div>
-                    <div className="flex h-14 lg:h-16 items-center">
+                    <div className="flex h-10 lg:h-16 items-center">
                       <button
                         type="button"
-                        className="rounded-md bg-whitelg:hidden"
+                        className="rounded-md lg:hidden"
                         onClick={() => setOpen(true)}
                       >
                         <span className="sr-only">Open menu</span>
                         <HiOutlineMenu
-                          className="text-black lg:hidden"
-                          size={26}
+                          className="text-neutral-900 lg:hidden"
+                          size={32}
                           aria-hidden="true"
                         />
                       </button>
@@ -417,7 +418,7 @@ const Navbar = () => {
 
                       <Link
                         href="/"
-                        className="ml-3 md:ml-4 mt-0.5 lg:ml-0 relative w-28 md:w-36 h-14 transition"
+                        className="ml-3.5 md:ml-4 mt-0.5 lg:ml-0 relative w-24 md:w-36 h-10 transition"
                       >
                         <Image
                           src="/images/Marquet-Logo.svg"
@@ -586,25 +587,25 @@ const Navbar = () => {
                 setIsFocused={setIsFocused}
               />
             </div>
-            <ul className="flex list-none gap-x-3 xl:gap-x-5">
+            <ul className="flex list-none gap-x-4 xl:gap-x-5">
               <li className="relative items-center flex gap-2">
                 {quantity > 0 ? (
-                  <p className="absolute right-9 font-bold text-sm">
+                  <p className="absolute right-[10.5px] text-white z-50 font-bold text-xs lg:right-9 bottom-[4px] flex items-center justify-center">
                     {quantity}
                   </p>
                 ) : (
                   ""
                 )}
                 {!quantity > 0 ? (
-                  <AiOutlineShopping
+                  <BsBag
                     className="cursor-pointer hover:opacity-90"
-                    size={28}
+                    size={25}
                     onClick={toggleMenu}
                   />
                 ) : (
-                  <AiFillShopping
+                  <BsBagFill
                     className="cursor-pointer hover:opacity-90"
-                    size={28}
+                    size={25}
                     onClick={toggleMenu}
                   />
                 )}
