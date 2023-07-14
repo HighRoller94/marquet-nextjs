@@ -14,7 +14,7 @@ import { AiOutlineShopping, AiFillShopping, AiFillHeart } from "react-icons/ai";
 import { HiOutlineMenu } from "react-icons/hi";
 import { useSession } from "next-auth/react";
 import CountdownTimer from "./CountdownTimer";
-import { BsBag, BsBagFill } from 'react-icons/bs'
+import { BsBag, BsBagFill } from "react-icons/bs";
 
 const Navbar = () => {
   const { data: session } = useSession();
@@ -590,7 +590,10 @@ const Navbar = () => {
             <ul className="flex list-none gap-x-4 xl:gap-x-5">
               <li className="relative items-center flex gap-2">
                 {quantity > 0 ? (
-                  <p className="absolute right-[10.5px] text-white z-50 font-bold text-xs lg:right-9 bottom-[4px] flex items-center justify-center">
+                  <p
+                    className="absolute right-[9px] text-white z-50 font-extrabold text-xs bottom-[4px] lg:bottom-[6px] lg:right-[10px] flex items-center justify-center cursor-pointer w-2"
+                    onClick={toggleMenu}
+                  >
                     {quantity}
                   </p>
                 ) : (
@@ -598,13 +601,13 @@ const Navbar = () => {
                 )}
                 {!quantity > 0 ? (
                   <BsBag
-                    className="cursor-pointer hover:opacity-90"
+                    className="cursor-pointer hover:opacity-90 lg:-mt-0.5 lg:w-[28px] lg:h-[28px]"
                     size={25}
                     onClick={toggleMenu}
                   />
                 ) : (
                   <BsBagFill
-                    className="cursor-pointer hover:opacity-90"
+                    className="cursor-pointer hover:opacity-90 lg:-mt-0.5 lg:w-[28px] lg:h-[28px]"
                     size={25}
                     onClick={toggleMenu}
                   />
@@ -613,7 +616,7 @@ const Navbar = () => {
                 <div
                   className={`${
                     showMenu ? "max-h-32" : "max-h-0 invisible opacity-0 "
-                  } w-[200px] absolute top-11 right-0 text-sm text-left transition-all duration-500 ease-in-out overflow-hidden bg-white h-32 z-50 opacity-100`}
+                  } w-[200px] absolute top-9 -left-[76px] text-sm text-left transition-all duration-500 ease-in-out overflow-hidden bg-white h-32 z-50 opacity-100`}
                 >
                   <div className="m-4 flex flex-col justify-between h-24">
                     {!quantity > 0 ? (
@@ -651,13 +654,13 @@ const Navbar = () => {
               </li>
               <li>
                 <Link href="/favourites">
-                  <AiFillHeart className="mt-0.5" size={28} />
+                  <AiFillHeart className="mt-0.5 lg:h-[32px] lg:w-[32px]" size={28} />
                 </Link>
               </li>
               <li className="items-center">
                 {session?.user?.image ? (
                   <Link href="/dashboard">
-                    <div className="relative h-7 w-7 mt-0.5">
+                    <div className="relative h-7 w-7 mt-0.5 lg:h-8 lg:w-8">
                       <Image
                         src={session.user.image}
                         alt={session.user.name}

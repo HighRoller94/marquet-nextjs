@@ -111,9 +111,9 @@ export default function Product({ product }) {
               id="imageGallery"
               className="grid mt-2 md:mt-0 grid-cols-4 sm:grid-cols-4 w-full lg:grid-cols-1 h-full lg:h-40 md:w-auto gap-2 md:gap-4"
             >
-              {product.gallery.map((image, i) => (
+              {product.gallery.slice(0,4).map((image, i) => (
                 <div
-                  className="relative group w-full min-h-[70px] sm:min-h-[120px] cursor-pointer md:min-h-[70px] md:min-w-[70px] md:h-fit-content"
+                  className="relative group w-full min-h-[70px] max-h-[70px] sm:min-h-[120px] cursor-pointer md:min-h-[70px] md:min-w-[70px] md:h-fit-content"
                   key={i}
                   onClick={() => {
                     setMainImage(image);

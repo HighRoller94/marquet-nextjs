@@ -11,7 +11,6 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist'
-import thunk from "redux-thunk";
 import cartReducer from "./cartSlice";
 import authReducer from "./authSlice";
 

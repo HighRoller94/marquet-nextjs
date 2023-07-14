@@ -1,12 +1,28 @@
 "use client";
 
+import { useState } from "react";
 import { useForm } from "react-hook-form";
-
+import { Transition } from "@headlessui/react";
 import { motion } from "framer-motion";
 import { useSession } from "next-auth/react";
+import { useSelector } from "react-redux";
+import Cards from "react-credit-cards-2";
+import "react-credit-cards-2/dist/es/styles-compiled.css";
+import { BiSolidChevronUp, BiSolidChevronDown } from "react-icons/bi";
+import CheckoutProductList from "./CheckoutProductList";
 
 const Checkout = ({ step, setStep, onChange, submitOrder }) => {
+  const [openPayment, setOpenPayment] = useState(false);
+  const [openDelivery, setOpenDelivery] = useState(false);
+  const [openProducts, setOpenProducts] = useState(false);
+  const cartProducts = useSelector((state) => state.cart.products);
+
+  const handleShowProducts = () => {
+    setOpenProducts(!openProducts);
+  };
+
   const { data: session } = useSession();
+
   const {
     register,
     handleSubmit,
@@ -14,7 +30,89 @@ const Checkout = ({ step, setStep, onChange, submitOrder }) => {
   } = useForm();
 
   const goBack = () => {
-    setStep((step) => step -   1);
+    setStep((step) => step - 1);
+  };
+
+  const changeAddress = () => {
+    console.log("change");
+  };
+
+  const PaymentForm = () => {
+    const [state, setState] = useState({
+      number: "",
+      expiry: "",
+      cvc: "",
+      name: "",
+      focus: "",
+    });
+
+    const handleInputChange = (evt) => {
+      const { name, value } = evt.target;
+
+      setState((prev) => ({ ...prev, [name]: value }));
+    };
+
+    const handleInputFocus = (evt) => {
+      setState((prev) => ({ ...prev, focus: evt.target.name }));
+    };
+
+    return (
+      <div className="flex justify-start w-full gap-x-12">
+        <Cards
+          number={state.number}
+          expiry={state.expiry}
+          cvc={state.cvc}
+          name={state.name}
+          focused={state.focus}
+        />
+        <form className="flex flex-col w-full">
+          <input
+            className="block flex-1 border-1 border-neutral-200 bg-transparent w-full b-1 py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+            type="tel"
+            name="number"
+            placeholder="Card Number"
+            value={state.number}
+            required
+            pattern="[\d| ]{16}"
+            onChange={handleInputChange}
+            onFocus={handleInputFocus}
+          />
+          <p className="text-sm my-2 text-neutral-400">e.g. 49**, 52**, 23**, 98**</p>
+          <input
+            className="block flex-1 border-1 border-neutral-200 bg-transparent w-full b-1 py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+            type="text"
+            name="name"
+            placeholder="Name"
+            value={state.name}
+            required
+            onChange={handleInputChange}
+            onFocus={handleInputFocus}
+          />
+          <input
+            className="block flex-1 border-1 border-neutral-200 bg-transparent w-full b-1 py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+            type="tel"
+            name="expiry"
+            placeholder="Valid Thru"
+            pattern="\d\d/\d\d"
+            value={state.expiry}
+            required
+            onChange={handleInputChange}
+            onFocus={handleInputFocus}
+          />
+          <input
+            className="block flex-1 border-1 border-neutral-200 bg-transparent w-full b-1 py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+            type="tel"
+            name="cvc"
+            placeholder="CVC"
+            pattern="\d{3,4}"
+            value={state.cvc}
+            required
+            onChange={handleInputChange}
+            onFocus={handleInputFocus}
+          />
+        </form>
+      </div>
+    );
   };
 
   return (
@@ -26,70 +124,156 @@ const Checkout = ({ step, setStep, onChange, submitOrder }) => {
       className="w-full"
     >
       <div className="bg-white px-6 py-6 my-6">
-        <h2 className=" text-2xl sm:text-3xl  uppercase tracking-wide text-neutral-700 font-extrabold">Confirm Your Order</h2>
-        <p className="text-gray-500 text-base w-11/12 lg:w-12/12 mt-2">Take a minute to double check your order</p>
+        <h2 className=" text-2xl sm:text-3xl  uppercase tracking-wide text-neutral-900 font-extrabold">
+          Confirm Your Order
+        </h2>
+        <p className="text-gray-500 text-base w-11/12 lg:w-12/12 mt-2">
+          Take a minute to double check your order
+        </p>
+      </div>
+
+      <div className="bg-white p-6">
+        <div className="flex flex-col w-full gap-10">
+          <div className="flex items-center justify-between">
+            <div className="flex flex-col ">
+              <h1 className="uppercase tracking-wide text-neutral-700 font-extrabold text-xl ">
+                Confirm Products
+              </h1>
+              <p className="text-gray-500 text-base w-11/12 lg:w-12/12 mt-2">
+                {cartProducts.length} items
+              </p>
+            </div>
+
+            {openProducts ? (
+              <BiSolidChevronUp
+                size={30}
+                className="text-neutral-700 cursor-pointer"
+                onClick={handleShowProducts}
+              />
+            ) : (
+              <BiSolidChevronDown
+                size={30}
+                className="text-neutral-700 cursor-pointer"
+                onClick={handleShowProducts}
+              />
+            )}
+          </div>
+          <Transition
+            show={openProducts}
+            enter="transition-opacity duration-75"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="transition-opacity duration-150"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <CheckoutProductList products={cartProducts} />
+          </Transition>
+        </div>
       </div>
       <form
         id="deliveryForm"
         className="mt-6 gap-12 bg-white p-6"
         onSubmit={handleSubmit(submitOrder)}
       >
-        <div className="flex items-center flex-col lg:flex-row w-full gap-12 ">
-          <div className="sm:col-span-3 lg:flex items-center gap-x-6">
-            <label
-              htmlFor="name"
-              className="w-[50px] block text-xs uppercase tracking-widest font-bold leading-6 text-gray-900"
-            >
-              Name
-            </label>
-            <input
-              className="block flex-1 border-1 border-neutral-200 bg-transparent b-1 py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-              type="text"
-              {...register("name")}
-              name="name"
-              onChange={onChange}
-              autoComplete="off"
-              required
-              placeholder="janesmith"
-            />
-          </div>
-
-          <div className="sm:col-span-3 lg:flex items-center gap-x-6 w-full">
-            <label
-              htmlFor="email"
-              className="block text-xs uppercase tracking-widest font-bold leading-6 text-gray-900"
-            >
-              Email
-            </label>
-            <input
-              className="block flex-1 border-1 border-neutral-200 bg-transparent w-full b-1 py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-              type="text"
-              value={session?.user.email}
-              name="email"
-              onChange={onChange}
-              autoComplete="off"
-              required
-            />
-          </div>
-        </div>
-        <div className="flex items-center flex-col lg:flex-row w-full gap-12 ">
-          <div className="sm:col-span-3 lg:flex items-center gap-x-6">
-            <label htmlFor="name" className="w-[50px] block text-xs uppercase tracking-widest font-bold leading-6 text-gray-900">
-              <span className="content-name">Address</span>
-            </label>
-            <input
-              className="block flex-1 border-1 border-neutral-200 bg-transparent b-1 py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-              type="text"
-              {...register("address")}
-              onChange={onChange}
-              name="address"
-              autoComplete="off"
-              required
-            />
-          </div>
+        <div className="flex flex-col w-full gap-8 ">
+          <h1 className="uppercase tracking-wide text-neutral-700 font-extrabold text-xl ">
+            Delivery Address
+          </h1>
+          {!openDelivery && (
+            <div className="flex flex-row justify-between">
+              <div className="flex gap-12">
+                <h1 className="uppercase tracking-wide text-neutral-700 font-extrabold text-sm">
+                  Address
+                </h1>
+                <ul className=" leading-6">
+                  <li>Ash Bridges</li>
+                  <li>07523740508</li>
+                  <li>1 Princes Avenue</li>
+                  <li>Walderslade</li>
+                  <li>Kent</li>
+                  <li>ME5 8BA</li>
+                </ul>
+                {/* <div className="sm:col-span-3 lg:flex items-center gap-x-6">
+                  <label
+                    htmlFor="name"
+                    className="w-[50px] block text-xs uppercase tracking-widest font-bold leading-6 text-gray-900"
+                  >
+                    <span className="content-name">Address</span>
+                  </label>
+                  <input
+                    className="block flex-1 border-1 border-neutral-200 bg-transparent b-1 py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                    type="text"
+                    {...register("address")}
+                    onChange={onChange}
+                    name="address"
+                    autoComplete="off"
+                    required
+                  />
+                </div> */}
+              </div>
+              <div
+                className="text-white py-2 px-4 bg-neutral-900 uppercase font-bold tracking-widest hover:opacity-90 h-fit cursor-pointer"
+                onClick={changeAddress}
+              >
+                Change
+              </div>
+            </div>
+          )}
         </div>
       </form>
-      <button className="text-white py-2 px-4 bg-neutral-900 uppercase font-bold tracking-widest mt-8 hover:opacity-90"onClick={goBack}>Go Back</button>
+      {/* <form
+        id="deliveryForm"
+        className="mt-6 gap-12 bg-white p-6"
+        onSubmit={handleSubmit(submitOrder)}
+      >
+        <div className="flex flex-col w-full gap-12 ">
+          <h1 className="uppercase tracking-wide text-neutral-700 font-extrabold text-xl ">
+            Delivery Options
+          </h1>
+          {openDelivery && (
+            <>
+              <div className="flex items-center gap-8">
+                <div className="sm:col-span-3 lg:flex items-center gap-x-6">
+                  <label
+                    htmlFor="name"
+                    className="w-[50px] block text-xs uppercase tracking-widest font-bold leading-6 text-gray-900"
+                  >
+                    <span className="content-name">Address</span>
+                  </label>
+                  <input
+                    className="block flex-1 border-1 border-neutral-200 bg-transparent b-1 py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                    type="text"
+                    {...register("address")}
+                    onChange={onChange}
+                    name="address"
+                    autoComplete="off"
+                    required
+                  />
+                </div>
+              </div>
+            </>
+          )}
+        </div>
+      </form> */}
+      <form
+        id="paymentForm"
+        className="mt-6 gap-12 bg-white p-6 pb-8"
+        onSubmit={handleSubmit(submitOrder)}
+      >
+        <div className="flex flex-col w-full gap-12 ">
+          <h1 className="uppercase tracking-wide text-neutral-700 font-extrabold text-xl ">
+            Payment
+          </h1>
+          <PaymentForm />
+        </div>
+      </form>
+      <button
+        className="text-white py-2 px-4 bg-neutral-900 uppercase font-bold tracking-widest mt-12 hover:opacity-90"
+        onClick={goBack}
+      >
+        Go Back
+      </button>
     </motion.div>
   );
 };
