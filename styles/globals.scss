@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 .toast {
   margin-top: 55px;
   inset: 0 !important;
@@ -20,10 +19,19 @@
     background-color: white !important;
     box-shadow: none;
     border-radius: 0px;
-
   }
 }
 
 .rccs {
+  display: flex !important;
+  flex-direction: column !important;
   margin: 0 !important;
+  .rccs__card {
+
+
+    @media screen and (min-width: 667px) {
+      height: 210px !important;
+      width: 310px !important;
+    }
+  }
 }
