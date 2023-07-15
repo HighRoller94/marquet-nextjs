@@ -25,14 +25,14 @@ const BasketSummary = ({ step, setStep }) => {
   return (
     <div className="w-full">
       <div>
-        <div className="bg-white px-6 py-6  my-6">
-          <div className="flex items-center">
+        <div className="bg-white px-6 py-6 my-6 text-center md:text-left flex justify-center items-center flex-col md:justify-start md:items-start">
+          <div className="flex justify-center items-center md:justify-start">
             {quantity > 0 ? (
-              <AiFillShopping size={32} className="mr-3 lg:mr-4 text-neutral-700" />
+              <AiFillShopping className="w-7 h-7 md:w-8 md:h-8 mr-3 lg:mr-4 text-neutral-700" />
             ) : (
-              <AiOutlineShopping size={32} className="mr-3 lg:mr-4 text-neutral-700" />
+              <AiOutlineShopping className="w-7 h-7 md:w-8 md:h-8 mr-3 lg:mr-4 text-neutral-700" />
             )}
-            <h1 className="text-xl md:text-3xl font-extrabold uppercase tracking-wide text-neutral-700">My Bag</h1>
+            <h1 className="text-2xl lg:text-3xl font-extrabold uppercase tracking-wide text-neutral-700">My Bag</h1>
           </div>
           <p className=" text-gray-500 text-base w-11/12 lg:w-12/12 mt-2">
             You have <span className="mr-1.5">{quantity}</span>
@@ -53,7 +53,7 @@ const BasketSummary = ({ step, setStep }) => {
       <div className="bg-white p-8 flex items-start mb-6 gap-8">
         <BsTruck className="text-neutral-400" size={42}/>
         <div className="gap-y-2 flex flex-col">
-          <h1 className="uppercase tracking-widest text-xl font-extrabold text-neutral-700">Free Delivery for Orders over £50</h1>
+          <h1 className="uppercase tracking-widest text-base lg:text-xl font-extrabold text-neutral-700">Free Delivery for Orders over £50</h1>
           <p className="text-gray-500 text-sm text-semibold">Faster delivery options available to most countries.</p>
           <span className="text-xs underline cursor-pointer font-light mt-2">More info</span>
         </div>
@@ -61,7 +61,7 @@ const BasketSummary = ({ step, setStep }) => {
       <div className="bg-white p-8  flex items-start gap-8">
         <PiArrowCounterClockwiseBold className="text-neutral-400" size={42}/>
         <div className="gap-y-2 flex flex-col">
-          <h1 className="uppercase tracking-widest text-xl font-extrabold text-neutral-700">Easy Returns</h1>
+          <h1 className="uppercase tracking-widest text-base lg:text-xl font-extrabold text-neutral-700">Easy Returns</h1>
           <p className="text-gray-500 text-sm text-semibold">Send it back within 28 days of receiving your order</p>
           <span className="text-xs underline cursor-pointer font-light mt-2">More info</span>
         </div>
