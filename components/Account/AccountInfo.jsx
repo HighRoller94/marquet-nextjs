@@ -40,19 +40,19 @@ function AccountInfo({ session }) {
             </dt>
             <dl>
               <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                1 Princes Avenue
+                123 Nowhere Lane
               </dd>
               <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                Walderslade
+                Illinois
               </dd>
               <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                Chatham
+                Chicago
               </dd>
               <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                Kent
+                US
               </dd>
               <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                ME5 8BA
+                90210
               </dd>
             </dl>
           </div>
