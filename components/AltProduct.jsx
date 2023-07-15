@@ -42,8 +42,11 @@ const AltProduct = ({
   };
 
   return (
-    <motion.div className="flex flex-col cursor-pointer h-fit mb-5 min-w-[150px] pb-5" layout>
-      <div className="w-full mx-auto overflow-hidden relative group bg-neutral-50 pt-[125%]">
+    <motion.div
+      className="flex flex-col cursor-pointer h-fit mb-5 min-w-[150px] pb-5 "
+      layout
+    >
+      <div className="w-full mx-auto overflow-hidden relative group pt-[125%] bg-neutral-200">
         <Link href={`/products/${product.id}`}>
           <Image
             className="h-auto max-w-full object-cover"
@@ -76,7 +79,12 @@ const AltProduct = ({
         </p>
       </div>
 
-      <button className="bg-neutral-900 outline-none border-none py-3 px-4 w-full text-xs text-neutral-50 font-semibold uppercase tracking-widest my-5 hover:opacity-90 cursor-pointer" onClick={handleClick}>Move to Cart</button>
+      <button
+        className="bg-neutral-900 outline-none border-none py-3 px-4 w-full text-xs text-neutral-50 font-semibold uppercase tracking-widest my-5 hover:opacity-90 cursor-pointer"
+        onClick={handleClick}
+      >
+        Move to Cart
+      </button>
     </motion.div>
   );
 };

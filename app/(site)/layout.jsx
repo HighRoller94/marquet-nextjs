@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Provider from "../../components/Provider";
 import ToasterProvider from "@/providers/ToasterProvider";
+import ScrollToTop from "@/lib/util/scrollToTop";
 
 import "@/styles/globals.scss";
 import { Figtree } from "next/font/google";
@@ -21,6 +22,7 @@ export default function RootLayout({ children }) {
       >
         <Provider>
           <ToasterProvider />
+          <ScrollToTop />
           <Navbar />
           {children}
           <Footer />
