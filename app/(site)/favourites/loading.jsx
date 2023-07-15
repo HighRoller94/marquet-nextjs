@@ -1,5 +1,5 @@
 "use client";
-import Spinner from "@/components/spinner";
+import Spinner from "@/components/Spinner";
 
 export default function loading() {
   return (
