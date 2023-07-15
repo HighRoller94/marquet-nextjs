@@ -2,6 +2,8 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import { getProductById } from "@/lib/prisma/products";
 import Product from "@/components/ProductPage/Product";
 import MoreProducts from "@/components/MoreProducts/MoreProducts";
+import ProductPageSkel from "@/components/Skeletons/ProductPageSkel";
+
 async function getProduct(productId) {
   const { product } = await getProductById(productId);
   if (!product) {

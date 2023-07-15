@@ -95,7 +95,7 @@ const BasketProduct = ({
       key={key}
       className="flex flex-col cursor-pointer h-fit mb-5 min-w-[150px] pb-5"
     >
-      <div className="w-full mx-auto overflow-hidden relative group bg-neutral-50 pt-[125%]">
+      <div className="w-full mx-auto overflow-hidden relative group pt-[125%] bg-neutral-200 ">
         <Link
           href={{
             pathname: `/products/${product.id}`,

@@ -216,7 +216,7 @@ const Checkout = ({ step, setStep, onChange, submitOrder }) => {
                 </div> */}
               </div>
               <div
-                className="text-white mt-16 w-fit text-sm sm:mt-0 lg:text-base py-2 px-4 bg-neutral-900 uppercase font-bold tracking-widest hover:opacity-90 h-fit cursor-pointer"
+                className="text-white mt-16 w-fit text-sm sm:mt-0 py-2 px-4 bg-neutral-900 uppercase font-bold tracking-widest hover:opacity-90 h-fit cursor-pointer"
                 onClick={changeAddress}
               >
                 Change

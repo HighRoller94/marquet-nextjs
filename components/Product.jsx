@@ -8,7 +8,7 @@ import ItemAddedToFavouriteToast from "./Toasts/ItemAddedToFavouritesToast";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { toast } from "react-hot-toast";
 
-import productLikedAnimationStyles from '../styles/animations/productLikedAnimation.module.scss'
+import productLikedAnimationStyles from "../styles/animations/productLikedAnimation.module.scss";
 
 const Product = ({ key, name, price, gallery, type, product, paramQuery }) => {
   const priceFixed = (Math.round(price * 100) / 100).toFixed(2);
@@ -58,14 +58,24 @@ const Product = ({ key, name, price, gallery, type, product, paramQuery }) => {
   }, [saved]);
 
   return (
-    <div key={key} className="flex flex-col cursor-pointer h-fit mb-5 min-w-[150px] pb-5">
+    <div
+      key={key}
+      className="flex flex-col cursor-pointer h-fit mb-5 min-w-[150px] pb-5"
+    >
       <div className="w-full mx-auto overflow-hidden relative group bg-neutral-50 pt-[125%]">
         <Link
           href={{
             pathname: `/products/${product.id}`,
           }}
         >
-          <Image className="h-auto max-w-full object-cover" src={gallery[0]} fill loading="lazy" alt={name} />
+          <div className="absolute top-0 left-0 bg-neutral-200 "></div>
+          <Image
+            className="h-auto max-w-full object-cover bg-neutral-200"
+            src={gallery[0]}
+            fill
+            loading="lazy"
+            alt={name}
+          />
           <Image
             src={gallery[1]}
             fill
@@ -81,7 +91,9 @@ const Product = ({ key, name, price, gallery, type, product, paramQuery }) => {
           >
             <AiFillHeart
               size={30}
-              className={`${clicked && `${productLikedAnimationStyles.clicked} `}`}
+              className={`${
+                clicked && `${productLikedAnimationStyles.clicked} `
+              }`}
             />
           </div>
         ) : (
