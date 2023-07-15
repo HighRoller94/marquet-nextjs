@@ -32,7 +32,7 @@ const Search = ({
         <RiSearchLine size={24} className="mr-4 md:mr-2 lg:hidden" />
       </span>
       <div
-        className={`bg-neutral-300 w-full h-[64px]  flex flex-col justify-center items start absolute mr-8 outline-none top-14 left-0 py-3 z-50 transition border-none border border-b-2 border-neutral-500 md:top-16 md:w-[101%] lg:flex lg:bg-white lg:static lg:w-full ${
+        className={`bg-neutral-300 w-full h-[64px]  flex flex-col justify-center items start absolute mr-8 outline-none top-12 left-0 py-3 z-50 transition border-none border border-b-2 border-neutral-500 md:top-16 md:w-[101%] lg:flex lg:bg-white lg:static lg:w-full ${
 -          !searchOpen && `hidden`
         }`}
       >

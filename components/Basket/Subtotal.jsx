@@ -24,7 +24,7 @@ function Subtotal({ formData, step, setStep, isLoading, order }) {
       <div
         className={`${
           step === 2 ? "flex" : "sticky"
-        } flex-col top-44 ml-8 bg-white p-8 pt-6 w-full min-w-[375px] md:max-w-[375px]`}
+        } flex-col md:top-28 lg:top-44 md:ml-8 mt-6 md:mt-6 lg:mt-0 bg-white p-8 pt-6 w-full md:min-w-[375px] md:max-w-[375px]`}
       >
         <div className="pb-2 b-2 border-b-2">
           <h1 className="uppercase tracking-widest text-xl font-extrabold">Total</h1>

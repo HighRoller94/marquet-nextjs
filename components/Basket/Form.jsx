@@ -108,7 +108,7 @@ const Form = () => {
 
   return (
     <>
-      <div className="flex flex-col md:flex-row w-full justify-between py-10 pb-16">
+      <div className="flex flex-col md:flex-row w-full justify-between py-0 lg:py-10 pb-16">
         <div className="w-full">{FormDisplay()}</div>
         <Subtotal
           isLoading={isLoading}
