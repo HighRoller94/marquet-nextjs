@@ -418,7 +418,7 @@ const Navbar = () => {
 
                       <Link
                         href="/"
-                        className="ml-3.5 md:ml-4 mt-0.5 lg:ml-0 relative w-24 md:w-36 h-10 transition"
+                        className="ml-3.5 md:ml-4 mt-0.5 lg:ml-0 relative w-24 md:w-32 lg:w-36 h-10 transition"
                       >
                         <Image
                           src="/images/Marquet-Logo.svg"
@@ -591,7 +591,7 @@ const Navbar = () => {
               <li className="relative items-center flex gap-2">
                 {quantity > 0 ? (
                   <p
-                    className="absolute right-[9px] text-white z-50 font-extrabold text-xs bottom-[4px] lg:bottom-[6px] lg:right-[10px] flex items-center justify-center cursor-pointer w-2"
+                    className="absolute right-[9px] text-white z-50 font-extrabold text-xs bottom-[5px] lg:bottom-[6px] lg:right-[10px] flex items-center justify-center cursor-pointer w-2"
                     onClick={toggleMenu}
                   >
                     {quantity}
@@ -601,13 +601,13 @@ const Navbar = () => {
                 )}
                 {!quantity > 0 ? (
                   <BsBag
-                    className="cursor-pointer hover:opacity-90 lg:-mt-0.5 lg:w-[28px] lg:h-[28px]"
+                    className="cursor-pointer -mt-1 hover:opacity-90 lg:-mt-0.5 lg:w-[28px] lg:h-[28px]"
                     size={25}
                     onClick={toggleMenu}
                   />
                 ) : (
                   <BsBagFill
-                    className="cursor-pointer hover:opacity-90 lg:-mt-0.5 lg:w-[28px] lg:h-[28px]"
+                    className="cursor-pointer -mt-1 hover:opacity-90 lg:-mt-0.5 lg:w-[28px] lg:h-[28px]"
                     size={25}
                     onClick={toggleMenu}
                   />

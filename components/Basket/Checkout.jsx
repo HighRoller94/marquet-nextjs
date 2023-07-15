@@ -10,6 +10,7 @@ import Cards from "react-credit-cards-2";
 import "react-credit-cards-2/dist/es/styles-compiled.css";
 import { BiSolidChevronUp, BiSolidChevronDown } from "react-icons/bi";
 import CheckoutProductList from "./CheckoutProductList";
+import { BsFillArrowLeftCircleFill } from "react-icons/bs";
 
 const Checkout = ({ step, setStep, onChange, submitOrder }) => {
   const [openPayment, setOpenPayment] = useState(false);
@@ -57,7 +58,7 @@ const Checkout = ({ step, setStep, onChange, submitOrder }) => {
     };
 
     return (
-      <div className="flex justify-start w-full gap-x-12">
+      <div className="flex flex-col sm:flex-row md:flex-col lg:flex-row justify-start w-full gap-x-14">
         <Cards
           number={state.number}
           expiry={state.expiry}
@@ -65,9 +66,9 @@ const Checkout = ({ step, setStep, onChange, submitOrder }) => {
           name={state.name}
           focused={state.focus}
         />
-        <form className="flex flex-col w-full">
+        <form className="flex flex-col w-full mt-8 sm:mt-0 md:mt-8 lg:mt-0">
           <input
-            className="block flex-1 border-1 border-neutral-200 bg-transparent w-full b-1 py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+            className="rounded-lg block flex-1 border-1 border-neutral-200 bg-transparent w-full b-1 py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
             type="tel"
             name="number"
             placeholder="Card Number"
@@ -77,9 +78,11 @@ const Checkout = ({ step, setStep, onChange, submitOrder }) => {
             onChange={handleInputChange}
             onFocus={handleInputFocus}
           />
-          <p className="text-sm my-2 text-neutral-400">e.g. 49**, 52**, 23**, 98**</p>
+          <p className="text-sm my-2 text-neutral-400">
+            e.g. 49**, 52**, 23**, 98**
+          </p>
           <input
-            className="block flex-1 border-1 border-neutral-200 bg-transparent w-full b-1 py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+            className="rounded-lg block flex-1 border-1 mt-2 border-neutral-200 bg-transparent w-full b-1 py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
             type="text"
             name="name"
             placeholder="Name"
@@ -89,7 +92,7 @@ const Checkout = ({ step, setStep, onChange, submitOrder }) => {
             onFocus={handleInputFocus}
           />
           <input
-            className="block flex-1 border-1 border-neutral-200 bg-transparent w-full b-1 py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+            className="rounded-lg block flex-1 border-1 mt-2 border-neutral-200 bg-transparent w-full b-1 py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
             type="tel"
             name="expiry"
             placeholder="Valid Thru"
@@ -100,7 +103,7 @@ const Checkout = ({ step, setStep, onChange, submitOrder }) => {
             onFocus={handleInputFocus}
           />
           <input
-            className="block flex-1 border-1 border-neutral-200 bg-transparent w-full b-1 py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+            className="rounded-lg block flex-1 border-1 mt-2 border-neutral-200 bg-transparent w-full b-1 py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
             type="tel"
             name="cvc"
             placeholder="CVC"
@@ -123,16 +126,16 @@ const Checkout = ({ step, setStep, onChange, submitOrder }) => {
       transition={{ duration: 0.2 }}
       className="w-full"
     >
-      <div className="bg-white px-6 py-6 my-6">
-        <h2 className=" text-2xl sm:text-3xl  uppercase tracking-wide text-neutral-900 font-extrabold">
-          Confirm Your Order
+      <div className="bg-white px-7 py-6 my-6 text-center md:text-left flex justify-center items-center flex-col md:justify-start md:items-start">
+        <h2 className="text-2xl lg:text-3xl font-extrabold uppercase tracking-wide text-neutral-700">
+          Your Order
         </h2>
         <p className="text-gray-500 text-base w-11/12 lg:w-12/12 mt-2">
-          Take a minute to double check your order
+          Lets double check your order
         </p>
       </div>
 
-      <div className="bg-white p-6">
+      <div className="bg-white p-7">
         <div className="flex flex-col w-full gap-10">
           <div className="flex items-center justify-between">
             <div className="flex flex-col ">
@@ -173,16 +176,16 @@ const Checkout = ({ step, setStep, onChange, submitOrder }) => {
       </div>
       <form
         id="deliveryForm"
-        className="mt-6 gap-12 bg-white p-6"
+        className="mt-6 gap-12 bg-white p-7"
         onSubmit={handleSubmit(submitOrder)}
       >
-        <div className="flex flex-col w-full gap-8 ">
+        <div className="flex flex-col w-full gap-8  ">
           <h1 className="uppercase tracking-wide text-neutral-700 font-extrabold text-xl ">
             Delivery Address
           </h1>
           {!openDelivery && (
-            <div className="flex flex-row justify-between">
-              <div className="flex gap-12">
+            <div className="flex flex-col sm:flex-row justify-between">
+              <div className="flex gap-12 md:gap-8 lg:gap-12">
                 <h1 className="uppercase tracking-wide text-neutral-700 font-extrabold text-sm">
                   Address
                 </h1>
@@ -213,7 +216,7 @@ const Checkout = ({ step, setStep, onChange, submitOrder }) => {
                 </div> */}
               </div>
               <div
-                className="text-white py-2 px-4 bg-neutral-900 uppercase font-bold tracking-widest hover:opacity-90 h-fit cursor-pointer"
+                className="text-white mt-16 w-fit text-sm sm:mt-0 lg:text-base py-2 px-4 bg-neutral-900 uppercase font-bold tracking-widest hover:opacity-90 h-fit cursor-pointer"
                 onClick={changeAddress}
               >
                 Change
@@ -258,7 +261,7 @@ const Checkout = ({ step, setStep, onChange, submitOrder }) => {
       </form> */}
       <form
         id="paymentForm"
-        className="mt-6 gap-12 bg-white p-6 pb-8"
+        className="mt-6 gap-12 bg-white p-7 pb-8"
         onSubmit={handleSubmit(submitOrder)}
       >
         <div className="flex flex-col w-full gap-12 ">
@@ -268,12 +271,12 @@ const Checkout = ({ step, setStep, onChange, submitOrder }) => {
           <PaymentForm />
         </div>
       </form>
-      <button
-        className="text-white py-2 px-4 bg-neutral-900 uppercase font-bold tracking-widest mt-12 hover:opacity-90"
-        onClick={goBack}
-      >
-        Go Back
-      </button>
+      <div className="mt-8 lg:mt-12 flex items-center text-neutral-900  hover:opacity-90 gap-4">
+        <BsFillArrowLeftCircleFill size={28} />
+        <button className="font-bold text-lg lg:text-base " onClick={goBack}>
+          Go Back
+        </button>
+      </div>
     </motion.div>
   );
 };

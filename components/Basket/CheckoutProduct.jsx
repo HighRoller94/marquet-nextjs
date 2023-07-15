@@ -14,31 +14,10 @@ function CheckoutProduct({
   name,
   price,
   gallery,
-  type,
-  product,
-  paramQuery,
   selectedSize,
   quantity,
 }) {
   const priceFixed = (Math.round(price * 100) / 100).toFixed(2);
-  const [sizeSelected, setSizeSelected] = useState(selectedSize);
-
-  const handleOptionSelect = (event) => {
-    const selectedSize = event.target.value;
-    setSizeSelected(selectedSize);
-  };
-
-  const removeProductItem = () => {
-    dispatch(removeProduct({ ...product, price, quantity }));
-  };
-
-  const addProduct = () => {
-    dispatch(addCheckoutProduct({ ...product, price, quantity }));
-  };
-
-  const lowerProduct = () => {
-    dispatch(removeCheckoutProduct({ ...product, price, quantity }));
-  };
 
   return (
     <motion.div layout key={key} className="flex mb-5 w-full gap-4">
@@ -56,7 +35,7 @@ function CheckoutProduct({
           <h1 className="text-neutral-700 font-bold text-xl  uppercase">
             {name}
           </h1>
-          <p className="text-gray-500 text-lg font-bold tracking-wide mt-1">
+          <p className="text-gray-500 text-base md:text-lg font-bold tracking-wide mt-1">
             £{priceFixed}
           </p>
         </div>
