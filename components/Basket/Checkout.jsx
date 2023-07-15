@@ -190,12 +190,11 @@ const Checkout = ({ step, setStep, onChange, submitOrder }) => {
                   Address
                 </h1>
                 <ul className=" leading-6">
-                  <li>Ash Bridges</li>
-                  <li>07523740508</li>
-                  <li>1 Princes Avenue</li>
-                  <li>Walderslade</li>
-                  <li>Kent</li>
-                  <li>ME5 8BA</li>
+                  <li>07123456789</li>
+                  <li>123 Nowhere Lane</li>
+                  <li>Hawkins</li>
+                  <li>Ilinois</li>
+                  <li>90210</li>
                 </ul>
                 {/* <div className="sm:col-span-3 lg:flex items-center gap-x-6">
                   <label
