@@ -28,7 +28,7 @@ const CarouselHolder = () => {
     >
       {CarouselContent?.map((slide, i) => (
         <div className="w-full h-full relative">
-          <div className="relative w-full h-[500px]">
+          <div className="relative w-full h-[500px] bg-neutral-200">
             <Image
               fill
               src={slide.imageSrc}
