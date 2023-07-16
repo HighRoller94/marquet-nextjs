@@ -9,9 +9,9 @@ function AccountInfo({ session }) {
       transition={{ duration: 0.2 }}
       className="w-full bg-white p-8"
     >
-      <div className="mt-10 sm:mt-0">
+      <div className="mt-10 sm:mt-0 flex justify-center flex-col text-center items-center md:justify-start md:items-start">
         <h3 className="leading-7 text-2xl sm:text-3xl  uppercase tracking-wide text-neutral-600 font-extrabold">
-          Account Information
+          My Account
         </h3>
         <p className="mt-2 max-w-2xl text-sm leading-6 text-gray-500">
           Personal details and delivery information
