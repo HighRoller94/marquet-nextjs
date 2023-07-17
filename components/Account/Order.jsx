@@ -40,12 +40,12 @@ function Order({ order, index }) {
           className={`h-full rounded-md transtion-all duration-500 ease-in-out bg-neutral-800 ${progress}`}
         ></div>
       </div>
-      <div className="flex justify-between b-2 border-b py-4">
-        <div className="w-full flex gap-x-2  text-neutral-700 uppercase tracking-wide font-medium">
+      <div className="flex flex-col md:flex-row justify-between b-2 border-b py-4">
+        <div className="w-full flex flex-col md:flex-row gap-x-2  text-neutral-700 uppercase tracking-wide font-medium">
           <h1 className="text-neutral-400 font-bold">Order Status:</h1>
           {progress === 100 ? <p>Delivered</p> : (progress < 33 ? <p>We've received your order</p> : <p>Out for delivery</p>)}
         </div>
-        <div className="flex w-fit gap-x-2  text-neutral-700 uppercase tracking-wide font-medium">
+        <div className="flex w-fit flex-col md:flex-row gap-x-2  text-neutral-700 uppercase tracking-wide font-medium">
           <h1 className="flex flex-nowrap whitespace-nowrap text-neutral-400 font-bold">
             ESTIMATED DELIVERY:
           </h1>

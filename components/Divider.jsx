@@ -3,7 +3,7 @@ import React from "react";
 const Divider = ({ heading, text }) => {
   return (
     <header className="text-center my-6 md:my-8">
-      <h2 className="text-xl font-bold text-gray-900 sm:text-3xl capitalize">
+      <h2 className="text-xl font-extrabold text-gray-900 sm:text-3xl capitalize">
         {heading}
       </h2>
       {text && (

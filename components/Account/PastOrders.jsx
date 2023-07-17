@@ -1,7 +1,4 @@
-"use client";
-
 import React from "react";
-import { motion } from "framer-motion";
 import Order from "./Order";
 import dayjs from "dayjs";
 
@@ -15,19 +12,15 @@ function PastOrders({ pastOrders }) {
 
   const sortedArray = pastOrders.orders?.sort(dateComparator);
 
+  console.log(sortedArray)
   return (
     <div className="flex flex-col w-full">
-      <h1>Past Orders</h1>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.2 }}
-        className="w-full gap-6"
-      >
+      <p className="pb-4 text-sm text-neutral-500 tracking-wide font-medium ">Displaying {sortedArray.length} orders</p>
+      <div className="w-full gap-6">
         {sortedArray.reverse().map((order, i) => (
           <Order key={i} order={order} index={i} />
         ))}
-      </motion.div>
+      </div>
     </div>
   );
 }

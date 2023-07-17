@@ -1,21 +1,35 @@
-import SignInButton from "../SignInButton";
-
-function AccountHeader({ session }) {
+import Image from "next/image";
+import { AiOutlineRollback } from "react-icons/ai";
+function AccountHeader({ session, tab, resetTab }) {
   return (
-    <div className="flex">
-      {session ? (
-        <div className="flex w-full justify-between flex-col md:flex-row bg-white p-4">
-          <div className="flex sm:items-center flex-row text-base items-center">
-            <h2 className="font-light text-base">Logged in as</h2>
-            <p className="font-semibold text-xl ml-2">{session?.user?.name}</p>
+    <div className="flex justify-center items-center">
+      {tab === "" ? (
+        <div className="flex flex-col justify-center items-center bg-white w-full py-6">
+          <div className="w-20 h-20 relative md:w-8 md:h-8">
+            <Image
+              src={session?.user.image}
+              alt="Profile Image"
+              className=" rounded-full"
+              fill
+            />
           </div>
-          <div className="mt-4 md:mt-0">
-            <SignInButton />
+          <div className="flex sm:items-center flex-col text-base items-center mt-4">
+            <p className="text-lg">
+              Logged in as
+              <span className="font-semibold ml-2">{session?.user?.name}</span>
+            </p>
           </div>
         </div>
       ) : (
-        <div>
-          <SignInButton />
+        <div className="w-full flex p-4 bg-white justify-center items-center relative">
+          <AiOutlineRollback
+            className="left-4 absolute md:hidden"
+            size={24}
+            onClick={resetTab}
+          />
+          <h1 className="leading-7 text-lg sm:text-2xl uppercase tracking-wide text-neutral-800 font-extrabold">
+            {tab}
+          </h1>
         </div>
       )}
     </div>
