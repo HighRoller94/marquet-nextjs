@@ -21,7 +21,7 @@ const Dashboard = ({ pastOrders }) => {
   return (
     <>
       {session ? (
-        <div className="flex flex-col md:my-8">
+        <div className="flex flex-col">
           <AccountHeader session={session} tab={tab} resetTab={resetTab} />
           {tab === "Overview" ? (
             <div className="md:flex md:flex-row w-full h-full my-2 md:my-8 md:gap-6">

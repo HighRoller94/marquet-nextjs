@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, Fragment, useRef } from "react";
+import { useState, useEffect, Fragment, useRef } from "react";
 import { Dialog, Popover, Tab, Transition } from "@headlessui/react";
 import Link from "next/link";
 import Image from "next/image";
@@ -25,17 +25,17 @@ const Navbar = () => {
   // DISAPPEARING NAV
   const [active, setActive] = useState("");
 
-  // useEffect(() => {
-  //   let lastScrollY = window.scrollY;
-  //   window.addEventListener("scroll", () => {
-  //     if (lastScrollY < window.scrollY) {
-  //       setActive(true);
-  //     } else {
-  //       setActive(false);
-  //     }
-  //     lastScrollY = window.scrollY;
-  //   });
-  // }, []);
+  useEffect(() => {
+    let lastScrollY = window.scrollY;
+    window.addEventListener("scroll", () => {
+      if (lastScrollY < window.scrollY) {
+        setActive(true);
+      } else {
+        setActive(false);
+      }
+      lastScrollY = window.scrollY;
+    });
+  }, []);
 
   // MOBILE MENU
   const [open, setOpen] = useState(false);
@@ -248,7 +248,7 @@ const Navbar = () => {
   return (
     <>
       <nav
-        className="z-50 flex flex-col justify-center bg-white sticky top-0 transition w-full"
+        className={`${active && '-top-[88px] transition'} z-50 flex flex-col justify-center bg-neutral-600 sticky top-0 transition w-full`}
         id="navbar"
       >
         <div className="hidden justify-center items-center bg-neutral-900 h-6 w-full lg:flex">
@@ -257,10 +257,10 @@ const Navbar = () => {
             <CountdownTimer className="ml-2" seconds={31600} />
           </h4>
         </div>
-        <div className="flex justify-between h-12 md:h-16 mx-auto max-w-[1250px] relative w-full items-center px-3 lg:px-6 xl:px-0">
+        <div className="flex justify-between h-12 md:h-16 mx-auto max-w-[1250px] relative w-full items-center px-3 lg:px-9 xl:px-0">
           <div className="flex items-center">
             {/* TAILWIND NAVBAR */}
-            <div className="bg-white">
+            <div className="bg-stone-600">
               {/* Mobile menu */}
               <Transition.Root show={open} as={Fragment}>
                 <Dialog
@@ -313,8 +313,8 @@ const Navbar = () => {
                                     classNames(
                                       selected
                                         ? "border-neutral-500 text-neutral-500"
-                                        : "border-transparent text-gray-900",
-                                      "flex-1 whitespace-nowrap border-b-2 px-1 py-4 text-base font-medium"
+                                        : "border-transparent text-white",
+                                      "flex-1 whitespace-nowrap border-b-2 px-2 py-4 text-base font-medium"
                                     )
                                   }
                                 >
@@ -408,7 +408,7 @@ const Navbar = () => {
                       >
                         <span className="sr-only">Open menu</span>
                         <HiOutlineMenu
-                          className="text-neutral-900 lg:hidden"
+                          className="text-white lg:hidden"
                           size={32}
                           aria-hidden="true"
                         />
@@ -430,15 +430,15 @@ const Navbar = () => {
 
                       <Link
                         href="/"
-                        className="hidden tracking-widest lg:flex rounded bg-neutral-900 text-white ml-8 text-sm uppercase font-semibold hover:opacity-90 py-2 px-4
+                        className="hidden tracking-widest lg:flex rounded text-neutral-600 bg-white ml-8 text-sm uppercase font-bold hover:opacity-90 py-2 px-4
                         "
                       >
                         <h1>Summer Sales</h1>
                       </Link>
 
                       {/* Flyout menus */}
-                      <Popover.Group className="hidden lg:ml-8 lg:block lg:self-stretch">
-                        <div className="flex h-full space-x-8">
+                      <Popover.Group className="hidden lg:ml-7 lg:block lg:self-stretch">
+                        <div className="flex h-full space-x-6 xl:space-x-8">
                           {navigation.categories.map((category, i) => (
                             <Popover key={category.name} className="flex">
                               {({ open }) => (
@@ -452,9 +452,9 @@ const Navbar = () => {
                                       onMouseEnter={() => onMouseEnter(i)}
                                       className={classNames(
                                         open
-                                          ? "border-neutral-600 text-neutral-600"
-                                          : "border-transparent text-neutral-900 hover:text-gray-800",
-                                        "relative z-10 -mb-px flex px-0.5 items-center border-b-2 pt-px text-sm uppercase font-semibold transition-colors duration-200 ease-out outline-none"
+                                          ? "border-neutral-600 text-white"
+                                          : "border-transparent text-white hover:text-gray-400",
+                                        "relative z-10 -mb-px flex px-0.5 items-center pt-px text-sm uppercase font-semibold transition-colors duration-200 ease-out outline-none"
                                       )}
                                     >
                                       {category.name}
@@ -471,7 +471,7 @@ const Navbar = () => {
                                     leaveTo="opacity-0"
                                   >
                                     <Popover.Panel
-                                      className="absolute inset-x-0 top-full text-sm text-gray-500"
+                                      className="absolute inset-x-0 top-full text-sm"
                                       onMouseEnter={() =>
                                         handlePanelMouseEnter(i)
                                       }
@@ -591,7 +591,7 @@ const Navbar = () => {
               <li className="relative items-center flex gap-2">
                 {quantity > 0 ? (
                   <p
-                    className="absolute right-[9px] text-white z-50 font-extrabold text-xs bottom-[5px] lg:bottom-[6px] lg:right-[10px] flex items-center justify-center cursor-pointer w-2"
+                    className="absolute right-[9px] text-neutral-600 z-50 font-extrabold text-sm bottom-[4px] lg:bottom-[5px] lg:right-[10px] flex items-center justify-center cursor-pointer w-2"
                     onClick={toggleMenu}
                   >
                     {quantity}
@@ -601,13 +601,13 @@ const Navbar = () => {
                 )}
                 {!quantity > 0 ? (
                   <BsBag
-                    className="cursor-pointer -mt-1 hover:opacity-90 lg:-mt-0.5 lg:w-[28px] lg:h-[28px]"
+                    className="cursor-pointer text-white -mt-1 hover:opacity-90 lg:-mt-0.5 lg:w-[28px] lg:h-[28px]"
                     size={25}
                     onClick={toggleMenu}
                   />
                 ) : (
                   <BsBagFill
-                    className="cursor-pointer -mt-1 hover:opacity-90 lg:-mt-0.5 lg:w-[28px] lg:h-[28px]"
+                    className="cursor-pointer text-white -mt-1 hover:opacity-90 lg:-mt-0.5 lg:w-[28px] lg:h-[28px]"
                     size={25}
                     onClick={toggleMenu}
                   />
@@ -616,7 +616,7 @@ const Navbar = () => {
                 <div
                   className={`${
                     showMenu ? "max-h-32" : "max-h-0 invisible opacity-0 "
-                  } w-[200px] absolute top-9 -left-[76px] text-sm text-left transition-all duration-500 ease-in-out overflow-hidden bg-white h-32 z-50 opacity-100`}
+                  } w-[200px] absolute top-10 -left-[76px] text-sm text-left transition-all duration-500 ease-in-out overflow-hidden bg-white h-32 z-50 opacity-100`}
                 >
                   <div className="m-4 flex flex-col justify-between h-24">
                     {!quantity > 0 ? (
@@ -654,7 +654,7 @@ const Navbar = () => {
               </li>
               <li>
                 <Link href="/favourites">
-                  <AiFillHeart className="mt-0.5 lg:h-[32px] lg:w-[32px]" size={28} />
+                  <AiFillHeart className="mt-0.5 lg:h-[32px] text-white lg:w-[32px]" size={28} />
                 </Link>
               </li>
               <li className="items-center">
@@ -683,7 +683,7 @@ const Navbar = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className=" bg-neutral-300 h-6"
+          className=" bg-neutral-400 h-6"
         >
           <Carousel leftControl={<></>} rightControl={<></>} indicators={false}>
             <div>

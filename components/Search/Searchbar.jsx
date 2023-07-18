@@ -63,12 +63,13 @@ const Searchbar = ({
         <RiSearchLine
           onClick={handleMobSearchClose}
           size={20}
-          className="text-neutral-300 ml-2 mr-2 md:mr-4 cursor-pointer hover:text-neutral-400 lg:mr-0"
+          className="text-neutral-400 ml-2 mr-2 md:mr-4 cursor-pointer hover:text-neutral-400 lg:mr-0"
         />
 
         <input
-          className={` p-1 ml-1 text-base w-full md:w-[98%] h-[20px] outline-none border-none lg:w-fit ring-1 ring-inset  ring-white focus:ring-2 focus:ring-inset focus:ring-white `}
+          className={` p-1 ml-1 md:ml-2 text-base w-full md:w-[98%] h-[20px] text-neutral-600 outline-none border-none lg:w-fit ring-1 ring-inset placeholder:text-neutral-300 ring-white focus:ring-2 focus:ring-inset focus:ring-white `}
           id="submit"
+          placeholder="Search Marquet..."
           type="text"
           autoComplete="off"
           value={input}

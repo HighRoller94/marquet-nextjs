@@ -105,7 +105,7 @@ export default function Product({ product }) {
   return (
     <div className="pb-16 mb-5 flex flex-col items-center justify-center w-full">
       <div className="flex flex-col justify-between md:flex-row  max-w-[1050px] gap-4 mt-4 md:mt-8 w-full md:gap-4 lg:gap-8 lg:h-[1000px]">
-        <div className="flex flex-col items-start md:md:sticky md:top-40 w-full lg:h-[650px]">
+        <div className="flex flex-col items-start md:sticky md:top-32 w-full lg:h-[650px]">
           <div className="flex flex-col-reverse w-full lg:flex-row md:gap-8 md:min-w-[360px]">
             <div
               id="imageGallery"

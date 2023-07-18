@@ -3,7 +3,7 @@ import SearchResults from "./SearchResults";
 import Searchbar from "./Searchbar";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { RiSearchLine } from "react-icons/ri";
+import { RiSearchFill } from "react-icons/ri";
 
 const Search = ({
   handleFocus,
@@ -29,10 +29,10 @@ const Search = ({
   return (
     <>
       <span onClick={!searchOpen ? handleMobSearchOpen : handleMobSearchClose}>
-        <RiSearchLine size={24} className="mr-4 md:mr-2 lg:hidden" />
+        <RiSearchFill size={25} className="text-white mr-4 md:mr-2 lg:hidden -mt-0.5" />
       </span>
       <div
-        className={`bg-neutral-300 w-full h-[64px]  flex flex-col justify-center items start absolute mr-8 outline-none top-12 left-0 py-3 z-50 transition border-none border border-b-2 border-neutral-500 md:top-16 md:w-[101%] lg:flex lg:bg-white lg:static lg:w-full ${
+        className={`bg-stone-200 w-full h-[64px]  flex flex-col justify-center items start absolute mr-8 outline-none top-12 left-0 py-3 z-50 transition border-none border border-b-2 border-neutral-500 md:top-16 md:w-[101%] lg:flex lg:bg-neutral-600 lg:static lg:w-full ${
 -          !searchOpen && `hidden`
         }`}
       >
@@ -52,18 +52,18 @@ const Search = ({
         />
 
         {results.length <= 0 && isFocused && (
-          <div className="absolute flex justify-start flex-col w-full pb-2 bg-white top-16 md:top-16 lg:w-[305px] lg:ml-2 lg:top-14">
-            <p className=" text-neutral-900 uppercase tracking-widest text-xs font-bold px-3 pt-3">
+          <div className="absolute flex justify-start flex-col w-full pb-2 bg-white top-16 md:top-16 lg:w-[305px] lg:ml-2 lg:top-16">
+            <p className=" text-neutral-600 uppercase tracking-widest text-xs font-bold px-3 pt-3">
               Suggested Search
             </p>
             <ul className="flex flex-col w-full mt-1">
               <Link href={`/search?q=vans`}>
-                <li className="text-sm p-2 px-3 cursor-pointer hover:bg-neutral-100 w-full">
+                <li className="text-sm p-2 px-3 cursor-pointer text-neutral-600 hover:bg-neutral-100 w-full hover:text-neutral-800 hover:font-semibold">
                   vans
                 </li>
               </Link>
               <li
-                className="text-sm p-2 px-3 cursor-pointer hover:bg-neutral-100 w-full"
+                className="text-sm p-2 px-3 cursor-pointer text-neutral-600 hover:bg-neutral-100 w-full hover:text-neutral-800 hover:font-semibold"
                 onClick={() => pushUrl("tee")}
               >
                 tee

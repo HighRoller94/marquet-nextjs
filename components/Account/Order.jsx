@@ -40,7 +40,7 @@ function Order({ order, index }) {
         ></div>
       </div>
       <div className="flex flex-col md:flex-row justify-between b-2 border-b py-4">
-        <div className="w-full flex flex-col md:flex-row gap-x-2 items-center text-neutral-700 tracking-wide">
+        <div className="w-full flex flex-col md:flex-row gap-x-2 md:items-center text-neutral-700 tracking-wide">
           <h1 className="text-neutral-400 font-bold text-sm py-2 uppercase ">
             Order Status:
           </h1>
@@ -52,7 +52,7 @@ function Order({ order, index }) {
             <p className="font-bold -mt-0.5">Out for delivery</p>
           )}
         </div>
-        <div className="flex w-fit flex-col md:flex-row gap-x-2 items-center  text-neutral-700 uppercase tracking-wide">
+        <div className="flex w-fit flex-col md:flex-row gap-x-2 md:items-center  text-neutral-700 uppercase tracking-wide">
           <h1 className="flex flex-nowrap whitespace-nowrap py-2 text-neutral-400 text-sm font-bold">
             Estimated Delivery:
           </h1>
