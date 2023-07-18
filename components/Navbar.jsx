@@ -248,7 +248,9 @@ const Navbar = () => {
   return (
     <>
       <nav
-        className={`${active && '-top-[88px] transition'} z-50 flex flex-col justify-center bg-neutral-600 sticky top-0 transition w-full`}
+        className={`${
+          active ? "-top-[88px] transition" : "top-0"
+        } z-50 flex flex-col justify-center bg-neutral-600 sticky  transition w-full`}
         id="navbar"
       >
         <div className="hidden justify-center items-center bg-neutral-900 h-6 w-full lg:flex">
@@ -654,7 +656,10 @@ const Navbar = () => {
               </li>
               <li>
                 <Link href="/favourites">
-                  <AiFillHeart className="mt-0.5 lg:h-[32px] text-white lg:w-[32px]" size={28} />
+                  <AiFillHeart
+                    className="mt-0.5 lg:h-[32px] text-white lg:w-[32px]"
+                    size={28}
+                  />
                 </Link>
               </li>
               <li className="items-center">
