@@ -23,7 +23,7 @@ const Dashboard = ({ pastOrders }) => {
       {session ? (
         <div className="flex flex-col md:my-8">
           <AccountHeader session={session} tab={tab} resetTab={resetTab} />
-          {tab === "" ? (
+          {tab === "Overview" ? (
             <div className="md:flex md:flex-row w-full h-full my-2 md:my-8 md:gap-6">
               <DashboardSidebar tab={tab} setTab={setTab} resetTab={resetTab} />
               <div className="hidden md:flex w-full">

@@ -3,9 +3,9 @@ import { AiOutlineRollback } from "react-icons/ai";
 function AccountHeader({ session, tab, resetTab }) {
   return (
     <div className="flex justify-center items-center">
-      {tab === "" ? (
+      {tab === "Overview" ? (
         <div className="flex flex-col justify-center items-center bg-white w-full py-6">
-          <div className="w-20 h-20 relative md:w-8 md:h-8">
+          <div className="w-20 h-20 relative md:w-20 md:h-20">
             <Image
               src={session?.user.image}
               alt="Profile Image"
