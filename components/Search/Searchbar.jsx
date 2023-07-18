@@ -67,7 +67,7 @@ const Searchbar = ({
         />
 
         <input
-          className={` p-1 ml-1 md:ml-2 text-base w-full md:w-[98%] h-[20px] text-neutral-600 outline-none border-none lg:w-fit ring-1 ring-inset placeholder:text-neutral-300 ring-white focus:ring-2 focus:ring-inset focus:ring-white `}
+          className={` p-0 ml-1 md:ml-2 text-base w-full md:w-[98%]  text-neutral-600 outline-none border-none lg:w-fit ring-1 ring-inset placeholder:text-neutral-300 ring-white focus:ring-2 focus:ring-inset focus:ring-white `}
           id="submit"
           placeholder="Search Marquet..."
           type="text"
