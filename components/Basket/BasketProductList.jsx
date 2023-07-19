@@ -4,7 +4,7 @@ import BasketProduct from './BasketProduct'
 const BasketProductList = ({ products, paramQuery }) => {
 
   return (
-    <div className="grid grid-cols-2 lg:grid-cols-3 sm:gap-8 sm:my-10 gap-1" >
+    <div className="grid grid-cols-2 lg:grid-cols-3 sm:gap-8 sm:my-10 gap-3" >
         {products?.map((product, i) => (
           <BasketProduct
             paramQuery={paramQuery}

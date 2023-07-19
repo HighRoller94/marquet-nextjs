@@ -146,8 +146,8 @@ export default function Product({ product }) {
           <span className="text-xs font-bold text-neutral-600 uppercase tracking-widest mt-2">
             {product.brand}
           </span>
-          <h1 className="mt-3 text-4xl font-bold">{product.name}</h1>
-          <h1 className="text-xl my-2 font-bold text-neutral-400 uppercase tracking-widest">
+          <h1 className="mt-3 text-3xl font-bold text-neutral-700 tracking-widest uppercase ">{product.name}</h1>
+          <h1 className="text-xl my-2 font-bold text-neutral-400 uppercase tracking-widest mb-2">
             £{price}
           </h1>
           <div className="mt-5 flex items-center w-[280px]">

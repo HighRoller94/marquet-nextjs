@@ -138,7 +138,7 @@ const BasketProduct = ({
         )}
       </div>
       <div className="flex flex-col mt-4">
-        <h1 className="text-neutral-700 font-bold tracking-widest text-base  uppercase">
+        <h1 className="text-neutral-700 font-bold tracking-widest text-base  uppercase truncate">
           {name}
         </h1>
         <p className="text-gray-500 text-sm font-bold tracking-wide mt-1">
