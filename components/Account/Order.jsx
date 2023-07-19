@@ -1,42 +1,44 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import dayjs from "dayjs";
 
 function Order({ order, index }) {
+  const dayjs = require("dayjs-with-plugins");
   const orderDate = dayjs(order.orderDate, "DD/MM/YYYY").format("YYYY-MM-DD");
   const deliveryDate = dayjs(order.deliveryDate, "DD/MM/YYYY").format(
     "YYYY-MM-DD"
   );
 
-  function calculateProgress(startDate, endDate) {
-    const totalDuration = endDate.diff(startDate);
-
-    const currentDate = dayjs();
-    const currentDuration = currentDate.diff(startDate);
-    let progressPercentage = Math.round(
-      (currentDuration / totalDuration) * 100
-    );
-
-    console.log(progressPercentage);
-    if (progressPercentage < 33) {
-      return `w-[30%]`;
-    } else if (progressPercentage >= 33 && progressPercentage < 66) {
-      return `w-[60%]`;
-    } else {
-      return `w-[${progressPercentage}%]`;
-    }
-  }
-
   const startDate = dayjs(orderDate);
   const endDate = dayjs(deliveryDate);
 
-  const progress = calculateProgress(startDate, endDate);
+  function calculateTimeProgress(startDate, endDate) {
+    const now = dayjs();
+    const startDateTime = dayjs(startDate);
+    const endDateTime = dayjs(endDate);
+
+    const elapsedTime = now.diff(startDateTime); // Difference between now and start date
+    const totalTimeSpan = endDateTime.diff(startDateTime); // Difference between end date and start date
+
+    const progressPercentage = (elapsedTime / totalTimeSpan) * 100;
+
+    return progressPercentage.toFixed(2); // Return the progress with two decimal places
+  }
+
+  const progress = calculateTimeProgress(startDate, endDate);
+
+  const divStyle = {
+    width: `${Math.round(progress)}%`,
+  };
+
+  console.log(Math.round(progress));
+
   return (
     <div key={index} className="w-full bg-white p-8 mb-6">
       <div className="w-12/12 h-3.5  bg-neutral-200 rounded-full mb-2">
         <div
-          className={`h-full rounded-full transtion-all duration-500 ease-in-out bg-green-400 ${progress}`}
+          className={`h-full rounded-full transtion-all duration-500 ease-in-out bg-green-400`}
+          style={divStyle}
         ></div>
       </div>
       <div className="flex flex-col md:flex-row justify-between b-2 border-b py-4">
