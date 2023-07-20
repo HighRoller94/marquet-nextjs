@@ -17,7 +17,6 @@ const Dashboard = ({ pastOrders }) => {
     setTab("Overview");
   };
 
-  console.log(tab);
   return (
     <>
       {session ? (

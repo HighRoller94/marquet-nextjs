@@ -12,7 +12,6 @@ function PastOrders({ pastOrders }) {
 
   const sortedArray = pastOrders.orders?.sort(dateComparator);
 
-  console.log(sortedArray)
   return (
     <div className="flex flex-col w-full">
       <p className="pb-4 text-sm text-neutral-500 tracking-wide font-medium ">Displaying {sortedArray.length} orders</p>

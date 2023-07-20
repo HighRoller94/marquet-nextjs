@@ -141,12 +141,12 @@ const BasketProduct = ({
         <h1 className="text-neutral-700 font-bold tracking-widest text-base  uppercase truncate">
           {name}
         </h1>
-        <p className="text-gray-500 text-sm font-bold tracking-wide mt-1">
+        <p className="text-gray-400 text-sm font-bold tracking-wide mt-1">
           £{priceFixed}
         </p>
       </div>
       <div className="flex flex-col lg:flex-row lg:items-center">
-        <div className="flex mt-4 items-center">
+        <div className="flex mt-3 md:mt-4 items-center">
           <h1 className="text-neutral-700 font-bold tracking-widest text-xs  uppercase">
             Qty:
           </h1>
@@ -158,7 +158,7 @@ const BasketProduct = ({
             <div onClick={addProduct}>+</div>
           </div>
         </div>
-        <div className="flex mt-2 md:mt-4 items-center lg:ml-8">
+        <div className="flex mt-1 md:mt-4 items-center lg:ml-8">
           <h1 className="text-neutral-700 font-bold tracking-widest text-xs  uppercase">
             Size:
           </h1>

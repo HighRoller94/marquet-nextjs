@@ -665,7 +665,7 @@ const Navbar = () => {
                   </Link>
                 ) : (
                   <Link href="/dashboard">
-                    <FaUserAlt className=" hover:opacity-60 mt-1" size={24} />
+                    <FaUserAlt className="text-white hover:opacity-60 mt-[5px]" size={26} />
                   </Link>
                 )}
               </li>

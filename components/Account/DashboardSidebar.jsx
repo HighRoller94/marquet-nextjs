@@ -8,8 +8,6 @@ import SignInButton from "../SignInButton";
 const DashboardSidebar = ({ resetTab, setTab, tab }) => {
   const [active, setActive] = useState(tab);
 
-  console.log(active);
-  console.log(tab);
   const handleActive = (item) => {
     setActive(item);
   };

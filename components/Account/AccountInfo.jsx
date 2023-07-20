@@ -29,6 +29,28 @@ function AccountInfo({ session }) {
           </div>
           <div className="py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
             <dt className="text-base leading-6 text-neutral-600 uppercase tracking-widest font-bold">
+              Delivery Address
+            </dt>
+            <dl>
+              <dd className="mt-1 text-base leading-7 text-gray-500 sm:col-span-2 sm:mt-0">
+                07123456789
+              </dd>
+              <dd className="mt-1 text-base leading-7 text-gray-500 sm:col-span-2 sm:mt-0">
+                123 Nowhere Lane
+              </dd>
+              <dd className="mt-1 text-base leading-7 text-gray-500 sm:col-span-2 sm:mt-0">
+                Hawkins
+              </dd>
+              <dd className="mt-1 text-base leading-7 text-gray-500 sm:col-span-2 sm:mt-0">
+                Ilinois
+              </dd>
+              <dd className="mt-1 text-base leading-7 text-gray-500 sm:col-span-2 sm:mt-0">
+                90210
+              </dd>
+            </dl>
+          </div>
+          <div className="py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+            <dt className="text-base leading-6 text-neutral-600 uppercase tracking-widest font-bold">
               Billing Address
             </dt>
             <dl>

@@ -137,7 +137,7 @@ const Checkout = ({ step, setStep, onChange, submitOrder }) => {
 
       <div className="bg-white p-7">
         <div className="flex flex-col w-full gap-10">
-          <div className="flex items-center justify-between">
+          <div className="flex  justify-between">
             <div className="flex flex-col ">
               <h1 className="uppercase tracking-wide text-neutral-700 font-extrabold text-xl ">
                 Confirm Products
@@ -170,7 +170,12 @@ const Checkout = ({ step, setStep, onChange, submitOrder }) => {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <CheckoutProductList products={cartProducts} />
+            {cartProducts.length == 0 ? (
+              <h1 className="tracking-wide text-neutral-600">No products found</h1>
+            ) : (
+              <CheckoutProductList products={cartProducts} />
+            )}
+
           </Transition>
         </div>
       </div>

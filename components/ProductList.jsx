@@ -4,7 +4,7 @@ import Product from './Product'
 const ProductList = ({ products, paramQuery }) => {
 
   return (
-    <div className="grid grid-cols-2 lg:grid-cols-4 sm:my-10 gap-3" >
+    <div className="grid grid-cols-2 lg:grid-cols-4 sm:my-10 gap-4" >
         {products?.map((product, i) => (
           <Product
             paramQuery={paramQuery}

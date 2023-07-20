@@ -44,9 +44,9 @@ const BasketSummary = ({ step, setStep }) => {
             <BasketProductList products={cartProducts} />
           </>
         ) : (
-          <h1 className="text-lg mt-8">
-            There are no items in your cart.{" "}
-            <span className="font-semibold">Get shopping!</span>
+          <h1 className="text-lg mt-8 text-neutral-600 mb-8 ">
+            There are no items in your cart.
+            <span className="font-semibold ml-2">Get shopping!</span>
           </h1>
         )}
       </div>
