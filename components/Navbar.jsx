@@ -477,9 +477,6 @@ const Navbar = () => {
                                       onMouseEnter={() =>
                                         handlePanelMouseEnter(i)
                                       }
-                                      onMouseLeave={() =>
-                                        handlePanelMouseLeave(i)
-                                      }
                                     >
                                       {/* Presentational element used to render the bottom shadow, if we put the shadow on the actual panel it pokes out the top, so we use this shorter element to hide the top of the shadow */}
                                       <div
@@ -489,7 +486,7 @@ const Navbar = () => {
 
                                       <div className="min-w-[950px] xl:w-[1250px] relative bg-white">
                                         <div className="mx-auto px-8">
-                                          <div className="grid grid-cols-2 gap-x-8 gap-y-10 py-12">
+                                          <div className="grid grid-cols-2 gap-x-8 gap-y-10 pb-12 pt-10">
                                             <div className="col-start-2 grid grid-cols-2 gap-x-8">
                                               {category.featured.map((item) => (
                                                 <div
@@ -505,7 +502,7 @@ const Navbar = () => {
                                                   </div>
                                                   <a
                                                     href={item.href}
-                                                    className="mt-6 block font-medium text-gray-900"
+                                                    className="mt-6 block font-medium"
                                                   >
                                                     <span
                                                       className="absolute inset-0 z-10"
@@ -522,20 +519,20 @@ const Navbar = () => {
                                                 </div>
                                               ))}
                                             </div>
-                                            <div className="row-start-1 grid grid-cols-3 gap-x-8 gap-y-10 text-sm">
+                                            <div className="row-start-1 grid grid-cols-3 gap-x-8 gap-y-16 text-sm">
                                               {category.sections.map(
                                                 (section) => (
                                                   <div key={section.name}>
                                                     <p
                                                       id={`${section.name}-heading`}
-                                                      className="font-medium text-gray-900"
+                                                      className="font-bold  text-gray-600 uppercase tracking-widest mb-4"
                                                     >
                                                       {section.name}
                                                     </p>
                                                     <ul
                                                       role="list"
                                                       aria-labelledby={`${section.name}-heading`}
-                                                      className="mt-6 space-y-6 sm:mt-4 sm:space-y-4"
+                                                      className="mt-6 space-y-6 sm:mt-6 sm:space-y-4"
                                                     >
                                                       {section.items.map(
                                                         (item) => (
@@ -601,24 +598,16 @@ const Navbar = () => {
                 ) : (
                   ""
                 )}
-                {!quantity > 0 ? (
-                  <BsBag
-                    className="cursor-pointer text-white -mt-1 hover:opacity-90 lg:-mt-0.5 lg:w-[28px] lg:h-[28px]"
-                    size={25}
-                    onClick={toggleMenu}
-                  />
-                ) : (
-                  <BsBagFill
-                    className="cursor-pointer text-white -mt-1 hover:opacity-90 lg:-mt-0.5 lg:w-[28px] lg:h-[28px]"
-                    size={25}
-                    onClick={toggleMenu}
-                  />
-                )}
+                <BsBagFill
+                  className="cursor-pointer text-white -mt-1 hover:opacity-90 lg:-mt-0.5 lg:w-[28px] lg:h-[28px]"
+                  size={25}
+                  onClick={toggleMenu}
+                />
 
                 <div
                   className={`${
                     showMenu ? "max-h-32" : "max-h-0 invisible opacity-0 "
-                  } w-[200px] absolute top-10 -left-[76px] text-sm text-left transition-all duration-500 ease-in-out overflow-hidden bg-white h-32 z-50 opacity-100`}
+                  } w-[200px] absolute top-[63px] md:top-[71px] lg:top-[73px] -left-[76px] text-sm text-left transition-all duration-500 ease-in-out overflow-hidden bg-white h-32 z-50 opacity-100`}
                 >
                   <div className="m-4 flex flex-col justify-between h-24">
                     {!quantity > 0 ? (
@@ -640,7 +629,7 @@ const Navbar = () => {
                     {!quantity > 0 ? (
                       <button
                         disabled
-                        className="bg-neutral-900 outline-none border-none py-3 px-4 w-full text-xs text-neutral-50 font-semibold uppercase tracking-widest hover:opacity-90 cursor-pointer"
+                        className="bg-neutral-500 outline-none border-none py-3 px-4 w-full text-xs text-neutral-50 font-semibold uppercase tracking-widest"
                       >
                         See Basket
                       </button>
