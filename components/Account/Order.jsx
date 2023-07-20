@@ -22,6 +22,9 @@ function Order({ order, index }) {
 
     const progressPercentage = (elapsedTime / totalTimeSpan) * 100;
 
+    if (progressPercentage.toFixed(2) > 100) {
+      return 100;
+    }
     return progressPercentage.toFixed(2); // Return the progress with two decimal places
   }
 
@@ -47,7 +50,7 @@ function Order({ order, index }) {
             Order Status:
           </h1>
           {progress === 100 ? (
-            <p className="font-bold -mt-0.5">Delivered</p>
+            <p className="font-bold -mt-0.5">Delivered!</p>
           ) : progress < 33 ? (
             <p className="font-bold -mt-0.5">We've received your order</p>
           ) : (
@@ -81,11 +84,11 @@ function Order({ order, index }) {
       </div>
       <div className="flex justify-between w-full pt-4 ">
         <div className="flex flex-col gap-y-2">
-          <div className="flex gap-2 flex-col md:flex-row  uppercase tracking-wide font-bold">
+          <div className="flex gap-2 flex-col md:flex-row  items-center uppercase tracking-wide font-bold">
             <p className="py-1 text-sm  text-neutral-500">Order Reference:</p>
             <p className="text-neutral-700">{order.orderReference}</p>
           </div>
-          <div className="flex gap-2 flex-col md:flex-row   uppercase tracking-wide font-bold">
+          <div className="flex gap-2 flex-col md:flex-row items-center   uppercase tracking-wide font-bold">
             <p className="py-1 text-sm text-neutral-500">Order date:</p>
             <p className="text-neutral-700">{order.orderDate}</p>
           </div>
