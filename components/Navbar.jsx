@@ -18,6 +18,7 @@ import { BsBag, BsBagFill } from "react-icons/bs";
 
 const Navbar = () => {
   const { data: session } = useSession();
+
   // CART STUFF
   const total = useSelector((state) => state.cart.total);
   const quantity = useSelector((state) => state.cart.quantity);
@@ -35,6 +36,17 @@ const Navbar = () => {
       }
       lastScrollY = window.scrollY;
     });
+
+    const nav = document.getElementById("navbar");
+    const scrollNav = () => {
+      if (window.scrollY > 10) {
+        nav.classList.add("lg:-translate-y-6");
+      } else {
+        nav.classList.remove("lg:-translate-y-6");
+      }
+    };
+
+    document.addEventListener("scroll", scrollNav);
   }, []);
 
   // MOBILE MENU
@@ -249,8 +261,8 @@ const Navbar = () => {
     <>
       <nav
         className={`${
-          active ? "-top-[88px] transition" : "top-0"
-        } z-50 flex flex-col justify-center bg-neutral-600 sticky  transition w-full`}
+          active ? "-top-[48px] md:-top-[64px] lg:-top-[64px] transition" : "top-0  transition-all"
+        } z-50 flex flex-col justify-center duration-400 bg-neutral-700 sticky transition w-full`}
         id="navbar"
       >
         <div className="hidden justify-center items-center bg-neutral-900 h-6 w-full lg:flex">
@@ -262,7 +274,7 @@ const Navbar = () => {
         <div className="flex justify-between h-12 md:h-16 mx-auto max-w-[1250px] relative w-full items-center px-3 lg:px-9 xl:px-0">
           <div className="flex items-center">
             {/* TAILWIND NAVBAR */}
-            <div className="bg-stone-600">
+            <div className="bg-transparent">
               {/* Mobile menu */}
               <Transition.Root show={open} as={Fragment}>
                 <Dialog
@@ -599,8 +611,8 @@ const Navbar = () => {
                   ""
                 )}
                 <BsBagFill
-                  className="cursor-pointer text-white -mt-1 hover:opacity-90 lg:-mt-0.5 lg:w-[28px] lg:h-[28px]"
-                  size={25}
+                  className="cursor-pointer text-white -mt-1 hover:opacity-90 lg:-mt-0.5 lg:w-[27px] lg:h-[27px]"
+                  size={24}
                   onClick={toggleMenu}
                 />
 
@@ -665,7 +677,9 @@ const Navbar = () => {
                   </Link>
                 ) : (
                   <Link href="/dashboard">
-                    <FaUserAlt className="text-white hover:opacity-60 mt-[5px]" size={26} />
+                    <FaUserAlt
+                      className="text-white hover:opacity-60 mt-[3px] w-[24px] h-[24px] lg:mt-[5px] lg:w-[26px] lg:h-[26px]"
+                    />
                   </Link>
                 )}
               </li>
