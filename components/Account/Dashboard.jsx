@@ -5,7 +5,7 @@ import { useState } from "react";
 import AccountHeader from "./AccountHeader";
 import SectionWrapper from "./SectionWrapper";
 import DashboardSidebar from "./DashboardSidebar";
-import SignInButton from "../SignInButton";
+import Login from "./Auth/Login";
 
 import { useSession } from "next-auth/react";
 
@@ -20,7 +20,7 @@ const Dashboard = ({ pastOrders }) => {
   return (
     <>
       {session ? (
-        <div className="flex flex-col">
+        <div className="flex flex-col mb-6 lg:mb-4">
           <AccountHeader session={session} tab={tab} resetTab={resetTab} />
           {tab === "Overview" ? (
             <div className="md:flex md:flex-row w-full h-full my-2 md:my-8 md:gap-6">
@@ -47,7 +47,7 @@ const Dashboard = ({ pastOrders }) => {
           )}
         </div>
       ) : (
-        <SignInButton />
+        <Login />
       )}
     </>
   );

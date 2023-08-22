@@ -4,7 +4,7 @@ import { BiQuestionMark } from "react-icons/bi";
 import { MdOutlineContactless } from "react-icons/md";
 import { FaUserCircle } from "react-icons/fa";
 import { IoMdInformationCircleOutline } from "react-icons/io";
-import SignInButton from "../SignInButton";
+import SignInButton from "./Auth/SignInButton";
 const DashboardSidebar = ({ resetTab, setTab, tab }) => {
   const [active, setActive] = useState(tab);
 

@@ -8,7 +8,7 @@ const ProductList = ({ products, paramQuery }) => {
         {products?.map((product, i) => (
           <Product
             paramQuery={paramQuery}
-            key={product.name}
+            key={i}
             id={product._id}
             product={product}
             index={i}

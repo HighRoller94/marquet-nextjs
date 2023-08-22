@@ -21,9 +21,9 @@ const Collection = () => {
               className="object-cover w-full transition duration-500 aspect-square group-hover:opacity-90"
               /> */}
               <div className="absolute inset-0 flex flex-col items-start justify-end p-6">
-                <h3 className="text-xl font-medium text-white">Casual Trainers</h3>
+                <h3 className="text-2xl font-medium text-white">Casual Trainers</h3>
 
-                <span className="mt-1.5 inline-block bg-black px-5 py-3 text-xs font-medium uppercase tracking-wide text-white">
+                <span className="mt-1.5 inline-block bg-black px-6 py-3 text-xs lg:text-xs font-bold uppercase tracking-widest text-white rounded-md">
                   Shop Now
                 </span>
               </div>
@@ -39,9 +39,9 @@ const Collection = () => {
               />
 
               <div className="absolute inset-0 flex flex-col items-start justify-end p-6">
-                <h3 className="text-xl font-medium text-white">Winter Jumpers</h3>
+                <h3 className="text-2xl font-medium text-white">Winter Jumpers</h3>
 
-                <span className="mt-1.5 inline-block bg-black px-5 py-3 text-xs font-medium uppercase tracking-wide text-white">
+                <span className="mt-1.5 inline-block bg-black px-6 py-3 text-xs lg:text-xs font-bold uppercase tracking-widest text-white rounded-md">
                   Shop Now
                 </span>
               </div>
@@ -57,11 +57,11 @@ const Collection = () => {
               />
 
               <div className="absolute inset-0 flex flex-col items-start justify-end p-6">
-                <h3 className="text-xl font-medium text-white">
+                <h3 className="text-2xl font-medium text-white">
                   Skinny Jeans Blue
                 </h3>
 
-                <span className="mt-1.5 inline-block bg-black px-5 py-3 text-xs font-medium uppercase tracking-wide text-white">
+                <span className="mt-1.5 inline-block bg-black px-6 py-3 text-xs lg:text-xs font-bold uppercase tracking-widest text-white rounded-md">
                   Shop Now
                 </span>
               </div>

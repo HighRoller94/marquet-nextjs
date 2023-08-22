@@ -59,7 +59,7 @@ const Searchbar = ({
 
   return (
     <form onSubmit={searchMarquet} className="w-full border-none m-0">
-      <div className="flex lg:min-w-[300px] md:w-[98%] relative p-1 items-center bg-white mx-2 py-2 rounded-full outline-none l g:flex-row lg:p-2  lg:border lg:b-2 lg:rounded-full">
+      <div className="flex lg:min-w-[300px] md:w-[98%] relative p-1 items-center bg-white mx-2 py-2 rounded-full outline-none lg:flex-row lg:p-2  lg:border lg:b-2 lg:rounded-full xl:w-full xl:">
         <RiSearchLine
           onClick={handleMobSearchClose}
           size={20}

@@ -23,13 +23,13 @@ export default function Breadcrumbs({ name, searchQuery }) {
   const urlParams = getCurrentURLParams();
 
   return (
-    <nav aria-label="Breadcrumb" className="flex flex-start max-w-[1440px] mx-auto mt-8 w-full">
+    <nav aria-label="Breadcrumb" className="flex flex-start max-w-[1440px] mx-auto mt-5 lg:mt-8 w-full">
       <ol className="flex items-center h-5 list-none">
-        <li className="flex items-center text-sm opacity-60 hover:opacity-80 font-bold tracking-wide neutral-600">
+        <li className="flex items-center text-sm lg:text-base opacity-60 hover:opacity-80 font-bold tracking-wide neutral-600">
           <Link href="/">Home</Link>
           <BsChevronRight className="mx-2 text-xs" />
         </li>
-        <li className="flex items-center text-sm opacity-100 font-bold tracking-wide neutral-600">
+        <li className="flex items-center text-sm lg:text-base opacity-100 font-bold tracking-wide neutral-600">
           <Link href="/">Vans Shoes</Link>
         </li>
         {/* {name ? (

@@ -36,8 +36,9 @@ const Featured = () => {
         exit={{ opacity: 0 }}
         className="flex flex-col relative cursor-pointer"
         ref={ref}
+        key={i}
       >
-        <div className="relative h-52 md:h-72 w-full hover:opacity-90 transition bg-neutral-200">
+        <div className="relative h-52 md:h-72 w-full hover:opacity-90 transition bg-neutral-200  rounded-lg">
           <Image className=" rounded-lg object-cover" src={box.imageSrc} alt="Vans" fill />
         </div>
         <div className="absolute flex top-4 right-4 bg-neutral-50 items-center justify-center p-1 z-10 rounded-full w-9 h-9">

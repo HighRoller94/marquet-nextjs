@@ -1,8 +1,5 @@
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-import AccountHeader from "@/components/Account/AccountHeader";
-import SectionWrapper from "@/components/Account/SectionWrapper";
-import SignInButton from "@/components/SignInButton";
 import { getOrdersByEmail } from "@/lib/prisma/orders";
 import Dashboard from "@/components/Account/Dashboard";
 

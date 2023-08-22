@@ -1,5 +1,6 @@
 "use client";
 
+import { FaGoogle } from 'react-icons/fa'
 import { RiLogoutBoxLine } from 'react-icons/ri'
 import { useSession, signIn, signOut } from "next-auth/react";
 
@@ -18,10 +19,11 @@ const SignInButton = () => {
         </button>
       ) : (
         <button
-          className="rounded uppercase tracking-widest font-semibold w-fit border-stone-300 px-4 py-2 text-sm  bg-neutral-900 text-neutral-50 outline-none border-none hover:opacity-90 "
+          className="flex items-center justify-center rounded uppercase tracking-widest font-bold gap-x-4 w-fit border-stone-300 px-5 py-3 text-sm  bg-neutral-900 text-neutral-50 outline-none border-none hover:opacity-90 "
           onClick={() => signIn()}
         >
-          Sign In
+          <FaGoogle size={20}/>
+          Sign in with Google
         </button>
       )}
     </>

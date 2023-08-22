@@ -7,33 +7,50 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+type OrderProducts {
+  brand        String
+  desc         String
+  gallery      String[]
+  id           String
+  name         String
+  price        String
+  quantity     Int
+  sizeSelected String?
+  sizes        String[]
+  tags         String[]
+  type         String
+}
+
 model Order {
-  id             String @id @default(auto()) @map("_id") @db.ObjectId
+  id             String          @id @default(auto()) @map("_id") @db.ObjectId
   address        String
   deliveryDate   String
   email          String
   name           String
   orderDate      String
   orderReference String
-  products       Json?
+  products       OrderProducts[]
   total          String
 }
 
 model Product {
-  id      String   @id @default(auto()) @map("_id") @db.ObjectId
-  brand   String
-  desc    String
-  gallery String[]
-  name    String
-  price   String
-  sizes   String[]
-  tags    String[]
-  type    String
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  v             Int?     @map("__v")
+  brand         String
+  createdAt     DateTime @db.Date
+  desc          String
+  discount      Boolean
+  discountValue String?
+  gallery       String[]
+  name          String
+  price         String
+  sizes         String[]
+  type          String
+  updatedAt     DateTime @db.Date
 }
 
 model User {
-  id      String @id @default(auto()) @map("_id") @db.ObjectId
-  email   String @unique
-  name    String
-  address Json?
+  id    String @id @default(auto()) @map("_id") @db.ObjectId
+  /// Field referred in an index, but found no data to define the type.
+  email Json?  @unique
 }
