@@ -624,7 +624,7 @@ const Navbar = () => {
                   <div className="m-4 flex flex-col justify-between h-24">
                     {!quantity > 0 ? (
                       <>
-                        <p className="flex justify-between w-full">
+                        <p className="flex justify-between w-full text-neutral-600 tracking-widest font-medium">
                           There's nothing here. Get shopping!
                         </p>
                       </>

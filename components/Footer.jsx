@@ -14,7 +14,6 @@ const Footer = () => {
                 width={75}
                 height={75}
               />
-
             </div>
             <p className="mt-4 max-w-xs text-gray-500">
               Quality products. Exclusive brands. All at the best prices.
@@ -103,7 +102,7 @@ const Footer = () => {
                     href="#"
                     className="text-gray-700 transition hover:opacity-75"
                   >
-                    1on1 Coaching
+                    Track Order
                   </a>
                 </li>
 
@@ -112,7 +111,7 @@ const Footer = () => {
                     href="#"
                     className="text-gray-700 transition hover:opacity-75"
                   >
-                    Company Review
+                    Delivery and Returns
                   </a>
                 </li>
 
@@ -121,7 +120,7 @@ const Footer = () => {
                     href="#"
                     className="text-gray-700 transition hover:opacity-75"
                   >
-                    Accounts Review
+                    Black Friday
                   </a>
                 </li>
 
@@ -130,16 +129,7 @@ const Footer = () => {
                     href="#"
                     className="text-gray-700 transition hover:opacity-75"
                   >
-                    HR Consulting
-                  </a>
-                </li>
-
-                <li>
-                  <a
-                    href="#"
-                    className="text-gray-700 transition hover:opacity-75"
-                  >
-                    SEO Optimisation
+                    Marquet Plus
                   </a>
                 </li>
               </ul>
@@ -147,7 +137,7 @@ const Footer = () => {
 
             <div>
               <p className=" text-neutral-500 uppercase tracking-wide font-bold">
-                Company
+                About Us
               </p>
 
               <ul className="mt-6 space-y-4 text-sm">
@@ -156,7 +146,7 @@ const Footer = () => {
                     href="#"
                     className="text-gray-700 transition hover:opacity-75"
                   >
-                    About
+                    About us
                   </a>
                 </li>
 
@@ -165,7 +155,7 @@ const Footer = () => {
                     href="#"
                     className="text-gray-700 transition hover:opacity-75"
                   >
-                    Meet the Team
+                    Careers at Marquet
                   </a>
                 </li>
 
@@ -174,7 +164,7 @@ const Footer = () => {
                     href="#"
                     className="text-gray-700 transition hover:opacity-75"
                   >
-                    Accounts Review
+                    Account Security
                   </a>
                 </li>
               </ul>
@@ -191,7 +181,7 @@ const Footer = () => {
                     href="#"
                     className="text-gray-700 transition hover:opacity-75"
                   >
-                    Contact
+                    Get in Touch
                   </a>
                 </li>
 
@@ -210,6 +200,14 @@ const Footer = () => {
                     className="text-gray-700 transition hover:opacity-75"
                   >
                     Live Chat
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="text-gray-700 transition hover:opacity-75"
+                  >
+                    Site Map
                   </a>
                 </li>
               </ul>
@@ -245,15 +243,6 @@ const Footer = () => {
                     className="text-gray-700 transition hover:opacity-75"
                   >
                     Refund Policy
-                  </a>
-                </li>
-
-                <li>
-                  <a
-                    href="#"
-                    className="text-gray-700 transition hover:opacity-75"
-                  >
-                    Hiring Statistics
                   </a>
                 </li>
               </ul>
