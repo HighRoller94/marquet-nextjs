@@ -4,11 +4,12 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import ItemAddedToFavouriteToast from "./Toasts/ItemAddedToFavouritesToast";
+import ItemAddedToFavouritesToast from "./Toasts/ItemAddedToFavouritesToast";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { toast } from "react-hot-toast";
-
 import productLikedAnimationStyles from "../styles/animations/productLikedAnimation.module.scss";
+
+import applyDiscount from "@/lib/util/applyDiscount";
 
 const Product = ({ key, name, price, gallery, type, product, paramQuery }) => {
   const priceFixed = (Math.round(price * 100) / 100).toFixed(2);
@@ -18,6 +19,7 @@ const Product = ({ key, name, price, gallery, type, product, paramQuery }) => {
 
   const itemExists = productsFound.find((product) => product.name === name);
 
+  console.log(productsFound)
   const saveProductToFavourites = () => {
     const savedProducts = JSON.parse(localStorage.getItem("savedProducts"));
     localStorage.setItem(
@@ -27,7 +29,7 @@ const Product = ({ key, name, price, gallery, type, product, paramQuery }) => {
     setSaved(true);
     setClicked(true);
     toast((t) => (
-      <ItemAddedToFavouriteToast
+      <ItemAddedToFavouritesToast
         product={product}
         onClick={() => toast.dismiss(t.id)}
       />
@@ -68,7 +70,16 @@ const Product = ({ key, name, price, gallery, type, product, paramQuery }) => {
             pathname: `/products/${product.id}`,
           }}
         >
-          <div className="absolute top-0 left-0 bg-neutral-200 "></div>
+          {product.discount ? (
+            <div className="absolute right-0 top-6 w-[80px] h-[30px] z-30 bg-red-600 flex items-center justify-center after:absolute after:-left-[15px] ">
+              <div class="left-[0px] absolute -top-1.5 transform -translate-x-1/2 translate-y-1/2 rotate-45 z-20 w-5 h-[21px] bg-red-600"></div>
+              <h1 className="uppercase font-semibold text-neutral-50 z-30 text-sm tracking-widest">
+                {product.discountValue}% off
+              </h1>
+            </div>
+          ) : (
+            ""
+          )}
           <Image
             className="h-auto max-w-full object-cover bg-neutral-200"
             src={gallery[0]}
@@ -81,7 +92,7 @@ const Product = ({ key, name, price, gallery, type, product, paramQuery }) => {
             fill
             loading="lazy"
             alt={name}
-            className="hidden transition group-hover:flex object-cover h-auto max-w-full"
+            className="hidden transition duration-200 group-hover:flex object-cover h-auto max-w-full"
           />
         </Link>
         {itemExists ? (
@@ -109,9 +120,20 @@ const Product = ({ key, name, price, gallery, type, product, paramQuery }) => {
         <h1 className="text-neutral-700 font-bold tracking-widest text-sm  uppercase">
           {name}
         </h1>
-        <p className="text-gray-500 text-sm font-bold tracking-wide mt-1">
-          £{priceFixed}
-        </p>
+        {product.discount ? (
+          <div className="flex items-center gap-x-2">
+            <p className="text-gray-500 text-xs font-bold tracking-wide mt-1 relative after:absolute after:w-[104%] after:bg-red-600 after:top-[7px] after:-left-[2px] after:h-[2px] after:rotate-[7deg]">
+              £{priceFixed}
+            </p>
+            <p className="text-red-600 text-sm font-bold tracking-wide mt-1">
+              £{applyDiscount(priceFixed, product.discountValue)}
+            </p>
+          </div>
+        ) : (
+          <p className="text-gray-500 text-sm font-bold tracking-wide mt-1">
+            £{priceFixed}
+          </p>
+        )}
       </div>
     </div>
   );

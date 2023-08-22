@@ -5,28 +5,33 @@ import Image from "next/image";
 import { HiHeart, HiOutlineHeart } from "react-icons/hi";
 import { FaBox, FaShoppingCart } from "react-icons/fa";
 import { MdInfo } from "react-icons/md";
-import { AiFillEye } from "react-icons/ai";
+import { AiFillEye, AiFillExclamationCircle } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
-import { addProduct, removeProduct } from "@/redux/cartSlice";
+import { addProduct } from "@/redux/cartSlice";
 import { toast } from "react-hot-toast";
 
 import ItemAddedToFavouritesToast from "../Toasts/ItemAddedToFavouritesToast";
 import ItemAddedToCartToast from "../Toasts/ItemAddedToCartToast";
 import AddProductAnimationStyles from "../../styles/animations/addProductAnimation.module.scss";
+import applyDiscount from "@/lib/util/applyDiscount";
 
-export default function Product({ product }) {
+export default function Product({ product, pastOrders }) {
+  const [foundOrder, setFoundOrder] = useState(null);
+
   const cart = useSelector((state) => state.cart);
   const [sizeSelected, setSizeSelected] = useState("");
   const [quantity, setQuantity] = useState(1);
   const dispatch = useDispatch();
   const [saved, setSaved] = useState("");
-  const price = product.price;
+  const priceFixed = (Math.round(product.price * 100) / 100).toFixed(2);
   const [added, setAdded] = useState(false);
   const [mainImage, setMainImage] = useState("");
   const [productsFound, setProductsFound] = useState([]);
+
   const item = productsFound.find(
     (savedProduct) => savedProduct.name === product.name
   );
+
   const [clicked, setClicked] = useState(false);
   const installmentPrice = (product.price / 3).toFixed(2);
 
@@ -47,6 +52,21 @@ export default function Product({ product }) {
       />
     ));
   };
+
+  useEffect(() => {
+    function findAndSetFoundOrder(productIdToCheck) {
+      const orderWithMatchingProduct = pastOrders.find((order) =>
+        order.products.some((product) => product.id === productIdToCheck)
+      );
+
+      console.log(orderWithMatchingProduct);
+      if (orderWithMatchingProduct) {
+        setFoundOrder(orderWithMatchingProduct);
+      }
+    }
+
+    findAndSetFoundOrder(product.id);
+  }, []);
 
   const popToast = () => {
     toast((t) => (
@@ -101,9 +121,18 @@ export default function Product({ product }) {
     setProductsFound(savedProducts);
   }, [product, saved, cart]);
 
-
   return (
     <div className="pb-16 mb-5 flex flex-col items-center justify-center w-full">
+      {foundOrder && (
+        <div className="bg-neutral-200 w-full h-fit max-w-[1050px] mt-4 lg:mt-6 flex items-start gap-1 ">
+          <div className="flex justify-center items-start p-4 gap-x-2 lg:gap-x-4 lg:p-5">
+            <AiFillExclamationCircle className="w-6 h-6 lg:w-7 lg:h-7 text-text-neutral-700" />
+            <p className="text-base font-medium text-neutral-700 -mt-0.5 lg:mt-[1px] lg:text-lg">
+              You purchased this item on {foundOrder?.orderDate}
+            </p>
+          </div>
+        </div>
+      )}
       <div className="flex flex-col justify-between md:flex-row  max-w-[1050px] gap-4 mt-4 md:mt-8 w-full md:gap-4 lg:gap-8 lg:h-[1000px]">
         <div className="flex flex-col items-start md:sticky md:top-32 w-full lg:h-[650px]">
           <div className="flex flex-col-reverse w-full lg:flex-row md:gap-8 md:min-w-[360px]">
@@ -111,7 +140,7 @@ export default function Product({ product }) {
               id="imageGallery"
               className="grid mt-2 md:mt-0 grid-cols-4 sm:grid-cols-4 w-full lg:grid-cols-1 h-full lg:h-40 md:w-auto gap-2 md:gap-4"
             >
-              {product.gallery.slice(0,4).map((image, i) => (
+              {product.gallery.slice(0, 4).map((image, i) => (
                 <div
                   className="relative group w-full min-h-[70px] max-h-[70px] sm:min-h-[120px] cursor-pointer md:min-h-[70px] md:min-w-[70px] md:h-fit-content"
                   key={i}
@@ -137,8 +166,18 @@ export default function Product({ product }) {
                 src={mainImage}
                 fill
                 alt={product.name}
-                className=" object-cover"
+                className="object-cover"
               />
+              {product.discount ? (
+                <div className="absolute right-0 top-8 w-[100px] h-[40px] z-30 bg-red-600 flex items-center justify-center after:absolute after:-left-[15px] ">
+                  <div class="left-[0px] absolute -top-[8px] transform -translate-x-1/2 translate-y-1/2 rotate-45 z-20 w-7 h-[28px] bg-red-600"></div>
+                  <h1 className="uppercase font-bold text-neutral-50 z-30 text-sm lg:text-base tracking-widest">
+                    {product.discountValue}% off
+                  </h1>
+                </div>
+              ) : (
+                ""
+              )}
             </div>
           </div>
         </div>
@@ -146,10 +185,23 @@ export default function Product({ product }) {
           <span className="text-xs font-bold text-neutral-600 uppercase tracking-widest mt-2">
             {product.brand}
           </span>
-          <h1 className="mt-3 text-3xl font-bold text-neutral-700 tracking-widest uppercase ">{product.name}</h1>
-          <h1 className="text-xl my-2 font-bold text-neutral-400 uppercase tracking-widest mb-2">
-            £{price}
+          <h1 className="mt-3 text-3xl font-bold text-neutral-700 tracking-widest uppercase ">
+            {product.name}
           </h1>
+          {product.discount ? (
+            <div className="flex items-center my-1.5 gap-x-2">
+              <p className="text-gray-500 text-xs  font-bold tracking-wide mt-1 relative after:absolute after:w-[104%] after:bg-red-600 after:top-[7px] after:-left-[2px] after:h-[2px] after:rotate-[7deg]">
+                £{priceFixed}
+              </p>
+              <p className="text-red-600 text-sm lg:text-base font-bold tracking-wide mt-[2px]">
+                £{applyDiscount(priceFixed, product.discountValue)}
+              </p>
+            </div>
+          ) : (
+            <p className="text-gray-500 text-sm font-bold tracking-wide my-2">
+              £{priceFixed}
+            </p>
+          )}
           <div className="mt-5 flex items-center w-[280px]">
             <h4 className="w-12 mr-4 text-xs text-neutral-400 uppercase font-semibold tracking-widest">
               Size:
@@ -162,7 +214,9 @@ export default function Product({ product }) {
                 Please select
               </option>
               {product.sizes.map((size, i) => (
-                <option key={i} value={size} >{size}</option>
+                <option key={i} value={size}>
+                  {size}
+                </option>
               ))}
             </select>
           </div>
@@ -189,27 +243,34 @@ export default function Product({ product }) {
           <div className={AddProductAnimationStyles.addProductBtn}>
             {sizeSelected ? (
               <button
-              onClick={handleClick}
-              className={
-                added
-                  ? `${AddProductAnimationStyles.cartButton} ${AddProductAnimationStyles.itemAdded}`
-                  : `${AddProductAnimationStyles.cartButton}`
-              }
-            >
-              <span className={AddProductAnimationStyles.addToCart}>
-                Add to Cart
-              </span>
-              <span className={AddProductAnimationStyles.added}>
-                Added to Cart
-              </span>
-              <FaShoppingCart className={AddProductAnimationStyles.cartIcon} />
-              <FaBox className={AddProductAnimationStyles.cartItem} />
-            </button>
+                onClick={handleClick}
+                className={
+                  added
+                    ? `${AddProductAnimationStyles.cartButton} ${AddProductAnimationStyles.itemAdded}`
+                    : `${AddProductAnimationStyles.cartButton}`
+                }
+              >
+                <span className={AddProductAnimationStyles.addToCart}>
+                  Add to Cart
+                </span>
+                <span className={AddProductAnimationStyles.added}>
+                  Added to Cart
+                </span>
+                <FaShoppingCart
+                  className={AddProductAnimationStyles.cartIcon}
+                />
+                <FaBox className={AddProductAnimationStyles.cartItem} />
+              </button>
             ) : (
-              <button disabled className="border-none outline-none opacity-60 text-white font-semibold w-full text-sm uppercase tracking-widest bg-neutral-900
-              py-3">Add to Cart</button>
+              <button
+                disabled
+                className="border-none outline-none opacity-60 text-white font-semibold w-full text-sm uppercase tracking-widest bg-neutral-900
+              py-3"
+              >
+                Add to Cart
+              </button>
             )}
-            
+
             {item ? (
               <div className={AddProductAnimationStyles.iconHolder}>
                 <HiHeart
