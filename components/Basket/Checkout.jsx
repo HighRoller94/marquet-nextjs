@@ -171,11 +171,12 @@ const Checkout = ({ step, setStep, onChange, submitOrder }) => {
             leaveTo="opacity-0"
           >
             {cartProducts.length == 0 ? (
-              <h1 className="tracking-wide text-neutral-600">No products found</h1>
+              <h1 className="tracking-wide text-neutral-600">
+                No products found
+              </h1>
             ) : (
               <CheckoutProductList products={cartProducts} />
             )}
-
           </Transition>
         </div>
       </div>
@@ -201,23 +202,6 @@ const Checkout = ({ step, setStep, onChange, submitOrder }) => {
                   <li>Ilinois</li>
                   <li>90210</li>
                 </ul>
-                {/* <div className="sm:col-span-3 lg:flex items-center gap-x-6">
-                  <label
-                    htmlFor="name"
-                    className="w-[50px] block text-xs uppercase tracking-widest font-bold leading-6 text-gray-900"
-                  >
-                    <span className="content-name">Address</span>
-                  </label>
-                  <input
-                    className="block flex-1 border-1 border-neutral-200 bg-transparent b-1 py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                    type="text"
-                    {...register("address")}
-                    onChange={onChange}
-                    name="address"
-                    autoComplete="off"
-                    required
-                  />
-                </div> */}
               </div>
               <div
                 className="text-white mt-16 w-fit text-sm sm:mt-0 py-2 px-4 bg-neutral-900 uppercase font-bold tracking-widest hover:opacity-90 h-fit cursor-pointer"
@@ -229,41 +213,8 @@ const Checkout = ({ step, setStep, onChange, submitOrder }) => {
           )}
         </div>
       </form>
-      {/* <form
-        id="deliveryForm"
-        className="mt-6 gap-12 bg-white p-6"
-        onSubmit={handleSubmit(submitOrder)}
-      >
-        <div className="flex flex-col w-full gap-12 ">
-          <h1 className="uppercase tracking-wide text-neutral-700 font-extrabold text-xl ">
-            Delivery Options
-          </h1>
-          {openDelivery && (
-            <>
-              <div className="flex items-center gap-8">
-                <div className="sm:col-span-3 lg:flex items-center gap-x-6">
-                  <label
-                    htmlFor="name"
-                    className="w-[50px] block text-xs uppercase tracking-widest font-bold leading-6 text-gray-900"
-                  >
-                    <span className="content-name">Address</span>
-                  </label>
-                  <input
-                    className="block flex-1 border-1 border-neutral-200 bg-transparent b-1 py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                    type="text"
-                    {...register("address")}
-                    onChange={onChange}
-                    name="address"
-                    autoComplete="off"
-                    required
-                  />
-                </div>
-              </div>
-            </>
-          )}
-        </div>
-      </form> */}
-      <form
+
+      <div
         id="paymentForm"
         className="mt-6 gap-12 bg-white p-7 pb-8"
         onSubmit={handleSubmit(submitOrder)}
@@ -274,7 +225,8 @@ const Checkout = ({ step, setStep, onChange, submitOrder }) => {
           </h1>
           <PaymentForm />
         </div>
-      </form>
+      </div>
+
       <div className="mt-8 lg:mt-12 flex items-center text-neutral-900  hover:opacity-90 gap-4">
         <BsFillArrowLeftCircleFill size={28} />
         <button className="font-bold text-lg lg:text-base " onClick={goBack}>

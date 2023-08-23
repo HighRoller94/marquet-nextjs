@@ -12,6 +12,7 @@ export default function Confirmation({ order }) {
     });
   };
 
+  console.log(order)
   useEffect(() => {
     scrollToTop();
   }, []);

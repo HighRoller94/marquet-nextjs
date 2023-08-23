@@ -72,7 +72,7 @@ const Product = ({ key, name, price, gallery, type, product, paramQuery }) => {
         >
           {product.discount ? (
             <div className="absolute right-0 top-6 w-[80px] h-[30px] z-30 bg-red-600 flex items-center justify-center after:absolute after:-left-[15px] ">
-              <div class="left-[0px] absolute -top-1.5 transform -translate-x-1/2 translate-y-1/2 rotate-45 z-20 w-5 h-[21px] bg-red-600"></div>
+              <div className="left-[0px] absolute -top-1.5 transform -translate-x-1/2 translate-y-1/2 rotate-45 z-20 w-5 h-[21px] bg-red-600"></div>
               <h1 className="uppercase font-semibold text-neutral-50 z-30 text-sm tracking-widest">
                 {product.discountValue}% off
               </h1>

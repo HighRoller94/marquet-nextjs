@@ -11,12 +11,12 @@ const cartSlice = createSlice({
         addProduct: (state, action) => {
             const item = state.products.find((product) => product.name === action.payload.name);
 
+            console.log(action.payload)
             if (item) {
                 item.quantity += action.payload.quantity;
             } else {
                 state.products.push(action.payload);
             }
-            state.size += action.payload.sizeSelected
             state.quantity += action.payload.quantity;
             state.total += action.payload.price * action.payload.quantity;
         },

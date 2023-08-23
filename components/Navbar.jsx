@@ -634,7 +634,7 @@ const Navbar = () => {
                           Quantity:<span>{quantity} items</span>
                         </p>
                         <p className="font-bold text-xs text-neutral-600 uppercase tracking-widest flex justify-between w-full">
-                          Subtotal:<span>£{total.toFixed(2)}</span>
+                          Subtotal:<span>£{total}</span>
                         </p>
                       </>
                     )}

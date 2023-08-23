@@ -14,8 +14,12 @@ const handler = async (req, res) => {
   if (req.method === 'POST') {
     try {
       const data = req.body
+      console.log(data)
       const { order, error } = await createOrder(data)
+
+      console.log(error)
       if (error) throw new Error(error)
+
       return res.status(201).json({ order })
     } catch (error) {
       return res.status(500).json({ error: error.message })

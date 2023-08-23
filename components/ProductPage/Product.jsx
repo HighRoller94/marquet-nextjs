@@ -86,6 +86,7 @@ export default function Product({ product, pastOrders }) {
     setSizeSelected(selectedSize);
   };
 
+
   const handleClick = () => {
     dispatch(addProduct({
       ...product,

@@ -62,6 +62,7 @@ const Form = () => {
     products: cart.products,
   });
 
+  console.log(cart)
   const storeOrder = async () => {
     const response = await fetch("/api/orders", {
       method: "POST",
@@ -74,6 +75,7 @@ const Form = () => {
     return result;
   };
 
+  console.log(formData)
   const completeOrder = () => {
     setStep((step) => step + 1);
     dispatch(reset());
@@ -86,6 +88,7 @@ const Form = () => {
     setTimeout(completeOrder, 2000);
   };
 
+  
   const FormDisplay = () => {
     if (step === 0) {
       return (

@@ -36,7 +36,7 @@ function Subtotal({ formData, step, setStep, isLoading, order }) {
             Subtotal ({!order ? orderQuantity : order?.products.length} items):
           </div>
           <div className=" font-bold ml-2 text-neutral-700">
-            £{!order ? total.toFixed(2) : order?.total}
+            £{!order ? total : order?.total}
           </div>
         </div>
         <div className="flex items-center gap-x-4 mb-6 text-base justify-between">
