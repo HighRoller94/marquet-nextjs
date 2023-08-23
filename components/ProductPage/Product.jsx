@@ -24,6 +24,9 @@ export default function Product({ product, pastOrders }) {
   const dispatch = useDispatch();
   const [saved, setSaved] = useState("");
   const priceFixed = (Math.round(product.price * 100) / 100).toFixed(2);
+  
+  const discountedPrice = applyDiscount(priceFixed, product.discountValue)
+
   const [added, setAdded] = useState(false);
   const [mainImage, setMainImage] = useState("");
   const [productsFound, setProductsFound] = useState([]);
@@ -32,6 +35,7 @@ export default function Product({ product, pastOrders }) {
     (savedProduct) => savedProduct.name === product.name
   );
 
+  console.log(product)
   const [clicked, setClicked] = useState(false);
   const installmentPrice = (product.price / 3).toFixed(2);
 
@@ -58,8 +62,6 @@ export default function Product({ product, pastOrders }) {
       const orderWithMatchingProduct = pastOrders.find((order) =>
         order.products.some((product) => product.id === productIdToCheck)
       );
-
-      console.log(orderWithMatchingProduct);
       if (orderWithMatchingProduct) {
         setFoundOrder(orderWithMatchingProduct);
       }
@@ -85,7 +87,12 @@ export default function Product({ product, pastOrders }) {
   };
 
   const handleClick = () => {
-    dispatch(addProduct({ ...product, price, quantity, sizeSelected }));
+    dispatch(addProduct({
+      ...product,
+      price: product.discount ? discountedPrice : priceFixed,
+      quantity,
+      sizeSelected
+    }));
     setAdded(true);
     setTimeout(popToast, 2000);
   };
@@ -99,7 +106,6 @@ export default function Product({ product, pastOrders }) {
       setQuantity(quantity - 1);
     }
   };
-
   const removeProductFromFavourites = () => {
     const savedProducts = JSON.parse(localStorage.getItem("savedProducts"));
     savedProducts.forEach((savedProduct) => {
@@ -120,6 +126,7 @@ export default function Product({ product, pastOrders }) {
     const savedProducts = JSON.parse(localStorage.getItem("savedProducts"));
     setProductsFound(savedProducts);
   }, [product, saved, cart]);
+
 
   return (
     <div className="pb-16 mb-5 flex flex-col items-center justify-center w-full">
@@ -170,7 +177,7 @@ export default function Product({ product, pastOrders }) {
               />
               {product.discount ? (
                 <div className="absolute right-0 top-8 w-[100px] h-[40px] z-30 bg-red-600 flex items-center justify-center after:absolute after:-left-[15px] ">
-                  <div class="left-[0px] absolute -top-[8px] transform -translate-x-1/2 translate-y-1/2 rotate-45 z-20 w-7 h-[28px] bg-red-600"></div>
+                  <div className="left-[0px] absolute -top-[8px] transform -translate-x-1/2 translate-y-1/2 rotate-45 z-20 w-7 h-[28px] bg-red-600"></div>
                   <h1 className="uppercase font-bold text-neutral-50 z-30 text-sm lg:text-base tracking-widest">
                     {product.discountValue}% off
                   </h1>
@@ -190,7 +197,7 @@ export default function Product({ product, pastOrders }) {
           </h1>
           {product.discount ? (
             <div className="flex items-center my-1.5 gap-x-2">
-              <p className="text-gray-500 text-xs  font-bold tracking-wide mt-1 relative after:absolute after:w-[104%] after:bg-red-600 after:top-[7px] after:-left-[2px] after:h-[2px] after:rotate-[7deg]">
+              <p className="text-gray-500 text-xs  font-bold tracking-wide mt-1 relative after:absolute after:w-[104%] after:bg-red-600 after:top-[7px] after:-left-[1px] after:h-[2px]">
                 £{priceFixed}
               </p>
               <p className="text-red-600 text-sm lg:text-base font-bold tracking-wide mt-[2px]">
