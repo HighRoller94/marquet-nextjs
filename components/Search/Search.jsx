@@ -21,7 +21,6 @@ const Search = ({
   const router = useRouter();
 
   const pushUrl = (url) => {
-    console.log(url);
     const path = `/search?q=${url}`;
     router.push(path);
   };

@@ -19,7 +19,6 @@ const Product = ({ key, name, price, gallery, type, product, paramQuery }) => {
 
   const itemExists = productsFound.find((product) => product.name === name);
 
-  console.log(productsFound)
   const saveProductToFavourites = () => {
     const savedProducts = JSON.parse(localStorage.getItem("savedProducts"));
     localStorage.setItem(

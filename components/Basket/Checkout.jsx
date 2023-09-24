@@ -12,7 +12,14 @@ import { BiSolidChevronUp, BiSolidChevronDown } from "react-icons/bi";
 import CheckoutProductList from "./CheckoutProductList";
 import { BsFillArrowLeftCircleFill } from "react-icons/bs";
 
-const Checkout = ({ step, setStep, onChange, submitOrder }) => {
+const Checkout = ({
+  step,
+  setStep,
+  onChange,
+  submitOrder,
+  email,
+  setEmail,
+}) => {
   const [openPayment, setOpenPayment] = useState(false);
   const [openDelivery, setOpenDelivery] = useState(false);
   const [openProducts, setOpenProducts] = useState(false);
@@ -34,8 +41,8 @@ const Checkout = ({ step, setStep, onChange, submitOrder }) => {
     setStep((step) => step - 1);
   };
 
-  const changeAddress = () => {
-    console.log("change");
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
   };
 
   const PaymentForm = () => {
@@ -68,7 +75,7 @@ const Checkout = ({ step, setStep, onChange, submitOrder }) => {
         />
         <form className="flex flex-col w-full mt-8 sm:mt-0 md:mt-8 lg:mt-0">
           <input
-            className="rounded-lg block flex-1 border-1 border-neutral-200 bg-transparent w-full b-1 py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+            className="rounded-lg block flex-1 border-1 border-neutral-200 bg-transparent w-full b-1 py-4 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
             type="tel"
             name="number"
             placeholder="Card Number"
@@ -82,7 +89,7 @@ const Checkout = ({ step, setStep, onChange, submitOrder }) => {
             e.g. 49**, 52**, 23**, 98**
           </p>
           <input
-            className="rounded-lg block flex-1 border-1 mt-2 border-neutral-200 bg-transparent w-full b-1 py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+            className="rounded-lg block flex-1 border-1 mt-2 border-neutral-200 bg-transparent w-full b-1 py-1.5 pl-4 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
             type="text"
             name="name"
             placeholder="Name"
@@ -92,7 +99,7 @@ const Checkout = ({ step, setStep, onChange, submitOrder }) => {
             onFocus={handleInputFocus}
           />
           <input
-            className="rounded-lg block flex-1 border-1 mt-2 border-neutral-200 bg-transparent w-full b-1 py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+            className="rounded-lg block flex-1 border-1 mt-2 border-neutral-200 bg-transparent w-full b-1 py-1.5 pl-4 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
             type="tel"
             name="expiry"
             placeholder="Valid Thru"
@@ -103,7 +110,7 @@ const Checkout = ({ step, setStep, onChange, submitOrder }) => {
             onFocus={handleInputFocus}
           />
           <input
-            className="rounded-lg block flex-1 border-1 mt-2 border-neutral-200 bg-transparent w-full b-1 py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+            className="rounded-lg block flex-1 border-1 mt-2 border-neutral-200 bg-transparent w-full b-1 py-1.5 pl-4 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
             type="tel"
             name="cvc"
             placeholder="CVC"
@@ -180,6 +187,31 @@ const Checkout = ({ step, setStep, onChange, submitOrder }) => {
           </Transition>
         </div>
       </div>
+
+      {!session && (
+        <form id="emailForm" className="mt-6 gap-12 bg-white p-7">
+          <div className="flex flex-col w-full gap-4  ">
+            <h1 className="uppercase tracking-wide text-neutral-700 font-extrabold text-xl ">
+              Email Address
+            </h1>
+            <p className="text-gray-500 text-base w-11/12 lg:w-12/12 mt-2">
+              Please enter your email address
+            </p>
+            <input
+              className="rounded-lg block flex-1 border-1 mt-2 border-neutral-200 bg-transparent b-1 py-1.5 pl-4 
+            w-8/12 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+              type="email"
+              placeholder="johndoe@gmail.com"
+              id="email"
+              name="email"
+              value={email}
+              onChange={handleEmailChange}
+              required
+            />
+          </div>
+        </form>
+      )}
+
       <form
         id="deliveryForm"
         className="mt-6 gap-12 bg-white p-7"
@@ -205,7 +237,6 @@ const Checkout = ({ step, setStep, onChange, submitOrder }) => {
               </div>
               <div
                 className="text-white mt-16 w-fit text-sm sm:mt-0 py-2 px-4 bg-neutral-900 uppercase font-bold tracking-widest hover:opacity-90 h-fit cursor-pointer"
-                onClick={changeAddress}
               >
                 Change
               </div>

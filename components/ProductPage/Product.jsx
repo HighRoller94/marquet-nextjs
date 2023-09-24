@@ -35,7 +35,6 @@ export default function Product({ product, pastOrders }) {
     (savedProduct) => savedProduct.name === product.name
   );
 
-  console.log(product)
   const [clicked, setClicked] = useState(false);
   const installmentPrice = (product.price / 3).toFixed(2);
 

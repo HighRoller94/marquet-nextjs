@@ -15,7 +15,9 @@ const Form = () => {
   const { data: session } = useSession();
   const [isLoading, setIsLoading] = useState(false);
   const [step, setStep] = useState(0);
-  const [order, setOrder] = useState()
+  const [order, setOrder] = useState();
+  const [email, setEmail] = useState("");
+  const [emailData, setEmailData] = useState("");
   const [activeStep, setActiveStep] = useState(-1);
   const [basketData, setBasketData] = useState(0);
   const cart = useSelector((state) => state.cart);
@@ -23,7 +25,7 @@ const Form = () => {
   const dispatch = useDispatch();
   const orderReference = generateRandomString();
   const currentDate = dayjs();
-  const futureDate = currentDate.add(3, 'day').format('DD/MM/YYYY');
+  const futureDate = currentDate.add(3, "day").format("DD/MM/YYYY");
 
   function generateRandomString() {
     const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -54,15 +56,14 @@ const Form = () => {
   const [formData, setFormData] = useState({
     orderReference: orderReference,
     name: "",
-    email: session?.user?.email,
+    email: !session ? email : session?.user?.email,
     address: "",
     deliveryDate: futureDate,
     total: `${total.toFixed(2)}`,
-    orderDate: `${currentDate.format('DD/MM/YYYY')}`,
+    orderDate: `${currentDate.format("DD/MM/YYYY")}`,
     products: cart.products,
   });
 
-  console.log(cart)
   const storeOrder = async () => {
     const response = await fetch("/api/orders", {
       method: "POST",
@@ -75,7 +76,6 @@ const Form = () => {
     return result;
   };
 
-  console.log(formData)
   const completeOrder = () => {
     setStep((step) => step + 1);
     dispatch(reset());
@@ -84,11 +84,10 @@ const Form = () => {
   const submitOrder = async () => {
     setIsLoading(true);
     const res = await storeOrder();
-    setOrder(res.order)
+    setOrder(res.order);
     setTimeout(completeOrder, 2000);
   };
 
-  
   const FormDisplay = () => {
     if (step === 0) {
       return (
@@ -102,10 +101,12 @@ const Form = () => {
           submitOrder={submitOrder}
           setStep={setStep}
           step={step}
+          email={email}
+          setEmail={setEmail}
         />
       );
     } else {
-      return <Confirmation order={order} />;
+      return <Confirmation order={order}  />;
     }
   };
 
@@ -119,6 +120,7 @@ const Form = () => {
           step={step}
           setStep={setStep}
           order={order}
+          email={email}
         />
       </div>
     </>

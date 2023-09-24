@@ -3,7 +3,7 @@ import Image from "next/image";
 import { BsFacebook, BsInstagram, BsTwitter } from "react-icons/bs";
 import { FaRecycle } from "react-icons/fa";
 
-function Subtotal({ formData, step, setStep, isLoading, order }) {
+function Subtotal({ formData, step, setStep, isLoading, order, email}) {
   const total = useSelector((state) => state.cart.total);
   const orderQuantity = useSelector((state) => state.cart.quantity);
   const installmentPrice = (total / 3).toFixed(2);

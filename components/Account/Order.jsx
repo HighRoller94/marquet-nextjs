@@ -34,8 +34,6 @@ function Order({ order, index }) {
     width: `${Math.round(progress)}%`,
   };
 
-  console.log(Math.round(progress));
-
   return (
     <div key={index} className="w-full bg-white p-8 mb-6">
       <div className="w-12/12 h-3.5  bg-neutral-200 rounded-full mb-2">
